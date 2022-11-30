@@ -1,0 +1,111 @@
+div.landing-left {
+  width: 50%;
+}
+
+div.landing-right {
+  width: 50%;
+  background-color: black;
+}
+
+.logo {
+  margin-left: 60px;
+  width: 70px;
+}
+
+div.menu-bar {
+  position: fixed;
+  z-index: 1;
+  height: 90px;
+  background-color: #ffffff00;
+
+  transition: all 0.2s;
+}
+
+div.expanded-header {
+  background-color: #F96302;
+  box-shadow: 0 0 0 2px #F96302,
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+div.menu-list {
+  display: flex;
+  flex-direction: row;
+  margin-right: 70px;
+}
+
+li {
+  font-size: 17px;
+  list-style: none;
+  width: fit-content;
+  margin-left: 20px;
+  cursor: pointer;
+  background-size: 0 5px, auto;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+
+  transition: all .2s ease-out
+}
+
+li:hover{
+  background-size: 100% 5px, auto;
+}
+
+
+li.signin-btn {
+  background-color: #ffffff70;
+  border-radius: 30px;
+  padding: 10px 20px 10px 20px;
+}
+
+span.arrow-icon {
+  width: 46px;
+  height: 46px;
+  color:#F96302;
+  background-color: white;
+}
+
+div.left-bottom {
+  display: inline-block;
+  -webkit-transition: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+
+  color: white;
+}
+
+div.left-bottom:hover:before, .left-bottom:focus:before, .left-bottom:active:before {
+  -webkit-transform: scale(15);
+  transform:scale(15);
+}
+
+div.left-bottom:hover, .left-bottom:focus, .left-bottom:active {
+  color:#F96302;
+  border-color: white;
+}
+
+div.left-bottom::before {
+  content: "";
+  position: absolute;
+  z-index:-1;
+  top: 0%;
+  left: 70%;
+  bottom:0%;
+  right:0%;
+  background: white;
+  border-radius: 100%;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
