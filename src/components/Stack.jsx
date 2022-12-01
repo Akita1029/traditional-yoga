@@ -5,14 +5,6 @@ export class Stack extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    
-  }
-
-  componentWillUnmount() {
-
-  }
-
   render () {
     <div
       className={

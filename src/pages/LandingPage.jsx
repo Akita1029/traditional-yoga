@@ -70,7 +70,7 @@ export default function LandingPage(props) {
       </div>
       <div className="">
         <div className="row m-0 p-0">
-          <div className="col m-0 p-0 bg-primary">
+          <div className="col m-0 p-0 bg-primary landing-left">
             <div className="d-flex flex-column min-vh-100">
               <div className="flex-grow-1 px-4 px-sm-4 px-md-6 pb-4" style={{paddingTop: 120}}>
                 <p className="text-light">Don't stop till you drop!</p>
@@ -96,7 +96,7 @@ export default function LandingPage(props) {
               </div>
             </div>
           </div>
-          <div className="col m-0 p-0 d-flex bg-dark flex-1 flex-column justify-content-center align-items-center">
+          <div className="col m-0 p-0 d-flex bg-dark flex-1 flex-column justify-content-center align-items-center landing-right">
             <video
               src={video}
               itemType="video/mp4"
