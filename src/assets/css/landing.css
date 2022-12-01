@@ -8,17 +8,18 @@ div.landing-right {
 }
 
 .logo {
-  margin-left: 60px;
-  width: 70px;
+  width: 65px;
 }
 
 div.menu-bar {
   position: fixed;
   z-index: 1;
-  height: 90px;
+  height: 100px;
   background-color: #ffffff00;
 
   transition: all 0.2s;
+  padding-left: 70px;
+  padding-right: 70px;
 }
 
 div.expanded-header {
@@ -30,15 +31,16 @@ div.expanded-header {
 div.menu-list {
   display: flex;
   flex-direction: row;
-  margin-right: 70px;
+  /* gap: 12px; */
 }
 
-li {
+div.menu-list li {
   font-size: 17px;
   list-style: none;
   width: fit-content;
   margin-left: 20px;
   cursor: pointer;
+  border-bottom: 2px solid #ffffff00;
   background-size: 0 5px, auto;
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -46,15 +48,21 @@ li {
   transition: all .2s ease-out
 }
 
-li:hover{
-  background-size: 100% 5px, auto;
+div.menu-list li:hover {
+  border-bottom: 2px solid #ffffffff;
 }
 
 
-li.signin-btn {
+div.menu-list li.signin-btn {
   background-color: #ffffff70;
-  border-radius: 30px;
   padding: 10px 20px 10px 20px;
+  border-radius: 30px;
+  border-bottom: #ffffff00;
+}
+
+div.menu-list li.signin-btn:hover {
+  background-color: #ffffff90;
+  border-bottom: #ffffff00;
 }
 
 span.arrow-icon {

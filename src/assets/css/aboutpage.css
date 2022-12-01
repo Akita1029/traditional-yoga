@@ -1,0 +1,17 @@
+div.top-banner {
+  background-color: gray;
+  padding-left: 10%;
+  padding-right: 10%;
+  height: 50px;
+}
+
+div.menu-bar {
+  height: 80px;
+  padding-left: 10%;
+  padding-right: 10%;;
+}
+
+div.logo {
+  width: 64px;
+  height: 64px;
+}

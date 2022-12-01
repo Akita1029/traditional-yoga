@@ -8,13 +8,17 @@ import {
 } from "react-router-dom";
 import AboutUsPage from './pages/AboutUsPage';
 import LandingPage from './pages/LandingPage';
+import MainLayout from './pages/MainLayout';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={ <LandingPage /> }/>
-        <Route path='/about' element= { <AboutUsPage /> } />
+
+        <Route path='/site' element={ <MainLayout /> }>
+          <Route path="about" element={ <AboutUsPage /> } />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
