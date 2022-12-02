@@ -1,16 +1,9 @@
 div.landing-left {
-  margin-right:0;
-  width: 50%;
   transition: margin-right 2s ease-in-out;
-
 }
 
-div.landing-left:hover {
-  margin-right:15px;
-}
 
 div.landing-right {
-  width: 50%;
   background-color: black;
 }
 
