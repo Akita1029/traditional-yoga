@@ -17,6 +17,10 @@ export default function LandingPage(props) {
     query: '(min-width: 1224px)'
   });
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+  const isDesktop = useMediaQuery({query : '(min-width:900px)'})
+  const isTable = useMediaQuery({
+    query: '(max-width: 900px)'
+  });
 
   const toggleDrawer = () => {
     setDrawerOpened(!drawerOpened);
@@ -69,8 +73,51 @@ export default function LandingPage(props) {
         </div>
       </div>
       <div className="">
-        <div className="row m-0 p-0">
-          <div className="col m-0 p-0 bg-primary landing-left">
+        {isTable && (
+          <div className="row m-0 p-0">
+            <div className="m-0 p-0 bg-primary col">
+              <div className="d-flex flex-column min-vh-100">
+                <div className="flex-grow-1 px-4 px-sm-4 px-md-6 pb-4" style={{paddingTop: 120}}>
+                  <p className="text-light">Don't stop till you drop!</p>
+                  <h1 className="text-light fw-bold" style={{fontSize: 52, letterSpacing: 3}}>
+                    In order to learn
+                    <br/>
+                    we must unlearn
+                    <br/>
+                    and learn
+                  </h1>
+                  <div className="text-light mt-4" style={{height:'100px', width:'300px'}}>
+                    Learn the most ancient tools of yoga for holistic healing by Asana, Paranyama, Mudra, Bhandana, Dharana, Dhynana and Yoga Kaya Chikitsa.
+                  </div>
+                </div>
+                <div className="left-bottom border border-bottom-0 border-start-0 border-end-0 border-light py-5 px-6 d-flex flex-row justify-content-between align-items-center" style={{cursor:'pointer'}}>
+                  <span className="d-none d-md-block d-lg-block d-xl-block d-xxl-block" style={{fontSize:50}}>Get Started</span>
+                  <span className="d-block d-md-none" style={{fontSize:36}}>Get Started</span>
+                  <span className="arrow-icon border-2 rounded-circle d-flex justify-content-center align-items-center">
+                    <i className="bi bi-arrow-right"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="col m-0 p-0 d-flex bg-dark flex-column justify-content-center align-items-center landing-right">
+              <video
+                src={video}
+                itemType="video/mp4"
+                autoPlay
+                loop={true}
+                style={{
+                  marginTop: '-5%',
+                  width:'380px',
+                  minHeight: 'fit-content'
+                }}
+                className="mt-0 mt-sm-0 vh-sm-100"
+              />
+            </div>
+          </div>
+        )}
+        {isDesktop && (
+          <div className="row m-0 p-0">
+          <div className="m-0 p-0 bg-primary landing-left">
             <div className="d-flex flex-column min-vh-100">
               <div className="flex-grow-1 px-4 px-sm-4 px-md-6 pb-4" style={{paddingTop: 120}}>
                 <p className="text-light">Don't stop till you drop!</p>
@@ -83,9 +130,9 @@ export default function LandingPage(props) {
                 </h1>
                 {/* <h1 className="text-light fw-bold" style={{fontSize: 52, letterSpacing: 3}}>we must unlearn</h1>
                 <h1 className="text-light fw-bold" style={{fontSize: 52, letterSpacing: 3}}>and learn</h1> */}
-                <p className="text-light mt-4">
+                <div className="text-light mt-4" style={{height:'100px', width:'300px'}}>
                   Learn the most ancient tools of yoga for holistic healing by Asana, Paranyama, Mudra, Bhandana, Dharana, Dhynana and Yoga Kaya Chikitsa.
-                </p>
+                </div>
               </div>
               <div className="left-bottom border border-bottom-0 border-start-0 border-end-0 border-light py-5 px-6 d-flex flex-row justify-content-between align-items-center" style={{cursor:'pointer'}}>
                 <span className="d-none d-md-block d-lg-block d-xl-block d-xxl-block" style={{fontSize:50}}>Get Started</span>
@@ -111,15 +158,40 @@ export default function LandingPage(props) {
             />
           </div>
         </div>
+        )}
+        
       </div>
 
       <Drawer
         open={drawerOpened}
         onClose={toggleDrawer}
         direction="right"
-        className="bla bal bla"
+        className="p-4"
+        style={{width:"400px"}}
       >
-        <h1>Hello World</h1>
+        <div className="vh-100">
+          <div className="d-flex flex-row justify-content-between align-items-center">
+            <span className="text-black">Need Help?</span>
+            <div className="right-drawer d-flex flex-row justify-content-between">
+              <li className="signin-btn me-3">Sign In</li>
+              <li className="border border-2 rounded-circle border-gray text-black d-flex justify-content-center align-items-center" style={{
+                width:46,
+                height:46,
+              }} onClick={toggleDrawer}><i className="bi bi-x-lg"></i>
+              </li>
+            </div>
+          </div>
+          <li className="mt-5 fw-bold fs-1 menu-list-li">About Us</li>
+          <li className="mt-3 fw-bold fs-1 menu-list-li">Courses</li>
+          <li className="mt-3 fw-bold fs-1 menu-list-li">Shop</li>
+          <li className="mt-3 fw-bold fs-1 menu-list-li">Donations</li>
+          <div className="mt-5 d-flex flex-row justify-content-start" style={{bottom:20, position:'absolute'}}>
+              <a className="pe-2">Terms of Service</a>
+              <a className="pe-2">Privacy Policy</a>
+              <a className="pe-2">Cookie Settings</a>
+          </div>
+
+        </div>
       </Drawer>
     </div>
   );

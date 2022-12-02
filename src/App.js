@@ -9,6 +9,7 @@ import {
 import AboutUsPage from './pages/AboutUsPage';
 import LandingPage from './pages/LandingPage';
 import MainLayout from './pages/MainLayout';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

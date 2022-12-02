@@ -1,10 +1,17 @@
 div.landing-left {
-  transition: margin-right 2s ease-in-out;
+  width: calc(50% - 60px);
+  transition: width 0.5s ease-out;
 }
 
 
 div.landing-right {
   background-color: black;
+  flex: 1;
+  transition: width 0.5s ease-out;
+}
+
+div.landing-left:hover {
+  width: 50%;
 }
 
 .logo {
@@ -120,4 +127,30 @@ div.left-bottom::before {
 
 span.content {
   color: #818790;
+}
+
+div.right-drawer li.signin-btn {
+  list-style: none;
+  background-color: #dddddd70;
+  padding: 10px 20px 10px 20px;
+  border-radius: 30px;
+  border-bottom: #ffffff00;
+ 
+}
+
+div.right-drawer li:hover {
+  cursor: pointer;
+  background-color: #aaaaaa70;
+}
+
+li.menu-list-li {
+  cursor: pointer;
+  list-style: none;
+  transition: all 1s ease-out;
+}
+
+li.menu-list-li:hover {
+  list-style:inside;
+  margin-left: -10px;
+
 }
