@@ -12,7 +12,7 @@ const AboutUsPage = (props) => {
           <div className="col-sm-12 col-xs-12 col-md-6 colo-lg-6">
             <img className="w-100" src={require('../assets/images/Rectangle 34.png')} />
           </div>
-          <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center ps-0 mt-3 mt-md-0 ps-md-6">
+          <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center ps-3 mt-3 mt-md-0 ps-md-6">
             <h3 className="text-primary fw-bold mb-3">Our Courses</h3>
             <CourseSortItem title='Online Trainings' image='online-training-course.png' description='Lorem Ipsum is simply dummy text of the printing and typesetting industry.' />
             <CourseSortItem title='Retreats' image='retreats-course.png' description='Lorem Ipsum is simply dummy text of the printing and typesetting industry.' />
@@ -33,7 +33,7 @@ const AboutUsPage = (props) => {
             <span className="content mt-2">They cover both theory and practice of Hatha and Raja Yoga, for the purpose of promoting the study and practice of traditional yoga, advancing the education of the public in its healing,
               preventative and therapeutic effects, and promoting the mental, physical and spiritual health of the public</span>
           </div>
-          <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center ps-0 mt-3 mt-md-0 ps-md-6">
+          <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center ps-3 mt-3 mt-md-0 ps-md-6">
             <img className="w-100" src={require('../assets/images/aboutpage-1.png')} />
           </div>
         </div>
@@ -42,7 +42,7 @@ const AboutUsPage = (props) => {
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center">
             <img className="w-100" src={require('../assets/images/aboutpage-3.png')} />
           </div>
-          <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center  ps-0 mt-3 mt-md-0 ps-md-6">
+          <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center  ps-3 mt-3 mt-md-0 ps-md-6">
             <h3 className="fw-bold text-primary mb-3">Two core values, Seva and Dana.</h3>
             <span className="text-black fw-bold mt-2">Seva, translated as selfless service is an important principle in the yoga tradition</span>
             <span className="content mt-2">Karma yoga, sometimes called the path of dedication, or the path of action develops several essential attitudes that help us both in our day to day life and on the path of Yoga.</span>
@@ -87,7 +87,7 @@ Hyderabad has a population of about 7.75 million, making it the fourth most popu
               </Accordion.Item>
             </Accordion>
           </div>
-          <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center ps-0 mt-3 mt-md-0 ps-md-6">
+          <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center ps-3 mt-3 mt-md-0 ps-md-6">
             <img className="w-100" src={require('../assets/images/aboutpage-2.png')} />
           </div>
         </div>

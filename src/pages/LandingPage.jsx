@@ -77,7 +77,7 @@ export default function LandingPage(props) {
           <div className="row m-0 p-0">
             <div className="m-0 p-0 bg-primary col">
               <div className="d-flex flex-column min-vh-100">
-                <div className="flex-grow-1 px-4 px-sm-4 px-md-6 pb-4" style={{paddingTop: 120}}>
+                <div className="flex-grow-1 px-4 px-sm-4 px-md-6 pb-4 ps-5" style={{paddingTop: 120}}>
                   <p className="text-light">Don't stop till you drop!</p>
                   <h1 className="text-light fw-bold" style={{fontSize: 52, letterSpacing: 3}}>
                     In order to learn
@@ -181,7 +181,7 @@ export default function LandingPage(props) {
               </li>
             </div>
           </div>
-          <li className="mt-5 fw-bold fs-1 menu-list-li">About Us</li>
+          <li className="mt-5 fw-bold fs-1 menu-list-li" onClick={()=>handleRoute('site/about')}>About Us</li>
           <li className="mt-3 fw-bold fs-1 menu-list-li">Courses</li>
           <li className="mt-3 fw-bold fs-1 menu-list-li">Shop</li>
           <li className="mt-3 fw-bold fs-1 menu-list-li">Donations</li>

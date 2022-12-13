@@ -21,7 +21,7 @@ const FooterBar = () => {
       </div>
       <div className="container">
         <div className="row">
-          <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 mt-5 pe-0 pe-md-6">
+          <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 mt-5 pe-3 pe-md-6">
             <h2>About Us</h2>
             <span>
               <span className="fw-bold">Yoga Healing Foundation of America Inc.</span>
