@@ -9,7 +9,10 @@ import "../assets/css/header.css"
 const HeaderBar = () => {
 
   const navigate = useNavigate();
-  const handleRoute = (data) =>{
+  const [navIndex, setNavIndex] = useState(1);
+
+  const handleRoute = (data, index) =>{
+    setNavIndex(index);
     navigate(`/${data}`);
   }
   const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1170px)' });
@@ -32,31 +35,30 @@ const HeaderBar = () => {
             <span className="text-primary"> &nbsp; Enroll</span>
           </div>
         </div>
-        <div className="main-menu-bar d-flex flex-row justify-content-between align-items-center shadow-sm ps-8 pe-8">
-            <img className="logo" src={logo}/>
+        <div className="main-menu-bar d-flex flex-row justify-content-between align-items-center shadow-sm ps-8 pe-8" >
+            <img className="logo" style={{cursor:'pointer'}} src={logo} onClick={()=>handleRoute('')}/>
             <ul className="nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" onClick={()=>handleRoute('')}>HOME</a>
+                <a className={`nav-link ${navIndex == 0? ' active' : ''}`} onClick={()=>handleRoute('', 0)}>HOME</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={()=>handleRoute('about')}>ABOUT</a>
+                <a className={`nav-link ${navIndex == 1? ' active' : ''}`} onClick={()=>handleRoute('ty/about', 1)}>ABOUT US</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={()=>handleRoute('courses')}>COURSES</a>
+                <a className={`nav-link ${navIndex == 2? ' active' : ''}`} onClick={()=>handleRoute('ty/courses', 2)}>COURSES  <i className="bi bi-chevron-down"></i></a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={()=>handleRoute('library')}>LIBRARY</a>
+                <a className={`nav-link ${navIndex == 3? ' active' : ''}`} onClick={()=>handleRoute('ty/library', 3)}>LIBRARY</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={()=>handleRoute('shop')}>SHOP</a>
+                <a className="nav-link" href="https://vedicnutraceuticalsusa.com/" target="_blank">SHOP</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={()=>handleRoute('contactus')}>CONTACT US</a>
+                <a className={`nav-link ${navIndex == 5? ' active' : ''}`} onClick={()=>handleRoute('ty/contactus', 5)}>CONTACT US</a>
               </li>
-              <li className="nav-item bg-primary rounded-3">
-                <a className="nav-link text-light" href="#">DONATIONS</a>
-              </li>
+              <button className="btn btn-primary text-light rounded-3 ms-2" onClick={()=>handleRoute('ty/donations', 6)}>DONATIONS</button>
             </ul>
+            
         </div>
         </>
       )}

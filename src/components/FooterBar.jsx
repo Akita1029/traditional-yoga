@@ -23,8 +23,8 @@ const FooterBar = () => {
         <div className="row">
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 mt-5 pe-3 pe-md-6">
             <h2>About Us</h2>
-            <span>
-              <span className="fw-bold">Yoga Healing Foundation of America Inc.</span>
+            <span className="content">
+              <span className="fw-bold text-black">Yoga Healing Foundation of America Inc.</span>
               is a registered non-profit (EIN number 47-4872198) run by volunteers
               that delivers programs under the heading of Traditional Yoga.
             </span>
@@ -53,7 +53,7 @@ const FooterBar = () => {
             </div>
           </div>
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 mt-5">
-            <h2>About edicnutraceuticals</h2>
+            <h2>About Vedic Nutraceuticals</h2>
             <span className="content">Vedic Nutraceuticals provides high quality products for healthy living,
               informed by the ancient sciences of Yoga and Ayurveda alongside cutting edge
               contemporary scientific research. Every single input into the body matters.

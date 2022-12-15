@@ -3,6 +3,7 @@
 
 // 2. Include any default variable overrides here
 $primary: #F96302;
+$white: #fff;
 $dark: #000000;
 
 $spacer: 1rem;
@@ -17,6 +18,7 @@ $spacers: (
   7: $spacer * 5,
   8: $spacer * 6
 );
+
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../../node_modules/bootstrap/scss/variables";
@@ -36,8 +38,25 @@ $spacers: (
 @import "../../../node_modules/bootstrap/scss/containers";
 @import "../../../node_modules/bootstrap/scss/grid";
 @import "../../../node_modules/bootstrap/scss/helpers";
+@import "../../../node_modules/bootstrap/scss/buttons";
+
+.btn-bd-primary {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var($white);
+  --bs-btn-bg: var($primary);
+  --bs-btn-border-color: var(--bd-violet);
+  --bs-btn-border-radius: .5rem;
+  --bs-btn-hover-color: var($white);
+  --bs-btn-hover-bg: #{shade-color($primary, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($primary, 10%)};
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #{shade-color($primary, 20%)};
+  --bs-btn-active-border-color: #{shade-color($primary, 20%)};
+}
 
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "../../../node_modules/bootstrap/scss/utilities/api";
+
 
 // 8. Add additional custom code here

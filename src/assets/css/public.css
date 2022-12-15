@@ -1,0 +1,36 @@
+.m-title{
+  color: black;
+  font-weight:700;
+  font-size:16px; 
+  line-height: 30px;
+}
+
+.sm-title{
+  color: black;
+  font-weight:700;
+  font-size:14px; 
+  line-height: 16.94px;
+}
+
+.s-title{
+  color: black;
+  font-weight:700;
+  font-size:12px; 
+  line-height: 16.94px;
+}
+
+div.primary-button {
+  border-radius: 5px;
+  border: 1px solid #F96302;
+  background-color: white;
+  color: #F96302;
+}
+
+div.primary-button:hover{
+  cursor: pointer;
+  color: white;
+  background-color: #F96302;
+}
+
+
+

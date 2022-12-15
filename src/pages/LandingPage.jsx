@@ -57,10 +57,10 @@ export default function LandingPage(props) {
         <div className="menu-list text-light d-flex justify-content-center align-items-center">
           {isDesktopOrLaptop && (
             <>
-              <li onClick={()=>handleRoute('site/about')}>About Us</li>
-              <li>Courses</li>
-              <li><a href="https://vedicnutraceuticalsusa.com/" className="text-light text-decoration-none active:text-light active:text-decoration-none">Shop</a></li>
-              <li>Donations</li>
+              <li onClick={()=>handleRoute('ty/about')}>About Us</li>
+              <li onClick={()=>handleRoute('ty/courses')}>Courses</li>
+              <li><a href="https://vedicnutraceuticalsusa.com/" target="_blank" className="text-light text-decoration-none active:text-light active:text-decoration-none">Shop</a></li>
+              <li onClick={()=>handleRoute('ty/donations')}>Donations</li>
             </>
           )}
           <li className="signin-btn">Sign In</li>
@@ -78,21 +78,20 @@ export default function LandingPage(props) {
             <div className="m-0 p-0 bg-primary col">
               <div className="d-flex flex-column min-vh-100">
                 <div className="flex-grow-1 px-4 px-sm-4 px-md-6 pb-4 ps-5" style={{paddingTop: 120}}>
-                  <p className="text-light">Don't stop till you drop!</p>
                   <h1 className="text-light fw-bold" style={{fontSize: 52, letterSpacing: 3}}>
                     In order to learn
                     <br/>
                     we must unlearn
                     <br/>
-                    and learn
+                    and learn - Dr Kumar
                   </h1>
                   <div className="text-light mt-4" style={{height:'100px', width:'300px'}}>
                     Learn the most ancient tools of yoga for holistic healing by Asana, Paranyama, Mudra, Bhandana, Dharana, Dhynana and Yoga Kaya Chikitsa.
                   </div>
                 </div>
                 <div className="left-bottom border border-bottom-0 border-start-0 border-end-0 border-light py-5 px-6 d-flex flex-row justify-content-between align-items-center" style={{cursor:'pointer'}}>
-                  <span className="d-none d-md-block d-lg-block d-xl-block d-xxl-block" style={{fontSize:50}}>Get Started</span>
-                  <span className="d-block d-md-none" style={{fontSize:36}}>Get Started</span>
+                  <span className="d-none d-md-block d-lg-block d-xl-block d-xxl-block" style={{fontSize:50}} onClick={()=>handleRoute('ty/about')}>Get Started</span>
+                  <span className="d-block d-md-none" style={{fontSize:36}} onClick={()=>handleRoute('ty/about')}>Get Started</span>
                   <span className="arrow-icon border-2 rounded-circle d-flex justify-content-center align-items-center">
                     <i className="bi bi-arrow-right"></i>
                   </span>
@@ -120,13 +119,12 @@ export default function LandingPage(props) {
           <div className="m-0 p-0 bg-primary landing-left">
             <div className="d-flex flex-column min-vh-100">
               <div className="flex-grow-1 px-4 px-sm-4 px-md-6 pb-4" style={{paddingTop: 120}}>
-                <p className="text-light">Don't stop till you drop!</p>
-                <h1 className="text-light fw-bold" style={{fontSize: 52, letterSpacing: 3}}>
+                <h1 className="text-light fw-bold" style={{fontSize: 52, letterSpacing: 3, width: 500}}>
                   In order to learn
                   <br/>
                   we must unlearn
                   <br/>
-                  and learn
+                  and learn - Dr Kumar
                 </h1>
                 {/* <h1 className="text-light fw-bold" style={{fontSize: 52, letterSpacing: 3}}>we must unlearn</h1>
                 <h1 className="text-light fw-bold" style={{fontSize: 52, letterSpacing: 3}}>and learn</h1> */}
@@ -135,8 +133,8 @@ export default function LandingPage(props) {
                 </div>
               </div>
               <div className="left-bottom border border-bottom-0 border-start-0 border-end-0 border-light py-5 px-6 d-flex flex-row justify-content-between align-items-center" style={{cursor:'pointer'}}>
-                <span className="d-none d-md-block d-lg-block d-xl-block d-xxl-block" style={{fontSize:50}}>Get Started</span>
-                <span className="d-block d-md-none" style={{fontSize:36}}>Get Started</span>
+                <span className="d-none d-md-block d-lg-block d-xl-block d-xxl-block" style={{fontSize:50}} onClick={()=>handleRoute('ty/about')}>Get Started</span>
+                <span className="d-block d-md-none" style={{fontSize:36}} onClick={()=>handleRoute('ty/about')}>Get Started</span>
                 <span className="arrow-icon border-2 rounded-circle d-flex justify-content-center align-items-center">
                   <i className="bi bi-arrow-right"></i>
                 </span>
@@ -181,10 +179,10 @@ export default function LandingPage(props) {
               </li>
             </div>
           </div>
-          <li className="mt-5 fw-bold fs-1 menu-list-li" onClick={()=>handleRoute('site/about')}>About Us</li>
-          <li className="mt-3 fw-bold fs-1 menu-list-li">Courses</li>
-          <li className="mt-3 fw-bold fs-1 menu-list-li">Shop</li>
-          <li className="mt-3 fw-bold fs-1 menu-list-li">Donations</li>
+          <li className="mt-5 fw-bold fs-1 menu-list-li" onClick={()=>handleRoute('ty/about')}>About Us</li>
+          <li className="mt-3 fw-bold fs-1 menu-list-li" onClick={()=>handleRoute('ty/courses')}>Courses</li>
+          <a href="https://vedicnutraceuticalsusa.com/" target="_blank" style={{textDecoration:'none', color:'#212529'}}><li className="mt-3 fw-bold fs-1 menu-list-li">Shop</li></a>
+          <li className="mt-3 fw-bold fs-1 menu-list-li" onClick={()=>handleRoute('ty/donations')}>Donations</li>
           <div className="mt-5 d-flex flex-row justify-content-start" style={{bottom:20, position:'absolute'}}>
               <a className="pe-2">Terms of Service</a>
               <a className="pe-2">Privacy Policy</a>

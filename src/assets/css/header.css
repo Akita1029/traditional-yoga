@@ -16,19 +16,35 @@ div.logo {
   height: 60px;
 }
 
-div.main-menu-bar ul li a {
-  color: black;
+div.main-menu-bar ul li.nav-item a{
   font-size: 14px;
+  color: black;
+  list-style: none;
+  width: fit-content;
+  border-bottom: 2px solid #ffffffff;
+  background-size: 0 5px, auto;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+
+  transition: all .2s ease-out
 }
 
-div.main-menu-bar ul li a:hover {
+div.main-menu-bar ul li.nav-item a:hover {
   cursor: pointer;
   color: #F96302;
+  border-bottom: 2px solid #F96302;
+  
 }
 
-/* div.menu-bar ul li a.active {
+div.main-menu-bar ul li.nav-item a.active {
   color: #F96302;
-} */
+}
+
+li a.donation-btn:hover {
+  background-color: #f9a166;
+  
+  cursor: pointer;
+}
 
 .top-leader {
   position: relative;
