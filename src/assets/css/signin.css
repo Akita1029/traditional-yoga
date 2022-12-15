@@ -1,0 +1,33 @@
+
+.logo.logo-white {
+  margin-top: 4rem;
+  margin-left: 6rem;
+}
+
+.left-bar {
+  background-image: url('../images/Buddha-1-scaled.jpg');
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  height: 100vh;
+  position: fixed;
+}
+
+.singin-info-container {
+  padding-top: 2rem !important;
+  padding-right: 6rem !important;
+  padding-left: 6rem !important;
+  margin-left: 50%;
+}
+
+@media (max-width:992px)
+{
+  .singin-info-container {
+    padding-top: 2rem !important;
+    padding-right: 2rem !important;
+    padding-left: 2rem !important;
+    margin-left: 0%;
+  }
+}

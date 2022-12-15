@@ -63,7 +63,7 @@ export default function LandingPage(props) {
               <li onClick={()=>handleRoute('ty/donations')}>Donations</li>
             </>
           )}
-          <li className="signin-btn">Sign In</li>
+          <li  onClick={()=>handleRoute('signin')} className="signin-btn">Sign In</li>
           <li className="border border-2 rounded-circle border-light d-flex justify-content-center align-items-center" style={{
             width:46,
             height:46,
