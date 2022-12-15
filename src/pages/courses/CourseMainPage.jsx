@@ -1,14 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-import SubTitleBar from "../components/SubTitleBar";
-import OnlineCourseItem from "../components/OnlineCourseItem";
+import OnlineCourseItem from '../../components/OnlineCourseItem'
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-
-import '../assets/css/coursespage.css'
 
 const responsive = {
   superLargeDesktop: {
@@ -42,14 +40,17 @@ const responsive_one = {
   },
 }
 
-const CoursesMainPage = (props) => {
-  return (
+const CourseMainPage = () => {
+
+  const navigate = useNavigate();
+  const handleRoute = (data) =>{
+    navigate(`/${data}`);
+  }
+  return(
     <>
-      <div className="container">
-        <SubTitleBar title='The Courses' detail='Yoga means getting on well with everything in life'/>
-        <div className="d-flex flex-row justify-content-between align-items-center">
+      <div className="d-flex flex-row justify-content-between align-items-center">
           <p className="text-primary fw-bold" style={{fontSize:'20px'}}>Online Courses</p>
-          <a className="text-primary fw-bold" style={{fontSize:'12px', cursor:'pointer', textDecoration:'none'}}>Read more...</a>
+          <a className="text-primary fw-bold" style={{fontSize:'12px', cursor:'pointer', textDecoration:'none'}} onClick={()=> handleRoute('ty/courses/online')}>Read more...</a>
         </div>
         <Carousel 
           responsive = {responsive}
@@ -101,7 +102,7 @@ const CoursesMainPage = (props) => {
                     containerClass = "carousel-container"
                   >
                     <div className="d-flex flex-column justify-content-center align-items-start p-2 px-3">
-                        <img src={require('../assets/images/Rectangle 28.png')} width="100%"/>
+                        <img src={require('../../assets/images/Rectangle 28.png')} width="100%"/>
                     </div>
                   </Carousel>
                   <div className="d-flex flex-column justify-content-center align-items-start p-2 px-4">
@@ -147,7 +148,7 @@ const CoursesMainPage = (props) => {
         </div>
         <div className="row mt-3">
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center">
-            <img className="w-100" src={require('../assets/images/Rectangle 43.png')} />
+            <img className="w-100" src={require('../../assets/images/Rectangle 43.png')} />
           </div>
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center  ps-3 mt-3 mt-md-0 ps-md-6">
             <p className="fw-bold  text-primary mb-3 sm-title">Traditional Yoga Weekly Classes in Peoria, Illinois</p>
@@ -192,7 +193,7 @@ const CoursesMainPage = (props) => {
             <p className="fw-bold text-black mt-3 s-title">Eligibility:<span className="content mt-2"> &nbsp; &nbsp; Any RYIT200 or any yoga teacher or aspirant with a reasonable level of proficiency in Hatha Yoga</span></p>
           </div>
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center">
-            <img className="w-100" src={require('../assets/images/Rectangle 43.png')} />
+            <img className="w-100" src={require('../../assets/images/Rectangle 43.png')} />
           </div>
           
           <div className="p-3">
@@ -220,9 +221,8 @@ const CoursesMainPage = (props) => {
             </Carousel>
           </div>
         </div>
-      </div>
     </>
-  );
+  )
 }
 
-export default CoursesMainPage;
+export default CourseMainPage;

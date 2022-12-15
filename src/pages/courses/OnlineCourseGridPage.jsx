@@ -10,8 +10,6 @@ import CourseSearchBar from "../../components/CourseSearchBar";
 const OnlineCourseGridPage = (props) => {
   return (
     <>
-      <div className="container mb-5">
-        <SubTitleBar title='The Courses' detail='Yoga means getting on well with everything in life' />
         <CourseSearchBar/>
         <Grid container columnSpacing={5} rowSpacing={2}>
           <Grid item xs={12} sm={6} md={4}>
@@ -83,7 +81,6 @@ const OnlineCourseGridPage = (props) => {
             type = "Private Course" image="Rectangle 28.png" />
           </Grid>
         </Grid>
-      </div>
     </>
   );
 }
