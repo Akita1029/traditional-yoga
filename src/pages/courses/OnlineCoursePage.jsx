@@ -7,31 +7,6 @@ import "react-multi-carousel/lib/styles.css";
 import Grid from '@mui/material/Grid';
 import CourseSearchBar from "../../components/CourseSearchBar";
 
-
-const responsive = {
-  superLargeDesktop: {
-    breakpoint : {max:4000, min:3000},
-    items:5,
-    slidesToSlide: 5
-  },
-  desktop : {
-    breakpoint : {max:3000, min:1024},
-    items:3,
-    slidesToSlide: 3
-  },
-  tablet: {
-    breakpoint : {max:1024, min:600},
-    items:2,
-    slidesToSlide: 2
-  },
-  mobile: {
-    breakpoint : {max:600, min:0},
-    items:1,
-    slidesToSlide: 1
-  },
-
-}
-
 const OnlineCoursePage = (props) => {
   return (
     <>
