@@ -10,6 +10,8 @@ import AboutUsPage from './pages/AboutUsPage';
 import LandingPage from './pages/LandingPage';
 import MainLayout from './pages/MainLayout';
 import CoursesMainPage from './pages/CoursesMainPage';
+import OnlineCoursePage from './pages/courses/OnlineCoursePage';
+import OnlineCourseGridPage from './pages/courses/OnlineCourseGridPage';
 import SignInPage from './pages/SignInPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -22,6 +24,8 @@ function App() {
         <Route path='/ty' element={ <MainLayout /> }>
           <Route path="about" element={ <AboutUsPage /> } />
           <Route path="courses" element={ <CoursesMainPage /> } />
+          <Route path="courses/online" element={ <OnlineCoursePage /> } />
+          <Route path="courses/online-grid" element={ <OnlineCourseGridPage /> } />
           <Route path="library" element={ <></> } />
           <Route path="contactus" element={ <></> } />
           <Route path="donations" element={ <></> } />
