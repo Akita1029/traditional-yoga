@@ -10,6 +10,7 @@ import AboutUsPage from './pages/AboutUsPage';
 import LandingPage from './pages/LandingPage';
 import MainLayout from './pages/MainLayout';
 import CoursesMainPage from './pages/CoursesMainPage';
+import SignInPage from './pages/SignInPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="contactus" element={ <></> } />
           <Route path="donations" element={ <></> } />
         </Route>
+          <Route path="/signin" element={ <SignInPage /> } />
       </Routes>
     </BrowserRouter>
   );
