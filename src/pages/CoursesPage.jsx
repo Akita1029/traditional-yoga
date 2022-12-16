@@ -5,8 +5,6 @@ import {
 } from "react-router-dom";
 
 import SubTitleBar from "../components/SubTitleBar";
-
-
 import '../assets/css/coursespage.css'
 
 

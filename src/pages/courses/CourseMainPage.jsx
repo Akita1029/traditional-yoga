@@ -8,6 +8,8 @@ import "react-multi-carousel/lib/styles.css";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
+import '../../assets/css/coursespage.css'
+
 const responsive = {
   superLargeDesktop: {
     breakpoint : {max:4000, min:3000},
