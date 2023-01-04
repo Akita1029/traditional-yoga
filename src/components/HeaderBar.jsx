@@ -45,7 +45,7 @@ const HeaderBar = () => {
                 <a className={`nav-link ${navIndex == 1? ' active' : ''}`} onClick={()=>handleRoute('ty/about', 1)}>ABOUT US</a>
               </li>
               <li className="nav-item">
-                <a className={`nav-link ${navIndex == 2? ' active' : ''}`} onClick={()=>handleRoute('ty/courses', 2)}>COURSES  <i className="bi bi-chevron-down"></i></a>
+                <a className={`nav-link ${navIndex == 2? ' active' : ''}`} onClick={()=>handleRoute('ty/courses/main', 2)}>COURSES  <i className="bi bi-chevron-down"></i></a>
               </li>
               <li className="nav-item">
                 <a className={`nav-link ${navIndex == 3? ' active' : ''}`} onClick={()=>handleRoute('ty/library', 3)}>LIBRARY</a>

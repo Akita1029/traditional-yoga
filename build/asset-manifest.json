@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ce51f9e0.css",
-    "main.js": "/static/js/main.e623983b.js",
+    "main.css": "/static/css/main.5ea3f082.css",
+    "main.js": "/static/js/main.33e37364.js",
     "static/media/ad_video.mp4": "/static/media/ad_video.802a6f3197802b3d26a8.mp4",
     "static/media/image-52-copyright-min.jpg": "/static/media/image-52-copyright-min.a4fee9ed68bf96683e23.jpg",
     "static/media/video2-copyright-800x450.png": "/static/media/video2-copyright-800x450.51814a4b57b0131c018c.png",
@@ -18,6 +18,7 @@
     "static/media/aboutpage-1.png": "/static/media/aboutpage-1.c2a49db06885c490390e.png",
     "static/media/vcvv-min.jpg": "/static/media/vcvv-min.992109503064e4a1801f.jpg",
     "static/media/patient-heart-donation.jpg": "/static/media/patient-heart-donation.a7a0ab20d9d08698193c.jpg",
+    "static/media/Rectangle 43.png": "/static/media/Rectangle 43.2b076ab9495b61172711.png",
     "static/media/bck2 (1).jpg": "/static/media/bck2 (1).0262b39a1ddbdf929efe.jpg",
     "static/media/IMG_0109-1.jpg": "/static/media/IMG_0109-1.da05202830243e7ecf3d.jpg",
     "static/media/bck2.jpg": "/static/media/bck2.a4e7f7a61d2559447b72.jpg",
@@ -32,6 +33,7 @@
     "static/media/38-2.jpg": "/static/media/38-2.32f4e7ec4d542458348c.jpg",
     "static/media/image-53-copyright-min-pvrgm4wjd6833gfbjhwaj706es6q03d0gmgafk0j7y.jpg": "/static/media/image-53-copyright-min-pvrgm4wjd6833gfbjhwaj706es6q03d0gmgafk0j7y.06d8b87a46335dcb5d94.jpg",
     "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
+    "static/media/Rectangle 28.png": "/static/media/Rectangle 28.8472874d0216fbbd8681.png",
     "static/media/01_preview_large.png": "/static/media/01_preview_large.b17c37f57e65b1d52ab9.png",
     "static/media/Bryan_meditation-LS-scaled.webp": "/static/media/Bryan_meditation-LS-scaled.986e2149738bb3153ab8.webp",
     "static/media/Ramoji2-copy-1024x680.jpg": "/static/media/Ramoji2-copy-1024x680.06cc21e9f8fe2cd6d2d4.jpg",
@@ -48,14 +50,17 @@
     "static/media/inperson-training-course.png": "/static/media/inperson-training-course.abfde7b8bcf7c44afb05.png",
     "static/media/online-training-course.png": "/static/media/online-training-course.dcb1e3a2548a5700314b.png",
     "static/media/ty.jpg": "/static/media/ty.daae3e90d52928e5d77e.jpg",
+    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/PY020721_MikeNader_Class4_20min.webp": "/static/media/PY020721_MikeNader_Class4_20min.340aac975ec49f8059a3.webp",
     "static/media/images.jfif": "/static/media/images.76758c383dd95b5f61fa.jfif",
+    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/index.html",
-    "main.ce51f9e0.css.map": "/static/css/main.ce51f9e0.css.map",
-    "main.e623983b.js.map": "/static/js/main.e623983b.js.map"
+    "main.5ea3f082.css.map": "/static/css/main.5ea3f082.css.map",
+    "main.33e37364.js.map": "/static/js/main.33e37364.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce51f9e0.css",
-    "static/js/main.e623983b.js"
+    "static/css/main.5ea3f082.css",
+    "static/js/main.33e37364.js"
   ]
 }

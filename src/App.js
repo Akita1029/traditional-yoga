@@ -8,7 +8,8 @@ import {
 import AboutUsPage from './pages/AboutUsPage';
 import LandingPage from './pages/LandingPage';
 import MainLayout from './pages/MainLayout';
-import CoursesMainPage from './pages/CoursesMainPage';
+import CoursesPage from './pages/CoursesPage';
+import CourseMainPage from './pages/courses/CourseMainPage';
 import OnlineCoursePage from './pages/courses/OnlineCoursePage';
 import OnlineCourseGridPage from './pages/courses/OnlineCourseGridPage';
 import OnlineCourseDetailPage from './pages/courses/OnlineCourseDetailPage';

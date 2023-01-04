@@ -58,7 +58,7 @@ export default function LandingPage(props) {
           {isDesktopOrLaptop && (
             <>
               <li onClick={()=>handleRoute('ty/about')}>About Us</li>
-              <li onClick={()=>handleRoute('ty/courses')}>Courses</li>
+              <li onClick={()=>handleRoute('ty/courses/main')}>Courses</li>
               <li><a href="https://vedicnutraceuticalsusa.com/" target="_blank" className="text-light text-decoration-none active:text-light active:text-decoration-none">Shop</a></li>
               <li onClick={()=>handleRoute('ty/donations')}>Donations</li>
             </>
@@ -180,7 +180,7 @@ export default function LandingPage(props) {
             </div>
           </div>
           <li className="mt-5 fw-bold fs-1 menu-list-li" onClick={()=>handleRoute('ty/about')}>About Us</li>
-          <li className="mt-3 fw-bold fs-1 menu-list-li" onClick={()=>handleRoute('ty/courses')}>Courses</li>
+          <li className="mt-3 fw-bold fs-1 menu-list-li" onClick={()=>handleRoute('ty/courses/main')}>Courses</li>
           <a href="https://vedicnutraceuticalsusa.com/" target="_blank" style={{textDecoration:'none', color:'#212529'}}><li className="mt-3 fw-bold fs-1 menu-list-li">Shop</li></a>
           <li className="mt-3 fw-bold fs-1 menu-list-li" onClick={()=>handleRoute('ty/donations')}>Donations</li>
           <div className="mt-5 d-flex flex-row justify-content-start" style={{bottom:20, position:'absolute'}}>
