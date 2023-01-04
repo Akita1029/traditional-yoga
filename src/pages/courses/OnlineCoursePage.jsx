@@ -4,6 +4,7 @@ import OnlineCourseItem from "../../components/OnlineCourseItem";
 
 import "react-multi-carousel/lib/styles.css";
 import Grid from '@mui/material/Grid';
+<<<<<<< HEAD
 import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -13,6 +14,17 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import AppsIcon from '@mui/icons-material/Apps';
 
 import { styled } from '@mui/material/styles';
+=======
+
+import { styled } from '@mui/material/styles';
+import ViewListIcon from '@mui/icons-material/ViewList';
+import AppsIcon from '@mui/icons-material/Apps';
+import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import Box from '@mui/material/Box';
+import { IconButton, Typography } from "@mui/material";
+import MenuItem from '@mui/material/MenuItem';
+>>>>>>> 1f6c867d68b92410c30531fa1f2ad37c8cb6699c
 
 const OutlineIconButton = styled(IconButton)({
   borderRadius: 10,

@@ -39,7 +39,8 @@ const CourseSearchBar = (props) => {
         mb: 3,
       }}
     >
-      <SearchBox id="outlined-search" label="Enter search key" type="search" />
+      <SearchBox id="outlined-search" label="Enter search key" type="search" 
+        onChange={props.filter}/>
       <Box
         sx={{
           display: 'flex',

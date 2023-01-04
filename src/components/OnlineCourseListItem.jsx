@@ -58,7 +58,7 @@ const OnlineCourseListItem = (props) => {
                       WebkitLineClamp: '1',
                       WebkitBoxOrient: 'vertical',
                   }}>
-                <strong>(RYIT 200) Free Online Traditional</strong>
+                <strong>{ props.title } </strong>
               </Typography>
             </Grid>
             <Grid item>
@@ -70,7 +70,7 @@ const OnlineCourseListItem = (props) => {
                       WebkitLineClamp: '2',
                       WebkitBoxOrient: 'vertical',
                   }}>
-              Vedic Nutraceuticals provides high quality products for healthy living, informed by the ancient sciences of Yoga and Ayurveda alongside cutting edge contemporary scientific research. Every single input into the body matters. Pramana, standards, as taught by Saint Patanjali are fundamental to Yoga. The standards of ingredient in every product is of the finest and purest. These formulations are what our DNA desperately needs in order to cope with human’s rapidly changing lifestyle and inputs that cause a much higher level of stress and demand on the cell.
+              { props.description }
               </Typography>
             </Grid>
             <Grid item>
@@ -78,7 +78,7 @@ const OnlineCourseListItem = (props) => {
                 sx={{
                   fontSize: 10
                 }}>
-                Private Course
+                { props.type }
               </Button>
             </Grid>
           </Grid>
