@@ -31,7 +31,7 @@ const HeaderBar = () => {
             <span><i className="bi bi-record2 fs-6"></i>Welcome to our TRADITIONAL YOGA</span>
           </div>
           <div className="top-login d-flex flex-row justify-content-center align-items-center">
-            <span className="text-primary">Sign In &nbsp;</span>|
+            <span className="text-primary" onClick={()=>handleRoute('signin')}>Sign In &nbsp;</span>|
             <span className="text-primary"> &nbsp; Enroll</span>
           </div>
         </div>

@@ -12,7 +12,6 @@ import MainLayout from './pages/MainLayout';
 import CoursesPage from './pages/CoursesPage';
 import CourseMainPage from './pages/courses/CourseMainPage';
 import OnlineCoursePage from './pages/courses/OnlineCoursePage';
-import OnlineCourseGridPage from './pages/courses/OnlineCourseGridPage';
 import SignInPage from './pages/SignInPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -27,7 +26,6 @@ function App() {
           <Route path="courses" element={ <CoursesPage /> }>
             <Route path="main" element={ <CourseMainPage /> }/>
             <Route path="online" element={ <OnlineCoursePage /> } />
-            <Route path="online-grid" element={ <OnlineCourseGridPage /> } />
           </Route>
           <Route path="library" element={ <></> } />
           <Route path="contactus" element={ <></> } />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
 import OnlineCourseItem from '../../components/OnlineCourseItem'
@@ -7,6 +7,8 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 import '../../assets/css/coursespage.css'
 
@@ -48,6 +50,8 @@ const CourseMainPage = () => {
   const handleRoute = (data) =>{
     navigate(`/${data}`);
   }
+  const [date, setDate] = useState(new Date());
+
   return(
     <>
       <div className="d-flex flex-row justify-content-between align-items-center">
@@ -82,17 +86,14 @@ const CourseMainPage = () => {
         <div>
           <Tabs>
             <TabList>
-              <Tab disabled><span className="text-white px-3 px-xm-6"></span></Tab>
-              <Tab selected><span className="fw-bold">Ongoing Retreats</span></Tab>
+              <Tab><span className="fw-bold">Ongoing Retreats</span></Tab>
               <Tab><span className="fw-bold">Past Retreats</span></Tab>
             </TabList>
-            <div className="p-3 p-sm-6" style={{border:'1px solid #F96302', borderBottomLeftRadius:'10px', borderBottomRightRadius:'10px', borderTop:'none', marginTop:'-10px'}}>
-              <TabPanel>
-                <h2>Any content 1</h2>
-              </TabPanel>
-              <TabPanel>
-                <div className="col-12 col-sm-6">
-                  <Carousel style= {{width:400}}
+            <div className="p-1 p-sm-4" style={{border:'1px solid #F96302', borderBottomLeftRadius:'10px', borderBottomRightRadius:'10px', borderTop:'none', marginTop:'-10px'}}>
+
+              <TabPanel className="row">
+                <div className="col-6 col-md-6">
+                  <Carousel style= {{width:100}}
                     responsive = {responsive_one}
                     swipeable = {false}
                     draggable = {true}
@@ -112,13 +113,26 @@ const CourseMainPage = () => {
                     <span className="content" style={{fontSize:'12px'}}>Winter Meditation Retreat with Dr.Kumar in Kerala in 2022</span>
                     <p className="fw-bold sm-title mt-4">Instructors</p>
                     <span className="content" style={{fontSize:'12px'}}>DR.KUMAR</span>
+                  </div>
+                </div>
+                <div className="col-6 col-md-6">
+                  <div className='calendar-container'>
+                    <Calendar
+                      onChange={setDate}
+                      value={date}
+                      selectRange={true}
+                    />
+                  </div>
+                  <div className="d-flex flex-column justify-content-center align-items-start p-2 px-4">
                     <p className="fw-bold sm-title mt-4">Start And Dates and Times</p>
                     <span className="content" style={{fontSize:'12px'}}>12 pm on 28th December 20 ~ 9 am on 12th January</span>
+                    <p className="fw-bold sm-title mt-4">Course Info</p>
+                    <span className="content" style={{fontSize:'12px'}}>Saturday, December 28, 2019 @ 12:00 pm – Sunday, January 12, 2020 @ 9:00 am Lords Resort Thrissur, IV/290, Painkulam, Cheruthuruthy P.O, Thrissur Kerala 679531 India</span>
                   </div>
                 </div>
               </TabPanel>
               <TabPanel>
-                <div className="col-12 col-sm-6">
+                <div className="col-6 col-sm-6">
                   <Carousel style= {{width:400}}
                     responsive = {responsive_one}
                     swipeable = {false}
@@ -153,7 +167,7 @@ const CourseMainPage = () => {
             <img className="w-100" src={require('../../assets/images/Rectangle 43.png')} />
           </div>
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center  ps-3 mt-3 mt-md-0 ps-md-6">
-            <p className="fw-bold  text-primary mb-3 sm-title">Traditional Yoga Weekly Classes in Peoria, Illinois</p>
+            <p className="fw-bold  text-primary mb-3 x-title">Traditional Yoga Weekly Classes in Peoria, Illinois</p>
             <span className="content mt-2">We offer classes from beginner to advanced, to facilitate progressive practice on the path of yoga. The classes are designed to de-stess, detox, release and restore as we integrate various aspects of Yoga in a holistic and integrated way by exploring mind and body.</span>
             <span className="content mt-2">The classes include zero resistance yoga asanas, pranayama (breathing techniques), guided meditation and related theory as explained by Dr Kumar. The class will be a wonderful journey for those who are seeking authentic yogic knowledge and we welcome you to join no matter what stage you are at in your journey</span>
           </div>
