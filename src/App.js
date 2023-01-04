@@ -35,7 +35,7 @@ function App() {
           <Route path="contactus" element={ <></> } />
           <Route path="donations" element={ <></> } />
           {/* <Route path="profile/" element={ <ProfilePage /> } /> */}
-          <Route path="profile/course" element={ <ProfileCoursePage /> } />
+          {/* <Route path="profile/course" element={ <ProfileCoursePage /> } /> */}
           {/* <Route path="profile/notifications" element={ <ProfileCoursePage /> } /> */}
         </Route>
           <Route path="/signin" element={ <SignInPage /> } />

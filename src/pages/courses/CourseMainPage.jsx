@@ -92,7 +92,7 @@ const CourseMainPage = () => {
             <div className="p-1 p-sm-4" style={{border:'1px solid #F96302', borderBottomLeftRadius:'10px', borderBottomRightRadius:'10px', borderTop:'none', marginTop:'-10px'}}>
 
               <TabPanel className="row">
-                <div className="col-6 col-md-6">
+                <div className="col-12 col-md-6">
                   <Carousel style= {{width:100}}
                     responsive = {responsive_one}
                     swipeable = {false}
@@ -115,7 +115,7 @@ const CourseMainPage = () => {
                     <span className="content" style={{fontSize:'12px'}}>DR.KUMAR</span>
                   </div>
                 </div>
-                <div className="col-6 col-md-6">
+                <div className="col-12 col-md-6">
                   <div className='calendar-container'>
                     <Calendar
                       onChange={setDate}
