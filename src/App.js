@@ -15,8 +15,9 @@ import OnlineCourseDetailPage from './pages/courses/OnlineCourseDetailPage'
 import CourseProgressPage from './pages/courses/CourseProgressPage'
 import SignInPage from './pages/SignInPage';
 import ContactUs from './pages/ContactUsPage'
-import Donation from './pages/Donation'
-
+import DonationPage from './pages/donations/DonationPage'
+import UpcomingPage from './pages/donations/UpcomingPage'
+import PaymentPage from './pages/donations/PaymentPage'
 import DashboardLayout from './layout/DashboardLayout';
 import Home from './pages/dashboard/home';
 import Classroom from './pages/dashboard/classroom';
@@ -38,13 +39,17 @@ function App() {
           <Route path="courses_detail" element={ <OnlineCourseDetailPage /> } />
           <Route path="courses_progress" element={ <CourseProgressPage /> } />
           <Route path="library" element={ <></> } />
-          <Route path="contactus" element={ <ContactUs /> } />
-          <Route path="donations" element={ <Donation /> } />
+          <Route path="contactus" element={ <ContactUs /> } />          
+          
           {/* <Route path="profile/" element={ <ProfilePage /> } /> */}
           {/* <Route path="profile/course" element={ <ProfileCoursePage /> } /> */}
           {/* <Route path="profile/notifications" element={ <ProfileCoursePage /> } /> */}
         </Route>
-          <Route path="/signin" element={ <SignInPage /> } />
+        <Route path="/donations" element={ <DonationPage /> } >
+          <Route path="payment" element={ <PaymentPage /> } />
+          <Route path="upcomings" element={ <UpcomingPage /> } />
+        </Route>
+        <Route path="/signin" element={ <SignInPage /> } />
         <Route
           path="/dashboard"
           element={<DashboardLayout/>}

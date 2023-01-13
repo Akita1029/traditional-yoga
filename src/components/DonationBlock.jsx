@@ -7,7 +7,7 @@ const DonationBlock = (props) => {
       <div className="d-flex flex-row justify-content-start mt-5">
         <div style={{ width: 120, fontWeight: 'bold' }}>
           <span style={{ fontSize: 40 }}>7</span><br />
-          <span>Decemver</span>
+          <span>December</span>
         </div>
         <div style={{ width: 'calc(100% - 120px)' }} className="d-flex flex-row justify-content-between">
           <div style={{ width: '45%' }}>
@@ -35,9 +35,7 @@ const DonationBlock = (props) => {
             <span className="content">{props.prerequisites}</span>
             <div className="row">
               <div className="col-sm-12 col-xs-12 col-md-4 col-lg-4 d-flex flex-column justify-content-center">
-                <div className="primary-button fs-5 py-2 mt-5 mb-4" style={{ width: 'fit-content' }}>
-                  Learn More
-                </div>
+                <button className="w-100 border-primary bg-white text-primary rounded px-4 fs-5 py-2 mt-5 mb-4">Learn more</button>
               </div>
               <div className="col-sm-12 col-xs-12 col-md-4 col-lg-4 d-flex flex-column justify-content-center">
                 <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mt-5 mb-4">Register</button>

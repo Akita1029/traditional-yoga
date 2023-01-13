@@ -56,7 +56,7 @@ const HeaderBar = () => {
               <li className="nav-item">
                 <a className={`nav-link ${navIndex == 5? ' active' : ''}`} onClick={()=>handleRoute('ty/contactus', 5)}>CONTACT US</a>
               </li>
-              <button className="btn btn-primary text-light rounded-3 ms-2" onClick={()=>handleRoute('ty/donations', 6)}>DONATIONS</button>
+              <button className="btn btn-primary text-light rounded-3 ms-2" onClick={()=>handleRoute('donations', 6)}>DONATIONS</button>
             </ul>
             
         </div>

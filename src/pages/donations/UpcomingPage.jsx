@@ -1,12 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
-import CourseSortItem from "../components/CourseSortItem";
-import SubTitleBar from "../components/SubTitleBar";
-import Button from '@mui/material/Button';
+import React from "react";
+import SubTitleBar from "../../components/SubTitleBar";
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import Accordion from "react-bootstrap/Accordion";
 import { styled } from '@mui/material/styles';
-import DonationBlock from "../components/DonationBlock";
+import DonationBlock from "../../components/DonationBlock";
 
 const SortCategory = styled(Select)({
   '& fieldset': {
@@ -15,7 +12,7 @@ const SortCategory = styled(Select)({
   width: 250,
 })
 
-const DonationPage = (props) => {
+const UpcomingPage = (props) => {
   return (
     <div className="container" style={{ marginBottom: 20 }}>
       <SubTitleBar title='Upcoming Course' detail='Traditional Yoga' />
@@ -58,4 +55,4 @@ const DonationPage = (props) => {
   );
 }
 
-export default DonationPage;
+export default UpcomingPage;
