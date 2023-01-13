@@ -32,27 +32,42 @@ const SortCategory = styled(Select)({
   width: 250,
 })
 
-
+const imgArr = [
+  'image-42-copyright-min-900x1180.jpg',
+  '01_preview_large.png',
+  'Guru.webp',
+  'image_14_copyright-min.jpg',
+  'video2-copyright-800x450.png',
+  'IMG_0109-1.jpg',
+  'logo-primary.png',
+  'image-55-copyright-min-pvrgm4wjd66ko4apt50cn3acl5icetwgr5fnfvupd6.jpg',
+  'Ramoji2-copy-1024x680.jpg',
+  'Buddha-1-scaled.jpg',
+  'image-45-copyright-min.jpg',
+  'image-52-copyright-min.jpg',
+  'about2-copyright.png',
+  'footer-banner.jpg'
+]
 
 const OnlineCoursePage = (props) => {
   const [grid, setGrid] = useState("grid");
 
   var gridRow = [];
-  for (var i = 0; i < 9; i++) {
+  for (var i = 0; i < 14; i++) {
       gridRow.push(
         <Grid item xs={12} sm={6} md={4}>
           <OnlineCourseListItem title = '(RYIT 200) Free Online Traditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-          type = "Private Course" image="Rectangle 28.png" />
+          type = "Private Course" image={imgArr[i]} />
         </Grid>
       );
   }
 
   var listRow = [];
-  for (var j = 0; j < 9; j++) {
+  for (var j = 0; j < 14; j++) {
       listRow.push(
         <Grid item xs={12} sm={6} md={4}>
           <OnlineCourseItem title = '(RYIT 200) Free Online Traditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-          type = "Private Course" image="Rectangle 28.png" />
+          type = "Private Course" image={imgArr[j]} />
         </Grid>
       );
   }
@@ -82,7 +97,7 @@ const OnlineCoursePage = (props) => {
           <Typography
             sx={{
               mr: 1,
-            }}>Sort</Typography>
+            }}>Sorts</Typography>
           <Box
             sx={{
               display: 'flex',
@@ -120,7 +135,7 @@ const OnlineCoursePage = (props) => {
         </Box>
       </Box>
 
-      <Grid container columnSpacing={5} rowSpacing={2}>
+      <Grid container columnSpacing={5} rowSpacing={2} className="mb-4">
 
         {grid === "list" && (      
           <>{gridRow}</>

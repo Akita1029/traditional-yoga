@@ -12,6 +12,8 @@ import CoursesPage from './pages/CoursesPage';
 import CourseMainPage from './pages/courses/CourseMainPage';
 import OnlineCoursePage from './pages/courses/OnlineCoursePage';
 import SignInPage from './pages/SignInPage';
+import ContactUs from './pages/ContactUsPage'
+import Donation from './pages/Donation'
 
 import DashboardLayout from './layout/DashboardLayout';
 import Home from './pages/dashboard/home';
@@ -32,8 +34,8 @@ function App() {
             <Route path="online" element={ <OnlineCoursePage /> } />
           </Route>
           <Route path="library" element={ <></> } />
-          <Route path="contactus" element={ <></> } />
-          <Route path="donations" element={ <></> } />
+          <Route path="contactus" element={ <ContactUs /> } />
+          <Route path="donations" element={ <Donation /> } />
           {/* <Route path="profile/" element={ <ProfilePage /> } /> */}
           {/* <Route path="profile/course" element={ <ProfileCoursePage /> } /> */}
           {/* <Route path="profile/notifications" element={ <ProfileCoursePage /> } /> */}

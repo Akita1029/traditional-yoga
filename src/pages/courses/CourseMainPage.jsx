@@ -73,11 +73,11 @@ const CourseMainPage = () => {
             <OnlineCourseItem title = '(RYIT 200) Free Online Traditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
           type = "Private Course" image="Rectangle 28.png" />
             <OnlineCourseItem title = '(RYIT 200asdfasdonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-          type = "Private Course" image="Rectangle 28.png" />
+          type = "Private Course" image="01_preview_large.png" />
             <OnlineCourseItem title = '(Raeatrwetyrraditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-          type = "Private Course" image="Rectangle 28.png" />
+          type = "Private Course" image="group-photo-sun-2-1-768x512-310x207.jpg" />
             <OnlineCourseItem title = '(RYIewqrqwertqweonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-          type = "Private Course" image="Rectangle 28.png" />
+          type = "Private Course" image="ayurveda-services-consultation.jpg" />
         </Carousel>
         <div className="d-flex flex-row justify-content-between align-items-center mt-3">
           <p className="text-primary fw-bold" style={{fontSize:'20px'}}>Retreats</p>
@@ -188,11 +188,11 @@ const CourseMainPage = () => {
                 <OnlineCourseItem title = '(RYIT 200) Free Online Traditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
               type = "Add to Cart" image="Rectangle 28.png" />
                 <OnlineCourseItem title = '(RYIT 200asdfasdonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-              type = "Add to Cart" image="Rectangle 28.png" />
+              type = "Add to Cart" image="01_preview_large.png" />
                 <OnlineCourseItem title = '(Raeatrwetyrraditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-              type = "Add to Cart" image="Rectangle 28.png" />
+              type = "Add to Cart" image="group-photo-sun-2-1-768x512-310x207.jpg" />
                 <OnlineCourseItem title = '(RYIewqrqwertqweonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-              type = "Add to Cart" image="Rectangle 28.png" />
+              type = "Add to Cart" image="ayurveda-services-consultation.jpg" />
             </Carousel>
           </div>
         </div>
@@ -209,7 +209,7 @@ const CourseMainPage = () => {
             <p className="fw-bold text-black mt-3 s-title">Eligibility:<span className="content mt-2"> &nbsp; &nbsp; Any RYIT200 or any yoga teacher or aspirant with a reasonable level of proficiency in Hatha Yoga</span></p>
           </div>
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center">
-            <img className="w-100" src={require('../../assets/images/Rectangle 43.png')} />
+            <img className="w-100" src={require('../../assets/images/Guru.webp')} />
           </div>
           
           <div className="p-3">
@@ -229,11 +229,11 @@ const CourseMainPage = () => {
                 <OnlineCourseItem title = '(RYIT 200) Free Online Traditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
               type = "Read More" image="Rectangle 28.png" />
                 <OnlineCourseItem title = '(RYIT 200asdfasdonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-              type = "Read More" image="Rectangle 28.png" />
+              type = "Read More" image="01_preview_large.png" />
                 <OnlineCourseItem title = '(Raeatrwetyrraditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-              type = "Read More" image="Rectangle 28.png" />
+              type = "Read More" image="group-photo-sun-2-1-768x512-310x207.jpg" />
                 <OnlineCourseItem title = '(RYIewqrqwertqweonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-              type = "Read more" image="Rectangle 28.png" />
+              type = "Read more" image="ayurveda-services-consultation.jpg" />
             </Carousel>
           </div>
         </div>
