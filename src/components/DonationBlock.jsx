@@ -33,10 +33,17 @@ const DonationBlock = (props) => {
               </span>
             </div>
             <span className="content">{props.prerequisites}</span>
-            <div className="primary-button px-4 mt-4 p-2" style={{ width: 'fit-content' }}>
-              Learn More
+            <div className="row">
+              <div className="col-sm-12 col-xs-12 col-md-4 col-lg-4 d-flex flex-column justify-content-center">
+                <div className="primary-button fs-5 py-2 mt-5 mb-4" style={{ width: 'fit-content' }}>
+                  Learn More
+                </div>
+              </div>
+              <div className="col-sm-12 col-xs-12 col-md-4 col-lg-4 d-flex flex-column justify-content-center">
+                <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mt-5 mb-4">Register</button>
+              </div>
             </div>
-            <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mt-5 mb-4">Register</button>
+            
           </div>
           <div style={{ width: '45%' }}>
             <img className="rounded-2" style={{ width: '100%', height: 400 }} src={image} />

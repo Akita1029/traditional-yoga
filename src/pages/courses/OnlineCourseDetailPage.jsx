@@ -1,7 +1,7 @@
 import React from "react";
 
 import SubTitleBar from "../../components/SubTitleBar";
-
+import { useNavigate } from "react-router-dom";
 import "react-multi-carousel/lib/styles.css";
 import { styled } from '@mui/material/styles';
 import MuiAccordion from '@mui/material/Accordion';
@@ -90,11 +90,41 @@ const OnlineCourseGridPage = (props) => {
     setExpanded(newExpanded ? panel : false);
   };
 
+  const navigate = useNavigate();
+  const handleRoute = (data) =>{
+    navigate(`/${data}`);
+  }
+
   return (
     <>
       <div className="container mb-5">
         <SubTitleBar title='The Courses' detail='Course Informations' />
-        <div>
+        <div className="row" style={{paddingBottom:'10px'}}>
+          <div className="col-sm-12 col-xs-12 col-md-8 col-lg-8 d-flex flex-column justify-content-center">
+            <img className="w-100" style={{ borderRadius: 10 }} src={require('../../assets/images/Rectangle 43.png')} />
+          </div>
+          <div className="col-sm-12 col-xs-12 col-md-4 col-lg-4 d-flex flex-column justify-content-center">
+            <p className="fw-bold text-black mb-3 sm-title">Course Title:</p>
+            <p className="text-black "><span className="content"> (RYIT 200) Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharma For Yoga Teachers and Students to become a Yogi</span></p>
+            <p className="fw-bold text-black mt-3 s-title">Instructors:</p>
+            <p className="fw-bold text-black mt-3 s-title">
+              <div className="contact-code d-flex flex-row justify-content-between">
+                <div className="d-flex flex-row justify-content-start">
+                  <img src={require("../../assets/images/38-2.jpg")}></img>
+                  <div className="d-flex flex-column justifay-content-start ps-2 ">
+                    <span className="content">DR.KUMAR</span>
+                  </div>
+                </div>
+              </div>
+            </p>              
+            <p className="fw-bold text-black mt-3 s-title">Course Timelines:</p>
+            <p className="fw-bold text-black mt-3 s-title"><span className="content mt-2"> RYIT200 Dates: &nbsp;<span className="text-primary fw-bold">Jun 15th, 2022 - Sep 30th, 2022</span></span></p>
+            <p className="fw-bold text-black mt-3 s-title"><span className="content mt-2"> RYIT500 Dates: &nbsp;<span className="text-primary fw-bold">Jun 15th, 2022 - Sep 30th, 2022</span></span></p>
+            <button className="border-primary bg-primary rounded px-4 text-light fs-5 py-2 text-center" onClick={()=> handleRoute('ty/courses_progress')}>Take Course</button>            
+          </div>
+        </div>
+        
+        <div>        
           { accordionData.map((accordion, index) => (
             <Accordion expanded={expanded === 'panel' + index } onChange={handleChange('panel' + index )}>
               <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">

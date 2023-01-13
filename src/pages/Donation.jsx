@@ -44,6 +44,16 @@ const DonationPage = (props) => {
         amount='USD 540' program='Men’s Program' course='Online Courses'
         content='Shoonya Meditation is a complete path to inner wellbeing. This four-day residential program combines Shakti Chalana Kriya, powerful and purifying breathing techniques utilized to encourage the flow of vital energy into the central energy channel, or sushumna nadi; and Shoonya meditation, an effortless process of conscious non-doing. Together, these practices stimulate the release of physical, mental and emotional blocks and activate the spontaneous expression of vital energy.'
         prerequisites='Completion of the Inner Engineering Program (including the Shambhavi Mahamudra Kriya)' />
+      <DonationBlock image='Rectangle 43.png' title='Shoonya program for Men' time='Wendesday, December 7th 2022 - Saturday, December 10th 2022'
+        position='Isha Institute of Inner-sciences, 951 Isha LaneMcMinnville, Tennessee, US - 37110'
+        amount='USD 540' program='Men’s Program' course='Online Courses'
+        content='Shoonya Meditation is a complete path to inner wellbeing. This four-day residential program combines Shakti Chalana Kriya, powerful and purifying breathing techniques utilized to encourage the flow of vital energy into the central energy channel, or sushumna nadi; and Shoonya meditation, an effortless process of conscious non-doing. Together, these practices stimulate the release of physical, mental and emotional blocks and activate the spontaneous expression of vital energy.'
+        prerequisites='Completion of the Inner Engineering Program (including the Shambhavi Mahamudra Kriya)' />
+      <DonationBlock image='Rectangle 43.png' title='Shoonya program for Men' time='Wendesday, December 7th 2022 - Saturday, December 10th 2022'
+        position='Isha Institute of Inner-sciences, 951 Isha LaneMcMinnville, Tennessee, US - 37110'
+        amount='USD 540' program='Men’s Program' course='Online Courses'
+        content='Shoonya Meditation is a complete path to inner wellbeing. This four-day residential program combines Shakti Chalana Kriya, powerful and purifying breathing techniques utilized to encourage the flow of vital energy into the central energy channel, or sushumna nadi; and Shoonya meditation, an effortless process of conscious non-doing. Together, these practices stimulate the release of physical, mental and emotional blocks and activate the spontaneous expression of vital energy.'
+        prerequisites='Completion of the Inner Engineering Program (including the Shambhavi Mahamudra Kriya)' />
     </div>
   );
 }
