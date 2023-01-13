@@ -60,18 +60,27 @@ const OnlineCourseGridPage = (props) => {
   const accordionData = [
     {
       id: 1,
-      title: 'Todo 1',
-      content: 'ascxvzxcvxcvzxdeweffaefsdfjk faskjf oijxcv opzxicjv ozxijv oaisdjv iwjeoiwejioaef piajsd kadjsf sdafoas difjasdofisajf asf'
+      title: 'Selection Process for the course',
+      content: '1. Upon successful registration you will be assigned a mentor who can speak languages you mentioned.\n' +
+        '2. Mentor will interact over phone/WhatsApp to check the suitability of the student for the course.\n' + 
+        '3. If you fail to lift the call, a message will be sent by mentor for interaction. Any failture to response this message within the stipulated time, will lead to rejection of your application.\n' + 
+        '4. Upon successful interaction only, you will be given access to the course.\n' + 
+        '5. Please note that, registration of application, does not give any right to access the course. It is sole disretion of the mentor to approve or reject the application after the intereaction'
     },
     {
       id: 2,
-      title: 'Todo 2',
-      content: 'ascxvzxcvxcvzxdeweffaefsdfjk faskjf oijxcv opzxicjv ozxijv oaisdjv iwjeoiwejioaef piajsd kadjsf sdafoas difjasdofisajf asf'
+      title: 'Course Description',
+      content: ''
     },
     {
       id: 3,
-      title: 'Todo 3',
-      content: 'ascxvzxcvxcvzxdeweffaefsdfjk faskjf oijxcv opzxicjv ozxijv oaisdjv iwjeoiwejioaef piajsd kadjsf sdafoas difjasdofisajf asf'
+      title: 'Expectations from the Aspirants and Students',
+      content: ''
+    },
+    {
+      id: 4,
+      title: 'GSP: Grusu Shishya Parampara',
+      content: ''
     }
   ]
 
@@ -84,7 +93,7 @@ const OnlineCourseGridPage = (props) => {
   return (
     <>
       <div className="container mb-5">
-        <SubTitleBar title='The Courses' detail='Yoga means getting on well with everything in life' />
+        <SubTitleBar title='The Courses' detail='Course Informations' />
         <div>
           { accordionData.map((accordion, index) => (
             <Accordion expanded={expanded === 'panel' + index } onChange={handleChange('panel' + index )}>

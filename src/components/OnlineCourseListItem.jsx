@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import LockIcon from '@mui/icons-material/Lock';
 import Badge from '@mui/material/Badge';
+import { useNavigate } from "react-router-dom";
 
 const Img = styled('img')({
   margin: 'auto',
@@ -26,6 +27,10 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const OnlineCourseListItem = (props) => {
   const image = require ("../assets/images/" + props.image);
+  const navigate = useNavigate();
+  const handleRoute = (data) =>{
+    navigate(`/${data}`);
+  }
   return (
     <Paper
      variant="outlined"
@@ -77,7 +82,8 @@ const OnlineCourseListItem = (props) => {
               <Button color="warning" variant="outlined" startIcon={<LockIcon />}
                 sx={{
                   fontSize: 10
-                }}>
+                }}
+                onClick={()=> handleRoute('ty/courses_detail')}>
                 { props.type }
               </Button>
             </Grid>

@@ -11,6 +11,7 @@ import MainLayout from './pages/MainLayout';
 import CoursesPage from './pages/CoursesPage';
 import CourseMainPage from './pages/courses/CourseMainPage';
 import OnlineCoursePage from './pages/courses/OnlineCoursePage';
+import OnlineCourseDetailPage from './pages/courses/OnlineCourseDetailPage'
 import SignInPage from './pages/SignInPage';
 import ContactUs from './pages/ContactUsPage'
 import Donation from './pages/Donation'
@@ -31,8 +32,9 @@ function App() {
           <Route path="about" element={ <AboutUsPage /> } />
           <Route path="courses" element={ <CoursesPage /> }>
             <Route path="main" element={ <CourseMainPage /> }/>
-            <Route path="online" element={ <OnlineCoursePage /> } />
+            <Route path="online" element={ <OnlineCoursePage /> } />            
           </Route>
+          <Route path="courses_detail" element={ <OnlineCourseDetailPage /> } />
           <Route path="library" element={ <></> } />
           <Route path="contactus" element={ <ContactUs /> } />
           <Route path="donations" element={ <Donation /> } />

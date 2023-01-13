@@ -114,9 +114,9 @@ const OnlineCoursePage = (props) => {
                 mr: 1,
               }}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value={10}>10</MenuItem>
+              <MenuItem value={20}>20</MenuItem>
+              <MenuItem value={30}>30</MenuItem>
             </SortCategory>
             <OutlineIconButton size="large" style={{backgroundColor: grid === 'grid' ? '#ddd' : '#fff'}}
               sx={{
