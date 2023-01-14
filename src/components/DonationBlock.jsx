@@ -7,7 +7,7 @@ const DonationBlock = (props) => {
       <div className="d-flex flex-row justify-content-start mt-5">
         <div style={{ width: 120, fontWeight: 'bold' }}>
           <span style={{ fontSize: 40 }}>7</span><br />
-          <span>December</span>
+          <span>Decemver</span>
         </div>
         <div style={{ width: 'calc(100% - 120px)' }} className="d-flex flex-row justify-content-between">
           <div style={{ width: '45%' }}>
@@ -33,15 +33,14 @@ const DonationBlock = (props) => {
               </span>
             </div>
             <span className="content">{props.prerequisites}</span>
-            <div className="row">
-              <div className="col-sm-12 col-xs-12 col-md-4 col-lg-4 d-flex flex-column justify-content-center">
-                <button className="w-100 border-primary bg-white text-primary rounded px-4 fs-5 py-2 mt-5 mb-4">Learn more</button>
+            <div className="d-flex">
+              <div className="primary-button px-4 mt-4 p-2" style={{ width: 'fit-content' }}>
+                Learn More
               </div>
-              <div className="col-sm-12 col-xs-12 col-md-4 col-lg-4 d-flex flex-column justify-content-center">
-                <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mt-5 mb-4">Register</button>
+              <div className="primary-button bg-primary px-4 mt-4 p-2 mx-3" style={{ width: 'fit-content', color: '#fff' }}>
+                Register
               </div>
             </div>
-            
           </div>
           <div style={{ width: '45%' }}>
             <img className="rounded-2" style={{ width: '100%', height: 400 }} src={image} />
