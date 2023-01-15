@@ -1,0 +1,57 @@
+input {
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 50px;
+}
+
+.usersettingbutton {
+  margin-top: 30px;
+  width: 100%;
+  border-radius: 5px;
+  height: 50px;
+  color: white;
+  font-size: 24px;
+  background-color: #fe6731;
+  border: none;
+}
+
+.select-position-active {
+  width: 100%;
+  height: 36px;
+  border: 1px solid #fe6731;
+  background-color: #fe6731;
+  padding-top: 5px;
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.select-position-passive {
+  width: 100%;
+  height: 36px;
+  border: 1px solid #fe6731;
+  background-color: white;
+  padding-top: 5px;
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.select-position-passive a {
+  text-decoration: none;
+  color: #fe6731;
+}
+
+.select-position-active a {
+  text-decoration: none;
+  color: white;
+}
+
+.first {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.last {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
