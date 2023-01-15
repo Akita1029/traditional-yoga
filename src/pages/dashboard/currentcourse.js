@@ -1,6 +1,7 @@
 import React from "react";
 import "../../assets/css/currentcourse.css";
 import Accordion from "react-bootstrap/Accordion";
+import CourseLessonItem from "../../components/CourseLessonItem";
 
 const CurrentCourse = (props) => {
   return (
@@ -14,7 +15,36 @@ const CurrentCourse = (props) => {
       <h5 className="text-primary">Model View</h5>
       <div className="row">
         <div className="col-md-3">
-          <p>left</p>
+          <div className="col-sm-12 col-xs-12 d-flex flex-column justify-content-center mb-4">
+            <CourseLessonItem
+              title="Module 1"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknow printer took a galley of type and"
+            />
+          </div>
+          <div className="col-sm-12 col-xs-12 d-flex flex-column justify-content-center mb-4">
+            <CourseLessonItem
+              title="Module 2"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknow printer took a galley of type and"
+            />
+          </div>
+          <div className="col-sm-12 col-xs-12 d-flex flex-column justify-content-center mb-4">
+            <CourseLessonItem
+              title="Module 3"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknow printer took a galley of type and"
+            />
+          </div>
+          <div className="col-sm-12 col-xs-12 d-flex flex-column justify-content-center mb-4">
+            <CourseLessonItem
+              title="Module 4"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknow printer took a galley of type and"
+            />
+          </div>
+          <div className="col-sm-12 col-xs-12 d-flex flex-column justify-content-center mb-4">
+            <CourseLessonItem
+              title="Module 5"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknow printer took a galley of type and"
+            />
+          </div>
         </div>
         <div className="col-md-9">
           <Accordion className="currentcourseviewsec">
