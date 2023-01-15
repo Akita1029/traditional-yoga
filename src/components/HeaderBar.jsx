@@ -44,8 +44,15 @@ const HeaderBar = () => {
               <li className="nav-item">
                 <a className={`nav-link ${navIndex == 1? ' active' : ''}`} onClick={()=>handleRoute('ty/about', 1)}>ABOUT US</a>
               </li>
-              <li className="nav-item">
-                <a className={`nav-link ${navIndex == 2? ' active' : ''}`} onClick={()=>handleRoute('ty/courses/main', 2)}>COURSES  <i className="bi bi-chevron-down"></i></a>
+              <li className="nav-item dropdown">
+                <a class="dropbtn nav-link">COURSES <i className="bi bi-chevron-down"></i></a>
+                <div class="dropdown-content">
+                  <a onClick={()=>handleRoute('ty/courses/main', 2)}><div style={{ width: 120 }}>Main Course</div></a>
+                  <a onClick={()=>handleRoute('ty/courses/online', 2)}><div style={{ width: 120 }}>Online Course</div></a>
+                  <a onClick={()=>handleRoute('ty/courses_detail', 2)}><div style={{ width: 120 }}>Course Detail</div></a>
+                  <a onClick={()=>handleRoute('ty/courses_progress', 2)}><div style={{ width: 120 }}>Course Progress</div></a>
+                </div>
+                {/* <a className={`nav-link ${navIndex == 2? ' active' : ''}`} onClick={()=>handleRoute('ty/courses/main', 2)}>COURSES  <i className="bi bi-chevron-down"></i></a> */}
               </li>
               <li className="nav-item">
                 <a className={`nav-link ${navIndex == 3? ' active' : ''}`} onClick={()=>handleRoute('ty/library', 3)}>LIBRARY</a>

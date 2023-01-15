@@ -13,7 +13,7 @@ const PaymentPage = (props) => {
     <div className="container" style={{ marginBottom: 20 }}>
       <SubTitleBar title='The donations' detail='Thank you for your donation to the Yoga Healing Foundation of America Inc.' />
       <div style={{ width: '100%' }} >
-        <img style={{ borderRadius: 10, width: '100%' }} src={require("../../assets/images/dr.kumar.png")} />
+        <img style={{ borderRadius: 10, width: '100%' }} src={require("../../assets/images/payment_dn.jpg")} />
       </div>
       <h4 className="fw-bold text-primary mt-5">India donors, click below to Donate</h4>
       <div className="mb-3 mt-4">
@@ -153,6 +153,9 @@ const PaymentPage = (props) => {
             </ul>
           </span>
         </div>
+      </div>
+      <div className="primary-button bg-primary px-4 mt-4 p-2 text-center" style={{ width: '100%', color: '#fff' }}>
+        MAKE PAYMENT
       </div>
     </div>
   );
