@@ -1,0 +1,56 @@
+.information-section {
+  width: 100%;
+  height: 466px;
+  border: 1px solid #f96302;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+.fw-bold {
+  padding-left: 16px;
+  padding-top: 11px;
+}
+
+.mentor-title {
+  padding-left: 32px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.mentor-content {
+  font-size: 13px;
+  color: #818790;
+}
+
+.classdescription {
+  font-size: 13px;
+  color: #818790;
+  padding-left: 32px;
+}
+
+.imagesec {
+  width: 100%;
+  max-width: 450px;
+  max-height: 100px;
+  position: relative;
+}
+
+.imagesec button {
+  width: 400px;
+  height: 50px;
+  background-color: #f96302;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  position: absolute;
+  top: 410%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.liveclassroomsec {
+  display: flex;
+  flex-direction: row;
+}

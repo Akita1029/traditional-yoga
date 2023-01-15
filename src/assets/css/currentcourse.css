@@ -1,0 +1,67 @@
+.currentcourseaccordion {
+  content: "\2228";
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.currentcoursebutton button {
+  border: 1px solid #fe6731 !important;
+  color: #fe6731 !important;
+}
+
+.currentcoursebutton button:not(.collapsed) {
+  border: 1px solid #fe6731 !important;
+  color: white !important;
+  background-color: #fe6731 !important;
+}
+
+.currentcoursebutton button:after {
+  content: "\276e";
+  color: #fe6731;
+  transform: rotate(-90deg);
+  font-size: 25px;
+  font-weight: bold;
+  background-image: none !important;
+}
+
+.currentcoursebutton button:not(.collapsed)::after {
+  transform: rotate(90deg);
+  color: white;
+}
+
+.largesec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.plusbutton {
+  margin-left: 5px;
+  font-weight: bolder;
+  color: #fe6731;
+  font-size: 30px;
+  border: none;
+  background-color: white;
+  margin-top: -20px;
+}
+
+.viewclassroombutton {
+  margin-left: 5px;
+  color: #fe6731;
+  font-size: 16px;
+  border: none;
+  background-color: white;
+  margin-top: -16px;
+}
+
+.currentcourseviewsec {
+  margin-bottom: 20px;
+}
+
+.accordioncontent {
+  padding-bottom: 0 !important;
+}

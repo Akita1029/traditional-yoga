@@ -1,36 +1,57 @@
-.m-title{
+.m-title {
   color: black;
-  font-weight:700;
-  font-size:16px; 
+  font-weight: 700;
+  font-size: 16px;
   line-height: 30px;
 }
 
-.sm-title{
+.sm-title {
   color: black;
-  font-weight:700;
-  font-size:14px; 
+  font-weight: 700;
+  font-size: 14px;
   line-height: 6.94px;
 }
 
-.s-title{
+.s-title {
   color: black;
-  font-weight:700;
-  font-size:12px; 
+  font-weight: 700;
+  font-size: 12px;
   line-height: 16.94px;
 }
 
 div.primary-button {
   border-radius: 5px;
-  border: 1px solid #F96302;
+  border: 1px solid #f96302;
   background-color: white;
-  color: #F96302;
+  color: #f96302;
 }
 
-div.primary-button:hover{
+div.primary-button:hover {
   cursor: pointer;
   color: white;
-  background-color: #F96302;
+  background-color: #f96302;
 }
 
+button.viewclassroom-button {
+  border-radius: 5px;
+  border: 1px solid #f96302;
+  background-color: #f96302;
+  color: white;
+  position: absolute;
+  width: 240px;
+  top: 77%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
 
+button.viewclassroom-button:hover {
+  cursor: pointer;
+  color: #f96302;
+  background-color: white;
+}
 
+.viewclassroomsec {
+  width: 100%;
+  max-width: 300px;
+}
