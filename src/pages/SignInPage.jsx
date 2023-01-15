@@ -63,6 +63,18 @@ const theme = createTheme({
 });
 
 const SignInPage = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const login = () => {
+    if (email === "" && password === "") {
+      alert("Please type your email or password!");
+      window.location.href = "/signin";
+    } else {
+      window.location.href = "/dashboard";
+    }
+  };
+
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
@@ -108,6 +120,7 @@ const SignInPage = (props) => {
                 className="form-control mt-2"
                 id="email"
                 placeholder="Enter email"
+                onChange={(email) => setEmail(email.target.value)}
               />
             </div>
             <div className="form-group mt-3">
@@ -117,6 +130,7 @@ const SignInPage = (props) => {
                 className="form-control mt-2"
                 id="password"
                 placeholder="Enter password"
+                onChange={(password) => setPassword(password.target.value)}
               />
             </div>
             <div className="d-flex justify-content-between bd-highlight mb-5 mt-3">
@@ -133,13 +147,13 @@ const SignInPage = (props) => {
             <div className="d-flex flex-column mt-5 mb-5">
               <Button variant="contained" color="signin">
                 <Link
-                  to="/dashboard"
                   style={{
                     textDecoration: "none",
                     color: "white",
                     width: "100%",
                     height: "100%",
                   }}
+                  onClick={() => login()}
                 >
                   SIGN IN
                 </Link>
