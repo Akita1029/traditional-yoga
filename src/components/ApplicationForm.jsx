@@ -12,7 +12,7 @@ const ApplicationFrom = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [nickName, setNickName] = useState("");
-  const [interest, setInterest] = useState("");
+  const [interest, setInterest] = useState(0);
   const [birthDate, setBirthDate] = useState("");
   const [whatsapp, setWhatsApp] = useState("");
   const [gender, setGender] = useState("");
