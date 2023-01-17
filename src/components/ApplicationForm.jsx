@@ -1,10 +1,53 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "../actions/auth";
 const ApplicationFrom = (props) => {
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [nickName, setNickName] = useState("");
+  const [interest, setInterest] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [whatsapp, setWhatsApp] = useState("");
+  const [gender, setGender] = useState("");
+  const [language, setLanguage] = useState("");
+  const [occupation, setOccupation] = useState("");
+  const [education, setEducation] = useState("");
+  const [country, setCountry] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zipcode, setZipCode] = useState("");
+
+  const register = () => {
+    const regData = {
+      firstName: firstName,
+      lastName: lastName,
+      nickName: nickName,
+      interest: interest,
+      birthDate: birthDate,
+      whatsapp: whatsapp,
+      gender: gender,
+      language: language,
+      occupation: occupation,
+      education: education,
+      country: country,
+      address1: address1,
+      address2: address2,
+      city: city,
+      state: state,
+      zipcode: zipcode
+    };
+    props.registerUser(regData);
+    props.handleClose();
+  };
   return (
     <>
       <Modal size='xl' fullscreen='sm-down' dialogClassName="modal-90w" show={props.show} onHide={() => props.handleClose()}>
@@ -20,92 +63,84 @@ const ApplicationFrom = (props) => {
               <Row>
                 <Col xl={3} md={12}>
                   <label>First Name</label>
-                  <input className="form-control mt-2" id="firstName" />
+                  <input className="form-control mt-2" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Last Name</label>
-                  <input className="form-control mt-2" id="lastName" />
+                  <input className="form-control mt-2" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
                 </Col>
                 <Col xl={3} md={12}>
-                  <label>Last Name</label>
-                  <input className="form-control mt-2" id="lastName" />
+                  <label>Nick Name</label>
+                  <input className="form-control mt-2" id="nickName" value={nickName} onChange={(e) => setNickName(e.target.value)}/>
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Date of Birth</label>
-                  <input className="form-control mt-2" id="birthDate" />
+                  <input className="form-control mt-2" id="birthDate" value={birthDate} onChange={(e) => setBirthDate(e.target.value)}/>
                 </Col>
               </Row>
               <Row className='mt-3'>
                 <Col xl={6} md={12}>
                   <label>Are you interested in Traditional Yoga’s RYIT Certification?</label>
-                  <input className="form-control mt-2" id="interest" />
+                  <input className="form-control mt-2" id="interest" value={interest} onChange={(e) => setInterest(e.target.value)}/>
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Gender</label>
-                  <input className="form-control mt-2" id="gender" />
+                  <input className="form-control mt-2" id="gender" value={gender} onChange={(e) => setGender(e.target.value)}/>
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Whatsapp Phone Number</label>
-                  <input className="form-control mt-2" id="whatsapp" />
+                  <input className="form-control mt-2" id="whatsapp" value={whatsapp} onChange={(e) => setWhatsApp(e.target.value)}/>
                 </Col>
               </Row>
               <Row className='mt-3'>
                 <Col xl={6} md={12}>
                   <label>Email Address</label>
-                  <input className="form-control mt-2" id="email" />
+                  <input className="form-control mt-2" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </Col>
                 <Col xl={6} md={12}>
                   <label>Profession / Occupation</label>
-                  <input className="form-control mt-2" id="occupation" />
+                  <input className="form-control mt-2" id="occupation" value={occupation} onChange={(e) => setOccupation(e.target.value)}/>
                 </Col>
               </Row>
               <Row className='mt-3'>
                 <Col xl={6} md={12}>
                   <label>Spoken Language</label>
-                  <input className="form-control mt-2" id="language" />
+                  <input className="form-control mt-2" id="language" value={language} onChange={(e) => setLanguage(e.target.value)}/>
                 </Col>
                 <Col xl={6} md={12}>
                   <label>Other Education Details</label>
-                  <input className="form-control mt-2" id="education" />
+                  <input className="form-control mt-2" id="education" value={education} onChange={(e) => setEducation(e.target.value)}/>
                 </Col>
               </Row>
               <div className='my-3 text-primary'>
                 <span>Address</span>
               </div>
               <Row>
-                <Col xl={3} md={12}>
+                <Col xl={4} md={12}>
                   <label>Country</label>
-                  <input className="form-control mt-2" id="country" />
+                  <input className="form-control mt-2" id="country" value={country} onChange={(e) => setCountry(e.target.value)}/>
                 </Col>
-                <Col xl={3} md={12}>
+                <Col xl={4} md={12}>
                   <label>Street Address</label>
-                  <input className="form-control mt-2" id="streetAddress" />
+                  <input className="form-control mt-2" id="streetAddress" value={address1} onChange={(e) => setAddress1(e.target.value)}/>
                 </Col>
-                <Col xl={3} md={12}>
+                <Col xl={4} md={12}>
                   <label>Address Line2</label>
-                  <input className="form-control mt-2" id="addressLine2" />
-                </Col>
-                <Col xl={3} md={12}>
-                  <label>State</label>
-                  <input className="form-control mt-2" id="state" />
-                </Col>
+                  <input className="form-control mt-2" id="addressLine2" value={address2} onChange={(e) => setAddress2(e.target.value)}/>
+                </Col>                
               </Row>
               <Row className='mt-3'>
-                <Col xl={3} md={12}>
-                  <label>Country</label>
-                  <input className="form-control mt-2" id="country" />
-                </Col>
-                <Col xl={3} md={12}>
+                <Col xl={4} md={12}>
                   <label>State / Province / Region</label>
-                  <input className="form-control mt-2" id="state" />
+                  <input className="form-control mt-2" id="state" value={state} onChange={(e) => setState(e.target.value)}/>
                 </Col>
-                <Col xl={3} md={12}>
+                <Col xl={4} md={12}>
                   <label>city</label>
-                  <input className="form-control mt-2" id="city" />
+                  <input className="form-control mt-2" id="city" value={city} onChange={(e) => setCity(e.target.value)}/>
                 </Col>
-                <Col xl={3} md={12}>
+                <Col xl={4} md={12}>
                   <label>Zip Code / Postal Code</label>
-                  <input className="form-control mt-2" id="postalCode" />
+                  <input className="form-control mt-2" id="postalCode" value={zipcode} onChange={(e) => setZipCode(e.target.value)}/>
                 </Col>
               </Row>
               <div className='my-3 text-primary'>
@@ -170,7 +205,8 @@ const ApplicationFrom = (props) => {
                 </Col>
                 <Col xl={6} md={12}>
                   <label className='text-primary'>&nbsp;</label>
-                  <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mt-2">SUBMIT</button>
+                  <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mt-2"
+                  onClick={() => register()}>SUBMIT</button>
                 </Col>
               </Row>
             </div>
@@ -181,4 +217,14 @@ const ApplicationFrom = (props) => {
   )
 }
 
-export default ApplicationFrom;
+ApplicationFrom.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors,
+});
+
+export default connect(mapStateToProps, { registerUser })(ApplicationFrom);
+
