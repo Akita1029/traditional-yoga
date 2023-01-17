@@ -32,6 +32,10 @@ export const loginUser = (userData) => (dispatch) => {
           break;
         case 3:
           window.location.href = "/dashboard";
+          break;
+        default:
+          window.location.href = "/dashboard";
+          break;          
       }
     })
     .catch((err) => {
@@ -58,7 +62,28 @@ export const registerUser = (userData) => (dispatch) => {
   axios
     .post("/api/users/signup", userData)
     .then((res) => {
-      console.log(res.data.messages);
+      localStorage.setItem("userToken", res.data.token);
+      dispatch({
+        type: SET_CURRENT_USER,
+        payload: res.data,
+      });
+      switch (res.data.role) {
+        case 0:
+          window.location.href = "/admindashboard";
+          break;
+        case 1:
+          window.location.href = "/admindashboard";
+          break;
+        case 2:
+          window.location.href = "/admindashboard";
+          break;
+        case 3:
+          window.location.href = "/dashboard";
+          break;
+        default:
+          window.location.href = "/dashboard";
+          break;          
+      }
     })
     .catch((err) => {
       dispatch({
