@@ -48,10 +48,10 @@ const HeaderBar = () => {
                 <a className="dropbtn nav-link">COURSES <i className="bi bi-chevron-down"></i></a>
                 <div className="dropdown-content">
                   {/* <a onClick={()=>handleRoute('ty/courses/main#OnlineCourses', 2)}><div style={{ width: 120 }}>Online Courses</div></a> */}
-                  <a href="http://localhost:3000/ty/courses/main#OnlineCourses"><div style={{ width: 120 }}>Online Courses</div></a>
-                  <a href="http://localhost:3000/ty/courses/main#Retreats"><div style={{ width: 120 }}>Retreats</div></a>
-                  <a href="http://localhost:3000/ty/courses/main#InPersonTrainings"><div style={{ width: 120 }}>In Person Trainings</div></a>
-                  <a href="http://localhost:3000/ty/courses/main#PastInTrainings"><div style={{ width: 120 }}>Past In-Person Trainings</div></a>
+                  <a href="/ty/courses/main#OnlineCourses"><div style={{ width: 120 }}>Online Courses</div></a>
+                  <a href="/ty/courses/main#Retreats"><div style={{ width: 120 }}>Retreats</div></a>
+                  <a href="/ty/courses/main#InPersonTrainings"><div style={{ width: 120 }}>In Person Trainings</div></a>
+                  <a href="/ty/courses/main#PastInTrainings"><div style={{ width: 120 }}>Past In-Person Trainings</div></a>
                 </div>
                 {/* <a className={`nav-link ${navIndex == 2? ' active' : ''}`} onClick={()=>handleRoute('ty/courses/main', 2)}>COURSES  <i className="bi bi-chevron-down"></i></a> */}
               </li>
