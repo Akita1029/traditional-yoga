@@ -13,7 +13,7 @@ const ApplicationFrom = (props) => {
   const [lastName, setLastName] = useState("");
   const [nickName, setNickName] = useState("");
   const [interest, setInterest] = useState(0);
-  const [birthDate, setBirthDate] = useState("");
+  const [birthDate, setBirthDate] = useState(new Date());
   const [whatsapp, setWhatsApp] = useState("");
   const [gender, setGender] = useState("");
   const [language, setLanguage] = useState("");
