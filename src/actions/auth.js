@@ -1,6 +1,6 @@
 import axios from "axios";
 import config from "../config/config";
-import { GET_ERRORS, SET_CURRENT_USER } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS, LOGOUT } from "./types";
 
 // Set logged in user
 export const setCurrentUser = (decoded) => {
@@ -13,15 +13,26 @@ export const setCurrentUser = (decoded) => {
 // Login user
 export const loginUser = (userData) => (dispatch) => {
   axios
-    .post("http://localhost:8000/api/users/login", userData)
+    .post("/api/users/login", userData)
     .then((res) => {
-      localStorage.setItem("userToken", JSON.stringify(res.data));
+      localStorage.setItem("userToken", res.data.token);
       dispatch({
         type: SET_CURRENT_USER,
         payload: res.data,
       });
-      console.log(res);
-      window.location.href = "/dashboard";
+      switch (res.data.role) {
+        case 0:
+          window.location.href = "/admindashboard";
+          break;
+        case 1:
+          window.location.href = "/admindashboard";
+          break;
+        case 2:
+          window.location.href = "/admindashboard";
+          break;
+        case 3:
+          window.location.href = "/dashboard";
+      }
     })
     .catch((err) => {
       dispatch({
@@ -29,4 +40,16 @@ export const loginUser = (userData) => (dispatch) => {
         payload: err.response.data,
       });
     });
+};
+
+// Logout user
+export const logoutUser = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT,
+  });
+  dispatch({
+    type: CLEAR_ERRORS,
+    payload: {},
+  });
+  localStorage.removeItem("userToken", res.data.token);
 };

@@ -19,11 +19,22 @@ import DonationPage from "./pages/donations/DonationPage";
 import UpcomingPage from "./pages/donations/UpcomingPage";
 import PaymentPage from "./pages/donations/PaymentPage";
 
+// Admin Page
+
+import AdminDashboardLayout from "./layout/AdminDashboardLayout";
+import AdminUserManagement from "./pages/dashboard/admin/user";
+import AdminCourseManagement from "./pages/dashboard/admin/course";
+
+// User Page
 import DashboardLayout from "./layout/DashboardLayout";
 import Home from "./pages/dashboard/home";
 import UserSetting from "./pages/dashboard/usersetting";
 import Classroom from "./pages/dashboard/classroom";
 import CurrentCourse from "./pages/dashboard/currentcourse";
+
+// Import privateroute
+import PrivateRoute from "./validation/PrivateRoute";
+
 // Import Styles
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -32,13 +43,12 @@ import { setCurrentUser } from "./actions/auth";
 
 // import "bootstrap/dist/css/bootstrap.min.css";
 
-
 // import { Dashboard } from "@mui/icons-material";
 
 // Save user token to localstorage
-if (localStorage.userToken) {
-  store.dispatch(setCurrentUser(JSON.parse(localStorage.userToken)));
-}
+// if (localStorage.userToken) {
+//   store.dispatch(setCurrentUser(JSON.parse(localStorage.userToken)));
+// }
 
 function App() {
   const [expandflag, setExpandflag] = useState(false);
@@ -51,7 +61,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route exact path="/" element={<LandingPage />} />
           <Route path="/ty" element={<MainLayout />}>
             <Route path="about" element={<AboutUsPage />} />
             <Route path="courses" element={<CoursesPage />}>
@@ -91,6 +101,19 @@ function App() {
             <Route path="playlist" element={<></>} />
             <Route path="library" element={<></>} />
             <Route path="community" element={<></>} />
+          </Route>
+          <Route
+            path="/admindashboard"
+            element={<AdminDashboardLayout setfunc={setfunc} />}
+          >
+            <Route
+              path=""
+              element={<AdminUserManagement expandflag={expandflag} />}
+            />
+            <Route
+              path="admincourse"
+              element={<AdminCourseManagement expandflag={expandflag} />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

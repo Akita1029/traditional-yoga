@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import SideMenu from "../pages/common/dashboard/SideMenu";
+import SideMenu from "../pages/common/dashboard/AdminSideMenu";
 import Header from "../pages/common/dashboard/Header";
 import { Outlet, useLocation } from "react-router-dom";
 
-const DashboardLayout = (props) => {
+const AdminDashboardLayout = (props) => {
   const [currentMenu, setCurrentMenu] = useState();
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
   const navigate = useNavigate();
@@ -43,4 +43,4 @@ const DashboardLayout = (props) => {
   );
 };
 
-export default DashboardLayout;
+export default AdminDashboardLayout;
