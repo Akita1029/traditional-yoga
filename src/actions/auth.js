@@ -13,7 +13,7 @@ export const setCurrentUser = (decoded) => {
 // Login user
 export const loginUser = (userData) => (dispatch) => {
   axios
-    .post("http://10.10.11.144:8000/api/users/login", userData)
+    .post("http://localhost:8000/api/users/login", userData)
     .then((res) => {
       localStorage.setItem("userToken", JSON.stringify(res.data));
       dispatch({
