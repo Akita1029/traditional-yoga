@@ -25,8 +25,11 @@ const ApplicationFrom = (props) => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zipcode, setZipCode] = useState("");
-
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirmPassword] = useState("");
+  
   const register = () => {
+    if(password == undefined || password == "" || password !== confirm) return;
     const regData = {
       firstName: firstName,
       lastName: lastName,
@@ -43,7 +46,8 @@ const ApplicationFrom = (props) => {
       address2: address2,
       city: city,
       state: state,
-      zipcode: zipcode
+      zipcode: zipcode,
+      password: password
     };
     props.registerUser(regData);
     props.handleClose();
@@ -93,21 +97,30 @@ const ApplicationFrom = (props) => {
                 </Col>
               </Row>
               <Row className='mt-3'>
-                <Col xl={6} md={12}>
+                <Col xl={4} md={12}>
                   <label>Email Address</label>
                   <input className="form-control mt-2" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </Col>
-                <Col xl={6} md={12}>
+                <Col xl={4} md={12}>
+                  <label>Password</label>
+                  <input type="password" className="form-control mt-2" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                </Col>
+                <Col xl={4} md={12}>
+                  <label>Confirm</label>
+                  <input type="password" className="form-control mt-2" id="confirm" value={confirm} onChange={(e) => setConfirmPassword(e.target.value)}/>
+                </Col>
+                
+              </Row>
+              <Row className='mt-3'>
+                <Col xl={4} md={12}>
                   <label>Profession / Occupation</label>
                   <input className="form-control mt-2" id="occupation" value={occupation} onChange={(e) => setOccupation(e.target.value)}/>
                 </Col>
-              </Row>
-              <Row className='mt-3'>
-                <Col xl={6} md={12}>
+                <Col xl={4} md={12}>
                   <label>Spoken Language</label>
                   <input className="form-control mt-2" id="language" value={language} onChange={(e) => setLanguage(e.target.value)}/>
                 </Col>
-                <Col xl={6} md={12}>
+                <Col xl={4} md={12}>
                   <label>Other Education Details</label>
                   <input className="form-control mt-2" id="education" value={education} onChange={(e) => setEducation(e.target.value)}/>
                 </Col>
