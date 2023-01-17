@@ -59,29 +59,29 @@ const Home = (props) => {
             </div>
             <div>
               <p className="fw-bold  text-primary x-title">Class Information</p>
-              <div>
-                <span className="mentor-title">Class Name : </span>
-                <span className="mentor-content">
+              <div className="d-flex">
+                <p className="mentor-title">Class Name : </p>
+                <p className="mentor-content">
                   (RYIT 200) Free Online Traditional
-                </span>
+                </p>
               </div>
-              <div style={{ marginTop: "15px" }}>
-                <span className="mentor-title">Place : </span>
-                <span className="mentor-content">
+              <div className="d-flex" style={{ marginTop: "15px" }}>
+                <p className="mentor-title">Place : </p>
+                <p className="mentor-content">
                   Lorem Ipsum is simply dummy text of the print{" "}
-                </span>
+                </p>
               </div>
-              <div style={{ marginTop: "15px" }}>
-                <span className="mentor-title">Mentor Name : </span>
-                <span className="mentor-content">Lorem Ipsum</span>
+              <div className="d-flex" style={{ marginTop: "15px" }}>
+                <p className="mentor-title">Mentor Name : </p>
+                <p className="mentor-content">Lorem Ipsum</p>
               </div>
-              <div style={{ marginTop: "15px" }}>
-                <span className="mentor-title">Mentor PhoneNumber : </span>
-                <span className="mentor-content">+123-456-7890</span>
+              <div className="d-flex" style={{ marginTop: "15px" }}>
+                <p className="mentor-title">Mentor PhoneNumber : </p>
+                <p className="mentor-content">+123-456-7890</p>
               </div>
-              <div style={{ marginTop: "15px" }}>
-                <span className="mentor-title">Class Members : </span>
-                <span className="mentor-content">351</span>
+              <div className="d-flex" style={{ marginTop: "15px" }}>
+                <p className="mentor-title">Class Members : </p>
+                <p className="mentor-content">351</p>
               </div>
               <p
                 className="fw-bold  text-primary x-title"
@@ -110,40 +110,40 @@ const Home = (props) => {
           <h5 className="fw-bold  text-primary mb-3 x-title">Information</h5>
           <div className="information-section">
             <p className="fw-bold  text-primary x-title">Mentor Information</p>
-            <div>
-              <span className="mentor-title">Name : </span>
-              <span className="mentor-content">
+            <div className="d-flex">
+              <p className="mentor-title">Name : </p>
+              <p className="mentor-content">
                 (RYIT 200) Free Online Traditional
-              </span>
+              </p>
             </div>
-            <div style={{ marginTop: "15px" }}>
-              <span className="mentor-title">PhoneNumber : </span>
-              <span className="mentor-content">+123-456-7890</span>
+            <div className="d-flex" style={{ marginTop: "15px" }}>
+              <p className="mentor-title">PhoneNumber : </p>
+              <p className="mentor-content">+123-456-7890</p>
             </div>
-            <div style={{ marginTop: "15px" }}>
-              <span className="mentor-title">Address : </span>
-              <span className="mentor-content">
+            <div className="d-flex" style={{ marginTop: "15px" }}>
+              <p className="mentor-title">Address : </p>
+              <p className="mentor-content">
                 Lorem Ipsum is simply dummy text of the pr
-              </span>
+              </p>
             </div>
             <p className="fw-bold  text-primary x-title">
               Chief Mentor Information
             </p>
-            <div>
-              <span className="mentor-title">Name : </span>
-              <span className="mentor-content">
+            <div className="d-flex">
+              <p className="mentor-title">Name : </p>
+              <p className="mentor-content">
                 (RYIT 200) Free Online Traditional
-              </span>
+              </p>
             </div>
-            <div style={{ marginTop: "15px" }}>
-              <span className="mentor-title">PhoneNumber : </span>
-              <span className="mentor-content">+123-456-7890</span>
+            <div className="d-flex" style={{ marginTop: "15px" }}>
+              <p className="mentor-title">PhoneNumber : </p>
+              <p className="mentor-content">+123-456-7890</p>
             </div>
-            <div style={{ marginTop: "15px" }}>
-              <span className="mentor-title">Address : </span>
-              <span className="mentor-content">
+            <div className="d-flex" style={{ marginTop: "15px" }}>
+              <p className="mentor-title">Address : </p>
+              <p className="mentor-content">
                 Lorem Ipsum is simply dummy text of the pr
-              </span>
+              </p>
             </div>
           </div>
         </div>
