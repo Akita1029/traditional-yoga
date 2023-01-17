@@ -68,6 +68,10 @@ const theme = createTheme({
 const SignInPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // console.log(email);
+  // useEffect(() => {
+  //   setEmail()
+  // }, []);
 
   const login = () => {
     const userData = {
