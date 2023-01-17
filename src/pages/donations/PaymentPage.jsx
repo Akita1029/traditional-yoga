@@ -1,140 +1,155 @@
-import React, { useRef, useEffect, useState } from "react";
-import CourseSortItem from "../../components/CourseSortItem";
+import React from "react";
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import SubTitleBar from "../../components/SubTitleBar";
-import Button from '@mui/material/Button';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import Accordion from "react-bootstrap/Accordion";
-import { styled } from '@mui/material/styles';
-import DonationBlock from "../../components/DonationBlock";
 
 const PaymentPage = (props) => {
   return (
-    <div className="container" style={{ marginBottom: 20 }}>
+    <Container>
       <SubTitleBar title='The donations' detail='Thank you for your donation to the Yoga Healing Foundation of America Inc.' />
-      <div style={{ width: '100%' }} >
+      <div>
         <img style={{ borderRadius: 10, width: '100%' }} src={require("../../assets/images/payment_dn.jpg")} />
       </div>
-      <h4 className="fw-bold text-primary mt-5">India donors, click below to Donate</h4>
-      <div className="mb-3 mt-4">
-        <span className="fw-bold text-primary">I wish to donate</span><br />
+      <h4 className="font-weight-bold text-primary mt-5">India donors, click below to Donate</h4>
+      <div className="mt-4">
+        <span className="font-weight-bold text-primary">I wish to donate</span>
       </div>
-      <div className="d-flex">
-        <div className="primary-button p-1 text-center" style={{ width: 130, marginRight: 10 }}>
-          US - $100
-        </div>
-        <div className="primary-button p-1 text-center" style={{ width: 130, marginRight: 10 }}>
-          US - $5
-        </div>
-        <div className="primary-button p-1 text-center" style={{ width: 130, marginRight: 10 }}>
-          US - $25
-        </div>
-        <div className="primary-button p-1 text-center" style={{ width: 130, marginRight: 10 }}>
-          US - $10
-        </div>
-        <div className="primary-button p-1 text-center" style={{ width: 130 }}>
-          OTHER
-        </div>
+      <Row className="mt-3">
+        <Col xl={8} md={12}>
+          <Row>
+            <Col md={2} className="mb-2">
+              <div className="primary-button p-1 text-center">
+                US - $100
+              </div>
+            </Col>
+            <Col md={2} className="mb-2">
+              <div className="primary-button p-1 text-center">
+                US - $5
+              </div>
+            </Col>
+            <Col md={2} className="mb-2">
+              <div className="primary-button p-1 text-center">
+                US - $25
+              </div>
+            </Col>
+            <Col md={2} className="mb-2">
+              <div className="primary-button p-1 text-center">
+                US - $10
+              </div>
+            </Col>
+            <Col md={2} className="mb-2">
+              <div className="primary-button p-1 text-center">
+                OTHER
+              </div>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+      <Row className="mt-3">
+        <Col sm={2}>
+          <span className="font-weight-bold text-primary">Frequency</span>
+        </Col>
+        <Col sm={2}>
+          <Form.Check
+            inline
+            label="One Time"
+            name="group1"
+            type={'radio'}
+            id={`inline-radio-1`}
+          />
+        </Col>
+        <Col sm={2}>
+          <Form.Check
+            inline
+            label="Monthly"
+            name="group1"
+            type={'radio'}
+            id={`inline-radio-2`}
+          />
+        </Col>
+      </Row>
+      <div className="mt-4">
+        <span className="font-weight-bold text-primary">Personal Infomation</span>
       </div>
-      <div className="d-flex mb-3 mt-4">
-        <span style={{ marginRight: 60 }} className="fw-bold text-primary">Frequency</span><br />
-        <div className="d-flex">
-          <div class="form-check" style={{ marginRight: 30 }}>
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
-            <label class="form-check-label" for="exampleRadios1">
-              One Time
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
-            <label class="form-check-label" for="exampleRadios2">
-              Monthly
-            </label>
-          </div>
-        </div>
+      <Row className="mt-4">
+        <Col xl={3} md={6}>
+          <label>First Name</label>
+          <input className="form-control mt-2" id="firstName" />
+        </Col>
+        <Col xl={3} md={6}>
+          <label>Last Name</label>
+          <input className="form-control mt-2" id="lastName" />
+        </Col>
+        <Col xl={3} md={6}>
+          <label>Email</label>
+          <input className="form-control mt-2" id="email" />
+        </Col>
+        <Col xl={3} md={6}>
+          <label>Phone Number</label>
+          <input className="form-control mt-2" id="phone" />
+        </Col>
+      </Row>
+      <div className="mt-4">
+        <span className="font-weight-bold text-primary">Billing Address</span>
       </div>
-      <div className="mb-3 mt-4">
-        <span style={{ marginRight: 60 }} className="fw-bold text-primary">Personal Information</span><br />
-        <div className="d-flex mt-4">
-          <div style={{ width: '22%' }}>
-            <label>First Name</label>
-            <input className="form-control mt-2" id="firstName" />
-          </div>
-          <div style={{ width: '4%' }} />
-          <div style={{ width: '22%' }}>
-            <label>Last Name</label>
-            <input className="form-control mt-2" id="lastName" />
-          </div>
-          <div style={{ width: '4%' }} />
-          <div style={{ width: '22%' }}>
-            <label>Email</label>
-            <input className="form-control mt-2" id="email" />
-          </div>
-          <div style={{ width: '4%' }} />
-          <div style={{ width: '22%' }}>
-            <label>Phone Number</label>
-            <input className="form-control mt-2" id="phoneNumber" />
-          </div>
-        </div>
-      </div>
-      <div className="mb-3 mt-4">
-        <span style={{ marginRight: 60 }} className="fw-bold text-primary">Billing Address</span><br />
-        <div className="d-flex mt-4" style={{ justifyContent: 'space-between' }}>
-          <div style={{ width: '48%' }}>
-            <label>Address</label>
-            <input className="form-control mt-2" id="address" />
-          </div>
-          <div style={{ width: '4%' }} />
-          <div style={{ width: '22%' }}>
-            <label>City</label>
-            <input className="form-control mt-2" id="city" />
-          </div>
-          <div style={{ width: '4%' }} />
-          <div style={{ width: '22%' }}>
-            <label>Zip / Postal Code</label>
-            <input className="form-control mt-2" id="zipcode" />
-          </div>
-        </div>
-      </div>
-      <div className="mb-3 mt-4">
-        <div className="d-flex mt-4" style={{ justifyContent: 'space-between' }}>
-          <div style={{ width: '48%' }}>
-            <label>Select Country</label>
-            <input className="form-control mt-2" id="country" />
-          </div>
-          <div style={{ width: '4%' }} />
-          <div style={{ width: '48%' }}>
-            <label>State - Other</label>
-            <input className="form-control mt-2" id="state" />
-          </div>
-        </div>
-      </div>
+      <Row className="mt-4">
+        <Col xl={6} md={12}>
+          <label>Address</label>
+          <input className="form-control mt-2" id="address" />
+        </Col>
+        <Col xl={3} md={6}>
+          <label>City</label>
+          <input className="form-control mt-2" id="city" />
+        </Col>
+        <Col xl={3} md={6}>
+          <label>Zip / Postal Code</label>
+          <input className="form-control mt-2" id="zipCode" />
+        </Col>
+      </Row>
+      <Row className="mt-2">
+        <Col xl={6} sm={12}>
+          <label>Select Country</label>
+          <input className="form-control mt-2" id="country" />
+        </Col>
+        <Col xl={6} sm={12}>
+          <label>State - Other</label>
+          <input className="form-control mt-2" id="state" />
+        </Col>
+      </Row>
       <div className="mb-3 mt-4 w-100 p-3" style={{ border: '1px #F96302 solid', borderRadius: 5 }}>
         <div className="mb-3">
-          <span className="fw-bold text-primary">Billing Address</span>
+          <span className="font-weight-bold text-primary">Billing Address</span>
         </div>
         <div className="mb-4">
           <span className="content">
             NEW. Donate using Cryptos. For US residents, in addition to receiving tax deductions for the value of the crypto, you may be able to qualify for additional deductions in capital gains tax*. So, donating crypto translates into a larger donation and a higher deduction*. Please click here for crypto transfer instructions.*Not a tax advice. Please consult your CPA. Your situation may be different.
           </span>
         </div>
-        <div className="d-flex mb-3 mt-4">
-          <span style={{ marginRight: 60 }} className="fw-bold">Donate by</span><br />
-          <div className="d-flex">
-            <div class="form-check" style={{ marginRight: 30 }}>
-              <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios11" value="option11" checked />
-              <label class="form-check-label" for="exampleRadios1">
-                Credit / Debit Card
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios21" value="option21" />
-              <label class="form-check-label" for="exampleRadios2">
-                Bank Account (Login Recommened)
-              </label>
-            </div>
-          </div>
-        </div>
+        <Row className="mt-3">
+          <Col lg={2}  sm={12}>
+            <span className="font-weight-bold text-primary">Donate by</span>
+          </Col>
+          <Col lg={2} sm={12}>
+            <Form.Check
+              inline
+              label="Credit / Debit Card"
+              name="group2"
+              type={'radio'}
+              id={`inline-radio-11`}
+            />
+          </Col>
+          <Col lg={3} sm={12}>
+            <Form.Check
+              inline
+              label="Bank Account (Login Recommened)"
+              name="group2"
+              type={'radio'}
+              id={`inline-radio-21`}
+            />
+          </Col>
+        </Row>
         <div>
           <span className="content">
             <ul>
@@ -154,10 +169,7 @@ const PaymentPage = (props) => {
           </span>
         </div>
       </div>
-      <div className="primary-button bg-primary px-4 mt-4 p-2 text-center" style={{ width: '100%', color: '#fff' }}>
-        MAKE PAYMENT
-      </div>
-    </div>
+    </Container >
   );
 }
 

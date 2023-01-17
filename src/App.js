@@ -19,9 +19,8 @@ import Home from "./pages/dashboard/home";
 import UserSetting from "./pages/dashboard/usersetting";
 import Classroom from "./pages/dashboard/classroom";
 import CurrentCourse from "./pages/dashboard/currentcourse";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/global.css";
-import { Dashboard } from "@mui/icons-material";
 
 
 function App() {
