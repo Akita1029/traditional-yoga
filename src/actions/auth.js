@@ -13,7 +13,7 @@ export const setCurrentUser = (decoded) => {
 // Login user
 export const loginUser = (userData) => (dispatch) => {
   axios
-    .post("http://localhost:8000/api/users/login", userData)
+    .post("http://10.10.10.246:8000/api/users/login", userData)
     .then((res) => {
       localStorage.setItem("userToken", JSON.stringify(res.data));
       dispatch({
@@ -22,6 +22,20 @@ export const loginUser = (userData) => (dispatch) => {
       });
       console.log(res);
       window.location.href = "/dashboard";
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      });
+    });
+};
+
+export const registerUser = (userData) => (dispatch) => {
+  axios
+    .post("http://10.10.10.246:8000/api/users/signup", userData)
+    .then((res) => {
+      console.log(res.data.messages);      
     })
     .catch((err) => {
       dispatch({
