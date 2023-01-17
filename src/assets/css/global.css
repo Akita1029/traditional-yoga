@@ -6,11 +6,12 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   z-index: 11;
 }
+
 .dashboard-side-menu.hide {
   display: none;
 }
 
-.dashboard-side-menu > .side-menu-logo {
+.dashboard-side-menu>.side-menu-logo {
   width: 100%;
   height: 210px;
   display: flex;
@@ -18,7 +19,7 @@
   align-items: center;
 }
 
-.dashboard-side-menu > .side-menu-logo img {
+.dashboard-side-menu>.side-menu-logo img {
   width: 90px;
   height: 85px;
 }
@@ -55,4 +56,9 @@
 .dashboard-container.expandable {
   left: 250px;
   width: calc(100% - 250px);
+}
+
+.form-check-input:checked {
+  background-color: #f96302 !important;
+  border-color: #f96302 !important;
 }
