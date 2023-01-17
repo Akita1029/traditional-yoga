@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import SideMenu from "../pages/common/dashboard/SideMenu";
@@ -19,6 +19,12 @@ const DashboardLayout = (props) => {
     setSidebarExpanded(!sidebarExpanded);
     props.setfunc(!sidebarExpanded);
   };
+
+  // useEffect(() => {
+  //   if (!props.auth.isAuthencated) {
+  //     window.location.href = "/login";
+  //   }
+  // }, [props.auth.isAuthencated]);
 
   return (
     <>
