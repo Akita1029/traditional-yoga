@@ -15,13 +15,13 @@ export const loginUser = (userData) => (dispatch) => {
   axios
     .post("http://10.10.11.144:8000/api/users/login", userData)
     .then((res) => {
-      localStorage.setItem("userToken", JSON.stringify(res.data.token));
+      localStorage.setItem("userToken", res.data);
       dispatch({
         type: SET_CURRENT_USER,
-        payload: res.data.token,
+        payload: res.data,
       });
-      console.log(res.data.token, "-----------");
-      window.location.href = "/dashboard";
+      console.log(res.data);
+      // window.location.href = "/dashboard";
     })
     .catch((err) => {
       dispatch({
