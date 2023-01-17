@@ -51,7 +51,7 @@ export const logoutUser = () => (dispatch) => {
     type: CLEAR_ERRORS,
     payload: {},
   });
-  localStorage.removeItem("userToken", res.data.token);
+  // localStorage.removeItem("userToken", res.data.token);
 };
 
 export const registerUser = (userData) => (dispatch) => {

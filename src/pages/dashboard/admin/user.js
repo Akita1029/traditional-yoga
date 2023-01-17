@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { getuserdata } from "../../../actions/user";
 
 const AdminUserManagement = (props) => {
-  useEffect;
+  
   return (
     <div
       className={
