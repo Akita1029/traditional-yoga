@@ -36,6 +36,7 @@ import { setCurrentUser } from "./actions/auth";
 // import { Dashboard } from "@mui/icons-material";
 
 // Save user token to localstorage
+console.log("USERTOKEN:", localStorage.userToken)
 if (localStorage.userToken) {
   store.dispatch(setCurrentUser(JSON.parse(localStorage.userToken)));
 }
