@@ -28,17 +28,19 @@ const DashboardLayout = (props) => {
 
   return (
     <>
-      <SideMenu
-        onSelectMenu={handleSelectMenu}
-        currentMenu={currentMenu}
-        expanded={sidebarExpanded}
-      />
-      <Header
-        menu={currentMenu}
-        expanded={sidebarExpanded}
-        onToggleSidebar={toggleSidebar}
-      />
-      <Outlet expanded={sidebarExpanded} />
+      <div className="d-flex">
+        <SideMenu
+          onSelectMenu={handleSelectMenu}
+          currentMenu={currentMenu}
+          expanded={sidebarExpanded}
+        />
+        {/* <Header
+          menu={currentMenu}
+          expanded={sidebarExpanded}
+          onToggleSidebar={toggleSidebar}
+        /> */}
+        <Outlet expanded={sidebarExpanded} />
+      </div>
     </>
   );
 };

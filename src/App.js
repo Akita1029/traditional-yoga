@@ -46,9 +46,16 @@ import { setCurrentUser } from "./actions/auth";
 // import { Dashboard } from "@mui/icons-material";
 
 // Save user token to localstorage
+<<<<<<< HEAD
 // if (localStorage.userToken) {
 //   store.dispatch(setCurrentUser(JSON.parse(localStorage.userToken)));
 // }
+=======
+console.log("USERTOKEN:", localStorage.userToken)
+if (localStorage.userToken) {
+  store.dispatch(setCurrentUser(JSON.parse(localStorage.userToken)));
+}
+>>>>>>> c368e2748a85fca471683224e6fc27b25cbf6877
 
 function App() {
   const [expandflag, setExpandflag] = useState(false);

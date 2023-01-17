@@ -148,25 +148,6 @@ const Home = (props) => {
           </div>
         </div>
       </div>
-      <div className="p-3">
-        <Carousel
-          responsive={responsive}
-          swipeable={false}
-          draggable={true}
-          infinite={true}
-          autoPlay={true}
-          autoPlaySpeed={3000}
-          keyBoardControl={true}
-          // transitionDuration = {500}
-          containerClass="carousel-container"
-          removeArrowOnDeviceType={["tablet", "mobile"]}
-        >
-          <LastClassroomItem image="dashboard-image1.png" />
-          <LastClassroomItem image="dashboard-image1.png" />
-          <LastClassroomItem image="dashboard-image1.png" />
-          <LastClassroomItem image="dashboard-image1.png" />
-        </Carousel>
-      </div>
     </div>
   );
 };

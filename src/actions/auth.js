@@ -53,3 +53,17 @@ export const logoutUser = () => (dispatch) => {
   });
   localStorage.removeItem("userToken", res.data.token);
 };
+
+export const registerUser = (userData) => (dispatch) => {
+  axios
+    .post("/api/users/signup", userData)
+    .then((res) => {
+      console.log(res.data.messages);
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      });
+    });
+};
