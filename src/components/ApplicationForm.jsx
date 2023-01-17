@@ -47,7 +47,8 @@ const ApplicationFrom = (props) => {
       city: city,
       state: state,
       zipcode: zipcode,
-      password: password
+      password: password,
+      email: email
     };
     props.registerUser(regData);
     props.handleClose();
