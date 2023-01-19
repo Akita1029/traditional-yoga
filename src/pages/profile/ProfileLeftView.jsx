@@ -24,7 +24,7 @@ const ProfileLeftView = (props) => {
       <Grid container columnSpacing={5} rowSpacing={1} direction="column">
         <Grid item>
           <Paper
-          variant="outlined"
+            variant="outlined"
             sx={{
               p: 2,
               borderRadius: 2,

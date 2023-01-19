@@ -74,9 +74,9 @@ function App() {
             <Route path="courses_detail" element={<OnlineCourseDetailPage />} />
             <Route path="courses_progress" element={<CourseProgressPage />} />
             <Route path="library" element={<></>} />
-            <Route path="contactus" element={<ContactUs />} />            
-            <Route path="profile/course" element={ <ProfileCoursePage /> } />
+            <Route path="contactus" element={<ContactUs />} />                        
           </Route>
+          <Route path="profile" element={ <ProfileCoursePage /> } />
           {/* <Route path="profile/" element={ <ProfilePage /> } />  */}
           {/* <Route path="profile/notifications" element={ <ProfileCoursePage /> } />  */}
           <Route path="/donations" element={<DonationPage />}>
@@ -84,6 +84,7 @@ function App() {
             <Route path="upcomings" element={<UpcomingPage />} />
           </Route>
           <Route path="/signin" element={<SignInPage />} />
+          <Route path="" element={<Home expandflag={expandflag} />} />
           <Route
             path="/dashboard"
             element={<DashboardLayout setfunc={setfunc} />}

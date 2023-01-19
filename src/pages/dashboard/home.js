@@ -1,6 +1,6 @@
 import React from "react";
 import "../../assets/css/home.css";
-
+import { Row, Col } from "react-bootstrap";
 import LastClassroomItem from "../../components/LastClassroomItem";
 
 import Carousel from "react-multi-carousel";
@@ -37,116 +37,121 @@ const Home = (props) => {
           : "dashboard-container"
       }
     >
-      <div className="row mt-3">
-        <div className="col-md-8">
-          <h5
-            className="fw-bold  text-primary mb-3 x-title"
-            style={{ paddingLeft: "0" }}
-          >
-            Live Classroom
-          </h5>
-          <div style={{ marginTop: "35px" }} className="liveclassroomsec">
-            <div className="imagesec">
-              <img
-                style={{
-                  width: "450px",
-                  height: "466px",
-                  borderRadius: "10px",
-                }}
-                src={require("../../assets/images/dashboard-image.png")}
-              />
-              <button className="viewclassroombtn">View Classroom</button>
-            </div>
-            <div>
-              <p className="fw-bold  text-primary x-title">Class Information</p>
-              <div className="d-flex">
-                <p className="mentor-title">Class Name : </p>
-                <p className="mentor-content">
-                  (RYIT 200) Free Online Traditional
-                </p>
-              </div>
-              <div className="d-flex" style={{ marginTop: "15px" }}>
-                <p className="mentor-title">Place : </p>
-                <p className="mentor-content">
-                  Lorem Ipsum is simply dummy text of the print{" "}
-                </p>
-              </div>
-              <div className="d-flex" style={{ marginTop: "15px" }}>
-                <p className="mentor-title">Mentor Name : </p>
-                <p className="mentor-content">Lorem Ipsum</p>
-              </div>
-              <div className="d-flex" style={{ marginTop: "15px" }}>
-                <p className="mentor-title">Mentor PhoneNumber : </p>
-                <p className="mentor-content">+123-456-7890</p>
-              </div>
-              <div className="d-flex" style={{ marginTop: "15px" }}>
-                <p className="mentor-title">Class Members : </p>
-                <p className="mentor-content">351</p>
-              </div>
-              <p
-                className="fw-bold  text-primary x-title"
-                style={{ marginTop: "10px" }}
-              >
-                Class Description
-              </p>
-              <div style={{ marginTop: "15px" }}>
-                <p className="classdescription">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-              </div>
+      <Row>
+        <Col lg={3} md={12}>
+          <h5 className="text-primary mb-3 x-title">Live Classroom</h5>
+          <div>
+            <img width='100%' style={{ borderRadius: 20 }}
+              src={require("../../assets/images/dashboard-image.png")}
+            />
+            <div className="px-4 position-relative" style={{ bottom: 70 }}>
+              <button className="w-100 border-primary bg-primary rounded px-4 text-light py-1">View Classroom</button>
             </div>
           </div>
-        </div>
-        <div className="col-md-4">
-          <h5 className="fw-bold  text-primary mb-3 x-title">Information</h5>
-          <div className="information-section">
-            <p className="fw-bold  text-primary x-title">Mentor Information</p>
-            <div className="d-flex">
-              <p className="mentor-title">Name : </p>
-              <p className="mentor-content">
+        </Col>
+        <Col lg={5} md={12}>
+          <p className="text-primary x-title">Class Information</p>
+          <div>
+            <span className="mentor-title">Class Name:</span>&nbsp;
+            <span className="mentor-content">
+              (RYIT 200) Free Online Traditional
+            </span>
+          </div>
+          <div style={{ marginTop: "15px" }}>
+            <span className="mentor-title">Place : </span>&nbsp;
+            <span className="mentor-content">
+              Lorem Ipsum is simply dummy text of the print{" "}
+            </span>
+          </div>
+          <div style={{ marginTop: "15px" }}>
+            <span className="mentor-title">Mentor Name : </span>&nbsp;
+            <span className="mentor-content">Lorem Ipsum</span>
+          </div>
+          <div style={{ marginTop: "15px" }}>
+            <span className="mentor-title">Mentor PhoneNumber : </span>&nbsp;
+            <span className="mentor-content">+123-456-7890</span>
+          </div>
+          <div style={{ marginTop: "15px" }}>
+            <span className="mentor-title">Class Members : </span>&nbsp;
+            <span className="mentor-content">351</span>
+          </div>
+          <p className="text-primary x-title mt-4">
+            Class Description
+          </p>
+          <div style={{ marginTop: "15px" }}>
+            <p className="classdescription">
+              Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry. Lorem Ipsum has been the industry's
+              standard dummy text ever since the 1500s, when an unknown
+              printer took a galley of type and scrambled it to make a type
+              specimen book. It has survived not only five centuries, but
+              also the leap into electronic typesetting, remaining
+              essentially unchanged. It was popularised in the 1960s with
+              the release of Letraset sheets containing Lorem Ipsum
+              passages, and more recently with desktop publishing software
+              like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+          </div>
+        </Col>
+        <Col lg={4} md={12}>
+          <h5 className="text-primary mb-3 x-title">Information</h5>
+          <div className="information-section p-3">
+            <p className="text-primary x-title">Mentor Information</p>
+            <div>
+              <span className="mentor-title">Name : </span>&nbsp;
+              <span className="mentor-content">
                 (RYIT 200) Free Online Traditional
-              </p>
+              </span>
             </div>
-            <div className="d-flex" style={{ marginTop: "15px" }}>
-              <p className="mentor-title">PhoneNumber : </p>
-              <p className="mentor-content">+123-456-7890</p>
+            <div style={{ marginTop: "15px" }}>
+              <span className="mentor-title">PhoneNumber : </span>&nbsp;
+              <span className="mentor-content">+123-456-7890</span>
             </div>
-            <div className="d-flex" style={{ marginTop: "15px" }}>
-              <p className="mentor-title">Address : </p>
-              <p className="mentor-content">
+            <div style={{ marginTop: "15px" }}>
+              <span className="mentor-title">Address : </span>&nbsp;
+              <span className="mentor-content">
                 Lorem Ipsum is simply dummy text of the pr
-              </p>
+              </span>
             </div>
-            <p className="fw-bold  text-primary x-title">
+            <p className="text-primary x-title mt-4">
               Chief Mentor Information
             </p>
-            <div className="d-flex">
-              <p className="mentor-title">Name : </p>
-              <p className="mentor-content">
+            <div>
+              <span className="mentor-title">Name : </span>&nbsp;
+              <span className="mentor-content">
                 (RYIT 200) Free Online Traditional
-              </p>
+              </span>
             </div>
-            <div className="d-flex" style={{ marginTop: "15px" }}>
-              <p className="mentor-title">PhoneNumber : </p>
-              <p className="mentor-content">+123-456-7890</p>
+            <div style={{ marginTop: "15px" }}>
+              <span className="mentor-title">PhoneNumber : </span>&nbsp;
+              <span className="mentor-content">+123-456-7890</span>
             </div>
-            <div className="d-flex" style={{ marginTop: "15px" }}>
-              <p className="mentor-title">Address : </p>
-              <p className="mentor-content">
+            <div style={{ marginTop: "15px" }}>
+              <span className="mentor-title">Address : </span>&nbsp;
+              <span className="mentor-content">
                 Lorem Ipsum is simply dummy text of the pr
-              </p>
+              </span>
             </div>
           </div>
-        </div>
+        </Col>
+      </Row>
+      <div className="p-3">
+        <Carousel
+          responsive={responsive}
+          swipeable={false}
+          draggable={true}
+          infinite={true}
+          autoPlay={true}
+          autoPlaySpeed={3000}
+          keyBoardControl={true}
+          containerClass="carousel-container"
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+        >
+          <LastClassroomItem image="Rectangle 28.png" />
+          <LastClassroomItem image="01_preview_large.png" />
+          <LastClassroomItem image="group-photo-sun-2-1-768x512-310x207.jpg" />
+          <LastClassroomItem image="ayurveda-services-consultation.jpg" />
+        </Carousel>
       </div>
     </div>
   );

@@ -17,18 +17,21 @@ const CurrentCourse = (props) => {
         <div className="col-md-3">
           <div className="col-sm-12 col-xs-12 d-flex flex-column justify-content-center mb-4">
             <CourseLessonItem
+              state={2}
               title="Module 1"
               description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknow printer took a galley of type and"
             />
           </div>
           <div className="col-sm-12 col-xs-12 d-flex flex-column justify-content-center mb-4">
             <CourseLessonItem
+              state={2}
               title="Module 2"
               description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknow printer took a galley of type and"
             />
           </div>
           <div className="col-sm-12 col-xs-12 d-flex flex-column justify-content-center mb-4">
             <CourseLessonItem
+              state={1}
               title="Module 3"
               description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknow printer took a galley of type and"
             />

@@ -98,9 +98,9 @@ const CourseMainPage = () => {
       </div>
       <div>
         <Tabs>
-          <TabList>
-            <Tab><span className="fw-bold">Ongoing Retreats</span></Tab>
-            <Tab><span className="fw-bold">Past Retreats</span></Tab>
+          <TabList className="resourceheader">
+            <Tab><div className="py-1 px-3">Ongoing Retreats</div></Tab>
+            <Tab><div className="py-1 px-3">Past Retreats</div></Tab>
           </TabList>
           <div className="p-1 p-sm-4" style={{border:'1px solid #F96302', borderBottomLeftRadius:'10px', borderBottomRightRadius:'10px', borderTop:'none', marginTop:'-10px'}}>
 

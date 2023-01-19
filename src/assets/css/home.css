@@ -1,9 +1,8 @@
 .information-section {
   width: 100%;
-  height: 466px;
   border: 1px solid #f96302;
   border-radius: 10px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .fw-bold {
@@ -12,7 +11,7 @@
 }
 
 .mentor-title {
-  padding-left: 32px;
+  padding-left: 10px;
   font-size: 13px;
   font-weight: bold;
 }
@@ -26,7 +25,7 @@
 .classdescription {
   font-size: 13px;
   color: #818790;
-  padding-left: 32px;
+  padding-left: 10px;
 }
 
 .imagesec {
