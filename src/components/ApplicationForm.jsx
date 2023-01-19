@@ -6,8 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/material/styles';
-import csc from "country-state-city";
-import { useFormik } from "formik";
+import { Country, State, City }  from 'country-state-city';
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -41,34 +40,32 @@ const ApplicationFrom = (props) => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirmPassword] = useState("");
 
-  const addressFromik = useFormik({
-    initialValues: {
-      country: "United States ",
-      state: null,
-      city: null
-    },
-    onSubmit: (values) => console.log(JSON.stringify(values))
-  });
+  const [selectedCountry, setSelectedCountry] = React.useState();
+  const [selectedState, setSelectedState] = React.useState();
+  const [selectedCity, setSelectedCity] = React.useState();
+  const countries = Country.getAllCountries();
+  const [states, setStates] = React.useState();
+  const [countryDetails, setcountryDetails] = React.useState();
+  const [cities, setCities] = React.useState();
+  const [countryCode, setcountryCode] = React.useState();
+  const [stateCode, setStateCode] = React.useState();
 
-  const countries = csc.getAllCountries();
+  const setCountryDetails = (e) =>{
+    setcountryCode(e.target.value);
+    setSelectedCountry(Country.getCountryByCode(countryCode).name);
+  }
 
-  const updatedCountries = countries.map((country) => ({
-    label: country.name,
-    value: country.id,
-    ...country
-  }));
-  const updatedStates = (countryId) =>
-    csc
-      .getStatesOfCountry(countryId)
-      .map((state) => ({ label: state.name, value: state.id, ...state }));
-  const updatedCities = (stateId) =>
-    csc
-      .getCitiesOfState(stateId)
-      .map((city) => ({ label: city.name, value: city.id, ...city }));
+  const stateList = State.getStatesOfCountry(countryCode);
+  const cityList = City.getCitiesOfState(countryCode, stateCode);
 
-  const { values, setFieldValue, setValues } = addressFromik;
+  const setStateDetails = (e) =>{
+    setStateCode(e.target.value)
+    setSelectedCountry(State.getStateByCodeAndCountry(stateCode, countryCode).name);
+  }
+  
+  useEffect(() => {
 
-  useEffect(() => {}, [values]);
+  }, []);
   const register = () => {
     if(password == undefined || password == "" || password !== confirm) return;
     const regData = {
@@ -82,11 +79,11 @@ const ApplicationFrom = (props) => {
       language: language,
       occupation: occupation,
       education: education,
-      country: values.country,
+      country: selectedCountry,
       address1: address1,
       address2: address2,
-      city: values.city,
-      state: values.state,
+      city: selectedCity,
+      state: selectedState,
       zipcode: zipcode,
       password: password,
       email: email
@@ -197,15 +194,18 @@ const ApplicationFrom = (props) => {
               <Row>
                 <Col xl={4} md={12}>
                   <label>Country</label>
-                  {/* <input className="form-control mt-2" id="country" value={country} onChange={(e) => setCountry(e.target.value)}/> */}
-                  <Select className="form-control mt-2"
-                    id="country"
-                    options={updatedCountries}
-                    value={values.country}
-                    onChange={(value) => {
-                      setValues({ country: value, state: null, city: null }, false);
-                    }}
-                  />
+                  <SelectAnswer
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    placeholder="Choose Country"
+                    onChange={setCountryDetails}                    
+                  >
+                    {countries.map((value, key) => {
+                      return (
+                        <MenuItem value={value.isoCode}>{value.name}</MenuItem>                        
+                      );
+                    })}                    
+                  </SelectAnswer>
                 </Col>
                 <Col xl={4} md={12}>
                   <label>Street Address</label>
@@ -219,27 +219,33 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col xl={4} md={12}>
                   <label>State / Province / Region</label>
-                  {/* <input className="form-control mt-2" id="state" value={state} onChange={(e) => setState(e.target.value)}/> */}
-                  <Select
-                    id="state"
-                    name="state"
-                    options={updatedStates(values.country ? values.country.value : null)}
-                    value={values.state}
-                    onChange={(value) => {
-                      setValues({ state: value, city: null }, false);
-                    }}
-                  />
+                  <SelectAnswer
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    placeholder="Choose State"
+                    onChange={setStateDetails}                  
+                  >
+                    {stateList.map((states, key) => {
+                      return (
+                        <MenuItem value={states.isoCode}>{states.name}</MenuItem>                        
+                      );
+                    })}                    
+                  </SelectAnswer>
                 </Col>
                 <Col xl={4} md={12}>
                   <label>city</label>
-                  {/* <input className="form-control mt-2" id="city" value={city} onChange={(e) => setCity(e.target.value)}/> */}
-                  <Select
-                    id="city"
-                    name="city"
-                    options={updatedCities(values.state ? values.state.value : null)}
-                    value={values.city}
-                    onChange={(value) => setFieldValue("city", value)}
-                  />
+                  <SelectAnswer
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    placeholder="Choose City"
+                    onChange={(e) => setSelectedCity(e.target.value)}
+                  >
+                    {cityList.map((city, key) => {
+                      return (
+                        <MenuItem value={city.name}>{city.name}</MenuItem>                        
+                      );
+                    })}                    
+                  </SelectAnswer>
                 </Col>
                 <Col xl={4} md={12}>
                   <label>Zip Code / Postal Code</label>
