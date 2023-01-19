@@ -1,5 +1,6 @@
 import React from "react";
 import "../../assets/css/classroom.css";
+import { Row, Col } from "react-bootstrap";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 const Classroom = (props) => {
@@ -11,66 +12,37 @@ const Classroom = (props) => {
           : "dashboard-container"
       }
     >
-      <div className="d-flex flex-row justify-content-between align-items-center mt-4">
-        <p className="text-primary fw-bold" style={{ fontSize: "20px" }}>
-          Live Classroom
-        </p>
-      </div>
-      <div className="row mt-3" style={{ marginLeft: "20px" }}>
-        <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center">
-          <img
-            className="w-100"
+      <Row>
+        <h5 className="text-primary mb-3 x-title">Live Classroom</h5>
+        <Col md={5} sm={12}>
+          <img alt="classroomInfo"
+            className="w-100 rounded"
             src={require("../../assets/images/Rectangle 43.png")}
           />
-        </div>
-        <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center  ps-3 mt-3 mt-md-0 ps-md-3">
-          <p className="fw-bold text-primary mb-3 sm-title">
-            Classroom Information
-          </p>
-          <div className="liveclassroomdetailinfo">
-            <p className="fw-bold text-black  s-title">
-              Class Name :
-              <span className="content mt-2">
-                {" "}
-                &nbsp; &nbsp; (RYIT 200) Free Online Traditional
-              </span>
-            </p>
-            <p className="fw-bold text-black  s-title">
-              Place :
-              <span className="content mt-2">
-                {" "}
-                &nbsp; &nbsp; Lorem Ipsum is simply dummy text of the print
-              </span>
-            </p>
-            <p className="fw-bold text-black  s-title">
-              Mentor Name :
-              <span className="content mt-2"> &nbsp; &nbsp; Lorem Ipsum</span>
-            </p>
-            <p className="fw-bold text-black  s-title">
-              Mentor PhoneNumber :
-              <span className="content mt-2"> &nbsp; &nbsp; +123-456-7890</span>
-            </p>
-            <p className="fw-bold text-black  s-title">
-              Class Members :
-              <span className="content mt-2"> &nbsp; &nbsp; 351</span>
-            </p>
-          </div>
-          <button className="viewclassroombtn">View Classroom</button>
-        </div>
-      </div>
-      <div className="d-flex flex-row justify-content-between align-items-center mt-3">
-        <p className="text-primary fw-bold" style={{ fontSize: "20px" }}>
-          Resources
-        </p>
-      </div>
-      <div style={{ marginLeft: "32px" }}>
+        </Col>
+        <Col md={7} sm={12}>
+          <h5 className="text-primary mb-3 x-title">Class Information</h5>
+          <p><span className="mentor-title">Class Name:</span>&nbsp;(RYIT 200) Free Online Traditional</p>
+          <p><span className="mentor-title">Place:</span>&nbsp;Lorem Ipsum is simply dummy text of the print</p>
+          <p><span className="mentor-title">Mentor name:</span>&nbsp;Lorem Ipsum</p>
+          <p><span className="mentor-title">Mentor PhoneNumber:</span>&nbsp;+123-456-7890</p>
+          <p><span className="mentor-title">Class Members:</span>&nbsp;315</p>
+          <button className="border-primary bg-primary rounded px-4 text-light py-1">Join Now</button>
+        </Col>
+      </Row>
+      <Row>
+        <h5 className="text-primary my-3 x-title">Resources</h5>
         <Tabs>
           <TabList className="resourceheader">
             <Tab>
-              <span className="fw-bold">Description</span>
+              <div className="py-1 px-3">
+                Description
+              </div>
             </Tab>
             <Tab>
-              <span className="fw-bold">Reviews</span>
+              <div className="py-1 px-3">
+                Reviews
+              </div>
             </Tab>
           </TabList>
           <div
@@ -270,7 +242,7 @@ const Classroom = (props) => {
             </TabPanel>
           </div>
         </Tabs>
-      </div>
+      </Row>
     </div>
   );
 };

@@ -1,16 +1,40 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import SubTitleBar from "../components/SubTitleBar";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { querySubmit } from "../actions/support";
 const ContactUsPage = (props) => {
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
+  const [country, setCountry] = useState("")
+  const [message, setMessage] = useState("")
+
+  const submit = () => {
+    const userData = {
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      phone: phone,
+      country: country,
+      email: email,
+      message: message
+    };
+    props.querySubmit(userData);
+  };
+
+  
   return (
     <>
       <Container>
         <SubTitleBar title='Contact Us' detail='Have a Question or need Help?' />
         <div className="mb-5">
-          <img style={{ borderRadius: 10, width: '100%' }} src={require("../assets/images/Rectangle 16.png")} />
+          <img alt="contactus1" style={{ borderRadius: 10, width: '100%' }} src={require("../assets/images/Rectangle 16.png")} />
         </div>
         <Row>
           <Col lg={6}>
@@ -60,7 +84,7 @@ const ContactUsPage = (props) => {
               </Col>
             </Row>
             <div className="mt-4 mb-4">
-              <img style={{ width: '100%' }} src={require("../assets/images/map.png")} />
+              <img alt="contactus1" style={{ width: '100%' }} src={require("../assets/images/map.png")} />
             </div>
           </Col>
           <Col lg={6}>
@@ -68,38 +92,39 @@ const ContactUsPage = (props) => {
             <Row>
               <Col lg={6} className="mt-2">
                 <label>First Name</label>
-                <input className="form-control mt-2" id="firstName" />
+                <input className="form-control mt-2" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
               </Col>
               <Col lg={6} className="mt-2">
                 <label>Last Name</label>
-                <input className="form-control mt-2" id="lastName" />
+                <input className="form-control mt-2" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
               </Col>
             </Row>
             <Row className="mt-3">
               <Col lg={12}>
                 <label>Email address</label>
-                <input type="email" className="form-control mt-2" id="email" />
+                <input type="email" className="form-control mt-2" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
               </Col>
             </Row>
             <Row className="mt-3">
               <Col lg={12}>
                 <label>Phone (optional)</label>
-                <input className="form-control mt-2" id="phone" />
+                <input className="form-control mt-2" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
               </Col>
             </Row>
             <Row className="mt-3">
               <Col lg={12}>
                 <label>Country</label>
-                <input className="form-control mt-2" id="country" />
+                <input className="form-control mt-2" id="country" value={country} onChange={(e) => setCountry(e.target.value)}/>
               </Col>
             </Row>
             <Row className="mt-3">
               <Col lg={12}>
                 <label>Query or Message</label>
-                <textarea className="form-control mt-2" id="queryOrMessage" rows="4" />
+                <textarea className="form-control mt-2" id="queryOrMessage" rows="4" value={message} onChange={(e) => setMessage(e.target.value)}/>
               </Col>
             </Row>
-            <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mt-4 mb-4">SUBMIT</button>
+            <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mt-4 mb-4"
+            onClick={() => submit()}>SUBMIT</button>
           </Col>
         </Row>
       </Container>
@@ -107,4 +132,14 @@ const ContactUsPage = (props) => {
   );
 }
 
-export default ContactUsPage;
+ContactUsPage.propTypes = {
+  querySubmit: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  support: state.support,
+  errors: state.errors,
+});
+
+export default connect(mapStateToProps, { querySubmit })(ContactUsPage);

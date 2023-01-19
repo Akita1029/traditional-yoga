@@ -3,14 +3,16 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { toast } from 'react-toastify';
 import SubTitleBar from "../../components/SubTitleBar";
 
 const PaymentPage = (props) => {
+
   return (
     <Container>
       <SubTitleBar title='The donations' detail='Thank you for your donation to the Yoga Healing Foundation of America Inc.' />
       <div>
-        <img style={{ borderRadius: 10, width: '100%' }} src={require("../../assets/images/payment_dn.jpg")} />
+        <img alt="donation" style={{ borderRadius: 10, width: '100%' }} src={require("../../assets/images/payment_dn.jpg")} />
       </div>
       <h4 className="font-weight-bold text-primary mt-5">India donors, click below to Donate</h4>
       <div className="mt-4">
@@ -128,7 +130,7 @@ const PaymentPage = (props) => {
           </span>
         </div>
         <Row className="mt-3">
-          <Col lg={2}  sm={12}>
+          <Col lg={2} sm={12}>
             <span className="font-weight-bold text-primary">Donate by</span>
           </Col>
           <Col lg={2} sm={12}>
@@ -167,8 +169,16 @@ const PaymentPage = (props) => {
               </li>
             </ul>
           </span>
-        </div>
+        </div>        
       </div>
+      <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mb-4"
+        onClick={() => {
+          toast.success('Success Notification !', {
+            position: toast.POSITION.TOP_RIGHT
+          });
+        }}>
+        MAKE PAYMENT
+      </button>
     </Container >
   );
 }

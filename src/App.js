@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
-
 // Import View Components
 
 import AboutUsPage from "./pages/AboutUsPage";
@@ -31,13 +30,20 @@ import Home from "./pages/dashboard/home";
 import UserSetting from "./pages/dashboard/usersetting";
 import Classroom from "./pages/dashboard/classroom";
 import CurrentCourse from "./pages/dashboard/currentcourse";
+// Profile Page
+import ProfileCoursePage from "./pages/profile/ProfileCoursePage"
+// Import privateroute
+import PrivateRoute from "./validation/PrivateRoute";
 
 // Not Found page
 import Pagenotfound from "./validation/Pagenotfound";
 
 // Import Styles
-
 import "bootstrap/dist/css/bootstrap.min.css";
+import ProfileWrapPage from './pages/profile/ProfileWrap'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/global.css";
 import { setCurrentUser } from "./actions/auth";
 
@@ -76,16 +82,18 @@ function App() {
             <Route path="courses_detail" element={<OnlineCourseDetailPage />} />
             <Route path="courses_progress" element={<CourseProgressPage />} />
             <Route path="library" element={<></>} />
-            <Route path="contactus" element={<ContactUs />} />
-            {/* <Route path="profile/" element={ <ProfilePage /> } /> */}
-            {/* <Route path="profile/course" element={ <ProfileCoursePage /> } /> */}
-            {/* <Route path="profile/notifications" element={ <ProfileCoursePage /> } /> */}
-          </Route>
-          <Route path="/donations" element={<DonationPage />}>
-            <Route path="payment" element={<PaymentPage />} />
-            <Route path="upcomings" element={<UpcomingPage />} />
+            <Route path="contactus" element={<ContactUs />} />                        
           </Route>
 
+          {/* <Route path="profile/" element={ <ProfilePage /> } /> */}
+          {/* <Route path="profile/course" element={ <ProfileCoursePage /> } /> */}
+          {/* <Route path="profile/notifications" element={ <ProfileCoursePage /> } /> */}
+        <Route path="/donations" element={ <DonationPage /> } >
+          <Route path="payment" element={ <PaymentPage /> } />
+          <Route path="upcomings" element={ <UpcomingPage /> } />
+        </Route>
+        <Route path="/profile" element={<ProfileWrapPage />} />
+        <Route path="/signin" element={ <SignInPage /> } />
           {auth === true ? (
             <>
               <Route
@@ -126,11 +134,49 @@ function App() {
           ) : (
             <></>
           )}
-          <Route path="/signin" element={<SignInPage />} />
+        <Route
+          path="/dashboard"
+          element={<DashboardLayout setfunc={setfunc} />}
+        >
+          <Route path="" element={<Home expandflag={expandflag} />} />
+          <Route
+            path="/dashboard"
+            element={<DashboardLayout setfunc={setfunc} />}
+          >
+            <Route path="" element={<Home expandflag={expandflag} />} />
+            <Route
+              path="usersetting"
+              element={<UserSetting expandflag={expandflag} />}
+            />
+            <Route
+              path="classroom"
+              element={<Classroom expandflag={expandflag} />}
+            />
+            <Route
+              path="currentcourse"
+              element={<CurrentCourse expandflag={expandflag} />}
+            />
+            <Route path="playlist" element={<></>} />
+            <Route path="library" element={<></>} />
+            <Route path="community" element={<></>} />
+          </Route>
+          <Route
+            path="classroom"
+            element={<Classroom expandflag={expandflag} />}
+          />
+          <Route
+            path="currentcourse"
+            element={<CurrentCourse expandflag={expandflag} />}
+          />
+          <Route path="playlist" element={<></>} />
+          <Route path="library" element={<></>} />
+          <Route path="community" element={<></>} />
           <Route exact path="/*" element={<Pagenotfound />} />
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+        </Route>
+      </Routes>
+      <ToastContainer />
+    </BrowserRouter>
+  </Provider>
   );
 }
 

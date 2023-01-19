@@ -3,17 +3,29 @@ import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import { styled } from '@mui/material/styles';
+import { Country, State, City }  from 'country-state-city';
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../actions/auth";
+
+const SelectAnswer = styled(Select)({
+  '& fieldset': {
+    borderRadius: 10
+  }
+})
+
+
 const ApplicationFrom = (props) => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [nickName, setNickName] = useState("");
-  const [interest, setInterest] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  const [interest, setInterest] = useState(0);
+  const [birthDate, setBirthDate] = useState(new Date());
   const [whatsapp, setWhatsApp] = useState("");
   const [gender, setGender] = useState("");
   const [language, setLanguage] = useState("");
@@ -25,8 +37,37 @@ const ApplicationFrom = (props) => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zipcode, setZipCode] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirmPassword] = useState("");
 
+  const [selectedCountry, setSelectedCountry] = React.useState();
+  const [selectedState, setSelectedState] = React.useState();
+  const [selectedCity, setSelectedCity] = React.useState();
+  const countries = Country.getAllCountries();
+  const [states, setStates] = React.useState();
+  const [countryDetails, setcountryDetails] = React.useState();
+  const [cities, setCities] = React.useState();
+  const [countryCode, setcountryCode] = React.useState();
+  const [stateCode, setStateCode] = React.useState();
+
+  const setCountryDetails = (e) =>{
+    setcountryCode(e.target.value);
+    setSelectedCountry(Country.getCountryByCode(countryCode).name);
+  }
+
+  const stateList = State.getStatesOfCountry(countryCode);
+  const cityList = City.getCitiesOfState(countryCode, stateCode);
+
+  const setStateDetails = (e) =>{
+    setStateCode(e.target.value)
+    setSelectedCountry(State.getStateByCodeAndCountry(stateCode, countryCode).name);
+  }
+  
+  useEffect(() => {
+
+  }, []);
   const register = () => {
+    if(password == undefined || password == "" || password !== confirm) return;
     const regData = {
       firstName: firstName,
       lastName: lastName,
@@ -38,12 +79,14 @@ const ApplicationFrom = (props) => {
       language: language,
       occupation: occupation,
       education: education,
-      country: country,
+      country: selectedCountry,
       address1: address1,
       address2: address2,
-      city: city,
-      state: state,
-      zipcode: zipcode
+      city: selectedCity,
+      state: selectedState,
+      zipcode: zipcode,
+      password: password,
+      email: email
     };
     props.registerUser(regData);
     props.handleClose();
@@ -81,11 +124,35 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col xl={6} md={12}>
                   <label>Are you interested in Traditional Yoga’s RYIT Certification?</label>
-                  <input className="form-control mt-2" id="interest" value={interest} onChange={(e) => setInterest(e.target.value)}/>
+                  {/* <input className="form-control mt-2" id="interest" value={interest} onChange={(e) => setInterest(e.target.value)}/> */}
+                  <SelectAnswer
+                    defaultValue={'yes'}
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    sx={{
+                      mr: 1,
+                    }}
+                    onChange={(e) => setInterest(e)}
+                  >
+                    <MenuItem value='yes'>Yes</MenuItem>
+                    <MenuItem value='no'>No</MenuItem>
+                  </SelectAnswer>
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Gender</label>
-                  <input className="form-control mt-2" id="gender" value={gender} onChange={(e) => setGender(e.target.value)}/>
+                  {/* <input className="form-control mt-2" id="gender" value={gender} onChange={(e) => setGender(e.target.value)}/> */}
+                  <SelectAnswer
+                    defaultValue={'female'}
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    sx={{
+                      mr: 1,
+                    }}
+                    onChange={(e) => setGender(e)}
+                  >
+                    <MenuItem value='female'>Female</MenuItem>
+                    <MenuItem value='male'>Male</MenuItem>
+                  </SelectAnswer>
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Whatsapp Phone Number</label>
@@ -93,21 +160,30 @@ const ApplicationFrom = (props) => {
                 </Col>
               </Row>
               <Row className='mt-3'>
-                <Col xl={6} md={12}>
+                <Col xl={4} md={12}>
                   <label>Email Address</label>
                   <input className="form-control mt-2" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </Col>
-                <Col xl={6} md={12}>
+                <Col xl={4} md={12}>
+                  <label>Password</label>
+                  <input type="password" className="form-control mt-2" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                </Col>
+                <Col xl={4} md={12}>
+                  <label>Confirm</label>
+                  <input type="password" className="form-control mt-2" id="confirm" value={confirm} onChange={(e) => setConfirmPassword(e.target.value)}/>
+                </Col>
+                
+              </Row>
+              <Row className='mt-3'>
+                <Col xl={4} md={12}>
                   <label>Profession / Occupation</label>
                   <input className="form-control mt-2" id="occupation" value={occupation} onChange={(e) => setOccupation(e.target.value)}/>
                 </Col>
-              </Row>
-              <Row className='mt-3'>
-                <Col xl={6} md={12}>
+                <Col xl={4} md={12}>
                   <label>Spoken Language</label>
                   <input className="form-control mt-2" id="language" value={language} onChange={(e) => setLanguage(e.target.value)}/>
                 </Col>
-                <Col xl={6} md={12}>
+                <Col xl={4} md={12}>
                   <label>Other Education Details</label>
                   <input className="form-control mt-2" id="education" value={education} onChange={(e) => setEducation(e.target.value)}/>
                 </Col>
@@ -118,7 +194,18 @@ const ApplicationFrom = (props) => {
               <Row>
                 <Col xl={4} md={12}>
                   <label>Country</label>
-                  <input className="form-control mt-2" id="country" value={country} onChange={(e) => setCountry(e.target.value)}/>
+                  <SelectAnswer
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    placeholder="Choose Country"
+                    onChange={setCountryDetails}                    
+                  >
+                    {countries.map((value, key) => {
+                      return (
+                        <MenuItem value={value.isoCode}>{value.name}</MenuItem>                        
+                      );
+                    })}                    
+                  </SelectAnswer>
                 </Col>
                 <Col xl={4} md={12}>
                   <label>Street Address</label>
@@ -132,11 +219,33 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col xl={4} md={12}>
                   <label>State / Province / Region</label>
-                  <input className="form-control mt-2" id="state" value={state} onChange={(e) => setState(e.target.value)}/>
+                  <SelectAnswer
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    placeholder="Choose State"
+                    onChange={setStateDetails}                  
+                  >
+                    {stateList.map((states, key) => {
+                      return (
+                        <MenuItem value={states.isoCode}>{states.name}</MenuItem>                        
+                      );
+                    })}                    
+                  </SelectAnswer>
                 </Col>
                 <Col xl={4} md={12}>
                   <label>city</label>
-                  <input className="form-control mt-2" id="city" value={city} onChange={(e) => setCity(e.target.value)}/>
+                  <SelectAnswer
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    placeholder="Choose City"
+                    onChange={(e) => setSelectedCity(e.target.value)}
+                  >
+                    {cityList.map((city, key) => {
+                      return (
+                        <MenuItem value={city.name}>{city.name}</MenuItem>                        
+                      );
+                    })}                    
+                  </SelectAnswer>
                 </Col>
                 <Col xl={4} md={12}>
                   <label>Zip Code / Postal Code</label>
@@ -159,7 +268,18 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col xl={6} md={12}>
                   <label className='text-primary'>How Did you Hear about Us?</label>
-                  <input className="form-control mt-2" id="hearFrom" />
+                  {/* <input className="form-control mt-2" id="hearFrom" /> */}
+                  <SelectAnswer
+                    defaultValue={'google'}
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    sx={{
+                      mr: 1,
+                    }}
+                  >
+                    <MenuItem value='google'>Search Engines(like Google)</MenuItem>
+                    <MenuItem value='friend'>Friends</MenuItem>
+                  </SelectAnswer>
                 </Col>
                 <Col xl={6} md={12}>
                   <label className='text-primary'>Course Outline Text and Acknowledgement</label>

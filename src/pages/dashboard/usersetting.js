@@ -13,346 +13,346 @@ const UserSetting = (props) => {
       }
     >
       <div className="row">
-        <div className="col-md-9">
+        <div className="col-md-9 col-sm-12">
           <div id="accountdetail">
-            <h4 style={{ color: "#fe6731" }}>Account Details</h4>
+            <h5 className="text-primary">Account Details</h5>
             <div className="row" style={{ marginTop: "30px" }}>
               <div className="col-md-6">
-                <p>First Name</p>
-                <input style={{ width: "100%" }} />
+                <label>First Name</label>
+                <input className="form-control mt-2" id="firstName" />
               </div>
               <div className="col-md-6">
-                <p>Last Name</p>
-                <input style={{ width: "100%" }} />
+                <label>Last Name</label>
+                <input className="form-control mt-2" id="lastName" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-6">
-                <p>Date of Birth</p>
-                <input style={{ width: "100%" }} />
+                <label>Date of Birth</label>
+                <input className="form-control mt-2" id="birthdate" />
               </div>
               <div className="col-md-6">
-                <p>Gender</p>
-                <input style={{ width: "100%" }} />
+                <label>Gender</label>
+                <input className="form-control mt-2" id="gender" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-3">
-                <p>Country</p>
-                <input style={{ width: "100%" }} />
+                <label>Country</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>State</p>
-                <input style={{ width: "100%" }} />
+                <label>State</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Address</p>
-                <input style={{ width: "100%" }} />
+                <label>Address</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Zip Code</p>
-                <input style={{ width: "100%" }} />
+                <label>Zip Code</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
-            <button className="usersettingbutton">UPDATE</button>
+            <button className="w-100 border-primary bg-primary rounded px-4 text-light py-1 mt-4">UPDATE</button>
           </div>
           <div style={{ marginTop: "20px" }} id="academicprofile">
-            <h4 style={{ color: "#fe6731" }}>Academic Profile</h4>
+            <h5 className="text-primary">Academic Profile</h5>
             <div className="row" style={{ marginTop: "30px" }}>
               <div className="col-md-6">
-                <p>First Name</p>
-                <input style={{ width: "100%" }} />
+                <label>First Name</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Last Name</p>
-                <input style={{ width: "100%" }} />
+                <label>Last Name</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-6">
-                <p>Date of Birth</p>
-                <input style={{ width: "100%" }} />
+                <label>Date of Birth</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Gender</p>
-                <input style={{ width: "100%" }} />
+                <label>Gender</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-3">
-                <p>Country</p>
-                <input style={{ width: "100%" }} />
+                <label>Country</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>State</p>
-                <input style={{ width: "100%" }} />
+                <label>State</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Address</p>
-                <input style={{ width: "100%" }} />
+                <label>Address</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Zip Code</p>
-                <input style={{ width: "100%" }} />
+                <label>Zip Code</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
-            <button className="usersettingbutton">UPDATE</button>
+            <button className="w-100 border-primary bg-primary rounded px-4 text-light py-1 mt-4">UPDATE</button>
           </div>
           <div style={{ marginTop: "20px" }} id="jobprofile">
-            <h4 style={{ color: "#fe6731" }}>Job Profile</h4>
+            <h5 className="text-primary">Job Profile</h5>
             <div className="row" style={{ marginTop: "30px" }}>
               <div className="col-md-6">
-                <p>First Name</p>
-                <input style={{ width: "100%" }} />
+                <label>First Name</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Last Name</p>
-                <input style={{ width: "100%" }} />
+                <label>Last Name</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-6">
-                <p>Date of Birth</p>
-                <input style={{ width: "100%" }} />
+                <label>Date of Birth</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Gender</p>
-                <input style={{ width: "100%" }} />
+                <label>Gender</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-3">
-                <p>Country</p>
-                <input style={{ width: "100%" }} />
+                <label>Country</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>State</p>
-                <input style={{ width: "100%" }} />
+                <label>State</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Address</p>
-                <input style={{ width: "100%" }} />
+                <label>Address</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Zip Code</p>
-                <input style={{ width: "100%" }} />
+                <label>Zip Code</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
-            <button className="usersettingbutton">UPDATE</button>
+            <button className="w-100 border-primary bg-primary rounded px-4 text-light py-1 mt-4">UPDATE</button>
           </div>
           <div style={{ marginTop: "20px" }} id="socialprofile">
-            <h4 style={{ color: "#fe6731" }}>Social Profile</h4>
+            <h5 className="text-primary">Social Profile</h5>
             <div className="row" style={{ marginTop: "30px" }}>
               <div className="col-md-6">
-                <p>First Name</p>
-                <input style={{ width: "100%" }} />
+                <label>First Name</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Last Name</p>
-                <input style={{ width: "100%" }} />
+                <label>Last Name</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-6">
-                <p>Date of Birth</p>
-                <input style={{ width: "100%" }} />
+                <label>Date of Birth</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Gender</p>
-                <input style={{ width: "100%" }} />
+                <label>Gender</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-3">
-                <p>Country</p>
-                <input style={{ width: "100%" }} />
+                <label>Country</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>State</p>
-                <input style={{ width: "100%" }} />
+                <label>State</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Address</p>
-                <input style={{ width: "100%" }} />
+                <label>Address</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Zip Code</p>
-                <input style={{ width: "100%" }} />
+                <label>Zip Code</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
-            <button className="usersettingbutton">UPDATE</button>
+            <button className="w-100 border-primary bg-primary rounded px-4 text-light py-1 mt-4">UPDATE</button>
           </div>
           <div style={{ marginTop: "20px" }} id="changeemail">
-            <h4 style={{ color: "#fe6731" }}>Change Email</h4>
+            <h5 className="text-primary">Change Email</h5>
             <div className="row" style={{ marginTop: "30px" }}>
               <div className="col-md-6">
-                <p>First Name</p>
-                <input style={{ width: "100%" }} />
+                <label>First Name</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Last Name</p>
-                <input style={{ width: "100%" }} />
+                <label>Last Name</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-6">
-                <p>Date of Birth</p>
-                <input style={{ width: "100%" }} />
+                <label>Date of Birth</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Gender</p>
-                <input style={{ width: "100%" }} />
+                <label>Gender</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-3">
-                <p>Country</p>
-                <input style={{ width: "100%" }} />
+                <label>Country</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>State</p>
-                <input style={{ width: "100%" }} />
+                <label>State</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Address</p>
-                <input style={{ width: "100%" }} />
+                <label>Address</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Zip Code</p>
-                <input style={{ width: "100%" }} />
+                <label>Zip Code</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
-            <button className="usersettingbutton">UPDATE</button>
+            <button className="w-100 border-primary bg-primary rounded px-4 text-light py-1 mt-4">UPDATE</button>
           </div>
           <div style={{ marginTop: "20px" }} id="updatephonenumber">
-            <h4 style={{ color: "#fe6731" }}>Update Phone Number</h4>
+            <h5 className="text-primary">Update Phone Number</h5>
             <div className="row" style={{ marginTop: "30px" }}>
               <div className="col-md-6">
-                <p>First Name</p>
-                <input style={{ width: "100%" }} />
+                <label>First Name</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Last Name</p>
-                <input style={{ width: "100%" }} />
+                <label>Last Name</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-6">
-                <p>Date of Birth</p>
-                <input style={{ width: "100%" }} />
+                <label>Date of Birth</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Gender</p>
-                <input style={{ width: "100%" }} />
+                <label>Gender</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-3">
-                <p>Country</p>
-                <input style={{ width: "100%" }} />
+                <label>Country</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>State</p>
-                <input style={{ width: "100%" }} />
+                <label>State</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Address</p>
-                <input style={{ width: "100%" }} />
+                <label>Address</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Zip Code</p>
-                <input style={{ width: "100%" }} />
+                <label>Zip Code</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
-            <button className="usersettingbutton">UPDATE</button>
+            <button className="w-100 border-primary bg-primary rounded px-4 text-light py-1 mt-4">UPDATE</button>
           </div>
           <div style={{ marginTop: "20px" }} id="changepassword">
-            <h4 style={{ color: "#fe6731" }}>Change Password</h4>
+            <h5 className="text-primary">Change Password</h5>
             <div className="row" style={{ marginTop: "30px" }}>
               <div className="col-md-6">
-                <p>First Name</p>
-                <input style={{ width: "100%" }} />
+                <label>First Name</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Last Name</p>
-                <input style={{ width: "100%" }} />
+                <label>Last Name</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-6">
-                <p>Date of Birth</p>
-                <input style={{ width: "100%" }} />
+                <label>Date of Birth</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Gender</p>
-                <input style={{ width: "100%" }} />
+                <label>Gender</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-3">
-                <p>Country</p>
-                <input style={{ width: "100%" }} />
+                <label>Country</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>State</p>
-                <input style={{ width: "100%" }} />
+                <label>State</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Address</p>
-                <input style={{ width: "100%" }} />
+                <label>Address</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Zip Code</p>
-                <input style={{ width: "100%" }} />
+                <label>Zip Code</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
-            <button className="usersettingbutton">UPDATE</button>
+            <button className="w-100 border-primary bg-primary rounded px-4 text-light py-1 mt-4">UPDATE</button>
           </div>
           <div style={{ marginTop: "20px" }} id="notifications">
-            <h4 style={{ color: "#fe6731" }}>Notifications</h4>
+            <h5 className="text-primary">Notifications</h5>
             <div className="row" style={{ marginTop: "30px" }}>
               <div className="col-md-6">
-                <p>First Name</p>
-                <input style={{ width: "100%" }} />
+                <label>First Name</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Last Name</p>
-                <input style={{ width: "100%" }} />
+                <label>Last Name</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-6">
-                <p>Date of Birth</p>
-                <input style={{ width: "100%" }} />
+                <label>Date of Birth</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-6">
-                <p>Gender</p>
-                <input style={{ width: "100%" }} />
+                <label>Gender</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
             <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-md-3">
-                <p>Country</p>
-                <input style={{ width: "100%" }} />
+                <label>Country</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>State</p>
-                <input style={{ width: "100%" }} />
+                <label>State</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Address</p>
-                <input style={{ width: "100%" }} />
+                <label>Address</label>
+                <input className="form-control mt-2" />
               </div>
               <div className="col-md-3">
-                <p>Zip Code</p>
-                <input style={{ width: "100%" }} />
+                <label>Zip Code</label>
+                <input className="form-control mt-2" />
               </div>
             </div>
-            <button className="usersettingbutton">UPDATE</button>
+            <button className="w-100 border-primary bg-primary rounded px-4 text-light py-1 mt-4">UPDATE</button>
           </div>
         </div>
-        <div className="col-md-3">
-          <div style={{ position: "fixed" }}>
+        <div className="col-md-3 col-sm-12">
+          <div>
             <div
               className={
                 selectflag === "1"
@@ -362,13 +362,13 @@ const UserSetting = (props) => {
               style={{
                 borderTopLeftRadius: "5px",
                 borderTopRightRadius: "5px",
-                marginTop: "40px",
-              }}
-              onClick={() => {
-                setSelectflag("1");
+                marginTop: "10px",
               }}
             >
-              <a href="#accountdetail">Account Details</a>
+              <a href="#accountdetail"
+                onClick={() => {
+                  setSelectflag("1");
+                }}>Account Details</a>
             </div>
             <div
               className={
@@ -376,11 +376,11 @@ const UserSetting = (props) => {
                   ? "select-position-active"
                   : "select-position-passive"
               }
-              onClick={() => {
-                setSelectflag("2");
-              }}
             >
-              <a href="#academicprofile">Academic Profile</a>
+              <a href="#academicprofile"
+                onClick={() => {
+                  setSelectflag("2");
+                }}>Academic Profile</a>
             </div>
             <div
               className={
@@ -388,11 +388,11 @@ const UserSetting = (props) => {
                   ? "select-position-active"
                   : "select-position-passive"
               }
-              onClick={() => {
-                setSelectflag("3");
-              }}
             >
-              <a href="#jobprofile">Job Profile</a>
+              <a href="#jobprofile"
+                onClick={() => {
+                  setSelectflag("3");
+                }}>Job Profile</a>
             </div>
             <div
               className={
@@ -400,11 +400,11 @@ const UserSetting = (props) => {
                   ? "select-position-active"
                   : "select-position-passive"
               }
-              onClick={() => {
-                setSelectflag("4");
-              }}
             >
-              <a href="#socialprofile">Social Profile</a>
+              <a href="#socialprofile"
+                onClick={() => {
+                  setSelectflag("4");
+                }}>Social Profile</a>
             </div>
             <div
               className={
@@ -412,11 +412,11 @@ const UserSetting = (props) => {
                   ? "select-position-active"
                   : "select-position-passive"
               }
-              onClick={() => {
-                setSelectflag("5");
-              }}
             >
-              <a href="#changeemail">Change Email</a>
+              <a href="#changeemail"
+                onClick={() => {
+                  setSelectflag("5");
+                }}>Change Email</a>
             </div>
             <div
               className={
@@ -424,11 +424,11 @@ const UserSetting = (props) => {
                   ? "select-position-active"
                   : "select-position-passive"
               }
-              onClick={() => {
-                setSelectflag("6");
-              }}
             >
-              <a href="#updatephonenumber">Update Phone Number</a>
+              <a href="#updatephonenumber"
+                onClick={() => {
+                  setSelectflag("6");
+                }}>Update Phone Number</a>
             </div>
             <div
               className={
@@ -436,11 +436,11 @@ const UserSetting = (props) => {
                   ? "select-position-active"
                   : "select-position-passive"
               }
-              onClick={() => {
-                setSelectflag("7");
-              }}
             >
-              <a href="#changepassword">Change Password</a>
+              <a href="#changepassword"
+                onClick={() => {
+                  setSelectflag("7");
+                }}>Change Password</a>
             </div>
             <div
               className={
@@ -452,11 +452,11 @@ const UserSetting = (props) => {
                 borderBottomLeftRadius: "5px",
                 borderBottomRightRadius: "5px",
               }}
-              onClick={() => {
-                setSelectflag("8");
-              }}
             >
-              <a href="#notifications">Notifications</a>
+              <a href="#notifications"
+                onClick={() => {
+                  setSelectflag("8");
+                }}>Notifications</a>
             </div>
           </div>
         </div>
