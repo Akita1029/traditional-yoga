@@ -3,10 +3,21 @@ import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import { styled } from '@mui/material/styles';
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../actions/auth";
+
+const SelectAnswer = styled(Select)({
+  '& fieldset': {
+    borderRadius: 10
+  }
+})
+
+
 const ApplicationFrom = (props) => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -86,11 +97,33 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col xl={6} md={12}>
                   <label>Are you interested in Traditional Yoga’s RYIT Certification?</label>
-                  <input className="form-control mt-2" id="interest" value={interest} onChange={(e) => setInterest(e.target.value)}/>
+                  {/* <input className="form-control mt-2" id="interest" value={interest} onChange={(e) => setInterest(e.target.value)}/> */}
+                  <SelectAnswer
+                    defaultValue={'yes'}
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    sx={{
+                      mr: 1,
+                    }}
+                  >
+                    <MenuItem value='yes'>Yes</MenuItem>
+                    <MenuItem value='no'>No</MenuItem>
+                  </SelectAnswer>
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Gender</label>
-                  <input className="form-control mt-2" id="gender" value={gender} onChange={(e) => setGender(e.target.value)}/>
+                  {/* <input className="form-control mt-2" id="gender" value={gender} onChange={(e) => setGender(e.target.value)}/> */}
+                  <SelectAnswer
+                    defaultValue={'female'}
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    sx={{
+                      mr: 1,
+                    }}
+                  >
+                    <MenuItem value='female'>Female</MenuItem>
+                    <MenuItem value='male'>Male</MenuItem>
+                  </SelectAnswer>
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Whatsapp Phone Number</label>
@@ -173,7 +206,18 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col xl={6} md={12}>
                   <label className='text-primary'>How Did you Hear about Us?</label>
-                  <input className="form-control mt-2" id="hearFrom" />
+                  {/* <input className="form-control mt-2" id="hearFrom" /> */}
+                  <SelectAnswer
+                    defaultValue={'google'}
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    sx={{
+                      mr: 1,
+                    }}
+                  >
+                    <MenuItem value='google'>Search Engines(like Google)</MenuItem>
+                    <MenuItem value='friend'>Friends</MenuItem>
+                  </SelectAnswer>
                 </Col>
                 <Col xl={6} md={12}>
                   <label className='text-primary'>Course Outline Text and Acknowledgement</label>

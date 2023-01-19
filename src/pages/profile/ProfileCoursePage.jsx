@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 
 import ProfileLeftView from "./ProfileLeftView";
 
-const OnlineCoursePage = (props) => {
+const ProfileCoursePage = (props) => {
 
   return (
     <div className="container mb-5">
@@ -22,4 +22,4 @@ const OnlineCoursePage = (props) => {
   );
 }
 
-export default OnlineCoursePage;
+export default ProfileCoursePage;

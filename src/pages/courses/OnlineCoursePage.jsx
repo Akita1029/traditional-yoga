@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import OnlineCourseListItem from "../../components/OnlineCourseListItem";
 import OnlineCourseItem from "../../components/OnlineCourseItem";
 
@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Box from '@mui/material/Box';
+import axios from "axios"
 import { Button, IconButton, Typography } from "@mui/material";
 import ViewListIcon from '@mui/icons-material/ViewList';
 import AppsIcon from '@mui/icons-material/Apps';
@@ -32,45 +33,64 @@ const SortCategory = styled(Select)({
   width: 250,
 })
 
-const imgArr = [
-  'image-42-copyright-min-900x1180.jpg',
-  '01_preview_large.png',
-  'Guru.webp',
-  'image_14_copyright-min.jpg',
-  'video2-copyright-800x450.png',
-  'IMG_0109-1.jpg',
-  'logo-primary.png',
-  'image-55-copyright-min-pvrgm4wjd66ko4apt50cn3acl5icetwgr5fnfvupd6.jpg',
-  'Ramoji2-copy-1024x680.jpg',
-  'Buddha-1-scaled.jpg',
-  'image-45-copyright-min.jpg',
-  'image-52-copyright-min.jpg',
-  'about2-copyright.png',
-  'footer-banner.jpg'
-]
+// const imgArr = [
+//   'image-42-copyright-min-900x1180.jpg',
+//   '01_preview_large.png',
+//   'Guru.webp',
+//   'image_14_copyright-min.jpg',
+//   'video2-copyright-800x450.png',
+//   'IMG_0109-1.jpg',
+//   'logo-primary.png',
+//   'image-55-copyright-min-pvrgm4wjd66ko4apt50cn3acl5icetwgr5fnfvupd6.jpg',
+//   'Ramoji2-copy-1024x680.jpg',
+//   'Buddha-1-scaled.jpg',
+//   'image-45-copyright-min.jpg',
+//   'image-52-copyright-min.jpg',
+//   'about2-copyright.png',
+//   'footer-banner.jpg'
+// ]
 
 const OnlineCoursePage = (props) => {
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/courses/load_online_courses').then(response => {
+      console.log(response)
+      if (response.status === 200) {
+        setOnlineCourses(response.data)
+      }      
+    }).catch(e => console.log(e));    
+  }, []);
+
+  const [onlineCourses, setOnlineCourses] = useState([]);
   const [grid, setGrid] = useState("grid");
 
   var gridRow = [];
-  for (var i = 0; i < 14; i++) {
+  onlineCourses.forEach(course =>{
       gridRow.push(
         <Grid item xs={12} sm={6} md={4}>
-          <OnlineCourseListItem title = '(RYIT 200) Free Online Traditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-          type = "Private Course" image={imgArr[i]} />
+          <OnlineCourseListItem
+            key = {course.id}
+            title = {course.title}
+            description = {course.detail_content}
+            type = {course.category === 0 ? "Private Course" : "Public Course"}
+            image={course.instructor_photo} />
         </Grid>
       );
-  }
+  });
 
   var listRow = [];
-  for (var j = 0; j < 14; j++) {
-      listRow.push(
-        <Grid item xs={12} sm={6} md={4}>
-          <OnlineCourseItem title = '(RYIT 200) Free Online Traditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-          type = "Private Course" image={imgArr[j]} />
-        </Grid>
-      );
-  }
+  onlineCourses.forEach(course =>{
+    listRow.push(
+      <Grid item xs={12} sm={6} md={4}>
+        <OnlineCourseItem 
+          key = {course.id}
+          title = {course.title}
+          description = {course.detail_content}
+          type = {course.category === 0 ? "Private Course" : "Public Course"}
+          image={course.instructor_photo} />            
+      </Grid>
+    );
+  });
+        
 
   return (
     <>

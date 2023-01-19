@@ -32,6 +32,9 @@ import UserSetting from "./pages/dashboard/usersetting";
 import Classroom from "./pages/dashboard/classroom";
 import CurrentCourse from "./pages/dashboard/currentcourse";
 
+// Profile Page
+import ProfileCoursePage from "./pages/profile/ProfileCoursePage"
+
 // Import privateroute
 import PrivateRoute from "./validation/PrivateRoute";
 
@@ -71,11 +74,11 @@ function App() {
             <Route path="courses_detail" element={<OnlineCourseDetailPage />} />
             <Route path="courses_progress" element={<CourseProgressPage />} />
             <Route path="library" element={<></>} />
-            <Route path="contactus" element={<ContactUs />} />
-            {/* <Route path="profile/" element={ <ProfilePage /> } /> */}
-            {/* <Route path="profile/course" element={ <ProfileCoursePage /> } /> */}
-            {/* <Route path="profile/notifications" element={ <ProfileCoursePage /> } /> */}
+            <Route path="contactus" element={<ContactUs />} />            
+            <Route path="profile/course" element={ <ProfileCoursePage /> } />
           </Route>
+          {/* <Route path="profile/" element={ <ProfilePage /> } />  */}
+          {/* <Route path="profile/notifications" element={ <ProfileCoursePage /> } />  */}
           <Route path="/donations" element={<DonationPage />}>
             <Route path="payment" element={<PaymentPage />} />
             <Route path="upcomings" element={<UpcomingPage />} />

@@ -60,7 +60,7 @@ export default function LandingPage(props) {
               <li onClick={()=>handleRoute('ty/about')}>About Us</li>
               <li onClick={()=>handleRoute('ty/courses/main')}>Courses</li>
               <li><a href="https://vedicnutraceuticalsusa.com/" target="_blank" className="text-light text-decoration-none active:text-light active:text-decoration-none">Shop</a></li>
-              <li onClick={()=>handleRoute('ty/donations')}>Donations</li>
+              <li onClick={()=>handleRoute('donations/payment')}>Donations</li>
             </>
           )}
           <li onClick={()=>handleRoute('signin')} className="signin-btn">Sign In</li>
