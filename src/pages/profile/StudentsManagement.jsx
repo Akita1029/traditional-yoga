@@ -1,7 +1,79 @@
 import React from 'react'
-import { Row, Col, Table } from 'react-bootstrap'
+import { Row, Col, Table, Form, Button } from 'react-bootstrap'
 
 const StudentManagementPage = (props) => {
+  const studentData = [
+    {
+      name: 'Lavanya Attaluri',
+      address: 'Bridgewater 08807',
+      phone: '+18045710993',
+      createdAt: 'October 5, 2022',
+      status: 'Active'
+    },
+    {
+      name: 'Lavanya Attaluri',
+      address: 'Bridgewater 08807',
+      phone: '+18045710993',
+      createdAt: 'October 5, 2022',
+      status: 'Active'
+    },
+    {
+      name: 'Lavanya Attaluri',
+      address: 'Bridgewater 08807',
+      phone: '+18045710993',
+      createdAt: 'October 5, 2022',
+      status: 'Active'
+    },
+    {
+      name: 'Lavanya Attaluri',
+      address: 'Bridgewater 08807',
+      phone: '+18045710993',
+      createdAt: 'October 5, 2022',
+      status: 'Active'
+    },
+    {
+      name: 'Lavanya Attaluri',
+      address: 'Bridgewater 08807',
+      phone: '+18045710993',
+      createdAt: 'October 5, 2022',
+      status: 'Active'
+    },
+    {
+      name: 'Lavanya Attaluri',
+      address: 'Bridgewater 08807',
+      phone: '+18045710993',
+      createdAt: 'October 5, 2022',
+      status: 'Active'
+    },
+    {
+      name: 'Lavanya Attaluri',
+      address: 'Bridgewater 08807',
+      phone: '+18045710993',
+      createdAt: 'October 5, 2022',
+      status: 'Active'
+    },
+    {
+      name: 'Lavanya Attaluri',
+      address: 'Bridgewater 08807',
+      phone: '+18045710993',
+      createdAt: 'October 5, 2022',
+      status: 'Active'
+    },
+    {
+      name: 'Lavanya Attaluri',
+      address: 'Bridgewater 08807',
+      phone: '+18045710993',
+      createdAt: 'October 5, 2022',
+      status: 'Active'
+    },
+    {
+      name: 'Lavanya Attaluri',
+      address: 'Bridgewater 08807',
+      phone: '+18045710993',
+      createdAt: 'October 5, 2022',
+      status: 'Active'
+    },
+  ]
   return (
     <>
       <div>
@@ -45,30 +117,35 @@ const StudentManagementPage = (props) => {
           <Table striped bordered hover >
             <thead>
               <tr className='bg-primary text-white'>
-                <th style={{ width: 10 }}>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th style={{ width: 10 }}>
+                  <Form.Check type='checkbox' />
+                </th>
+                <th>Name</th>
+                <th>Address</th>
+                <th style={{ width: 140 }}>Phone</th>
+                <th style={{ width: 120 }}>Created Date</th>
+                <th style={{ width: 60 }}>Status</th>
+                <th style={{ width: 60 }}>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td colSpan={2}>Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              {studentData.map((t, i) =>
+                <tr key={i}>
+                  <td>
+                    <Form.Check type='checkbox' />
+                  </td>
+                  <td>{t.name}</td>
+                  <td>{t.address}</td>
+                  <td>{t.phone}</td>
+                  <td>{t.createdAt}</td>
+                  <td><span style={{ color: '#6db100' }}>{t.status}</span></td>
+                  <td>
+                    <Button className='text-white' style={{ background: '#6db100' }}>
+                      <i class="bi bi-list-task"></i>
+                    </Button>
+                  </td>
+                </tr>
+              )}
             </tbody>
           </Table>
         </div>
