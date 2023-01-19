@@ -19,6 +19,7 @@
 .mentor-content {
   font-size: 13px;
   color: #818790;
+  padding-left: 10px;
 }
 
 .classdescription {
@@ -44,7 +45,7 @@
   border-radius: 10px;
   position: absolute;
   top: 410%;
-  left: 50%;
+  left: 46%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }

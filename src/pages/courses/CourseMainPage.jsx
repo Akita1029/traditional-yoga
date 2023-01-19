@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 
 import OnlineCourseItem from '../../components/OnlineCourseItem'
@@ -9,7 +9,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-
+import axios from "axios";
 import '../../assets/css/coursespage.css'
 
 const responsive = {
@@ -46,10 +46,20 @@ const responsive_one = {
 
 const CourseMainPage = () => {
 
+  useEffect(() => {
+    axios.get('/api/courses/load_online_courses').then(response => {
+      console.log(response)
+      if (response.status === 200) {
+        setOnlineCourses(response.data)
+      }      
+    }).catch(e => console.log(e));    
+  }, []);
+
   const navigate = useNavigate();
   const handleRoute = (data) =>{
     navigate(`/${data}`);
   }
+  const [onlineCourses, setOnlineCourses] = useState([]);
   const [date, setDate] = useState(new Date());
 
   return(
@@ -70,14 +80,17 @@ const CourseMainPage = () => {
         containerClass = "carousel-container"
         removeArrowOnDeviceType={["tablet", "mobile"]}
       >
-        <OnlineCourseItem title = '(RYIT 200) Free Online Traditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-          type = "Private Course" image="Rectangle 28.png" />
-        <OnlineCourseItem title = '(RYIT 200asdfasdonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-          type = "Private Course" image="01_preview_large.png" />
-        <OnlineCourseItem title = '(Raeatrwetyrraditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-          type = "Private Course" image="group-photo-sun-2-1-768x512-310x207.jpg" />
-        <OnlineCourseItem title = '(RYIewqrqwertqweonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-          type = "Private Course" image="ayurveda-services-consultation.jpg" />
+        {
+          onlineCourses.map(course =>{
+            return(
+              <OnlineCourseItem
+                key = {course.id}
+                title = {course.title}
+                description = {course.detail_content}
+                type = {course.category === 0 ? "Private Course" : "Public Course"}
+                image={course.instructor_photo} />            )
+          })
+        }                
       </Carousel>
       <div className="d-flex flex-row justify-content-between align-items-center mt-3" id="Retreats">
         <p className="text-primary fw-bold" style={{fontSize:'20px'}}>Retreats</p>
@@ -104,9 +117,15 @@ const CourseMainPage = () => {
                   // transitionDuration = {500}
                   containerClass = "carousel-container"
                 >
-                  <div className="d-flex flex-column justify-content-center align-items-start p-2 px-3">
-                      <img src={require('../../assets/images/Rectangle 28.png')} width="100%"/>
-                  </div>
+                  {
+                    onlineCourses.map(course =>{
+                      return(
+                        <div className="d-flex flex-column justify-content-center align-items-start p-2 px-3">
+                          <img key={course.id} src={require('../../assets/images/' + course.instructor_photo)} width="100%"/>
+                        </div>
+                      )
+                    })                    
+                  }                  
                 </Carousel>
                 <div className="d-flex flex-column justify-content-center align-items-start p-2 px-4">
                   <p className="fw-bold sm-title mt-4">Course Title</p>
@@ -144,14 +163,17 @@ const CourseMainPage = () => {
                   // transitionDuration = {500}
                   containerClass = "carousel-container"
                 >
-                  <OnlineCourseItem title = '(RYIT 200) Free Online Traditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-                type = "Private Course" image="Rectangle 28.png" />
-                  <OnlineCourseItem title = '(RYIT 200asdfasdonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-                type = "Private Course" image="Rectangle 28.png" />
-                  <OnlineCourseItem title = '(Raeatrwetyrraditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-                type = "Private Course" image="Rectangle 28.png" />
-                  <OnlineCourseItem title = '(RYIewqrqwertqweonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-                type = "Private Course" image="Rectangle 28.png" />
+                  {
+                    onlineCourses.map(course =>{
+                      return(
+                        <OnlineCourseItem
+                          key = {course.id}
+                          title = {course.title}
+                          description = {course.detail_content}
+                          type = {course.category === 0 ? "Private Course" : "Public Course"}
+                          image={course.instructor_photo} />            )
+                    })
+                  }
                 </Carousel>
               </div>  
             </TabPanel>
@@ -185,14 +207,18 @@ const CourseMainPage = () => {
             containerClass = "carousel-container"
             removeArrowOnDeviceType={["tablet", "mobile"]}
           >
-              <OnlineCourseItem title = '(RYIT 200) Free Online Traditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-            type = "Add to Cart" image="Rectangle 28.png" />
-              <OnlineCourseItem title = '(RYIT 200asdfasdonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-            type = "Add to Cart" image="01_preview_large.png" />
-              <OnlineCourseItem title = '(Raeatrwetyrraditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-            type = "Add to Cart" image="group-photo-sun-2-1-768x512-310x207.jpg" />
-              <OnlineCourseItem title = '(RYIewqrqwertqweonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-            type = "Add to Cart" image="ayurveda-services-consultation.jpg" />
+            {
+              onlineCourses.map(course =>{
+                return(
+                  <OnlineCourseItem
+                    key = {course.id}
+                    title = {course.title}
+                    description = {course.detail_content}
+                    type = {course.category === 0 ? "Private Course" : "Public Course"}
+                    image={course.instructor_photo} />            
+                )
+              })
+            }  
           </Carousel>
         </div>
       </div>
@@ -226,14 +252,18 @@ const CourseMainPage = () => {
             containerClass = "carousel-container"
             removeArrowOnDeviceType={["tablet", "mobile"]}
           >
-              <OnlineCourseItem title = '(RYIT 200) Free Online Traditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-            type = "Read More" image="Rectangle 28.png" />
-              <OnlineCourseItem title = '(RYIT 200asdfasdonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-            type = "Read More" image="01_preview_large.png" />
-              <OnlineCourseItem title = '(Raeatrwetyrraditional' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-            type = "Read More" image="group-photo-sun-2-1-768x512-310x207.jpg" />
-              <OnlineCourseItem title = '(RYIewqrqwertqweonal' description = "Free Online Traditional Meditation Teacher Training Based on Darashanas Or Sanathana Dharam For Yoga Teachers and Students to become a ..."
-            type = "Read more" image="ayurveda-services-consultation.jpg" />
+            {
+              onlineCourses.map(course =>{
+                return(
+                  <OnlineCourseItem
+                    key = {course.id}
+                    title = {course.title}
+                    description = {course.detail_content}
+                    type = {course.category === 0 ? "Private Course" : "Public Course"}
+                    image={course.instructor_photo} />            
+                )
+              })
+            }
           </Carousel>
         </div>
       </div>

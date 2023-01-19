@@ -6,14 +6,17 @@ import logo_primary from "../assets/logo-primary.png";
 import "../assets/css/signin.css";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import AppleIcon from "@mui/icons-material/Apple";
 import GoogleIcon from "@mui/icons-material/Google";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import Grid from "@mui/material/Grid";
-
 import Button from "@mui/material/Button";
+
+// Connect redux, action
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { loginUser } from "../actions/auth";
 
 const theme = createTheme({
   palette: {
@@ -67,12 +70,11 @@ const SignInPage = (props) => {
   const [password, setPassword] = useState("");
 
   const login = () => {
-    if (email === "" && password === "") {
-      alert("Please type your email or password!");
-      window.location.href = "/signin";
-    } else {
-      window.location.href = "/dashboard";
-    }
+    const userData = {
+      email: email,
+      password: password,
+    };
+    props.loginUser(userData);
   };
 
   // const isDesktopOrLaptop = useMediaQuery({
@@ -123,6 +125,9 @@ const SignInPage = (props) => {
                 placeholder="Enter email"
                 onChange={(email) => setEmail(email.target.value)}
               />
+              {props.errors.logemail && (
+                <p className="pt-1 text-danger">{props.errors.logemail}</p>
+              )}
             </div>
             <div className="form-group mt-3">
               <label>Password</label>
@@ -133,10 +138,14 @@ const SignInPage = (props) => {
                 placeholder="Enter password"
                 onChange={(password) => setPassword(password.target.value)}
               />
+              {props.errors.logpassword && (
+                <p className="pt-1 text-danger">{props.errors.logpassword}</p>
+              )}
             </div>
             <div className="d-flex justify-content-between bd-highlight mb-5 mt-3">
               <label>
-                <input type="checkbox" /> Remember me
+                <input style={{ height: "12px" }} type="checkbox" />{" "}
+                <span style={{ margin: 0 }}>Remember me</span>
               </label>
               <div className="d-flex jsutify-center-end">
                 <a href="/forget" className="pull-right">
@@ -146,18 +155,18 @@ const SignInPage = (props) => {
             </div>
 
             <div className="d-flex flex-column mt-5 mb-5">
-              <Button variant="contained" color="signin">
-                <Link
-                  style={{
-                    textDecoration: "none",
-                    color: "white",
-                    width: "100%",
-                    height: "100%",
-                  }}
-                  onClick={() => login()}
-                >
-                  SIGN IN
-                </Link>
+              <Button
+                variant="contained"
+                color="signin"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  width: "100%",
+                  height: "100%",
+                }}
+                onClick={() => login()}
+              >
+                SIGN IN
                 {/* SIGN IN */}
               </Button>
               <p className="text-center mt-4">or Sign In with</p>
@@ -211,4 +220,13 @@ const SignInPage = (props) => {
   );
 };
 
-export default SignInPage;
+SignInPage.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors,
+});
+
+export default connect(mapStateToProps, { loginUser })(SignInPage);

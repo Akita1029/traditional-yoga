@@ -169,7 +169,7 @@ const PaymentPage = (props) => {
               </li>
             </ul>
           </span>
-        </div>
+        </div>        
       </div>
       <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mb-4"
         onClick={() => {

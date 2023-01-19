@@ -32,7 +32,10 @@ const HeaderBar = () => {
           </div>
           <div className="top-login d-flex flex-row justify-content-center align-items-center">
             <span className="text-primary" onClick={()=>handleRoute('signin')}>Sign In &nbsp;</span>|
-            <span className="text-primary"> &nbsp; Enroll</span>
+            <span className="text-primary"> &nbsp; Enroll &nbsp; </span>|
+            <span className="text-primary" onClick={()=>handleRoute('dashboard')}>&nbsp;Dashboard &nbsp;</span>|
+            <span className="text-primary" onClick={()=>handleRoute('ty/profile/course')}>&nbsp;Profile &nbsp;</span>|
+            <span className="text-primary" onClick={()=>handleRoute('logout')}>&nbsp;Log out&nbsp;</span>
           </div>
         </div>
         <div className="main-menu-bar d-flex flex-row justify-content-between align-items-center shadow-sm ps-8 pe-8" >
@@ -48,10 +51,10 @@ const HeaderBar = () => {
                 <a className="dropbtn nav-link">COURSES <i className="bi bi-chevron-down"></i></a>
                 <div className="dropdown-content">
                   {/* <a onClick={()=>handleRoute('ty/courses/main#OnlineCourses', 2)}><div style={{ width: 120 }}>Online Courses</div></a> */}
-                  <a href="http://localhost:3000/ty/courses/main#OnlineCourses"><div style={{ width: 120 }}>Online Courses</div></a>
-                  <a href="http://localhost:3000/ty/courses/main#Retreats"><div style={{ width: 120 }}>Retreats</div></a>
-                  <a href="http://localhost:3000/ty/courses/main#InPersonTrainings"><div style={{ width: 120 }}>In Person Trainings</div></a>
-                  <a href="http://localhost:3000/ty/courses/main#PastInTrainings"><div style={{ width: 120 }}>Past In-Person Trainings</div></a>
+                  <a href="/ty/courses/main#OnlineCourses"><div style={{ width: 120 }}>Online Courses</div></a>
+                  <a href="/ty/courses/main#Retreats"><div style={{ width: 120 }}>Retreats</div></a>
+                  <a href="/ty/courses/main#InPersonTrainings"><div style={{ width: 120 }}>In Person Trainings</div></a>
+                  <a href="/ty/courses/main#PastInTrainings"><div style={{ width: 120 }}>Past In-Person Trainings</div></a>
                 </div>
                 {/* <a className={`nav-link ${navIndex == 2? ' active' : ''}`} onClick={()=>handleRoute('ty/courses/main', 2)}>COURSES  <i className="bi bi-chevron-down"></i></a> */}
               </li>

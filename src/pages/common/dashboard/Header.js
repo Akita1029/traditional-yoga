@@ -3,6 +3,11 @@ import { IconButton, SvgIcon } from "@mui/material"
 
 import { menuItems } from "../../../utilities/config"
 
+// Connect redux, action
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../../actions/auth";
+
 function DrawIcon(props) {
     return (
         <SvgIcon {...props}>
@@ -11,21 +16,39 @@ function DrawIcon(props) {
     )
 }
 
-const Header = ({ menu, expanded, onToggleSidebar }) => {
-    const currentItem = menuItems.find(m => m.key === menu)
+const Mainhead = ({ menu, expanded, onToggleSidebar, authstate, logout }) => {
+  const currentItem = menuItems.find((m) => m.key === menu);
 
     const getHeaderStyle = () => {
         return !expanded ? "dashboard-header expandable" : "dashboard-header";
     }
 
-    return (
-        <div className={getHeaderStyle()}>
-            <IconButton style={{ marginLeft: 30 }} onClick={() => onToggleSidebar()}>
-                <DrawIcon />
-            </IconButton>
-            <div className="dashboard-header-title mb-2">{currentItem ? currentItem.title : 'Home'}</div>
+  return (
+    <div className={getHeaderStyle()}>
+      <IconButton onClick={() => onToggleSidebar()}>
+        <DrawIcon />
+      </IconButton>
+      <div className="dashboard-header-title">
+        <div>{currentItem ? currentItem.title : "Home"}</div>
+      </div>
+      {authstate === true ? (
+        <div>
+          <button onClick={() => logout()}>Logout</button>
         </div>
-    )
-}
+      ) : (
+        <div></div>
+      )}
+    </div>
+  );
+};
 
-export default Header
+Mainhead.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logoutUser })(Mainhead);
+
