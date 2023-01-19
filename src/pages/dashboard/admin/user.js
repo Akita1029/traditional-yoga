@@ -13,8 +13,8 @@ const AdminUserManagement = (props) => {
   const [result, setResult] = useState();
   useEffect(() => {
     props.getuserdata();
-    setAlldata(props.users);
-    setResult(alldata.data);
+    // setAlldata(props.users);
+    // setResult(alldata.data);
   }, []);
   useEffect(() => {
     setAlldata(props.users);

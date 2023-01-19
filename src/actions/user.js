@@ -1,6 +1,13 @@
 import axios from "axios";
 import config from "../config/config";
-import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS, LOGOUT, GET_USER_DATA } from "./types";
+import {
+  GET_ERRORS,
+  SET_CURRENT_USER,
+  CLEAR_ERRORS,
+  LOGOUT,
+  GET_USER_DATA,
+} from "./types";
+
 // get user data
 export const getuserdata = () => (dispatch) => {
   axios
