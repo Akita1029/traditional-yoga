@@ -13,7 +13,7 @@ export const setCurrentUser = (decoded) => {
 // Login user
 export const loginUser = (userData) => (dispatch) => {
   axios
-    .post(`${config.server}/api/users/login`, userData)
+    .post(`${config.server}api/users/login`, userData)
     .then((res) => {
       localStorage.setItem("userToken", JSON.stringify(res.data));
       dispatch({
@@ -35,7 +35,7 @@ export const loginUser = (userData) => (dispatch) => {
           break;
         default:
           window.location.href = "/dashboard";
-          break;          
+          break;
       }
     })
     .catch((err) => {
@@ -83,7 +83,7 @@ export const takeCourse = (userData) => (dispatch) => {
           break;
         default:
           window.location.href = "/dashboard";
-          break;          
+          break;
       }
     })
     .catch((err) => {
@@ -98,7 +98,7 @@ export const registerUser = (regUserData) => (dispatch) => {
   axios
     .post(`${config.server}api/users/signup`, regUserData)
     .then((res) => {
-      if(res.statusCode === 200) {
+      if (res.statusCode === 200) {
         //Todo Successfully registered Message
         window.location.href = "/home";
       } else if (res.statusCode === 500) {

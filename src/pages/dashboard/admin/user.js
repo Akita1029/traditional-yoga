@@ -14,11 +14,12 @@ const AdminUserManagement = (props) => {
   useEffect(() => {
     props.getuserdata();
     setAlldata(props.users);
+    setResult(alldata.data);
   }, []);
   useEffect(() => {
     setAlldata(props.users);
     setResult(alldata.data);
-    console.log(alldata.data, "alluserdata");
+    console.log(result, "alluserdata");
   }, [props.users]);
 
   return (
