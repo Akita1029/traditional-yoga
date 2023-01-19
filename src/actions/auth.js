@@ -13,7 +13,7 @@ export const setCurrentUser = (decoded) => {
 // Login user
 export const loginUser = (userData) => (dispatch) => {
   axios
-    .post("http://localhost:8000/api/users/login", userData)
+    .post("/api/users/login", userData)
     .then((res) => {
       localStorage.setItem("userToken", res.data.token);
       dispatch({
@@ -60,7 +60,7 @@ export const logoutUser = () => (dispatch) => {
 
 export const registerUser = (userData) => (dispatch) => {
   axios
-    .post("http://localhost:8000/api/users/signup", userData)
+    .post("/api/users/signup", userData)
     .then((res) => {
       localStorage.setItem("userToken", res.data.token);
       dispatch({

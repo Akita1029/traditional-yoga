@@ -2,7 +2,7 @@ import axios from "axios";
 import { GET_ERRORS, NOTIFY_MESSAGE } from "./types";
 export const querySubmit = (userData) => (dispatch) => {
   axios
-    .post("http://localhost:8000/api/support/submit", userData)
+    .post("/api/support/submit", userData)
     .then((res) => {
       if(res.data.message === "success"){
         dispatch({
