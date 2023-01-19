@@ -96,6 +96,21 @@ const SignInPage = (props) => {
     navigate(`/${data}`);
   };
 
+  // var email_input = document.getElementById("email");
+  // var password_input = document.getElementById("password");
+  // email_input.addEventListener("keypress", function (event) {
+  //   if (event.key === "Enter") {
+  //     event.preventDefault();
+  //     document.getElementById("signin-button").click();
+  //   }
+  // });
+  // password_input.addEventListener("keypress", function (event) {
+  //   if (event.key === "Enter") {
+  //     event.preventDefault();
+  //     document.getElementById("signin-button").click();
+  //   }
+  // });
+
   return (
     <ThemeProvider theme={theme}>
       <div className="w-100 h-100">
@@ -118,6 +133,11 @@ const SignInPage = (props) => {
             <div className="form-group mt-5">
               <label>Email address</label>
               <input
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    login();
+                  }
+                }}
                 type="email"
                 className="form-control mt-2"
                 id="email"
@@ -131,6 +151,11 @@ const SignInPage = (props) => {
             <div className="form-group mt-3">
               <label>Password</label>
               <input
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    login();
+                  }
+                }}
                 type="password"
                 className="form-control mt-2"
                 id="password"
@@ -163,6 +188,7 @@ const SignInPage = (props) => {
                   width: "100%",
                   height: "100%",
                 }}
+                id="signin-button"
                 onClick={() => login()}
               >
                 SIGN IN
