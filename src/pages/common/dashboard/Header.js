@@ -3,6 +3,11 @@ import { IconButton, SvgIcon } from "@mui/material";
 
 import { menuItems } from "../../../utilities/config";
 
+// Connect redux, action
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../../actions/auth";
+
 function DrawIcon(props) {
   return (
     <SvgIcon {...props}>
@@ -14,7 +19,7 @@ function DrawIcon(props) {
   );
 }
 
-const Mainhead = ({ menu, expanded, onToggleSidebar }) => {
+const Mainhead = ({ menu, expanded, onToggleSidebar, authstate, logout }) => {
   const currentItem = menuItems.find((m) => m.key === menu);
 
   const getHeaderStyle = () => {
@@ -27,10 +32,25 @@ const Mainhead = ({ menu, expanded, onToggleSidebar }) => {
         <DrawIcon />
       </IconButton>
       <div className="dashboard-header-title">
-        {currentItem ? currentItem.title : "Home"}
+        <div>{currentItem ? currentItem.title : "Home"}</div>
       </div>
+      {authstate === true ? (
+        <div>
+          <button onClick={() => logout()}>Logout</button>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };
 
-export default Mainhead;
+Mainhead.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logoutUser })(Mainhead);

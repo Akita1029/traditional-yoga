@@ -1,60 +1,76 @@
-import React from 'react';
+import React from "react";
 import {
-    CDBSidebar,
-    CDBSidebarContent,
-    CDBSidebarFooter,
-    CDBSidebarHeader,
-    CDBSidebarMenu,
-    CDBSidebarMenuItem,
-} from 'cdbreact';
-import { NavLink } from 'react-router-dom';
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ListSubheader,
+} from "@mui/material";
+import logo from "../../../assets/images/logo-primary.png";
+import { menuItems } from "../../../utilities/config";
 
-const Sidebar = () => {
+const SideMenu = ({ onSelectMenu, currentMenu, expanded }) => {
+  function RenderSubHeader(menuItem) {
     return (
-        <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
-            <CDBSidebar textColor="#111" backgroundColor="#fff">
-                <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>} >
-                    <div className='d-flex justify-content-center'>
-                        <div>
-                            <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
-                                <img style={{ borderRadius: 10, width: 50 }} src={require("../../../assets/images/logo-primary.png")} />
-                            </a>
-                        </div>
-                    </div>
-                </CDBSidebarHeader>
-
-                <CDBSidebarContent className="sidebar-content">
-                    <CDBSidebarMenu>
-                        <NavLink exact to="/" activeClassName="activeClicked" className="text-black">
-                            <CDBSidebarMenuItem icon="columns">Dashboard</CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink exact to="/tables" activeClassName="activeClicked" className="text-black">
-                            <CDBSidebarMenuItem icon="table">Tables</CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink exact to="/profile" activeClassName="activeClicked" className="text-black">
-                            <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink exact to="/analytics" activeClassName="activeClicked" className="text-black">
-                            <CDBSidebarMenuItem icon="chart-line">Analytics</CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked" className="text-black">
-                            <CDBSidebarMenuItem icon="exclamation-circle">404 page</CDBSidebarMenuItem>
-                        </NavLink>
-                    </CDBSidebarMenu>
-                </CDBSidebarContent>
-
-                <CDBSidebarFooter style={{ textAlign: 'center' }}>
-                    <div
-                        style={{
-                            padding: '20px 5px',
-                        }}
-                    >
-                        Sidebar Footer
-                    </div>
-                </CDBSidebarFooter>
-            </CDBSidebar>
-        </div>
+      <ListSubheader
+        component="div"
+        key={menuItem.key}
+        sx={{
+          background: "transparent",
+        }}
+      >
+        {menuItem.title}
+      </ListSubheader>
     );
+  }
+
+  function RenderMenuItem(menuItem) {
+    return (
+      <ListItemButton
+        key={menuItem.key}
+        selected={currentMenu === menuItem.key}
+        onClick={() => onSelectMenu(menuItem)}
+        sx={{
+          marginX: 2,
+          borderRadius: 2,
+          color: "#F96302",
+          "&, & .MuiListItemIcon-root": {
+            color: "#F96302",
+            minWidth: "30px",
+          },
+          // selected and (selected + hover) states
+          "&.Mui-selected, &.Mui-selected:hover": {
+            bgcolor: "#F96302",
+            "&, & .MuiListItemIcon-root": {
+              color: "white",
+            },
+          },
+        }}
+      >
+        <ListItemIcon>{menuItem.icon}</ListItemIcon>
+        <ListItemText primary={menuItem.title} />
+      </ListItemButton>
+    );
+  }
+
+  const getSidebarStyle = () => {
+    return !expanded ? "dashboard-side-menu" : "dashboard-side-menu hide";
+  };
+
+  return (
+    <div className={getSidebarStyle()}>
+      <div className="side-menu-logo">
+        <img src={logo} alt="Dashboard Primary Logo" />
+      </div>
+      <List component="nav">
+        {menuItems.map((menuItem) =>
+          menuItem.type === "subheader"
+            ? RenderSubHeader(menuItem)
+            : RenderMenuItem(menuItem)
+        )}
+      </List>
+    </div>
+  );
 };
 
-export default Sidebar;
+export default SideMenu;
