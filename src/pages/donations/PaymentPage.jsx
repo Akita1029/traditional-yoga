@@ -10,7 +10,7 @@ const PaymentPage = (props) => {
     <Container>
       <SubTitleBar title='The donations' detail='Thank you for your donation to the Yoga Healing Foundation of America Inc.' />
       <div>
-        <img style={{ borderRadius: 10, width: '100%' }} src={require("../../assets/images/payment_dn.jpg")} />
+        <img alt="donation" style={{ borderRadius: 10, width: '100%' }} src={require("../../assets/images/payment_dn.jpg")} />
       </div>
       <h4 className="font-weight-bold text-primary mt-5">India donors, click below to Donate</h4>
       <div className="mt-4">

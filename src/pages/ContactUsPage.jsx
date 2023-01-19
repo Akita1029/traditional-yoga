@@ -10,7 +10,7 @@ const ContactUsPage = (props) => {
       <Container>
         <SubTitleBar title='Contact Us' detail='Have a Question or need Help?' />
         <div className="mb-5">
-          <img style={{ borderRadius: 10, width: '100%' }} src={require("../assets/images/Rectangle 16.png")} />
+          <img alt="contactus1" style={{ borderRadius: 10, width: '100%' }} src={require("../assets/images/Rectangle 16.png")} />
         </div>
         <Row>
           <Col lg={6}>
@@ -60,7 +60,7 @@ const ContactUsPage = (props) => {
               </Col>
             </Row>
             <div className="mt-4 mb-4">
-              <img style={{ width: '100%' }} src={require("../assets/images/map.png")} />
+              <img alt="contactus1" style={{ width: '100%' }} src={require("../assets/images/map.png")} />
             </div>
           </Col>
           <Col lg={6}>

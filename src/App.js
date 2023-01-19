@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AboutUsPage from "./pages/AboutUsPage";
 import LandingPage from "./pages/LandingPage";
 import MainLayout from "./pages/MainLayout";
@@ -19,7 +19,7 @@ import Home from "./pages/dashboard/home";
 import UserSetting from "./pages/dashboard/usersetting";
 import Classroom from "./pages/dashboard/classroom";
 import CurrentCourse from "./pages/dashboard/currentcourse";
-import ProfilePage from './pages/profile/profile'
+import ProfileWrapPage from './pages/profile/ProfileWrap'
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/global.css";
 import "./assets/css/profile.css";
@@ -53,7 +53,7 @@ function App() {
           <Route path="payment" element={ <PaymentPage /> } />
           <Route path="upcomings" element={ <UpcomingPage /> } />
         </Route>
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile" element={<ProfileWrapPage />} />
         <Route path="/signin" element={ <SignInPage /> } />
         <Route
           path="/dashboard"
