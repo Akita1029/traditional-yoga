@@ -15,7 +15,7 @@ const Classroom = (props) => {
       <Row>
         <h5 className="text-primary mb-3 x-title">Live Classroom</h5>
         <Col md={5} sm={12}>
-          <img
+          <img alt="classroomInfo"
             className="w-100 rounded"
             src={require("../../assets/images/Rectangle 43.png")}
           />

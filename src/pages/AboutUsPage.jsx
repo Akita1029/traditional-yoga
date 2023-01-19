@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import CourseSortItem from "../components/CourseSortItem";
 import SubTitleBar from "../components/SubTitleBar";
 import Accordion from "react-bootstrap/Accordion";
@@ -10,7 +10,7 @@ const AboutUsPage = (props) => {
         <SubTitleBar title='The Charity' detail='Traditional Yoga' />
         <div className="row mt-3">
           <div className="col-sm-12 col-xs-12 col-md-6 colo-lg-6">
-            <img className="w-100" src={require('../assets/images/Rectangle 34.png')} />
+            <img alt="aboutus1" className="w-100" src={require('../assets/images/Rectangle 34.png')} />
           </div>
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center ps-3 mt-3 mt-md-0 ps-md-6">
             <h3 className="text-primary fw-bold mb-3">Our Courses</h3>
@@ -34,13 +34,13 @@ const AboutUsPage = (props) => {
               preventative and therapeutic effects, and promoting the mental, physical and spiritual health of the public</span>
           </div>
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center ps-3 mt-3 mt-md-0 ps-md-6">
-            <img className="w-100" src={require('../assets/images/aboutpage-1.png')} />
+            <img alt="aboutus2" className="w-100" src={require('../assets/images/aboutpage-1.png')} />
           </div>
         </div>
 
         <div className="row mt-5">
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center">
-            <img className="w-100" src={require('../assets/images/aboutpage-3.png')} />
+            <img alt="aboutus3" className="w-100" src={require('../assets/images/aboutpage-3.png')} />
           </div>
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center  ps-3 mt-3 mt-md-0 ps-md-6">
             <h3 className="fw-bold text-primary mb-3">Two core values, Seva and Dana.</h3>
@@ -69,8 +69,8 @@ const AboutUsPage = (props) => {
               <Accordion.Item eventKey="0">
                 <Accordion.Header>Charitable grants to support projects in India</Accordion.Header>
                 <Accordion.Body>
-                We make charitable grants to Yoga Healing Foundation India, with whom we have an established collaborative relationship, to organize and deliver programs that align to our aims and objectives.
-Hyderabad has a population of about 7.75 million, making it the fourth most populous city in India. Like all Indian cities it has seen a sharp rise in lifestyle diseases and a decline of traditional knowledge such as yoga practice and dietary awareness. For example, a survey conducted by the Associated Chamber of Commerce and Industry found that 68% of urban women in India between 21 and 52 suffer from lifestyle diseases
+                  We make charitable grants to Yoga Healing Foundation India, with whom we have an established collaborative relationship, to organize and deliver programs that align to our aims and objectives.
+                  Hyderabad has a population of about 7.75 million, making it the fourth most populous city in India. Like all Indian cities it has seen a sharp rise in lifestyle diseases and a decline of traditional knowledge such as yoga practice and dietary awareness. For example, a survey conducted by the Associated Chamber of Commerce and Industry found that 68% of urban women in India between 21 and 52 suffer from lifestyle diseases
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">
@@ -88,7 +88,7 @@ Hyderabad has a population of about 7.75 million, making it the fourth most popu
             </Accordion>
           </div>
           <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center ps-3 mt-3 mt-md-0 ps-md-6">
-            <img className="w-100" src={require('../assets/images/aboutpage-2.png')} />
+            <img alt="aboutus4" className="w-100" src={require('../assets/images/aboutpage-2.png')} />
           </div>
         </div>
 
@@ -96,7 +96,7 @@ Hyderabad has a population of about 7.75 million, making it the fourth most popu
 
         <div className="d-flex flex-column mt-5 mb-5">
           <h3 className="text-primary fw-bold">Dr.Kumar</h3>
-          <img className="w-100 mt-3" src={require('../assets/images/dr.kumar.png')} />
+          <img alt="aboutus5" className="w-100 mt-3" src={require('../assets/images/dr.kumar.png')} />
           <h3 className="fw-bold text-primary mt-5 mb-3">"You only teach what you practice and practice what you teact".</h3>
           <span className="content mt-2">Dr Kumar is internationally recognized as an inspirational yoga and meditation teacher aswell as an award-winning scientist. His teaching is informed by his extensive experiential and theoretical knowledge, developed through his education in more than 37 schools of Hatha yoga and 50 traditions of meditation and progressed through decades of self-practice.</span>
           <span className="content mt-2">As a child he began his formal studies at the Sivananda Ashram under Swamy Vishnudevananda. He was initiated by Swamy Chinmayananda, Sachidananda & Omkarananda and later under Swamy Rama and Satyananda Saraswathi. He also learned asana practice with BKS Iyengar, Pattabhi Jois, Desikachar among other renowned teachers as well as unknown but equally accomplished Himalayan masters and monks. Rather than belonging to any one school, Dr. Kumar’s teaching adheres to the genesis of yoga and its many components. Dr. Kumar’s first teacher cautioned him to avoid being limited to the methodology of only one school, realizing that each school gives importance to only a few limbs of yoga. This is something Dr. Kumar has followed though out his life, allowing him to keep an open mind, and continuously learn and expand his knowledge, respecting all traditions.</span>
@@ -112,10 +112,7 @@ Hyderabad has a population of about 7.75 million, making it the fourth most popu
           <span className="content mt-2">Dr Kumar is a practitioner and teacher of Kayachikitsa, a system of yoga that was practiced in the tradition of Narayana Swamy by the author of HathaYoga Ratnavali. This tradition was passed through his family lineage to Narayana Munindra, with whom Dr. Kumar studied. Dr. Kumar is one of only three people in the world to have been trained in this knowledge and to currently practice this particular system. Kayachikitsa is an ancient science focused on the treatment of physical and mental illness, and with his advanced knowledge this technique, his understanding of medical conditions, and his reassuring compassion, Dr. Kumar continues to bring effective relief to many people. The long-term benefits are the regeneration of the whole body system and the means to achieve and maintain a status of complete health.</span>
           <span className="content mt-2">Kumar’s personal experience of the therapeutic benefits of yoga inspired him to teach. In 1992 Kumar was involved in a road accident. He suf­fered multiple fractures in the lower spine, hip and pelvic bones. He also lost control over his lower torso and his ure­thra was ruptured. He was told that he would not be able to have children and may not walk again. He was bed rid­den for two years and doctors had little hope for his recov­ery. Finally, he used his deep knowledge of yoga to design a systematic program of treatment for himself with asana and pranayama practice. By the following year, he was mobile and in two years he could run. He resumed practicing around 300 asanas and had his first daughter in 1994. In gratitude for the benefit he has received he has volunteered his time to teaching yoga and meditation for free to thousands of people in India and reviving the ancient system of yoga therapy, Kaya Chikitsa.</span>
           <span className="content mt-2">In recognition of this charitable service to the community he has received two major national awards and an honorary doctorate. The Yoga Healing Foundation was established to support his work in the UK and India. Kumar is able to combine his extensive knowledge of the traditional yogic systems with a scientific analytical approach; as well as teaching yoga and meditation he works as a scientist for the government of India.</span>
-
         </div>
-        
-
       </div>
     </>
   );

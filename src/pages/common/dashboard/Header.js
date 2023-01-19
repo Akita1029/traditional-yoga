@@ -20,7 +20,7 @@ const Header = ({ menu, expanded, onToggleSidebar }) => {
 
     return (
         <div className={getHeaderStyle()}>
-            <IconButton onClick={() => onToggleSidebar()}>
+            <IconButton style={{ marginLeft: 30 }} onClick={() => onToggleSidebar()}>
                 <DrawIcon />
             </IconButton>
             <div className="dashboard-header-title mb-2">{currentItem ? currentItem.title : 'Home'}</div>

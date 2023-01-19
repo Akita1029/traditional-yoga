@@ -3,6 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import CourseProgressItem from "../../components/CourseProgressItem";
 import CertificateItem from "../../components/CertificateItem";
+import ProfileApplicationFrom from "../../components/ProfileApplicationFormItem";
 
 const ProfileCoursePage = (props) => {
 
@@ -142,6 +143,11 @@ const ProfileCoursePage = (props) => {
               <CertificateItem image="certificate.png" title="Teacher Certificate RYIT 300"
                 content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Donec augue arcu, condimentum vitae imperdiet eu." />
+            </div>
+          </TabPanel>
+          <TabPanel className="row">
+            <div className="col-12 px-5">
+              <ProfileApplicationFrom />
             </div>
           </TabPanel>
         </div>

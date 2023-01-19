@@ -364,11 +364,11 @@ const UserSetting = (props) => {
                 borderTopRightRadius: "5px",
                 marginTop: "10px",
               }}
-              onClick={() => {
-                setSelectflag("1");
-              }}
             >
-              <a href="#accountdetail">Account Details</a>
+              <a href="#accountdetail"
+                onClick={() => {
+                  setSelectflag("1");
+                }}>Account Details</a>
             </div>
             <div
               className={
@@ -376,11 +376,11 @@ const UserSetting = (props) => {
                   ? "select-position-active"
                   : "select-position-passive"
               }
-              onClick={() => {
-                setSelectflag("2");
-              }}
             >
-              <a href="#academicprofile">Academic Profile</a>
+              <a href="#academicprofile"
+                onClick={() => {
+                  setSelectflag("2");
+                }}>Academic Profile</a>
             </div>
             <div
               className={
@@ -388,11 +388,11 @@ const UserSetting = (props) => {
                   ? "select-position-active"
                   : "select-position-passive"
               }
-              onClick={() => {
-                setSelectflag("3");
-              }}
             >
-              <a href="#jobprofile">Job Profile</a>
+              <a href="#jobprofile"
+                onClick={() => {
+                  setSelectflag("3");
+                }}>Job Profile</a>
             </div>
             <div
               className={
@@ -400,11 +400,11 @@ const UserSetting = (props) => {
                   ? "select-position-active"
                   : "select-position-passive"
               }
-              onClick={() => {
-                setSelectflag("4");
-              }}
             >
-              <a href="#socialprofile">Social Profile</a>
+              <a href="#socialprofile"
+                onClick={() => {
+                  setSelectflag("4");
+                }}>Social Profile</a>
             </div>
             <div
               className={
@@ -412,11 +412,11 @@ const UserSetting = (props) => {
                   ? "select-position-active"
                   : "select-position-passive"
               }
-              onClick={() => {
-                setSelectflag("5");
-              }}
             >
-              <a href="#changeemail">Change Email</a>
+              <a href="#changeemail"
+                onClick={() => {
+                  setSelectflag("5");
+                }}>Change Email</a>
             </div>
             <div
               className={
@@ -424,11 +424,11 @@ const UserSetting = (props) => {
                   ? "select-position-active"
                   : "select-position-passive"
               }
-              onClick={() => {
-                setSelectflag("6");
-              }}
             >
-              <a href="#updatephonenumber">Update Phone Number</a>
+              <a href="#updatephonenumber"
+                onClick={() => {
+                  setSelectflag("6");
+                }}>Update Phone Number</a>
             </div>
             <div
               className={
@@ -436,11 +436,11 @@ const UserSetting = (props) => {
                   ? "select-position-active"
                   : "select-position-passive"
               }
-              onClick={() => {
-                setSelectflag("7");
-              }}
             >
-              <a href="#changepassword">Change Password</a>
+              <a href="#changepassword"
+                onClick={() => {
+                  setSelectflag("7");
+                }}>Change Password</a>
             </div>
             <div
               className={
@@ -452,11 +452,11 @@ const UserSetting = (props) => {
                 borderBottomLeftRadius: "5px",
                 borderBottomRightRadius: "5px",
               }}
-              onClick={() => {
-                setSelectflag("8");
-              }}
             >
-              <a href="#notifications">Notifications</a>
+              <a href="#notifications"
+                onClick={() => {
+                  setSelectflag("8");
+                }}>Notifications</a>
             </div>
           </div>
         </div>

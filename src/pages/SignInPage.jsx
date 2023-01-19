@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import logo from "../assets/logo-white.png";
@@ -77,19 +77,19 @@ const SignInPage = (props) => {
     props.loginUser(userData);
   };
 
-  const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-width: 1224px)",
-  });
+  // const isDesktopOrLaptop = useMediaQuery({
+  //   query: "(min-width: 1224px)",
+  // });
 
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  // const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const isDesktop = useMediaQuery({ query: "(min-width:992px)" });
-  const isTable = useMediaQuery({
-    query: "(max-width: 992px)",
-  });
+  // const isTable = useMediaQuery({
+  //   query: "(max-width: 992px)",
+  // });
 
-  const isTiny = useMediaQuery({
-    query: "(max-width: 500px)",
-  });
+  // const isTiny = useMediaQuery({
+  //   query: "(max-width: 500px)",
+  // });
 
   const navigate = useNavigate();
   const handleRoute = (data) => {
@@ -102,12 +102,13 @@ const SignInPage = (props) => {
         <div className="row">
           {isDesktop && (
             <div className="col-6 left-bar">
-              <img className="logo logo-white" src={logo}></img>
+              <img alt="logo" className="logo logo-white" src={logo}></img>
             </div>
           )}
           <div className="col-md-12 col-lg-6 singin-info-container">
             <div className="text-center">
               <img
+                alt="logo"
                 className="logo"
                 onClick={() => handleRoute("")}
                 src={logo_primary}
