@@ -20,6 +20,8 @@ import UserSetting from "./pages/dashboard/usersetting";
 import Classroom from "./pages/dashboard/classroom";
 import CurrentCourse from "./pages/dashboard/currentcourse";
 import ProfileWrapPage from './pages/profile/ProfileWrap'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/global.css";
 import "./assets/css/profile.css";
@@ -77,6 +79,7 @@ function App() {
           <Route path="community" element={<></>} />
         </Route>
       </Routes>
+      <ToastContainer />
     </BrowserRouter>
   );
 }

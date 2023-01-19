@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Table } from 'react-bootstrap'
 
 const StudentManagementPage = (props) => {
   return (
@@ -41,6 +41,37 @@ const StudentManagementPage = (props) => {
             <input className="form-control mt-2" id="email" />
           </Col>
         </Row>
+        <div className='mt-4'>
+          <Table striped bordered hover >
+            <thead>
+              <tr className='bg-primary text-white'>
+                <th style={{ width: 10 }}>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td colSpan={2}>Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </Table>
+        </div>
       </div>
     </>
   )
