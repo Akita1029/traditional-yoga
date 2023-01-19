@@ -12,7 +12,7 @@ import axios from "axios"
 import { Button, IconButton, Typography } from "@mui/material";
 import ViewListIcon from '@mui/icons-material/ViewList';
 import AppsIcon from '@mui/icons-material/Apps';
-
+import config from "../../config/config";
 import { styled } from '@mui/material/styles';
 
 const OutlineIconButton = styled(IconButton)({
@@ -35,7 +35,7 @@ const SortCategory = styled(Select)({
 
 const OnlineCoursePage = (props) => {
   useEffect(() => {
-    axios.get('/api/courses/load_online_courses').then(response => {
+    axios.get(`${config.server}/api/courses/load_online_courses`).then(response => {
       console.log(response)
       if (response.status === 200) {
         setOnlineCourses(response.data)

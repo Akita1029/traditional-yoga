@@ -11,6 +11,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import axios from "axios";
 import '../../assets/css/coursespage.css'
+import config from "../../config/config";
 
 const responsive = {
   superLargeDesktop: {
@@ -47,7 +48,7 @@ const responsive_one = {
 const CourseMainPage = () => {
 
   useEffect(() => {
-    axios.get('/api/courses/load_online_courses').then(response => {
+    axios.get(`${config.server}api/courses/load_online_courses`).then(response => {
       console.log(response)
       if (response.status === 200) {
         setOnlineCourses(response.data)
