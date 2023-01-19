@@ -13,7 +13,7 @@ export const setCurrentUser = (decoded) => {
 // Login user
 export const loginUser = (userData) => (dispatch) => {
   axios
-    .post(`${config.server}/api/users/login`, userData)
+    .post(`${config.server}api/users/login`, userData)
     .then((res) => {
       localStorage.setItem("userToken", JSON.stringify(res.data));
       dispatch({

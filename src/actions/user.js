@@ -1,11 +1,11 @@
 import axios from "axios";
 import config from "../config/config";
-import { GET_USER_DATA } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS, LOGOUT, GET_USER_DATA } from "./types";
 
 // get user data
 export const getuserdata = () => (dispatch) => {
   axios
-    .post(config.server + "/api/users/alldata")
+    .post(config.server + "api/users/alldata")
     .then((res) => {
       dispatch({
         type: GET_USER_DATA,
@@ -27,7 +27,7 @@ export const setCurrentUser = (decoded) => {
 // Login user
 export const loginUser = (userData) => (dispatch) => {
   axios
-    .post(config.server + "/api/users/login", userData)
+    .post(config.server + "api/users/login", userData)
     .then((res) => {
       localStorage.setItem("userToken", JSON.stringify(res.data));
       dispatch({
@@ -71,7 +71,7 @@ export const logoutUser = () => (dispatch) => {
 
 export const registerUser = (userData) => (dispatch) => {
   axios
-    .post(config.server + "/api/users/signup", userData)
+    .post(config.server + "api/users/signup", userData)
     .then((res) => {
       console.log(res.data.messages);
     })
