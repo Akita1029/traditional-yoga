@@ -11,6 +11,7 @@ import CoursesPage from "./pages/CoursesPage";
 import CourseMainPage from "./pages/courses/CourseMainPage";
 import OnlineCoursePage from "./pages/courses/OnlineCoursePage";
 import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage";
 import OnlineCourseDetailPage from "./pages/courses/OnlineCourseDetailPage";
 import CourseProgressPage from "./pages/courses/CourseProgressPage";
 import ContactUs from "./pages/ContactUsPage";
@@ -94,6 +95,7 @@ function App() {
           </Route>
           <Route path="/profile" element={<ProfileWrapPage />} />
           <Route path="/signin" element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
           {auth === true ? (
             <>
               <Route
