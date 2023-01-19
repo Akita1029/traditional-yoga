@@ -33,26 +33,9 @@ const SortCategory = styled(Select)({
   width: 250,
 })
 
-// const imgArr = [
-//   'image-42-copyright-min-900x1180.jpg',
-//   '01_preview_large.png',
-//   'Guru.webp',
-//   'image_14_copyright-min.jpg',
-//   'video2-copyright-800x450.png',
-//   'IMG_0109-1.jpg',
-//   'logo-primary.png',
-//   'image-55-copyright-min-pvrgm4wjd66ko4apt50cn3acl5icetwgr5fnfvupd6.jpg',
-//   'Ramoji2-copy-1024x680.jpg',
-//   'Buddha-1-scaled.jpg',
-//   'image-45-copyright-min.jpg',
-//   'image-52-copyright-min.jpg',
-//   'about2-copyright.png',
-//   'footer-banner.jpg'
-// ]
-
 const OnlineCoursePage = (props) => {
   useEffect(() => {
-    axios.get('http://localhost:8000/api/courses/load_online_courses').then(response => {
+    axios.get('/api/courses/load_online_courses').then(response => {
       console.log(response)
       if (response.status === 200) {
         setOnlineCourses(response.data)

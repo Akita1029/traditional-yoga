@@ -47,7 +47,7 @@ const responsive_one = {
 const CourseMainPage = () => {
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/courses/load_online_courses').then(response => {
+    axios.get('/api/courses/load_online_courses').then(response => {
       console.log(response)
       if (response.status === 200) {
         setOnlineCourses(response.data)
