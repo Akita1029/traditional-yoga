@@ -171,9 +171,6 @@ const PaymentPage = (props) => {
           </span>
         </div>        
       </div>
-<<<<<<< HEAD
-      <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mt-4 mb-4">Make Payment</button>
-=======
       <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mb-4"
         onClick={() => {
           toast.success('Success Notification !', {
@@ -182,7 +179,6 @@ const PaymentPage = (props) => {
         }}>
         MAKE PAYMENT
       </button>
->>>>>>> danil_dev
     </Container >
   );
 }
