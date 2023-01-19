@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/material/styles';
+import csc from "country-state-city";
+import { useFormik } from "formik";
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -38,7 +40,35 @@ const ApplicationFrom = (props) => {
   const [zipcode, setZipCode] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirmPassword] = useState("");
-  
+
+  const addressFromik = useFormik({
+    initialValues: {
+      country: "United States ",
+      state: null,
+      city: null
+    },
+    onSubmit: (values) => console.log(JSON.stringify(values))
+  });
+
+  const countries = csc.getAllCountries();
+
+  const updatedCountries = countries.map((country) => ({
+    label: country.name,
+    value: country.id,
+    ...country
+  }));
+  const updatedStates = (countryId) =>
+    csc
+      .getStatesOfCountry(countryId)
+      .map((state) => ({ label: state.name, value: state.id, ...state }));
+  const updatedCities = (stateId) =>
+    csc
+      .getCitiesOfState(stateId)
+      .map((city) => ({ label: city.name, value: city.id, ...city }));
+
+  const { values, setFieldValue, setValues } = addressFromik;
+
+  useEffect(() => {}, [values]);
   const register = () => {
     if(password == undefined || password == "" || password !== confirm) return;
     const regData = {
@@ -52,11 +82,11 @@ const ApplicationFrom = (props) => {
       language: language,
       occupation: occupation,
       education: education,
-      country: country,
+      country: values.country,
       address1: address1,
       address2: address2,
-      city: city,
-      state: state,
+      city: values.city,
+      state: values.state,
       zipcode: zipcode,
       password: password,
       email: email
@@ -105,6 +135,7 @@ const ApplicationFrom = (props) => {
                     sx={{
                       mr: 1,
                     }}
+                    onChange={(e) => setInterest(e)}
                   >
                     <MenuItem value='yes'>Yes</MenuItem>
                     <MenuItem value='no'>No</MenuItem>
@@ -120,6 +151,7 @@ const ApplicationFrom = (props) => {
                     sx={{
                       mr: 1,
                     }}
+                    onChange={(e) => setGender(e)}
                   >
                     <MenuItem value='female'>Female</MenuItem>
                     <MenuItem value='male'>Male</MenuItem>
@@ -165,7 +197,15 @@ const ApplicationFrom = (props) => {
               <Row>
                 <Col xl={4} md={12}>
                   <label>Country</label>
-                  <input className="form-control mt-2" id="country" value={country} onChange={(e) => setCountry(e.target.value)}/>
+                  {/* <input className="form-control mt-2" id="country" value={country} onChange={(e) => setCountry(e.target.value)}/> */}
+                  <Select className="form-control mt-2"
+                    id="country"
+                    options={updatedCountries}
+                    value={values.country}
+                    onChange={(value) => {
+                      setValues({ country: value, state: null, city: null }, false);
+                    }}
+                  />
                 </Col>
                 <Col xl={4} md={12}>
                   <label>Street Address</label>
@@ -179,11 +219,27 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col xl={4} md={12}>
                   <label>State / Province / Region</label>
-                  <input className="form-control mt-2" id="state" value={state} onChange={(e) => setState(e.target.value)}/>
+                  {/* <input className="form-control mt-2" id="state" value={state} onChange={(e) => setState(e.target.value)}/> */}
+                  <Select
+                    id="state"
+                    name="state"
+                    options={updatedStates(values.country ? values.country.value : null)}
+                    value={values.state}
+                    onChange={(value) => {
+                      setValues({ state: value, city: null }, false);
+                    }}
+                  />
                 </Col>
                 <Col xl={4} md={12}>
                   <label>city</label>
-                  <input className="form-control mt-2" id="city" value={city} onChange={(e) => setCity(e.target.value)}/>
+                  {/* <input className="form-control mt-2" id="city" value={city} onChange={(e) => setCity(e.target.value)}/> */}
+                  <Select
+                    id="city"
+                    name="city"
+                    options={updatedCities(values.state ? values.state.value : null)}
+                    value={values.city}
+                    onChange={(value) => setFieldValue("city", value)}
+                  />
                 </Col>
                 <Col xl={4} md={12}>
                   <label>Zip Code / Postal Code</label>
