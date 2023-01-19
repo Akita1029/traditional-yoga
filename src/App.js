@@ -170,9 +170,9 @@ function App() {
           />
           <Route path="playlist" element={<></>} />
           <Route path="library" element={<></>} />
-          <Route path="community" element={<></>} />
-          <Route exact path="/*" element={<Pagenotfound />} />
+          <Route path="community" element={<></>} />          
         </Route>
+        <Route exact path="/*" element={<Pagenotfound />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>
