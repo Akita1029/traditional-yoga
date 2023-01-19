@@ -28,11 +28,11 @@ const DashboardLayout = (props) => {
           currentMenu={currentMenu}
           expanded={sidebarExpanded}
         />
-        {/* <Header
+        <Header
           menu={currentMenu}
           expanded={sidebarExpanded}
           onToggleSidebar={toggleSidebar}
-        /> */}
+        />
         <Outlet expanded={sidebarExpanded} />
       </div>
     </>

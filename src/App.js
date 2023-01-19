@@ -19,9 +19,10 @@ import Home from "./pages/dashboard/home";
 import UserSetting from "./pages/dashboard/usersetting";
 import Classroom from "./pages/dashboard/classroom";
 import CurrentCourse from "./pages/dashboard/currentcourse";
+import ProfilePage from './pages/profile/profile'
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/global.css";
-
+import "./assets/css/profile.css";
 
 function App() {
   const [expandflag, setExpandflag] = useState(false);
@@ -52,6 +53,7 @@ function App() {
           <Route path="payment" element={ <PaymentPage /> } />
           <Route path="upcomings" element={ <UpcomingPage /> } />
         </Route>
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/signin" element={ <SignInPage /> } />
         <Route
           path="/dashboard"
