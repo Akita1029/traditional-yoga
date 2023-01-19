@@ -1,6 +1,5 @@
 import axios from "axios";
 import config from "../config/config";
-<<<<<<< HEAD
 import {
   GET_ERRORS,
   SET_CURRENT_USER,
@@ -8,10 +7,7 @@ import {
   LOGOUT,
   GET_USER_DATA,
 } from "./types";
-=======
-import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS, LOGOUT, GET_USER_DATA } from "./types";
 
->>>>>>> b02edb859c2ba27b3324f0168ada98966850e854
 // get user data
 export const getuserdata = () => (dispatch) => {
   axios
