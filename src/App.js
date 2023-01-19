@@ -134,57 +134,11 @@ function App() {
           ) : (
             <></>
           )}
-<<<<<<< HEAD
           <Route exact path="/*" element={<Pagenotfound />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>
     </Provider>
-=======
-        <Route
-          path="/dashboard"
-          element={<DashboardLayout setfunc={setfunc} />}
-        >
-          <Route path="" element={<Home expandflag={expandflag} />} />
-          <Route
-            path="/dashboard"
-            element={<DashboardLayout setfunc={setfunc} />}
-          >
-            <Route path="" element={<Home expandflag={expandflag} />} />
-            <Route
-              path="usersetting"
-              element={<UserSetting expandflag={expandflag} />}
-            />
-            <Route
-              path="classroom"
-              element={<Classroom expandflag={expandflag} />}
-            />
-            <Route
-              path="currentcourse"
-              element={<CurrentCourse expandflag={expandflag} />}
-            />
-            <Route path="playlist" element={<></>} />
-            <Route path="library" element={<></>} />
-            <Route path="community" element={<></>} />
-          </Route>
-          <Route
-            path="classroom"
-            element={<Classroom expandflag={expandflag} />}
-          />
-          <Route
-            path="currentcourse"
-            element={<CurrentCourse expandflag={expandflag} />}
-          />
-          <Route path="playlist" element={<></>} />
-          <Route path="library" element={<></>} />
-          <Route path="community" element={<></>} />          
-        </Route>
-        <Route exact path="/*" element={<Pagenotfound />} />
-      </Routes>
-      <ToastContainer />
-    </BrowserRouter>
-  </Provider>
->>>>>>> 72437bf4e3d1f0d194620cf7915edbfd599eb19b
   );
 }
 

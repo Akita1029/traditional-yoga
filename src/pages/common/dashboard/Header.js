@@ -25,7 +25,7 @@ const Mainhead = ({ menu, expanded, onToggleSidebar, authstate, logout }) => {
 
   return (
     <div className={getHeaderStyle()}>
-      <IconButton onClick={() => onToggleSidebar()}>
+      <IconButton className="mt-2" onClick={() => onToggleSidebar()}>
         <DrawIcon />
       </IconButton>
       <div className="dashboard-header-title">
