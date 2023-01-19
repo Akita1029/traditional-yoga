@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -34,6 +34,10 @@ import CurrentCourse from "./pages/dashboard/currentcourse";
 import ProfileCoursePage from "./pages/profile/ProfileCoursePage"
 // Import privateroute
 import PrivateRoute from "./validation/PrivateRoute";
+
+// Not Found page
+import Pagenotfound from "./validation/Pagenotfound";
+
 // Import Styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProfileWrapPage from './pages/profile/ProfileWrap'
@@ -47,13 +51,18 @@ import { setCurrentUser } from "./actions/auth";
 
 // import { Dashboard } from "@mui/icons-material";
 
-// Save user token to localstorage
-// if (localStorage.userToken) {
-//   store.dispatch(setCurrentUser(JSON.parse(localStorage.userToken)));
-// }
-
 function App() {
   const [expandflag, setExpandflag] = useState(false);
+  const [auth, setAuth] = useState();
+  // Save user token to redux
+  useEffect(() => {
+    if (localStorage.userToken) {
+      store.dispatch(setCurrentUser(JSON.parse(localStorage.userToken)));
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }
+  }, []);
 
   const setfunc = (flag) => {
     setExpandflag(flag);
@@ -75,6 +84,7 @@ function App() {
             <Route path="library" element={<></>} />
             <Route path="contactus" element={<ContactUs />} />                        
           </Route>
+
           {/* <Route path="profile/" element={ <ProfilePage /> } /> */}
           {/* <Route path="profile/course" element={ <ProfileCoursePage /> } /> */}
           {/* <Route path="profile/notifications" element={ <ProfileCoursePage /> } /> */}
@@ -84,6 +94,46 @@ function App() {
         </Route>
         <Route path="/profile" element={<ProfileWrapPage />} />
         <Route path="/signin" element={ <SignInPage /> } />
+          {auth === true ? (
+            <>
+              <Route
+                path="/dashboard"
+                element={<DashboardLayout setfunc={setfunc} />}
+              >
+                <Route path="" element={<Home expandflag={expandflag} />} />
+                <Route
+                  path="usersetting"
+                  element={<UserSetting expandflag={expandflag} />}
+                />
+                <Route
+                  path="classroom"
+                  element={<Classroom expandflag={expandflag} />}
+                />
+                <Route
+                  path="currentcourse"
+                  element={<CurrentCourse expandflag={expandflag} />}
+                />
+                <Route path="playlist" element={<></>} />
+                <Route path="library" element={<></>} />
+                <Route path="community" element={<></>} />
+              </Route>
+              <Route
+                path="/admindashboard"
+                element={<AdminDashboardLayout setfunc={setfunc} />}
+              >
+                <Route
+                  path=""
+                  element={<AdminUserManagement expandflag={expandflag} />}
+                />
+                <Route
+                  path="admincourse"
+                  element={<AdminCourseManagement expandflag={expandflag} />}
+                />
+              </Route>
+            </>
+          ) : (
+            <></>
+          )}
         <Route
           path="/dashboard"
           element={<DashboardLayout setfunc={setfunc} />}
@@ -121,6 +171,7 @@ function App() {
           <Route path="playlist" element={<></>} />
           <Route path="library" element={<></>} />
           <Route path="community" element={<></>} />
+          <Route exact path="/*" element={<Pagenotfound />} />
         </Route>
       </Routes>
       <ToastContainer />

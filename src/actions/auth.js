@@ -15,7 +15,7 @@ export const loginUser = (userData) => (dispatch) => {
   axios
     .post(`${config.server}/api/users/login`, userData)
     .then((res) => {
-      localStorage.setItem("userToken", res.data.token);
+      localStorage.setItem("userToken", JSON.stringify(res.data));
       dispatch({
         type: SET_CURRENT_USER,
         payload: res.data,
@@ -50,6 +50,7 @@ export const loginUser = (userData) => (dispatch) => {
 export const logoutUser = () => (dispatch) => {
   dispatch({
     type: LOGOUT,
+    payload: {},
   });
   dispatch({
     type: CLEAR_ERRORS,
