@@ -45,6 +45,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/global.css";
+import "./assets/css/profile.css";
 import { setCurrentUser } from "./actions/auth";
 
 // import "bootstrap/dist/css/bootstrap.min.css";
