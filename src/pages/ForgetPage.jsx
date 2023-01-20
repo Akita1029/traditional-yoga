@@ -26,31 +26,7 @@ const theme = createTheme({
       main: "#F96302",
       dark: "#C84F00",
       contrastText: "#fff", //button text white instead of black
-    },
-    google: {
-      light: "#F6513D",
-      main: "#F63C25",
-      dark: "#D7331E",
-      contrastText: "#fff", //button text white instead of black
-    },
-    twitter: {
-      light: "#2FA9F4",
-      main: "#1DA1F2",
-      dark: "#1B86C8",
-      contrastText: "#fff", //button text white instead of black
-    },
-    facebook: {
-      light: "#3085F3",
-      main: "#1877F2",
-      dark: "#1A66C8",
-      contrastText: "#fff", //button text white instead of black
-    },
-    apple: {
-      light: "#292D34",
-      main: "#15171B",
-      dark: "#0A0A0B",
-      contrastText: "#fff", //button text white instead of black
-    },
+    }
   },
   typography: {
     subtitle1: {
@@ -226,49 +202,6 @@ const ForgetPage = (props) => {
                 SIGN IN
                 {/* SIGN IN */}
               </Button>
-              <p className="text-center mt-4">or Sign In with</p>
-              <Grid container columnSpacing={5} rowSpacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <Button
-                    color="google"
-                    fullWidth
-                    variant="contained"
-                    startIcon={<GoogleIcon />}
-                  >
-                    Google
-                  </Button>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Button
-                    color="facebook"
-                    fullWidth
-                    variant="contained"
-                    startIcon={<FacebookIcon />}
-                  >
-                    Facebook
-                  </Button>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Button
-                    color="twitter"
-                    fullWidth
-                    variant="contained"
-                    startIcon={<TwitterIcon />}
-                  >
-                    Twitter
-                  </Button>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Button
-                    color="apple"
-                    fullWidth
-                    variant="contained"
-                    startIcon={<AppleIcon />}
-                  >
-                    Apple
-                  </Button>
-                </Grid>
-              </Grid>
             </div>
           </div>
         </div>
