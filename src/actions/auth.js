@@ -19,7 +19,7 @@ export const loginUser = (userData) => (dispatch) => {
         case 200:
           toast.success('Welcome! You signed in successfully!', {
             position: toast.POSITION.TOP_RIGHT
-          })  
+          })
           localStorage.setItem("userToken", JSON.stringify(res.data))
           dispatch({
             type: SET_CURRENT_USER,
@@ -36,11 +36,11 @@ export const loginUser = (userData) => (dispatch) => {
               window.location.href = "/ty/courses/main"
               break
             case 3:
-              if(res.data.resetPassword) 
+              if(res.data.resetPassword)
                 window.location.href = "/forget"
               else
-                window.location.href = "/ty/couress/main"
-              break              
+                window.location.href = "/requestreset"
+              break
             default:
               window.location.href = "/ty/courses/main"
               break
@@ -71,12 +71,12 @@ export const loginUser = (userData) => (dispatch) => {
             position: toast.POSITION.TOP_RIGHT
           })
           break
-        default:          
+        default:
           toast.warning('Please type correct credientials...', {
             position: toast.POSITION.TOP_RIGHT
           })
           break
-      }      
+      }
     })
     .catch((err) => {
       dispatch({
@@ -99,40 +99,7 @@ export const logoutUser = () => (dispatch) => {
   // localStorage.removeItem("userToken", res.data.token);
 };
 
-export const takeCourse = (userData) => (dispatch) => {
-  axios
-    .post(`${config.server}api/users/signup`, userData)
-    .then((res) => {
-      localStorage.setItem("userToken", res.data.token);
-      dispatch({
-        type: SET_CURRENT_USER,
-        payload: res.data,
-      });
-      switch (res.data.role) {
-        case 0:
-          window.location.href = "/admindashboard";
-          break;
-        case 1:
-          window.location.href = "/admindashboard";
-          break;
-        case 2:
-          window.location.href = "/admindashboard";
-          break;
-        case 3:
-          window.location.href = "/dashboard";
-          break;
-        default:
-          window.location.href = "/dashboard";
-          break;
-      }
-    })
-    .catch((err) => {
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data,
-      });
-    });
-};
+
 
 export const registerUser = (regUserData) => (dispatch) => {
   axios
@@ -161,7 +128,7 @@ export const registerUser = (regUserData) => (dispatch) => {
           type: SET_CURRENT_USER,
           payload: res.data,
         });
-        window.location.href = "/admindashboard";        
+        window.location.href = "/admindashboard";
       }
     })
     .catch((err) => {

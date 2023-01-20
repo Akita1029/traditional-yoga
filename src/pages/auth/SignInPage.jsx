@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import logo from "../assets/logo-white.png";
@@ -13,10 +13,11 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { toast } from 'react-toastify';
+
 // Connect redux, action
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { registerUser } from "../actions/auth";
+import { loginUser } from "../../actions/auth";
 
 const theme = createTheme({
   palette: {
@@ -65,23 +66,18 @@ const theme = createTheme({
   },
 });
 
-const SignUpPage = (props) => {
+const SignInPage = (props) => {
+
   const [input, setInput] = useState({
-    firstName: '',
-    lastName: '',
     email: '',
-    password: '',
-    confirmPassword: ''
+    password: ''
   });
- 
+
   const [error, setError] = useState({
-    firstName: '',
-    lastName: '',
     email: '',
-    password: '',
-    confirmPassword: ''
+    password: ''
   })
- 
+
   const onInputChange = e => {
     const { name, value } = e.target
     setInput(prev => ({
@@ -90,23 +86,13 @@ const SignUpPage = (props) => {
     }));
     validateInput(e);
   }
- 
+
   const validateInput = e => {
     let { name, value } = e.target;
     setError(prev => {
       const stateObj = { ...prev, [name]: "" };
- 
+
       switch (name) {
-        case "firstName":
-          if (!value) {
-            stateObj[name] = "Please enter FirstName.";
-          }
-          break;
-        case "lastName":
-          if (!value) {
-            stateObj[name] = "Please enter LastName.";
-          }
-          break;
         case "email":
           if (!value) {
             stateObj[name] = "Please enter Email Address.";
@@ -115,46 +101,23 @@ const SignUpPage = (props) => {
         case "password":
           if (!value) {
             stateObj[name] = "Please enter Password.";
-          } else if (input.confirmPassword && value !== input.confirmPassword) {
-            stateObj["confirmPassword"] = "Password and Confirm Password does not match.";
-          } else {
-            stateObj["confirmPassword"] = input.confirmPassword ? "" : error.confirmPassword;
           }
           break;
- 
-        case "confirmPassword":
-          if (!value) {
-            stateObj[name] = "Please enter Confirm Password.";
-          } else if (input.password && value !== input.password) {
-            stateObj[name] = "Password and Confirm Password does not match.";
-          }
-          break;
- 
         default:
           break;
       }
- 
+
       return stateObj;
     });
   }
 
-
-  const handleEnterKeyDown = (event) => {
-    if (event.key === "Enter") {
-      register();
-    }
-  };
-
-  const register = () => {
-    
-    if(!error.firstName && !error.lastName && !error.password && !error.email && error.confirmPassword){
-      const regUserData = {
-        firstname: input.firstName,
-        lastname: input.lastName,
+  const login = () => {
+    if(!error.password && !error.email){
+      const userData = {
         email: input.email,
         password: input.password,
       };
-      props.registerUser(regUserData);
+      props.loginUser(userData);
     } else {
       toast.warning('Please Enter all required fileds.', {
         position: toast.POSITION.TOP_RIGHT
@@ -162,23 +125,29 @@ const SignUpPage = (props) => {
     }
   };
 
-  const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-width: 1224px)",
-  });
+  // const isDesktopOrLaptop = useMediaQuery({
+  //   query: "(min-width: 1224px)",
+  // });
 
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  // const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const isDesktop = useMediaQuery({ query: "(min-width:992px)" });
-  const isTable = useMediaQuery({
-    query: "(max-width: 992px)",
-  });
+  // const isTable = useMediaQuery({
+  //   query: "(max-width: 992px)",
+  // });
 
-  const isTiny = useMediaQuery({
-    query: "(max-width: 500px)",
-  });
+  // const isTiny = useMediaQuery({
+  //   query: "(max-width: 500px)",
+  // });
 
   const navigate = useNavigate();
   const handleRoute = (data) => {
     navigate(`/${data}`);
+  };
+
+  const handleEnterKeyDown = (event) => {
+    if (event.key === "Enter") {
+      login();
+    }
   };
 
   return (
@@ -187,7 +156,7 @@ const SignUpPage = (props) => {
         <div className="row">
           {isDesktop && (
             <div className="col-6 left-bar">
-              <img className="logo logo-white" src={logo}></img>
+              <img alt="logo" className="logo logo-white" src={logo}></img>
             </div>
           )}
           <div className="col-md-12 col-lg-6 singin-info-container">
@@ -199,54 +168,19 @@ const SignUpPage = (props) => {
                 src={logo_primary}
                 style={{ cursor: "pointer" }}
               ></img>
-              <h1 className="text-primary mt-2">Create Account</h1>
+              <h1 className="text-primary mt-2">Visit Site</h1>
             </div>
-            <div className="row">
-              <div className="col-md-12 col-lg-6 mt-2">
-                <div className="form-group mt-2">
-                  <label>First Name</label>
-                  <input
-                    className="form-control"
-                    id="firstName"
-                    onKeyDown={handleEnterKeyDown}
-                    placeholder="Enter First Name"
-                    name="firstName"
-                    value={input.firstName}
-                    onChange={onInputChange()}
-                    onBlur={validateInput}
-                  />
-                  {error.firstName && <p className='pt-1 text-danger'>{error.firstName}</p>}                  
-                </div>
-              </div>
-              <div className="col-md-12 col-lg-6 mt-2">
-                <div className="form-group mt-2">
-                  <label>Last Name</label>
-                  <input
-                    className="form-control"
-                    id="lastName"
-                    name="lastName"
-                    onKeyDown={handleEnterKeyDown}
-                    placeholder="Enter Last Name"
-                    value={input.lastName}
-                    onChange={onInputChange}
-                    onBlur={validateInput}
-                  />
-                  {error.lastName && <p className='pt-1 text-danger'>{error.lastName}</p>}
-                </div>
-              </div>
-            </div>
-            
-            <div className="form-group mt-3">
+            <div className="form-group mt-5">
               <label>Email address</label>
               <input
+                onKeyDown={handleEnterKeyDown}
                 type="email"
                 className="form-control mt-2"
                 id="email"
+                placeholder="Enter email"
                 name="email"
-                onKeyDown={handleEnterKeyDown}
-                placeholder="Enter email address"
                 value={input.email}
-                onChange={onInputChange}
+                onChange={onInputChange()}
                 onBlur={validateInput}
               />
               {error.email && <p className='pt-1 text-danger'>{error.email}</p>}
@@ -254,34 +188,29 @@ const SignUpPage = (props) => {
             <div className="form-group mt-3">
               <label>Password</label>
               <input
+                onKeyDown={handleEnterKeyDown}
                 type="password"
                 className="form-control mt-2"
                 id="password"
-                name="password"
-                onKeyDown={handleEnterKeyDown}
                 placeholder="Enter password"
+                name="password"
                 value={input.password}
-                onChange={onInputChange}
+                onChange={onInputChange()}
                 onBlur={validateInput}
               />
               {error.password && <p className='pt-1 text-danger'>{error.password}</p>}
             </div>
-
-            <div className="form-group mt-3">
-              <label>Confirm Password</label>
-              <input
-                type="password"
-                className="form-control mt-2"
-                onKeyDown={handleEnterKeyDown}
-                id="password"
-                name="confirmPassword"
-                placeholder="Enter Confirm password"
-                value={input.confirmPassword}
-                onChange={onInputChange}
-                onBlur={validateInput}
-              />
-              {error.confirmPassword && <p className='pt-1 text-danger'>{error.confirmPassword}</p>}
-            </div>           
+            <div className="d-flex justify-content-between bd-highlight mb-5 mt-3">
+              <label>
+                <input style={{ height: "12px" }} type="checkbox" />{" "}
+                <span style={{ margin: 0 }}>Remember me</span>
+              </label>
+              <div className="d-flex jsutify-center-end">
+                <a href="/forget" className="pull-right">
+                  Forget password?
+                </a>
+              </div>
+            </div>
 
             <div className="d-flex flex-column mt-5 mb-5">
               <Button
@@ -293,11 +222,12 @@ const SignUpPage = (props) => {
                   width: "100%",
                   height: "100%",
                 }}
-                onClick={() => register()}
+                onClick={() => login()}
               >
-                SIGN UP                
+                SIGN IN
+                {/* SIGN IN */}
               </Button>
-              <p className="text-center mt-4">or Sign Up with</p>
+              <p className="text-center mt-4">or Sign In with</p>
               <Grid container columnSpacing={5} rowSpacing={2}>
                 <Grid item xs={12} sm={6}>
                   <Button
@@ -348,8 +278,8 @@ const SignUpPage = (props) => {
   );
 };
 
-SignUpPage.propTypes = {
-  registerUser: PropTypes.func.isRequired,
+SignInPage.propTypes = {
+  loginUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -357,4 +287,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { registerUser })(SignUpPage);
+export default connect(mapStateToProps, { loginUser })(SignInPage);
