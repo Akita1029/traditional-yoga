@@ -28,7 +28,7 @@ const Mainhead = ({ menu, expanded, onToggleSidebar, authstate, logout }) => {
       <IconButton onClick={() => onToggleSidebar()}>
         <DrawIcon />
       </IconButton>
-      <div className="dashboard-header-title">
+      <div className="dashboard-header-title mb-2">
         <div>{currentItem ? currentItem.title : "Home"}</div>
       </div>
       {authstate === true ? (

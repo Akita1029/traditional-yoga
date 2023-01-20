@@ -10,6 +10,7 @@ import ProfileCoursePage from "./ProfileCoursePage";
 import ProfilePage from "./ProfilePage";
 import StudentManagementPage from "./StudentsManagement";
 import StudentManagementPage4Chief from "./StudentsManagement4Chief";
+import "../../assets/css/profile.css";
 
 const ProfileWrapPage = (props) => {
   const [profileState, setProfileState] = useState(0)
