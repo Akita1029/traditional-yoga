@@ -98,20 +98,21 @@ export const registerUser = (regUserData) => (dispatch) => {
   axios
     .post(`${config.server}api/users/signup`, regUserData)
     .then((res) => {
-      if (res.statusCode === 200) {
+      console.log("Result:" , res)
+      if (res.status === 201) {
         toast.success('Welcome! You signed up successfully! Please submit the Application Form to start learning yoga now. ', {
           position: toast.POSITION.TOP_RIGHT
         });
         window.location.href = "/ty/courses/main";
-      } else if (res.statusCode === 501) {
+      } else if (res.status === 204) {
         toast.warning('Sign up fail', {
           position: toast.POSITION.TOP_RIGHT
         });
-      } else if (res.statusCode === 502) {
+      } else if (res.status === 205) {
         toast.warning('Email Exists! Please try again sign up.', {
           position: toast.POSITION.TOP_RIGHT
         });
-      } else if (res.statusCode === 201){
+      } else if (res.status === 200){
         toast.success('Welcome! You signed up successfully as Admin.', {
           position: toast.POSITION.TOP_RIGHT
         });
@@ -120,9 +121,8 @@ export const registerUser = (regUserData) => (dispatch) => {
           type: SET_CURRENT_USER,
           payload: res.data,
         });
-        window.location.href = "/admindashboard";
+        window.location.href = "/admindashboard";        
       }
-
     })
     .catch((err) => {
       dispatch({

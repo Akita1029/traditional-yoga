@@ -12,7 +12,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-
+import { toast } from 'react-toastify';
 // Connect redux, action
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -66,20 +66,101 @@ const theme = createTheme({
 });
 
 const SignUpPage = (props) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirm, setConfirmPassword] = useState("");
-  
+  const [input, setInput] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+ 
+  const [error, setError] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  })
+ 
+  const onInputChange = e => {
+    console.log("E:", e.target)
+    const { name, value } = e.target
+    setInput(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    validateInput(e);
+  }
+ 
+  const validateInput = e => {
+    let { name, value } = e.target;
+    setError(prev => {
+      const stateObj = { ...prev, [name]: "" };
+ 
+      switch (name) {
+        case "firstName":
+          if (!value) {
+            stateObj[name] = "Please enter FirstName.";
+          }
+          break;
+        case "lastName":
+          if (!value) {
+            stateObj[name] = "Please enter LastName.";
+          }
+          break;
+        case "email":
+          if (!value) {
+            stateObj[name] = "Please enter Email Address.";
+          }
+          break;
+        case "password":
+          if (!value) {
+            stateObj[name] = "Please enter Password.";
+          } else if (input.confirmPassword && value !== input.confirmPassword) {
+            stateObj["confirmPassword"] = "Password and Confirm Password does not match.";
+          } else {
+            stateObj["confirmPassword"] = input.confirmPassword ? "" : error.confirmPassword;
+          }
+          break;
+ 
+        case "confirmPassword":
+          if (!value) {
+            stateObj[name] = "Please enter Confirm Password.";
+          } else if (input.password && value !== input.password) {
+            stateObj[name] = "Password and Confirm Password does not match.";
+          }
+          break;
+ 
+        default:
+          break;
+      }
+ 
+      return stateObj;
+    });
+  }
+
+
+  const handleEnterKeyDown = (event) => {
+    if (event.key === "Enter") {
+      register();
+    }
+  };
+
   const register = () => {
-    const regUserData = {
-      firstname: firstName,
-      lastname: lastName,
-      email: email,
-      password: password,
-    };
-    props.registerUser(regUserData);
+    
+    if(!error.firstName && !error.lastName && !error.password && !error.email && error.confirmPassword){
+      const regUserData = {
+        firstname: input.firstName,
+        lastname: input.lastName,
+        email: input.email,
+        password: input.password,
+      };
+      props.registerUser(regUserData);
+    } else {
+      toast.warning('Please Enter all required fileds.', {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   };
 
   const isDesktopOrLaptop = useMediaQuery({
@@ -113,6 +194,7 @@ const SignUpPage = (props) => {
           <div className="col-md-12 col-lg-6 singin-info-container">
             <div className="text-center">
               <img
+                alt="logo"
                 className="logo"
                 onClick={() => handleRoute("")}
                 src={logo_primary}
@@ -127,12 +209,14 @@ const SignUpPage = (props) => {
                   <input
                     className="form-control"
                     id="firstName"
+                    name="firstName"
+                    onKeyDown={handleEnterKeyDown}
                     placeholder="Enter First Name"
-                    onChange={(e) => setFirstName(e.target.value)}
+                    value={input.firstName}
+                    onChange={(e) => onInputChange(e)}
+                    onBlur={validateInput}
                   />
-                  {props.errors.logfirstname && (
-                    <p className="pt-1 text-danger">{props.errors.logfirstname}</p>
-                  )}
+                  {error.firstName && <p className='pt-1 text-danger'>{error.firstName}</p>}                  
                 </div>
               </div>
               <div className="col-md-12 col-lg-6 mt-2">
@@ -141,12 +225,14 @@ const SignUpPage = (props) => {
                   <input
                     className="form-control"
                     id="lastName"
+                    name="lastName"
+                    onKeyDown={handleEnterKeyDown}
                     placeholder="Enter Last Name"
-                    onChange={(e) => setLastName(e.target.value)}
+                    value={input.lastName}
+                    onChange={onInputChange}
+                    onBlur={validateInput}
                   />
-                  {props.errors.loglastname && (
-                    <p className="pt-1 text-danger">{props.errors.loglastname}</p>
-                  )}
+                  {error.lastName && <p className='pt-1 text-danger'>{error.lastName}</p>}
                 </div>
               </div>
             </div>
@@ -157,12 +243,14 @@ const SignUpPage = (props) => {
                 type="email"
                 className="form-control mt-2"
                 id="email"
-                placeholder="Enter email"
-                onChange={(email) => setEmail(email.target.value)}
+                name="email"
+                onKeyDown={handleEnterKeyDown}
+                placeholder="Enter email address"
+                value={input.email}
+                onChange={onInputChange}
+                onBlur={validateInput}
               />
-              {props.errors.logemail && (
-                <p className="pt-1 text-danger">{props.errors.logemail}</p>
-              )}
+              {error.email && <p className='pt-1 text-danger'>{error.email}</p>}
             </div>
             <div className="form-group mt-3">
               <label>Password</label>
@@ -170,12 +258,14 @@ const SignUpPage = (props) => {
                 type="password"
                 className="form-control mt-2"
                 id="password"
+                name="password"
+                onKeyDown={handleEnterKeyDown}
                 placeholder="Enter password"
-                onChange={(password) => setPassword(password.target.value)}
+                value={input.password}
+                onChange={onInputChange}
+                onBlur={validateInput}
               />
-              {props.errors.logpassword && (
-                <p className="pt-1 text-danger">{props.errors.logpassword}</p>
-              )}
+              {error.password && <p className='pt-1 text-danger'>{error.password}</p>}
             </div>
 
             <div className="form-group mt-3">
@@ -183,13 +273,15 @@ const SignUpPage = (props) => {
               <input
                 type="password"
                 className="form-control mt-2"
+                onKeyDown={handleEnterKeyDown}
                 id="password"
+                name="confirmPassword"
                 placeholder="Enter Confirm password"
-                onChange={(password) => setConfirmPassword(password.target.value)}
+                value={input.confirmPassword}
+                onChange={onInputChange}
+                onBlur={validateInput}
               />
-              {props.errors.logpassword && (
-                <p className="pt-1 text-danger">{props.errors.logpassword}</p>
-              )}
+              {error.confirmPassword && <p className='pt-1 text-danger'>{error.confirmPassword}</p>}
             </div>           
 
             <div className="d-flex flex-column mt-5 mb-5">
