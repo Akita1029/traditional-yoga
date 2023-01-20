@@ -26,31 +26,7 @@ const theme = createTheme({
       main: "#F96302",
       dark: "#C84F00",
       contrastText: "#fff", //button text white instead of black
-    },
-    google: {
-      light: "#F6513D",
-      main: "#F63C25",
-      dark: "#D7331E",
-      contrastText: "#fff", //button text white instead of black
-    },
-    twitter: {
-      light: "#2FA9F4",
-      main: "#1DA1F2",
-      dark: "#1B86C8",
-      contrastText: "#fff", //button text white instead of black
-    },
-    facebook: {
-      light: "#3085F3",
-      main: "#1877F2",
-      dark: "#1A66C8",
-      contrastText: "#fff", //button text white instead of black
-    },
-    apple: {
-      light: "#292D34",
-      main: "#15171B",
-      dark: "#0A0A0B",
-      contrastText: "#fff", //button text white instead of black
-    },
+    }
   },
   typography: {
     subtitle1: {
@@ -66,18 +42,18 @@ const theme = createTheme({
   },
 });
 
-const SignInPage = (props) => {
-  
+const ForgetPage = (props) => {
+
   const [input, setInput] = useState({
     email: '',
-    password: ''    
+    password: ''
   });
- 
+
   const [error, setError] = useState({
     email: '',
-    password: ''    
+    password: ''
   })
- 
+
   const onInputChange = e => {
     const { name, value } = e.target
     setInput(prev => ({
@@ -86,12 +62,12 @@ const SignInPage = (props) => {
     }));
     validateInput(e);
   }
- 
+
   const validateInput = e => {
     let { name, value } = e.target;
     setError(prev => {
       const stateObj = { ...prev, [name]: "" };
- 
+
       switch (name) {
         case "email":
           if (!value) {
@@ -101,12 +77,12 @@ const SignInPage = (props) => {
         case "password":
           if (!value) {
             stateObj[name] = "Please enter Password.";
-          } 
+          }
           break;
         default:
           break;
       }
- 
+
       return stateObj;
     });
   }
@@ -163,7 +139,7 @@ const SignInPage = (props) => {
             <div className="text-center">
               <img
                 alt="logo"
-                className="logo"                
+                className="logo"
                 src={logo_primary}
                 style={{ cursor: "pointer" }}
               ></img>
@@ -226,49 +202,6 @@ const SignInPage = (props) => {
                 SIGN IN
                 {/* SIGN IN */}
               </Button>
-              <p className="text-center mt-4">or Sign In with</p>
-              <Grid container columnSpacing={5} rowSpacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <Button
-                    color="google"
-                    fullWidth
-                    variant="contained"
-                    startIcon={<GoogleIcon />}
-                  >
-                    Google
-                  </Button>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Button
-                    color="facebook"
-                    fullWidth
-                    variant="contained"
-                    startIcon={<FacebookIcon />}
-                  >
-                    Facebook
-                  </Button>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Button
-                    color="twitter"
-                    fullWidth
-                    variant="contained"
-                    startIcon={<TwitterIcon />}
-                  >
-                    Twitter
-                  </Button>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Button
-                    color="apple"
-                    fullWidth
-                    variant="contained"
-                    startIcon={<AppleIcon />}
-                  >
-                    Apple
-                  </Button>
-                </Grid>
-              </Grid>
             </div>
           </div>
         </div>
@@ -277,7 +210,7 @@ const SignInPage = (props) => {
   );
 };
 
-SignInPage.propTypes = {
+ForgetPage.propTypes = {
   loginUser: PropTypes.func.isRequired,
 };
 
@@ -286,4 +219,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { loginUser })(SignInPage);
+export default connect(mapStateToProps, { loginUser })(ForgetPage);
