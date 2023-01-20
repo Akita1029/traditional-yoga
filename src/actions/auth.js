@@ -1,7 +1,7 @@
 import axios from "axios";
 import config from "../config/config";
 import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS, LOGOUT } from "./types";
-
+import { toast } from 'react-toastify';
 // Set logged in user
 export const setCurrentUser = (decoded) => {
   return {
@@ -99,11 +99,30 @@ export const registerUser = (regUserData) => (dispatch) => {
     .post(`${config.server}api/users/signup`, regUserData)
     .then((res) => {
       if (res.statusCode === 200) {
-        //Todo Successfully registered Message
-        window.location.href = "/home";
-      } else if (res.statusCode === 500) {
-        //Todo Fail registered Message
+        toast.success('Welcome! You signed up successfully! Please submit the Application Form to start learning yoga now. ', {
+          position: toast.POSITION.TOP_RIGHT
+        });
+        window.location.href = "/ty/courses/main";
+      } else if (res.statusCode === 501) {
+        toast.warning('Sign up fail', {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      } else if (res.statusCode === 502) {
+        toast.warning('Email Exists! Please try again sign up.', {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      } else if (res.statusCode === 201){
+        toast.success('Welcome! You signed up successfully as Admin.', {
+          position: toast.POSITION.TOP_RIGHT
+        });
+        localStorage.setItem("userToken", JSON.stringify(res.data));
+        dispatch({
+          type: SET_CURRENT_USER,
+          payload: res.data,
+        });
+        window.location.href = "/admindashboard";
       }
+
     })
     .catch((err) => {
       dispatch({

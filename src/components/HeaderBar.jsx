@@ -32,7 +32,7 @@ const HeaderBar = () => {
           </div>
           <div className="top-login d-flex flex-row justify-content-center align-items-center">
             <span className="text-primary" onClick={()=>handleRoute('signin')}>Sign In &nbsp;</span>|
-            <span className="text-primary"> &nbsp; Enroll &nbsp; </span>|
+            <span className="text-primary" onClick={()=>handleRoute('signup')}>&nbsp; Enroll &nbsp; </span>|
             <span className="text-primary" onClick={()=>handleRoute('dashboard')}>&nbsp;Dashboard &nbsp;</span>|
             <span className="text-primary" onClick={()=>handleRoute('ty/profile/course')}>&nbsp;Profile &nbsp;</span>|
             <span className="text-primary" onClick={()=>handleRoute('logout')}>&nbsp;Log out&nbsp;</span>

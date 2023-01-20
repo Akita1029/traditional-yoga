@@ -16,7 +16,7 @@ import Button from "@mui/material/Button";
 // Connect redux, action
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../actions/auth";
+import { registerUser } from "../actions/auth";
 
 const theme = createTheme({
   palette: {
@@ -121,11 +121,11 @@ const SignUpPage = (props) => {
               <h1 className="text-primary mt-2">Create Account</h1>
             </div>
             <div className="row">
-              <div className="col-md-12 col-lg-5">
-                <div className="form-group mt-5">
+              <div className="col-md-12 col-lg-6 mt-2">
+                <div className="form-group mt-2">
                   <label>First Name</label>
                   <input
-                    className="form-control mt-2"
+                    className="form-control"
                     id="firstName"
                     placeholder="Enter First Name"
                     onChange={(e) => setFirstName(e.target.value)}
@@ -135,12 +135,11 @@ const SignUpPage = (props) => {
                   )}
                 </div>
               </div>
-              <div className="col-md-12 col-lg-1" />
-              <div className="col-md-12 col-lg-5">
-                <div className="form-group mt-5">
+              <div className="col-md-12 col-lg-6 mt-2">
+                <div className="form-group mt-2">
                   <label>Last Name</label>
                   <input
-                    className="form-control mt-2"
+                    className="form-control"
                     id="lastName"
                     placeholder="Enter Last Name"
                     onChange={(e) => setLastName(e.target.value)}
@@ -152,7 +151,7 @@ const SignUpPage = (props) => {
               </div>
             </div>
             
-            <div className="form-group mt-5">
+            <div className="form-group mt-3">
               <label>Email address</label>
               <input
                 type="email"
@@ -267,4 +266,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { loginUser })(SignUpPage);
+export default connect(mapStateToProps, { registerUser })(SignUpPage);
