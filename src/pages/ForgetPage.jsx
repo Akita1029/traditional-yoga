@@ -66,6 +66,7 @@ const theme = createTheme({
   },
 });
 
+<<<<<<< HEAD
 const SignInPage = (props) => {
   
   const [input, setInput] = useState({
@@ -78,6 +79,20 @@ const SignInPage = (props) => {
     password: ''    
   })
  
+=======
+const ForgetPage = (props) => {
+
+  const [input, setInput] = useState({
+    email: '',
+    password: ''
+  });
+
+  const [error, setError] = useState({
+    email: '',
+    password: ''
+  })
+
+>>>>>>> c406ec26069759ba8d2ff5a2c823d8b1aecffe24
   const onInputChange = e => {
     const { name, value } = e.target
     setInput(prev => ({
@@ -86,12 +101,20 @@ const SignInPage = (props) => {
     }));
     validateInput(e);
   }
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> c406ec26069759ba8d2ff5a2c823d8b1aecffe24
   const validateInput = e => {
     let { name, value } = e.target;
     setError(prev => {
       const stateObj = { ...prev, [name]: "" };
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> c406ec26069759ba8d2ff5a2c823d8b1aecffe24
       switch (name) {
         case "email":
           if (!value) {
@@ -101,12 +124,20 @@ const SignInPage = (props) => {
         case "password":
           if (!value) {
             stateObj[name] = "Please enter Password.";
+<<<<<<< HEAD
           } 
+=======
+          }
+>>>>>>> c406ec26069759ba8d2ff5a2c823d8b1aecffe24
           break;
         default:
           break;
       }
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> c406ec26069759ba8d2ff5a2c823d8b1aecffe24
       return stateObj;
     });
   }
@@ -163,7 +194,11 @@ const SignInPage = (props) => {
             <div className="text-center">
               <img
                 alt="logo"
+<<<<<<< HEAD
                 className="logo"                
+=======
+                className="logo"
+>>>>>>> c406ec26069759ba8d2ff5a2c823d8b1aecffe24
                 src={logo_primary}
                 style={{ cursor: "pointer" }}
               ></img>
@@ -277,7 +312,11 @@ const SignInPage = (props) => {
   );
 };
 
+<<<<<<< HEAD
 SignInPage.propTypes = {
+=======
+ForgetPage.propTypes = {
+>>>>>>> c406ec26069759ba8d2ff5a2c823d8b1aecffe24
   loginUser: PropTypes.func.isRequired,
 };
 
@@ -286,4 +325,8 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
+<<<<<<< HEAD
 export default connect(mapStateToProps, { loginUser })(SignInPage);
+=======
+export default connect(mapStateToProps, { loginUser })(ForgetPage);
+>>>>>>> c406ec26069759ba8d2ff5a2c823d8b1aecffe24
