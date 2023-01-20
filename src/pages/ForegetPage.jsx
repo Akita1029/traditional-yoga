@@ -163,12 +163,11 @@ const SignInPage = (props) => {
             <div className="text-center">
               <img
                 alt="logo"
-                className="logo"
-                onClick={() => handleRoute("")}
+                className="logo"                
                 src={logo_primary}
                 style={{ cursor: "pointer" }}
               ></img>
-              <h1 className="text-primary mt-2">Visit Site</h1>
+              <h1 className="text-primary mt-2">Please Input Verify Email</h1>
             </div>
             <div className="form-group mt-5">
               <label>Email address</label>
