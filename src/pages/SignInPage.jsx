@@ -96,6 +96,12 @@ const SignInPage = (props) => {
     navigate(`/${data}`);
   };
 
+  const handleEnterKeyDown = (event) => {
+    if (event.key === "Enter") {
+      login();
+    }
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <div className="w-100 h-100">
@@ -119,6 +125,7 @@ const SignInPage = (props) => {
             <div className="form-group mt-5">
               <label>Email address</label>
               <input
+                onKeyDown={handleEnterKeyDown}
                 type="email"
                 className="form-control mt-2"
                 id="email"
@@ -132,6 +139,7 @@ const SignInPage = (props) => {
             <div className="form-group mt-3">
               <label>Password</label>
               <input
+                onKeyDown={handleEnterKeyDown}
                 type="password"
                 className="form-control mt-2"
                 id="password"

@@ -13,13 +13,9 @@ const AdminUserManagement = (props) => {
   const [result, setResult] = useState();
   useEffect(() => {
     props.getuserdata();
-    // setAlldata(props.users);
-    // setResult(alldata.data);
   }, []);
   useEffect(() => {
     setAlldata(props.users);
-    setResult(alldata.data);
-    console.log(result, "alluserdata");
   }, [props.users]);
 
   return (
@@ -37,7 +33,7 @@ const AdminUserManagement = (props) => {
           <th>Zip Code</th>
           <th>Role</th>
         </tr>
-        {isEmpty(result) ? (
+        {isEmpty(alldata) ? (
           <tr>
             <td>No data</td>
             <td>No data</td>
@@ -45,7 +41,7 @@ const AdminUserManagement = (props) => {
             <td>No data</td>
           </tr>
         ) : (
-          result.map((item, key) => {
+          alldata.map((item, key) => {
             return (
               <tr key={key}>
                 <td>{item.last_name}</td>
@@ -67,7 +63,7 @@ AdminUserManagement.propTypes = {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  users: state.users,
+  users: state.users.data,
 });
 
 export default connect(mapStateToProps, { getuserdata })(AdminUserManagement);
