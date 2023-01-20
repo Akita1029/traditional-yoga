@@ -11,7 +11,7 @@ import {
 // get user data
 export const getuserdata = () => (dispatch) => {
   axios
-    .post(config.server + "api/users/alldata")
+    .get(config.server + "api/users/alldata")
     .then((res) => {
       dispatch({
         type: GET_USER_DATA,
