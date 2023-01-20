@@ -15,36 +15,76 @@ export const loginUser = (userData) => (dispatch) => {
   axios
     .post(`${config.server}api/users/login`, userData)
     .then((res) => {
-      localStorage.setItem("userToken", JSON.stringify(res.data));
-      dispatch({
-        type: SET_CURRENT_USER,
-        payload: res.data,
-      });
-      switch (res.data.role) {
-        case 0:
-          window.location.href = "/admindashboard";
-          break;
-        case 1:
-          window.location.href = "/admindashboard";
-          break;
-        case 2:
-          window.location.href = "/admindashboard";
-          break;
-        case 3:
-          window.location.href = "/dashboard";
-          break;
-        default:
-          window.location.href = "/dashboard";
-          break;
-      }
+      switch (res.status) {
+        case 200:
+          toast.success('Welcome! You signed in successfully!', {
+            position: toast.POSITION.TOP_RIGHT
+          })  
+          localStorage.setItem("userToken", JSON.stringify(res.data))
+          dispatch({
+            type: SET_CURRENT_USER,
+            payload: res.data,
+          })
+          switch (res.data.role) {
+            case 0:
+              window.location.href = "/admindashboard"
+              break
+            case 1:
+              window.location.href = "/ty/courses/main"
+              break
+            case 2:
+              window.location.href = "/ty/courses/main"
+              break
+            case 3:
+              if(res.data.resetPassword) 
+                window.location.href = "/forget"
+              else
+                window.location.href = "/ty/couress/main"
+              break              
+            default:
+              window.location.href = "/ty/courses/main"
+              break
+          }
+          break
+        case 201:
+          toast.warning('Please wait the approval of mentors or Submit the Application form...', {
+            position: toast.POSITION.TOP_RIGHT
+          })
+          break
+        case 202:
+          toast.error('You are restricted to sign in. Please contacts the support team...', {
+            position: toast.POSITION.TOP_RIGHT
+          })
+          break
+        case 203:
+          toast.warning('Please type correct password...', {
+            position: toast.POSITION.TOP_RIGHT
+          })
+          break
+        case 204:
+          toast.warning('The email you typed not registered...', {
+            position: toast.POSITION.TOP_RIGHT
+          })
+          break
+        case 205:
+          toast.warning('Please type correct credientials...', {
+            position: toast.POSITION.TOP_RIGHT
+          })
+          break
+        default:          
+          toast.warning('Please type correct credientials...', {
+            position: toast.POSITION.TOP_RIGHT
+          })
+          break
+      }      
     })
     .catch((err) => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data,
-      });
-    });
-};
+      })
+  })
+}
 
 // Logout user
 export const logoutUser = () => (dispatch) => {

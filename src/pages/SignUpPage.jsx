@@ -83,7 +83,6 @@ const SignUpPage = (props) => {
   })
  
   const onInputChange = e => {
-    console.log("E:", e.target)
     const { name, value } = e.target
     setInput(prev => ({
       ...prev,
@@ -209,11 +208,11 @@ const SignUpPage = (props) => {
                   <input
                     className="form-control"
                     id="firstName"
-                    name="firstName"
                     onKeyDown={handleEnterKeyDown}
                     placeholder="Enter First Name"
+                    name="firstName"
                     value={input.firstName}
-                    onChange={(e) => onInputChange(e)}
+                    onChange={onInputChange()}
                     onBlur={validateInput}
                   />
                   {error.firstName && <p className='pt-1 text-danger'>{error.firstName}</p>}                  
