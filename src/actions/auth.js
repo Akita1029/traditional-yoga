@@ -20,6 +20,7 @@ export const loginUser = (userData) => (dispatch) => {
           toast.success('Welcome! You signed in successfully!', {
             position: toast.POSITION.TOP_RIGHT
           })
+          console.log("userToken:", res.data)
           localStorage.setItem("userToken", JSON.stringify(res.data))
           dispatch({
             type: SET_CURRENT_USER,
@@ -30,15 +31,13 @@ export const loginUser = (userData) => (dispatch) => {
               window.location.href = "/admindashboard"
               break
             case 1:
-              window.location.href = "/ty/courses/main"
-              break
             case 2:
-              window.location.href = "/ty/courses/main"
+              window.location.href = "/profile"
               break
             case 3:
               console.log(res)
-              if(res.data.resetPassword)
-                window.location.href = "/forget"
+              if(!res.data.resetPassword)
+                window.location.href = "/profile"
               else
                 window.location.href = "/requestreset"
               break

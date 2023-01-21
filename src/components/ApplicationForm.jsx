@@ -21,32 +21,33 @@ const SelectAnswer = styled(Select)({
 
 const ApplicationFrom = (props) => {
 
-  const [selectedCountry, setSelectedCountry] = React.useState();
-  const [selectedState, setSelectedState] = React.useState();
-  const [selectedCity, setSelectedCity] = React.useState();
-  const countries = Country.getAllCountries();
-  const [states, setStates] = React.useState();
-  const [countryDetails, setcountryDetails] = React.useState();
-  const [cities, setCities] = React.useState();
-  const [countryCode, setcountryCode] = React.useState();
-  const [stateCode, setStateCode] = React.useState();
+  const [selectedCountry, setSelectedCountry] = useState()
+  const [selectedState, setSelectedState] = useState()
+  const [selectedCity, setSelectedCity] = useState()
+  const countries = Country.getAllCountries()
+  const [states, setStates] = useState()
+  const [countryDetails, setcountryDetails] = useState()
+  const [cities, setCities] = useState()
+  const [countryCode, setcountryCode] = useState()
+  const [stateCode, setStateCode] = useState()
 
   const setCountryDetails = (e) =>{
-    setcountryCode(e.target.value);
-    setSelectedCountry(Country.getCountryByCode(countryCode).name);
+    setcountryCode(e.target.value)
+    setSelectedCountry(Country.getCountryByCode(countryCode).name)
   }
 
-  const stateList = State.getStatesOfCountry(countryCode);
-  const cityList = City.getCitiesOfState(countryCode, stateCode);
+  const stateList = State.getStatesOfCountry(countryCode)
+  const cityList = City.getCitiesOfState(countryCode, stateCode)
 
   const setStateDetails = (e) =>{
     setStateCode(e.target.value)
-    setSelectedCountry(State.getStateByCodeAndCountry(stateCode, countryCode).name);
+    setSelectedCountry(State.getStateByCodeAndCountry(stateCode, countryCode).name)
   }
 
   useEffect(() => {
 
   }, []);
+
   const take = () => {
     const regData = {
       firstName: input.firstName,
@@ -322,6 +323,7 @@ const ApplicationFrom = (props) => {
                     defaultValue={'yes'}
                     id="ryit_cert"
                     onChange={(e) => setRYITCert(e)}
+                    size="small"
                   >
                     <MenuItem value='yes'>Yes</MenuItem>
                     <MenuItem value='no'>No</MenuItem>
@@ -414,6 +416,7 @@ const ApplicationFrom = (props) => {
                     id="country"
                     placeholder="Choose Country"
                     onChange={setCountryDetails}
+                    size="small"
                   >
                     {countries.map((value, key) => {
                       return (
@@ -451,6 +454,7 @@ const ApplicationFrom = (props) => {
                     id="state"
                     placeholder="Choose State"
                     onChange={setStateDetails}
+                    size="small"
                   >
                     {stateList.map((states, key) => {
                       return (
@@ -466,6 +470,7 @@ const ApplicationFrom = (props) => {
                     id="city"
                     placeholder="Choose City"
                     onChange={(e) => setSelectedCity(e.target.value)}
+                    size="small"
                   >
                     {cityList.map((city, key) => {
                       return (

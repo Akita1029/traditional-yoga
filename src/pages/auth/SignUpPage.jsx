@@ -141,9 +141,9 @@ const SignUpPage = (props) => {
 
   const handleEnterKeyDown = (event) => {
     if (event.key === "Enter") {
-      register();
+      register()
     }
-  };
+  }
 
   const register = () => {
     console.log(error)
@@ -158,13 +158,13 @@ const SignUpPage = (props) => {
     } else {
       toast.warning('Please Enter all required fileds.', {
         position: toast.POSITION.TOP_RIGHT
-      });
+      })
     }
-  };
+  }
 
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
-  });
+  })
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const isDesktop = useMediaQuery({ query: "(min-width:992px)" });
