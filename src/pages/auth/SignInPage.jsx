@@ -180,7 +180,7 @@ const SignInPage = (props) => {
                 placeholder="Enter email"
                 name="email"
                 value={input.email}
-                onChange={onInputChange()}
+                onChange={onInputChange}
                 onBlur={validateInput}
               />
               {error.email && <p className='pt-1 text-danger'>{error.email}</p>}
@@ -195,7 +195,7 @@ const SignInPage = (props) => {
                 placeholder="Enter password"
                 name="password"
                 value={input.password}
-                onChange={onInputChange()}
+                onChange={onInputChange}
                 onBlur={validateInput}
               />
               {error.password && <p className='pt-1 text-danger'>{error.password}</p>}

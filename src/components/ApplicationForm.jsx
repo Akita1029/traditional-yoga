@@ -276,7 +276,7 @@ const ApplicationFrom = (props) => {
                     id="firstName"
                     name="email"
                     value={input.firstName}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.firstName && <p className='pt-1 text-danger'>{error.firstName}</p>}
@@ -288,7 +288,7 @@ const ApplicationFrom = (props) => {
                     id="lastName"
                     name="lastName"
                     value={input.lastName}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.lastName && <p className='pt-1 text-danger'>{error.lastName}</p>}
@@ -308,7 +308,7 @@ const ApplicationFrom = (props) => {
                     id="birthDate"
                     name="birthDate"
                     value={input.birthDate}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.birthDate && <p className='pt-1 text-danger'>{error.birthDate}</p>}
@@ -346,7 +346,7 @@ const ApplicationFrom = (props) => {
                     id="whatsapp"
                     name="whatsapp"
                     value={input.whatsapp}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.whatsapp && <p className='pt-1 text-danger'>{error.whatsapp}</p>}
@@ -361,7 +361,7 @@ const ApplicationFrom = (props) => {
                     id="email"
                     name="email"
                     value={input.email}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.email && <p className='pt-1 text-danger'>{error.email}</p>}
@@ -373,7 +373,7 @@ const ApplicationFrom = (props) => {
                     id="language"
                     name="language"
                     value={input.language}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.language && <p className='pt-1 text-danger'>{error.language}</p>}
@@ -385,7 +385,7 @@ const ApplicationFrom = (props) => {
                     id="occupation"
                     name="occupation"
                     value={input.occupation}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.occupation && <p className='pt-1 text-danger'>{error.occupation}</p>}
@@ -397,7 +397,7 @@ const ApplicationFrom = (props) => {
                     id="education"
                     name="education"
                     value={input.education}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.education && <p className='pt-1 text-danger'>{error.education}</p>}
@@ -429,7 +429,7 @@ const ApplicationFrom = (props) => {
                     id="streetAddress"
                     name="address1"
                     value={input.address1}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.address1 && <p className='pt-1 text-danger'>{error.address1}</p>}
@@ -481,7 +481,7 @@ const ApplicationFrom = (props) => {
                     id="zipcode"
                     name="zipcode"
                     value={input.zipcode}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.zipcode && <p className='pt-1 text-danger'>{error.zipcode}</p>}
@@ -498,7 +498,7 @@ const ApplicationFrom = (props) => {
                     id="relationship"
                     name="relationship"
                     value={input.relationship}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.relationship && <p className='pt-1 text-danger'>{error.relationship}</p>}
@@ -510,7 +510,7 @@ const ApplicationFrom = (props) => {
                     id="memberContactNumber"
                     name="familycontacts"
                     value={input.familycontacts}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.familycontacts && <p className='pt-1 text-danger'>{error.familycontacts}</p>}
@@ -536,7 +536,7 @@ const ApplicationFrom = (props) => {
                     id="courseOutline"
                     name="courseoutline"
                     value={input.courseoutline}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.courseoutline && <p className='pt-1 text-danger'>{error.courseoutline}</p>}
@@ -551,7 +551,7 @@ const ApplicationFrom = (props) => {
                     id="everPractice"
                     name="pastpractice"
                     value={input.pastpractice}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.pastpractice && <p className='pt-1 text-danger'>{error.pastpractice}</p>}
@@ -565,7 +565,7 @@ const ApplicationFrom = (props) => {
                     id="ethosText"
                     name="ethostext"
                     value={input.courseethostext}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.courseethostext && <p className='pt-1 text-danger'>{error.courseethostext}</p>}
@@ -577,7 +577,7 @@ const ApplicationFrom = (props) => {
                     id="communication"
                     name="communication"
                     value={input.communication}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.communication && <p className='pt-1 text-danger'>{error.communication}</p>}
@@ -591,7 +591,7 @@ const ApplicationFrom = (props) => {
                     id="courseDiscipline"
                     name="coursediscipline"
                     value={input.coursediscipline}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.coursediscipline && <p className='pt-1 text-danger'>{error.coursediscipline}</p>}
@@ -605,7 +605,7 @@ const ApplicationFrom = (props) => {
                     id="vedic"
                     name="vedic"
                     value={input.vedic}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.vedic && <p className='pt-1 text-danger'>{error.vedic}</p>}
@@ -617,7 +617,7 @@ const ApplicationFrom = (props) => {
                     id="disciplineCode"
                     name="codediscipline"
                     value={input.codediscipline}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.codediscipline && <p className='pt-1 text-danger'>{error.codediscipline}</p>}
@@ -631,7 +631,7 @@ const ApplicationFrom = (props) => {
                     id="contactDetail"
                     name="contactdetails"
                     value={input.contactdetails}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.contactdetails && <p className='pt-1 text-danger'>{error.contactdetails}</p>}
