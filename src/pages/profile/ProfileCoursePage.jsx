@@ -1,12 +1,70 @@
-import React from "react";
+import React, { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import "react-multi-carousel/lib/styles.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import CourseProgressItem from "../../components/CourseProgressItem";
 import CertificateItem from "../../components/CertificateItem";
 import ProfileApplicationFrom from "../../components/ProfileApplicationFormItem";
+import config from "../../config/config"
+import axios from "axios"
+import { toast } from 'react-toastify'
 
 const ProfileCoursePage = (props) => {
 
+  const [email, setEmail] = useState()
+  const navigate = useNavigate()
+  const [courses, setCourses] = useState([])
+  const [pastPractice, setPastPractice] = useState()
+  const [certificates, setCertificates] = useState([])
+  const [appForms, setAppForms] = useState({})
+
+  useEffect(() => {
+    if (localStorage.userToken) {
+      let user = JSON.parse(localStorage.userToken).user
+      setEmail(user.email)
+      axios.post(`${config.server}api/courses/getUserCourses`, {
+        email: user.email
+        })
+        .then(response => {
+          setCourses(response.data.courses)
+        })
+        .catch(error => {
+          console.log(error.data)
+        })
+      axios.post(`${config.server}api/students/getUserPastPractice`, {
+        email: user.email
+        })
+        .then(response => {
+          setPastPractice(response.data.pastPractice)
+        })
+        .catch(error => {
+          console.log(error.data)
+        })
+      axios.post(`${config.server}api/students/getUserCertificates`, {
+        email: user.email
+        })
+        .then(response => {
+          setCertificates(response.data)
+        })
+        .catch(error => {
+          console.log(error.data)
+        })
+      axios.post(`${config.server}api/students/getUserApplicationForm`, {
+        email: user.email
+        })
+        .then(response => {
+          setAppForms(response.data.appForms)
+        })
+        .catch(error => {
+          console.log(error.data)
+        })
+    } else {
+      navigate("/")
+      toast.warning("You can't access this page", {
+        position: toast.POSITION.TOP_RIGHT
+      })
+    }
+  }, [])
   return (
     <>
       <Tabs>
@@ -44,110 +102,42 @@ const ProfileCoursePage = (props) => {
         >
           <TabPanel className="row">
             <div className="col-12 px-5">
-              <CourseProgressItem image="inperson-training-course.png" title="(RYIT 200) Free Online Traditional" progress={30}
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Donec augue arcu, condimentum vitae imperdiet eu." />
-              <CourseProgressItem image="past-training-course.png" title="(RYIT 200) Free Online Traditional" progress={30}
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Donec augue arcu, condimentum vitae imperdiet eu." />
-              <CourseProgressItem image="retreats-course.png" title="(RYIT 200) Free Online Traditional" progress={30}
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Donec augue arcu, condimentum vitae imperdiet eu." />
+              { courses && courses.map(course => {
+                return (
+                <CourseProgressItem
+                  image={course.instructor_photo}
+                  title={course.title}
+                  progress={course.progress}
+                  content={course.detail_content} />
+                )
+              })}
             </div>
           </TabPanel>
           <TabPanel className="row">
             <div className="col-12">
               <div className="d-flex flex-column justify-content-center align-items-start p-2 px-4">
                 <span className="content" style={{ fontSize: "12px" }}>
-                  Dr Kumar is internationally recognized as an inspirational
-                  yoga and meditation teacher aswell as an award-winning
-                  scientist. His teaching is informed by his extensive
-                  experiential and theoretical knowledge, developed through
-                  his education in more than 37 schools of Hatha yoga and 50
-                  traditions of meditation and progressed through decades of
-                  self-practice. Nullam suscipit nisi id commodo pellentesque.
-                  Donec laoreet enim libero, ut consequat quam eleifend vel.
-                  Aliquam et ultrices diam, a placerat dui. Vivamus egestas
-                  viverra lectus, eget dictum dolor imperdiet in. Nunc
-                  sollicitudin, ligula in condimentum ultricies, augue libero
-                  eleifend orci, non semper velit purus at tortor. Maecenas
-                  tincidunt, urna viverra congue porttitor, velit erat
-                  ullamcorper purus, sed pellentesque libero enim id felis.
-                  Mauris feugiat leo eget venenatis finibus. Ut rutrum, libero
-                  ac blandit gravida, arcu orci fermentum purus, id malesuada
-                  mi libero dignissim neque. Orci varius natoque penatibus et
-                  magnis dis parturient montes, nascetur ridiculus mus.
-                  Praesent tempus, sapien sed varius volutpat, orci enim
-                  consequat justo, eu dapibus est purus sit amet nibh. Nulla
-                  sed risus a massa facilisis convallis. Maecenas vestibulum
-                  nunc et malesuada condimentum. Vivamus vitae quam mollis,
-                  pulvinar dolor vel, ultricies erat. Mauris justo sem,
-                  euismod congue egestas in, volutpat a nulla. Donec dui
-                  lorem, convallis at nulla nec, malesuada laoreet magna. In
-                  ac erat in velit rutrum ullamcorper. Sed neque odio, aliquam
-                  a mattis non, imperdiet id mi. Interdum et malesuada fames
-                  ac ante ipsum primis in faucibus. Fusce gravida erat eu enim
-                  euismod viverra. Nunc sit amet imperdiet ex. Nullam eu odio
-                  quam. Phasellus placerat nibh a lorem pretium, quis ultrices
-                  orci tincidunt. Sed imperdiet vehicula risus, in auctor sem
-                  ornare non. Donec a odio eu ipsum sagittis viverra sed id
-                  leo. Quisque quam felis, aliquet a risus at, porta
-                  pellentesque nisl. Vivamus tempor libero vitae purus
-                  pulvinar scelerisque. Vivamus rutrum vel dui quis elementum.
-                  Interdum et malesuada fames ac ante ipsum primis in
-                  faucibus. Mauris in enim finibus, ullamcorper arcu vitae,
-                  imperdiet leo. Maecenas pharetra, sapien ac accumsan
-                  volutpat, nisl justo tempus orci, non accumsan turpis nunc
-                  convallis nulla. Class aptent taciti sociosqu ad litora
-                  torquent per conubia nostra, per inceptos himenaeos.
-                  Interdum et malesuada fames ac ante ipsum primis in
-                  faucibus. Vestibulum eu odio sed tellus sagittis rhoncus.
-                  Nam sem sem, efficitur posuere risus et, tincidunt feugiat
-                  mauris. Morbi ligula felis, luctus et interdum ut, semper in
-                  metus. Curabitur efficitur iaculis pellentesque. Integer
-                  interdum ut tortor ut fringilla. Nam aliquam risus nisi, vel
-                  venenatis leo luctus eu. Sed lacinia egestas ex a tristique.
-                  Mauris ut arcu condimentum, faucibus dui a, vulputate dui.
-                  Nulla quis sem nec velit tempus consequat sit amet rhoncus
-                  metus. Aliquam sollicitudin neque nec turpis sollicitudin,
-                  eget mattis lectus pretium. Pellentesque porttitor orci quis
-                  dolor posuere, eget ullamcorper massa luctus. Curabitur id
-                  iaculis augue, commodo scelerisque felis. Phasellus non
-                  rutrum lorem, quis pulvinar urna. Integer sed placerat ex,
-                  et maximus nisl. Donec lacinia posuere mollis. Praesent sit
-                  amet felis ut sapien condimentum volutpat quis sodales
-                  neque. Morbi id rhoncus felis, at tempor est. Ut mattis
-                  faucibus tortor eget pharetra. Maecenas eu erat ligula.
-                  Vivamus rutrum tellus tincidunt, venenatis odio ut, rhoncus
-                  lectus. Mauris consectetur risus pretium felis viverra, a
-                  pharetra lacus facilisis. Sed porta nibh non diam rutrum,
-                  non pharetra urna tempus. Proin condimentum porttitor elit,
-                  varius iaculis est mollis nec. Nulla maximus tincidunt sem
-                  ut finibus. Cras rhoncus, velit pretium auctor tincidunt,
-                  tortor mauris tristique tortor, id congue sapien risus id
-                  lectus. Fusce odio velit, rhoncus quis justo vitae,
-                  hendrerit porta dui. Nullam eu quam ante. Nullam ut diam
-                  maximus, pulvinar augue nec, cursus diam.
+                  { pastPractice ? pastPractice : ""}
                 </span>
               </div>
             </div>
           </TabPanel>
           <TabPanel className="row">
             <div className="col-12 px-5">
-              <CertificateItem image="certificate.png" title="Teacher Certificate RYIT 300"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Donec augue arcu, condimentum vitae imperdiet eu." />
-              <CertificateItem image="certificate.png" title="Teacher Certificate RYIT 300"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Donec augue arcu, condimentum vitae imperdiet eu." />
-              <CertificateItem image="certificate.png" title="Teacher Certificate RYIT 300"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Donec augue arcu, condimentum vitae imperdiet eu." />
+              { certificates && certificates.map(certification => {
+                return (
+                <CertificateItem
+                  image={certification.bg_image}
+                  title={certification.title}
+                  content={certification.content} />
+                )
+              })}
             </div>
           </TabPanel>
           <TabPanel className="row">
             <div className="col-12 px-5">
-              <ProfileApplicationFrom />
+              <ProfileApplicationFrom
+                form = {appForms} />
             </div>
           </TabPanel>
         </div>
