@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
+import { gapi } from "gapi-script";
 import { useNavigate, Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import logo from "../assets/logo-white.png";
@@ -16,7 +18,7 @@ import Button from "@mui/material/Button";
 // Connect redux, action
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../actions/auth";
+import { loginUser, setCurrentGoogleUser } from "../actions/auth";
 
 const theme = createTheme({
   palette: {
@@ -95,6 +97,30 @@ const SignInPage = (props) => {
   const handleRoute = (data) => {
     navigate(`/${data}`);
   };
+
+  // Google login
+  const clientId =
+    "96350528532-2au8sfi0q99koj4p5qa3jdqa3grfhm0h.apps.googleusercontent.com";
+
+  useEffect(() => {
+    const initClient = () => {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    };
+    gapi.load("client:auth2", initClient);
+  });
+
+  const onSuccess = (res) => {
+    // props.setCurrentGoogleUser(res);
+    // window.location.href = "/dashboard";
+    console.log(res);
+  };
+  const onFailure = (err) => {
+    console.log("failed:", err);
+  };
+  // end
 
   return (
     <ThemeProvider theme={theme}>
@@ -178,7 +204,14 @@ const SignInPage = (props) => {
                     variant="contained"
                     startIcon={<GoogleIcon />}
                   >
-                    Google
+                    <GoogleLogin
+                      clientId={clientId}
+                      buttonText="Sign in with Google"
+                      onSuccess={onSuccess}
+                      onFailure={onFailure}
+                      cookiePolicy={"single_host_origin"}
+                      isSignedIn={true}
+                    />
                   </Button>
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -222,6 +255,7 @@ const SignInPage = (props) => {
 
 SignInPage.propTypes = {
   loginUser: PropTypes.func.isRequired,
+  setCurrentGoogleUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -229,4 +263,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { loginUser })(SignInPage);
+export default connect(mapStateToProps, { loginUser, setCurrentGoogleUser })(
+  SignInPage
+);
