@@ -66,7 +66,11 @@ const SideMenu = ({ onSelectMenu, currentMenu, expanded }) => {
   return (
     <div className={getSidebarStyle()}>
       <div className="side-menu-logo">
-        <img src={logo} alt="Dashboard Primary Logo" onClick={() => handleRoute("/")}/>
+        <img
+          style={{ cursor: "pointer" }}
+          src={logo}
+          alt="Dashboard Primary Logo"
+          onClick={() => handleRoute("")}/>
       </div>
       <List component="nav">
         {menuItems.map((menuItem) =>
