@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useMediaQuery } from "react-responsive"
-import logo from "../assets/logo-white.png"
-import logo_primary from "../assets/logo-primary.png"
-import "../assets/css/signin.css"
+import logo from "../../assets/logo-white.png"
+import logo_primary from "../../assets/logo-primary.png"
+import "../../assets/css/signin.css"
 
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import Button from "@mui/material/Button"
