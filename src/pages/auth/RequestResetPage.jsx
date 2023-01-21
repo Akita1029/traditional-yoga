@@ -62,6 +62,11 @@ const RequestResetPage = (props) => {
               ></img>
               <h1 className="text-primary mt-2">You can now reset the login credientials, Will you reset it?</h1>
             </div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <div className="row">
               <div className="col-md-12 col-lg-6 mt-2">
                 <Button

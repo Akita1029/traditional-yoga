@@ -95,6 +95,12 @@ const ForgetPage = (props) => {
           toast.success('Password Reset Email Successfully Sent!', {
             position: toast.POSITION.TOP_RIGHT
           });
+        } else if(response.status === 203){
+          setShowError(true)
+          setMessage("")
+          toast.success('Password Reset Email Send Fail!', {
+            position: toast.POSITION.TOP_RIGHT
+          });
         }
       })
       .catch(error => {
