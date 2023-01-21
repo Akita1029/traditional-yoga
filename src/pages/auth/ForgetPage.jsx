@@ -83,13 +83,13 @@ const ForgetPage = (props) => {
         email: input.email
       })
       .then(response => {
-        if(response.data.message === "not_registered"){
+        if(response.status === 204){
           setShowError(true)
           setMessage("")
           toast.warning("The email address isn't recognized. Please try again or register for a new acccunt", {
             position: toast.POSITION.TOP_RIGHT
           });
-        } else if(response.data === "email_sent"){
+        } else if(response.status === 200){
           setShowError(false)
           setMessage("email_sent")
           toast.success('Password Reset Email Successfully Sent!', {
@@ -200,7 +200,7 @@ const ForgetPage = (props) => {
                           width: "100%",
                           height: "100%",
                         }}
-                        onClick={() => handleRoute("/signup")}
+                        onClick={() => handleRoute("signup")}
                       >
                         Sign Up
                       </Button>

@@ -146,8 +146,8 @@ const SignUpPage = (props) => {
   };
 
   const register = () => {
-
-    if(!error.firstName && !error.lastName && !error.password && !error.email && error.confirmPassword){
+    console.log(error)
+    if(error.firstName == '' && error.lastName == '' && error.password == '' && error.email == '' && error.confirmPassword == ''){
       const regUserData = {
         firstname: input.firstName,
         lastname: input.lastName,
@@ -206,7 +206,7 @@ const SignUpPage = (props) => {
                 <div className="form-group mt-2">
                   <label>First Name</label>
                   <input
-                    className="form-control"
+                    className="form-control mt-2"
                     id="firstName"
                     onKeyDown={handleEnterKeyDown}
                     placeholder="Enter First Name"
@@ -222,7 +222,7 @@ const SignUpPage = (props) => {
                 <div className="form-group mt-2">
                   <label>Last Name</label>
                   <input
-                    className="form-control"
+                    className="form-control mt-2"
                     id="lastName"
                     name="lastName"
                     onKeyDown={handleEnterKeyDown}
