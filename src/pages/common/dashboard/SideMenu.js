@@ -8,8 +8,14 @@ import {
 } from "@mui/material";
 import logo from "../../../assets/images/logo-primary.png";
 import { menuItems } from "../../../utilities/config";
+import { useNavigate, Link } from "react-router-dom";
 
 const SideMenu = ({ onSelectMenu, currentMenu, expanded }) => {
+  const navigate = useNavigate();
+  const handleRoute = (data) => {
+    navigate(`/${data}`);
+  };
+
   function RenderSubHeader(menuItem) {
     return (
       <ListSubheader
@@ -60,7 +66,7 @@ const SideMenu = ({ onSelectMenu, currentMenu, expanded }) => {
   return (
     <div className={getSidebarStyle()}>
       <div className="side-menu-logo">
-        <img src={logo} alt="Dashboard Primary Logo" />
+        <img src={logo} alt="Dashboard Primary Logo" onClick={() => handleRoute("/")}/>
       </div>
       <List component="nav">
         {menuItems.map((menuItem) =>
