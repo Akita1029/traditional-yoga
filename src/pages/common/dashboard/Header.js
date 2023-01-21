@@ -33,7 +33,7 @@ const Mainhead = ({ menu, expanded, onToggleSidebar, authstate, logout }) => {
       </div>
       {authstate === true ? (
         <div>
-          <button onClick={() => logout()}>Logout</button>
+          {/* <button onClick={() => logout()}>Logout</button> */}
         </div>
       ) : (
         <div></div>
