@@ -149,7 +149,7 @@ const ForgetPage = (props) => {
                 placeholder="Enter email"
                 name="email"
                 value={input.email}
-                onChange={onInputChange()}
+                onChange={onInputChange}
                 onBlur={validateInput}
               />
               {error.email && <p className='pt-1 text-danger'>{error.email}</p>}
