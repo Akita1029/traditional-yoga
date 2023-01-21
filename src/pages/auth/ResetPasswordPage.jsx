@@ -39,7 +39,7 @@ const ResetPasswordPage = (props) => {
 
   const [input, setInput] = useState({
     password: '',
-    confirmPassword
+    confirmPassword: ''
   })
 
   const [inputerror, setInputError] = useState({
@@ -59,11 +59,9 @@ const ResetPasswordPage = (props) => {
       if(response.data.message === 'link_ok'){
         setEmail(response.data.email)
         setUpdated(false)
-        setIsLoading(false)
         setError(false)
       } else {
         setUpdated(false)
-        setIsLoading(false)
         setError(true)
         toast.warning('The Password reset link is invalid or has expired', {
           position: toast.POSITION.TOP_RIGHT

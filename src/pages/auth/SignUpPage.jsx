@@ -212,7 +212,7 @@ const SignUpPage = (props) => {
                     placeholder="Enter First Name"
                     name="firstName"
                     value={input.firstName}
-                    onChange={onInputChange()}
+                    onChange={onInputChange}
                     onBlur={validateInput}
                   />
                   {error.firstName && <p className='pt-1 text-danger'>{error.firstName}</p>}
