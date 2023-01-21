@@ -36,6 +36,7 @@ export const loginUser = (userData) => (dispatch) => {
               window.location.href = "/ty/courses/main"
               break
             case 3:
+              console.log(res)
               if(res.data.resetPassword)
                 window.location.href = "/forget"
               else

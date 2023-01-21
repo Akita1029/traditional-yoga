@@ -88,7 +88,7 @@ const RequestResetPage = (props) => {
                     width: "100%",
                     height: "100%",
                   }}
-                  onClick={()=> handleRoute('/forget')}
+                  onClick={()=> handleRoute('forget')}
                 >
                   Yes
                 </Button>
