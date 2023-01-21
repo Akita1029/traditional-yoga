@@ -1,27 +1,52 @@
 import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"
+import { useMediaQuery } from "react-responsive"
 import { Image } from 'react-bootstrap'
-import logo from "../assets/logo-primary.png";
+import logo from "../assets/logo-primary.png"
 import "../assets/css/header.css"
+import { toast } from 'react-toastify';
+// Connect redux, action
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
+import { logoutUser } from "../actions/auth"
 
-const HeaderBar = () => {
 
-  const navigate = useNavigate();
-  const [navIndex, setNavIndex] = useState(1);
+const HeaderBar = (props) => {
+
+  const navigate = useNavigate()
+  const [navIndex, setNavIndex] = useState(1)
 
   const handleRoute = (data, index) => {
-    setNavIndex(index);
-    navigate(`/${data}`);
+    setNavIndex(index)
+    navigate(`/${data}`)
   }
-  const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1170px)' });
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1170px)' });
 
-  React.useEffect(() => {
+  const logout = () => {
+    props.logoutUser()
+    localStorage.removeItem("userToken")
+    toast.success('Signed Out!', {
+      position: toast.POSITION.TOP_RIGHT
+    })
+    setIsAuth(false)
+    setAuthUser({})
+    navigate('/')
+  }
 
-  }, [isTabletOrMobile]);
+  const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1170px)' })
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1170px)' })
 
+  const [isAuth, setIsAuth] = useState()
+  const [AuthUser, setAuthUser] = useState({})
+  // Save user token to redux
+  useEffect(() => {
+    if (localStorage.userToken) {
+      setIsAuth(true);
+      setAuthUser((JSON.parse(localStorage.userToken)).user)
+    } else {
+      setIsAuth(false);
+    }
+  }, []);
   return (
     <div className="w-100">
       {isDesktopOrLaptop && (
@@ -31,25 +56,30 @@ const HeaderBar = () => {
               <span><i className="bi bi-record2 fs-6"></i>Welcome to our TRADITIONAL YOGA</span>
             </div>
             <div className="top-login d-flex flex-row justify-content-center align-items-center">
-              <li className="nav-item dropdown">
-                <a className="dropbtn nav-link">
-                  <div className="d-flex" style={{ cursor: 'pointer' }}>
-                    <Image className="me-2" roundedCircle width={40} height={40} src={require("../assets/images/past-training-course.png")} />
-                    <div className="fs-3">Daniyl Wisom</div>
+              {
+                isAuth ? (
+                  <li className="nav-item dropdown">
+                    <a className="dropbtn nav-link">
+                      <div className="d-flex" style={{ cursor: 'pointer' }}>
+                        <Image className="me-2 mt-2" roundedCircle width={35} height={35} src={require("../assets/images/past-training-course.png")} />
+                        <div className="fs-7 mt-2">{AuthUser.nick_name !== null ? AuthUser.nick_name : AuthUser.first_name + " " + AuthUser.last_name}</div>
+                      </div>
+                    </a>
+                    <div className="dropdown-content">
+                      <div className="fs-5 text-end py-2 px-3">
+                        <h5 style={{ cursor: 'pointer' }} className="mb-3" onClick={()=>handleRoute('profile')}>&nbsp;Profile &nbsp;</h5>
+                        <h5 style={{ cursor: 'pointer' }} className="mb-3" onClick={()=>handleRoute('dashboard')}>&nbsp;Dashboard &nbsp;</h5>
+                        <h5 style={{ cursor: 'pointer' }} onClick={()=>logout()}>&nbsp;Log out&nbsp;</h5>
+                      </div>
+                    </div>
+                  </li>
+                ) : (
+                  <div>
+                    <span className="text-primary" onClick={()=>handleRoute('signin')}>&nbsp;Sign In &nbsp;</span>|
+                    <span className="text-primary" onClick={()=>handleRoute('signup')}>&nbsp;Sign Up &nbsp;</span>
                   </div>
-                </a>
-                <div className="dropdown-content">
-                  <div className="fs-5 text-end py-4 px-3">
-                    <h5 style={{ cursor: 'pointer' }} className="mb-3" onClick={()=>handleRoute('ty/profile/course')}>&nbsp;Profile &nbsp;</h5>
-                    <h5 style={{ cursor: 'pointer' }} className="mb-3" onClick={()=>handleRoute('dashboard')}>&nbsp;Dashboard &nbsp;</h5>
-                    <h5 style={{ cursor: 'pointer' }} onClick={()=>handleRoute('logout')}>&nbsp;Log out&nbsp;</h5>
-                  </div>
-                </div>
-              </li>
-              
-            {/* <span className="text-primary" onClick={()=>handleRoute('dashboard')}>&nbsp;Dashboard &nbsp;</span>|
-            <span className="text-primary" onClick={()=>handleRoute('ty/profile/course')}>&nbsp;Profile &nbsp;</span>|
-            <span className="text-primary" onClick={()=>handleRoute('logout')}>&nbsp;Log out&nbsp;</span> */}
+                )
+              }
             </div>
           </div>
           <div className="main-menu-bar d-flex flex-row justify-content-between align-items-center shadow-sm ps-8 pe-8" >
@@ -116,4 +146,13 @@ const HeaderBar = () => {
   );
 }
 
-export default HeaderBar;
+HeaderBar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors,
+});
+
+export default connect(mapStateToProps, { logoutUser })(HeaderBar);

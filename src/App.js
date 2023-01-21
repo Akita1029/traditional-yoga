@@ -132,11 +132,11 @@ function App() {
                 element={<AdminDashboardLayout setfunc={setfunc} />}
               >
                 <Route
-                  path=""
+                  path="user_manage"
                   element={<AdminUserManagement expandflag={expandflag} />}
                 />
                 <Route
-                  path="admincourse"
+                  path="course_manage"
                   element={<AdminCourseManagement expandflag={expandflag} />}
                 />
               </Route>

@@ -98,7 +98,7 @@ const ForgetPage = (props) => {
         } else if(response.status === 203){
           setShowError(true)
           setMessage("")
-          toast.success('Password Reset Email Send Fail!', {
+          toast.warning('Password Reset Email Send Fail!', {
             position: toast.POSITION.TOP_RIGHT
           });
         }

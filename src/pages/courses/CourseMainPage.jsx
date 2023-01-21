@@ -49,11 +49,10 @@ const CourseMainPage = () => {
 
   useEffect(() => {
     axios.get(`${config.server}api/courses/load_online_courses`).then(response => {
-      console.log(response)
       if (response.status === 200) {
         setOnlineCourses(response.data)
-      }      
-    }).catch(e => console.log(e));    
+      }
+    }).catch(e => console.log(e));
   }, []);
 
   const navigate = useNavigate();
@@ -69,7 +68,7 @@ const CourseMainPage = () => {
         <p className="text-primary fw-bold" style={{fontSize:'20px'}}>Online Courses</p>
         <a className="text-primary fw-bold" style={{fontSize:'12px', cursor:'pointer', textDecoration:'none'}} onClick={()=> handleRoute('ty/courses/online')}>Read more...</a>
       </div>
-      <Carousel 
+      <Carousel
         responsive = {responsive}
         swipeable = {false}
         draggable = {true}
@@ -91,7 +90,7 @@ const CourseMainPage = () => {
                 type = {course.category === 0 ? "Private Course" : "Public Course"}
                 image={course.instructor_photo} />            )
           })
-        }                
+        }
       </Carousel>
       <div className="d-flex flex-row justify-content-between align-items-center mt-3" id="Retreats">
         <p className="text-primary fw-bold" style={{fontSize:'20px'}}>Retreats</p>
@@ -125,8 +124,8 @@ const CourseMainPage = () => {
                           <img key={course.id} src={require('../../assets/images/' + course.instructor_photo)} width="100%"/>
                         </div>
                       )
-                    })                    
-                  }                  
+                    })
+                  }
                 </Carousel>
                 <div className="d-flex flex-column justify-content-center align-items-start p-2 px-4">
                   <p className="fw-bold sm-title mt-4">Course Title</p>
@@ -176,7 +175,7 @@ const CourseMainPage = () => {
                     })
                   }
                 </Carousel>
-              </div>  
+              </div>
             </TabPanel>
           </div>
         </Tabs>
@@ -196,7 +195,7 @@ const CourseMainPage = () => {
         </div>
         <div className="p-3">
 
-          <Carousel 
+          <Carousel
             responsive = {responsive}
             swipeable = {false}
             draggable = {true}
@@ -216,10 +215,10 @@ const CourseMainPage = () => {
                     title = {course.title}
                     description = {course.detail_content}
                     type = {course.category === 0 ? "Private Course" : "Public Course"}
-                    image={course.instructor_photo} />            
+                    image={course.instructor_photo} />
                 )
               })
-            }  
+            }
           </Carousel>
         </div>
       </div>
@@ -238,10 +237,10 @@ const CourseMainPage = () => {
         <div className="col-sm-12 col-xs-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center">
           <img className="w-100" src={require('../../assets/images/Guru.webp')} />
         </div>
-        
+
         <div className="p-3">
 
-          <Carousel 
+          <Carousel
             responsive = {responsive}
             swipeable = {false}
             draggable = {true}
@@ -261,7 +260,7 @@ const CourseMainPage = () => {
                     title = {course.title}
                     description = {course.detail_content}
                     type = {course.category === 0 ? "Private Course" : "Public Course"}
-                    image={course.instructor_photo} />            
+                    image={course.instructor_photo} />
                 )
               })
             }

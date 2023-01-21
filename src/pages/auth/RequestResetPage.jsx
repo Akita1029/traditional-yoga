@@ -53,6 +53,11 @@ const RequestResetPage = (props) => {
             </div>
           )}
           <div className="col-md-12 col-lg-6 singin-info-container">
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <div className="text-center">
               <img
                 alt="logo"
@@ -78,7 +83,7 @@ const RequestResetPage = (props) => {
                     width: "100%",
                     height: "100%",
                   }}
-                  onClick={()=> handleRoute('/ty/courses/main')}
+                  onClick={()=> handleRoute('ty/courses/main')}
                 >
                   No
                 </Button>
