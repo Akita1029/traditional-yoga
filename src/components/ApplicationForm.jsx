@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import Modal from 'react-bootstrap/Modal'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -9,7 +9,7 @@ import { Country, State, City }  from 'country-state-city'
 import { toast } from 'react-toastify'
 import config from "../config/config"
 import axios from "axios"
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const ApplicationForm = (props) => {
 
@@ -42,11 +42,11 @@ const ApplicationForm = (props) => {
   }, []);
 
   const take = () => {
-    if(error.firstName === "" && error.lastName === "" && error.birthDate === "" ||
-    error.whatsapp === "" && error.language === "" && error.occupation === "" ||
-    error.education === "" && error.address1 === "" && error.zipcode === "" ||
-    error.email === "" && error.relationship === "" && error.familycontacts === "" ||
-    error.pastpractice === "" && error.courseoutline === "" && error.contactdetails === "" ||
+    if(error.firstName === "" && error.lastName === "" && error.birthDate === "" &&
+    error.whatsapp === "" && error.language === "" && error.occupation === "" &&
+    error.education === "" && error.address1 === "" && error.zipcode === "" &&
+    error.email === "" && error.relationship === "" && error.familycontacts === "" &&
+    error.pastpractice === "" && error.courseoutline === "" && error.contactdetails === "" &&
     error.coursediscipline === "" && error.courseethostext === "" && error.communication === "")
     {
 
