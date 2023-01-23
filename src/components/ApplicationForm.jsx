@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { MenuItem, TextField } from '@mui/material'
-import { DatePicker } from '@mui/x-date-pickers'
+// import { DatePicker } from '@mui/x-date-pickers-pro'
 import { Country, State, City }  from 'country-state-city'
 import { toast } from 'react-toastify'
 import config from "../config/config"
@@ -363,7 +363,7 @@ const ApplicationForm = (props) => {
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Date of Birth</label>
-                  <DatePicker
+                  {/* <DatePicker
                     value={input.birthDate}
                     onChange={onInputChange}
                     onBlur={validateInput}
@@ -371,8 +371,8 @@ const ApplicationForm = (props) => {
                     name="birthDate"
                     size="small"
                     renderInput={(params) => <TextField {...params} />}
-                  />
-                  {/* <TextField
+                  /> */}
+                  <TextField
                     className="form-control mt-2"
                     variant="outlined"
                     size="small"
@@ -381,7 +381,7 @@ const ApplicationForm = (props) => {
                     value={input.birthDate}
                     onChange={onInputChange}
                     onBlur={validateInput}
-                  /> */}
+                  />
                   {error.birthDate && <p className='pt-1 text-danger'>{error.birthDate}</p>}
                 </Col>
               </Row>
