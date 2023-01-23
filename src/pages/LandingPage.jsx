@@ -64,7 +64,6 @@ export default function LandingPage(props) {
             </>
           )}
           <li onClick={() => handleRoute('signin')} className="signin-btn">Sign In</li>
-          <li onClick={() => handleRoute('signup')} className="signin-btn">Sign Up</li>
           <li className="border border-2 rounded-circle border-light d-flex justify-content-center align-items-center" style={{
             width: 46,
             height: 46,
@@ -173,7 +172,6 @@ export default function LandingPage(props) {
             <span className="text-black">Need Help?</span>
             <div className="right-drawer d-flex flex-row justify-content-between">
               <li className="signin-btn me-3">Sign In</li>
-              <li className="signin-btn me-3">Sign Up</li>
               <li className="border border-2 rounded-circle border-gray text-black d-flex justify-content-center align-items-center" style={{
                 width: 46,
                 height: 46,
