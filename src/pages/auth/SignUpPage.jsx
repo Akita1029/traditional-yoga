@@ -66,6 +66,7 @@ const theme = createTheme({
 });
 
 const SignUpPage = (props) => {
+
   const [input, setInput] = useState({
     firstName: '',
     lastName: '',

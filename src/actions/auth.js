@@ -10,6 +10,16 @@ export const setCurrentUser = (decoded) => {
   };
 };
 
+// Set google logged in user
+export const setCurrentGoogleUser = (res) => {
+  localStorage.setItem("userToken", JSON.stringify(res));
+  console.log(res, "googleloginresdata");
+  return {
+    type: SET_CURRENT_USER,
+    payload: res,
+  };
+};
+
 // Login user
 export const loginUser = (userData) => (dispatch) => {
   axios
@@ -96,7 +106,6 @@ export const logoutUser = () => (dispatch) => {
     type: CLEAR_ERRORS,
     payload: {},
   });
-  // localStorage.removeItem("userToken", res.data.token);
 };
 
 

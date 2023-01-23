@@ -35,13 +35,12 @@ const SortCategory = styled(Select)({
 
 const OnlineCoursePage = (props) => {
   useEffect(() => {
-    axios.get(`${config.server}/api/courses/load_online_courses`).then(response => {
-      console.log(response)
+    axios.post(`${config.server}api/courses/load_online_courses`).then(response => {
       if (response.status === 200) {
         setOnlineCourses(response.data)
-      }      
-    }).catch(e => console.log(e));    
-  }, []);
+      }
+    }).catch(e => console.log(e))
+  }, [])
 
   const [onlineCourses, setOnlineCourses] = useState([]);
   const [grid, setGrid] = useState("grid");
@@ -64,16 +63,16 @@ const OnlineCoursePage = (props) => {
   onlineCourses.forEach(course =>{
     listRow.push(
       <Grid item xs={12} sm={6} md={4}>
-        <OnlineCourseItem 
+        <OnlineCourseItem
           key = {course.id}
           title = {course.title}
           description = {course.detail_content}
           type = {course.category === 0 ? "Private Course" : "Public Course"}
-          image={course.instructor_photo} />            
+          image={course.instructor_photo} />
       </Grid>
     );
   });
-        
+
 
   return (
     <>
@@ -140,7 +139,7 @@ const OnlineCoursePage = (props) => {
 
       <Grid container columnSpacing={5} rowSpacing={2} className="mb-4">
 
-        {grid === "list" && (      
+        {grid === "list" && (
           <>{gridRow}</>
         )}
 

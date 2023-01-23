@@ -9,7 +9,7 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ApplicationFrom from "../../components/ApplicationForm";
+import ApplicationForm from "../../components/ApplicationForm";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -141,7 +141,7 @@ const OnlineCourseGridPage = (props) => {
           ))}
         </div>
 
-        <ApplicationFrom show={modalShow} handleClose={() => setModalShow(false)} />
+        <ApplicationForm show={modalShow} handleClose={() => setModalShow(false)} />
       </div>
     </>
   );

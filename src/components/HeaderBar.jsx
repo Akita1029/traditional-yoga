@@ -75,8 +75,8 @@ const HeaderBar = (props) => {
                   </li>
                 ) : (
                   <div>
-                    <span className="text-primary" onClick={()=>handleRoute('signin')}>&nbsp;Sign In &nbsp;</span>|
-                    <span className="text-primary" onClick={()=>handleRoute('signup')}>&nbsp;Sign Up &nbsp;</span>
+                    <span className="text-primary" onClick={()=>handleRoute('signin')}>&nbsp;Sign In &nbsp;</span>
+                    {/* <span className="text-primary" onClick={()=>handleRoute('signup')}>&nbsp;Sign Up &nbsp;</span> */}
                   </div>
                 )
               }

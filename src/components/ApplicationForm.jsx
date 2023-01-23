@@ -1,25 +1,17 @@
-import React, { useRef, useEffect, useState } from "react";
-import Modal from 'react-bootstrap/Modal';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import { styled } from '@mui/material/styles';
-import { Country, State, City }  from 'country-state-city';
+import React, { useRef, useEffect, useState } from "react"
+import Modal from 'react-bootstrap/Modal'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import { MenuItem, TextField } from '@mui/material'
+import { DatePicker } from '@mui/x-date-pickers'
+import { Country, State, City }  from 'country-state-city'
+import { toast } from 'react-toastify'
+import config from "../config/config"
+import axios from "axios"
+import { useNavigate, Link } from "react-router-dom"
 
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { takeCourse } from "../actions/course";
-
-const SelectAnswer = styled(Select)({
-  '& fieldset': {
-    borderRadius: 10
-  }
-})
-
-
-const ApplicationFrom = (props) => {
+const ApplicationForm = (props) => {
 
   const [selectedCountry, setSelectedCountry] = useState()
   const [selectedState, setSelectedState] = useState()
@@ -28,11 +20,12 @@ const ApplicationFrom = (props) => {
   const [states, setStates] = useState()
   const [countryDetails, setcountryDetails] = useState()
   const [cities, setCities] = useState()
-  const [countryCode, setcountryCode] = useState()
+  const [countryCode, setCountryCode] = useState()
   const [stateCode, setStateCode] = useState()
+  const navigate = useNavigate();
 
   const setCountryDetails = (e) =>{
-    setcountryCode(e.target.value)
+    setCountryCode(e.target.value)
     setSelectedCountry(Country.getCountryByCode(countryCode).name)
   }
 
@@ -41,7 +34,7 @@ const ApplicationFrom = (props) => {
 
   const setStateDetails = (e) =>{
     setStateCode(e.target.value)
-    setSelectedCountry(State.getStateByCodeAndCountry(stateCode, countryCode).name)
+    setSelectedState(State.getStateByCodeAndCountry(stateCode, countryCode).name)
   }
 
   useEffect(() => {
@@ -49,39 +42,99 @@ const ApplicationFrom = (props) => {
   }, []);
 
   const take = () => {
-    const regData = {
-      firstName: input.firstName,
-      lastName: input.lastName,
-      nickName: nickName,
-      ryit_cert: ryit_cert,
-      birthDate: input.birthDate,
-      whatsapp: input.whatsapp,
-      gender: gender,
-      language: input.language,
-      occupation: input.occupation,
-      education: input.education,
-      country: selectedCountry,
-      address1: input.address1,
-      address2: address2,
-      city: selectedCity,
-      state: selectedState,
-      zipcode: input.zipcode,
-      email: input.email,
-      relationship: input.relationship,
-      familycontacts: input.familycontacts,
-      hearfrom: hearfrom,
-      pastpractice: input.pastpractice,
-      courseoutline: input.courseoutline,
-      courseethostext: input.courseethostext,
-      coursediscipline: input.coursediscipline,
-      communication: input.communication,
-      vedic: input.vedic,
-      codediscipline: input.codediscipline,
-      contactdetails: input.contactdetails
-    };
-    props.takeCourse(regData);
-    props.handleClose();
-  };
+    if(error.firstName == "" && error.lastName == "" && error.birthDate == "" ||
+    error.whatsapp == "" && error.language == "" && error.occupation == "" ||
+    error.education == "" && error.address1 == "" && error.zipcode == "" ||
+    error.email == "" && error.relationship == "" && error.familycontacts == "" ||
+    error.pastpractice == "" && error.courseoutline == "" && error.contactdetails == "" ||
+    error.coursediscipline == "" && error.courseethostext == "" && error.communication == "")
+    {
+
+      const regData = {
+        firstName: input.firstName,
+        lastName: input.lastName,
+        nickName: nickName,
+        ryit_cert: ryit_cert,
+        birthDate: input.birthDate,
+        whatsapp: input.whatsapp,
+        gender: gender,
+        language: input.language,
+        occupation: input.occupation,
+        education: input.education,
+        country: selectedCountry,
+        address1: input.address1,
+        address2: address2,
+        city: selectedCity,
+        state: selectedState,
+        zipcode: input.zipcode,
+        email: input.email,
+        relationship: input.relationship,
+        familycontacts: input.familycontacts,
+        hearfrom: hearfrom,
+        pastpractice: input.pastpractice,
+        courseoutline: input.courseoutline,
+        courseethostext: input.courseethostext,
+        coursediscipline: input.coursediscipline,
+        communication: input.communication,
+        vedic: input.vedic,
+        codediscipline: input.codediscipline,
+        contactdetails: input.contactdetails
+      }
+      axios.post(`${config.server}api/courses/takecourse`, {
+        regData
+      })
+      .then(response => {
+        switch(response.status){
+          case 200:
+              toast.success('You submitted successfully and updated profile.', {
+                  position: toast.POSITION.TOP_RIGHT
+              })
+              break;
+          case 201:
+              toast.success('You submitted successfully and created profile.', {
+                  position: toast.POSITION.TOP_RIGHT
+              })
+              navigate('/ty/courses/main')
+              break;
+          case 401:
+          case 404:
+              toast.warning('You submitted success but Family info is not correct. Please try again', {
+                  position: toast.POSITION.TOP_RIGHT
+              })
+              break;
+          case 402:
+          case 405:
+              toast.warning('You submitted success and Student info is not correct. Please try again', {
+                  position: toast.POSITION.TOP_RIGHT
+              })
+              break;
+          case 403:
+          case 406:
+              toast.warning('Submit fail. Please try again.', {
+                  position: toast.POSITION.TOP_RIGHT
+              })
+              break;
+          case 407:
+              toast.error('Already registered student', {
+                  position: toast.POSITION.TOP_RIGHT
+              })
+              break;
+          default:
+              break;
+          }
+        }
+      )
+      .catch(error => {
+        console.log(error.data)
+      })
+    } else {
+    console.log(error)
+      toast.warning('Please type all required fields correctly!', {
+        position: toast.POSITION.TOP_RIGHT
+      })
+    }
+    props.handleClose()
+  }
 
   const [nickName, setNickName] = useState("")
   const [ryit_cert, setRYITCert] = useState("no")
@@ -272,10 +325,12 @@ const ApplicationFrom = (props) => {
               <Row>
                 <Col xl={3} md={12}>
                   <label>First Name</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="firstName"
-                    name="email"
+                    name="firstName"
                     value={input.firstName}
                     onChange={onInputChange}
                     onBlur={validateInput}
@@ -284,8 +339,10 @@ const ApplicationFrom = (props) => {
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Last Name</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="lastName"
                     name="lastName"
                     value={input.lastName}
@@ -296,30 +353,44 @@ const ApplicationFrom = (props) => {
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Nick Name</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="nickName"
                     value={nickName}
                     onChange={(e) => setNickName(e.target.value)}/>
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Date of Birth</label>
-                  <input
-                    className="form-control mt-2"
+                  <DatePicker
+                    value={input.birthDate}
+                    onChange={onInputChange}
+                    onBlur={validateInput}
                     id="birthDate"
+                    name="birthDate"
+                    size="small"
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                  {/* <TextField
+                    className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
+                    id="whatsapp"
                     name="birthDate"
                     value={input.birthDate}
                     onChange={onInputChange}
                     onBlur={validateInput}
-                  />
+                  /> */}
                   {error.birthDate && <p className='pt-1 text-danger'>{error.birthDate}</p>}
                 </Col>
               </Row>
               <Row className='mt-3'>
                 <Col xl={6} md={12}>
                   <label>Are you interested in Traditional Yoga’s RYIT Certification?</label>
-                  <SelectAnswer
+                  <TextField
                     className="form-control mt-2"
+                    select
                     defaultValue={'yes'}
                     id="ryit_cert"
                     onChange={(e) => setRYITCert(e)}
@@ -327,24 +398,28 @@ const ApplicationFrom = (props) => {
                   >
                     <MenuItem value='yes'>Yes</MenuItem>
                     <MenuItem value='no'>No</MenuItem>
-                  </SelectAnswer>
+                  </TextField>
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Gender</label>
-                  <SelectAnswer
+                  <TextField
                     className="form-control mt-2"
+                    select
                     defaultValue={'female'}
                     id="gender"
                     onChange={(e) => setGender(e)}
+                    size="small"
                   >
                     <MenuItem value='female'>Female</MenuItem>
                     <MenuItem value='male'>Male</MenuItem>
-                  </SelectAnswer>
+                  </TextField>
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Whatsapp Phone Number</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="whatsapp"
                     name="whatsapp"
                     value={input.whatsapp}
@@ -357,9 +432,10 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col xl={3} md={12}>
                   <label>Email Address</label>
-                  <input
-                    type="email"
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="email"
                     name="email"
                     value={input.email}
@@ -370,8 +446,10 @@ const ApplicationFrom = (props) => {
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Spoken Language</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="language"
                     name="language"
                     value={input.language}
@@ -382,8 +460,10 @@ const ApplicationFrom = (props) => {
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Profession / Occupation</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="occupation"
                     name="occupation"
                     value={input.occupation}
@@ -394,8 +474,10 @@ const ApplicationFrom = (props) => {
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Other Education Details</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="education"
                     name="education"
                     value={input.education}
@@ -411,8 +493,10 @@ const ApplicationFrom = (props) => {
               <Row>
                 <Col xl={4} md={12}>
                   <label>Country</label>
-                  <SelectAnswer
+                  <TextField
                     className="form-control mt-2"
+                    select
+                    variant="outlined"
                     id="country"
                     placeholder="Choose Country"
                     onChange={setCountryDetails}
@@ -421,14 +505,54 @@ const ApplicationFrom = (props) => {
                     {countries.map((value, key) => {
                       return (
                         <MenuItem key={value.isoCode} value={value.isoCode}>{value.name}</MenuItem>
-                      );
+                      )
                     })}
-                  </SelectAnswer>
+                  </TextField>
                 </Col>
                 <Col xl={4} md={12}>
-                  <label>Street Address</label>
-                  <input
+                  <label>State / Province / Region</label>
+                  <TextField
                     className="form-control mt-2"
+                    select
+                    variant="outlined"
+                    id="state"
+                    placeholder="Choose State"
+                    onChange={setStateDetails}
+                    size="small"
+                  >
+                    {stateList.map((states, key) => {
+                      return (
+                        <MenuItem key={states.isoCode} value={states.isoCode}>{states.name}</MenuItem>
+                      )
+                    })}
+                  </TextField>
+                </Col>
+                <Col xl={4} md={12}>
+                  <label>city</label>
+                  <TextField
+                    className="form-control mt-2"
+                    select
+                    variant="outlined"
+                    id="city"
+                    placeholder="Choose City"
+                    onChange={(e) => setSelectedCity(e.target.value)}
+                    size="small"
+                  >
+                    {cityList.map((city, key) => {
+                      return (
+                        <MenuItem key={city.isoCode} value={city.name}>{city.name}</MenuItem>
+                      )
+                    })}
+                  </TextField>
+                </Col>
+              </Row>
+              <Row className='mt-3'>
+                <Col xl={4} md={12}>
+                  <label>Street Address</label>
+                  <TextField
+                    className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="streetAddress"
                     name="address1"
                     value={input.address1}
@@ -439,50 +563,20 @@ const ApplicationFrom = (props) => {
                 </Col>
                 <Col xl={4} md={12}>
                   <label>Address Line2</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="addressLine2"
                     value={address2}
                     onChange={(e) => setAddress2(e.target.value)}/>
                 </Col>
-              </Row>
-              <Row className='mt-3'>
-                <Col xl={4} md={12}>
-                  <label>State / Province / Region</label>
-                  <SelectAnswer
-                    className="form-control mt-2"
-                    id="state"
-                    placeholder="Choose State"
-                    onChange={setStateDetails}
-                    size="small"
-                  >
-                    {stateList.map((states, key) => {
-                      return (
-                        <MenuItem key={states.isoCode} value={states.isoCode}>{states.name}</MenuItem>
-                      );
-                    })}
-                  </SelectAnswer>
-                </Col>
-                <Col xl={4} md={12}>
-                  <label>city</label>
-                  <SelectAnswer
-                    className="form-control mt-2"
-                    id="city"
-                    placeholder="Choose City"
-                    onChange={(e) => setSelectedCity(e.target.value)}
-                    size="small"
-                  >
-                    {cityList.map((city, key) => {
-                      return (
-                        <MenuItem key={states.isoCode} value={city.name}>{city.name}</MenuItem>
-                      );
-                    })}
-                  </SelectAnswer>
-                </Col>
                 <Col xl={4} md={12}>
                   <label>Zip Code / Postal Code</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="zipcode"
                     name="zipcode"
                     value={input.zipcode}
@@ -498,8 +592,10 @@ const ApplicationFrom = (props) => {
               <Row>
                 <Col xl={6} md={12}>
                   <label>Relationship to Family Member</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="relationship"
                     name="relationship"
                     value={input.relationship}
@@ -510,8 +606,10 @@ const ApplicationFrom = (props) => {
                 </Col>
                 <Col xl={6} md={12}>
                   <label>Family Member’s Contact Phone Number</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="memberContactNumber"
                     name="familycontacts"
                     value={input.familycontacts}
@@ -524,20 +622,26 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col xl={6} md={12}>
                   <label className='text-primary'>How Did you Hear about Us?</label>
-                  <SelectAnswer
+                  <TextField
+                    className="form-control mt-2"
+                    select
+                    variant="outlined"
                     defaultValue={'google'}
                     id="hearfrom"
                     value={hearfrom}
-                    onChange={(e) => setHearFrom(e)}
+                    onChange={(e) => setHearFrom(e.target.value)}
+                    size="small"
                   >
                     <MenuItem value='google'>Search Engines(like Google)</MenuItem>
                     <MenuItem value='friend'>Friends</MenuItem>
-                  </SelectAnswer>
+                  </TextField>
                 </Col>
                 <Col xl={6} md={12}>
                   <label className='text-primary'>Course Outline Text and Acknowledgement</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="courseOutline"
                     name="courseoutline"
                     value={input.courseoutline}
@@ -550,9 +654,12 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col md={12}>
                   <label className='text-primary'>What Yoga Traditions did you practice in the past (If any) ? Please explain in detail</label>
-                  <textarea
-                    rows={4}
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    multiline
+                    rows={4}
+                    size="small"
                     id="everPractice"
                     name="pastpractice"
                     value={input.pastpractice}
@@ -565,10 +672,12 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col xl={6} md={12}>
                   <label className='text-primary'>Course Ethos Text and Acknowledgement*</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="ethosText"
-                    name="ethostext"
+                    name="courseethostext"
                     value={input.courseethostext}
                     onChange={onInputChange}
                     onBlur={validateInput}
@@ -577,8 +686,10 @@ const ApplicationFrom = (props) => {
                 </Col>
                 <Col xl={6} md={12}>
                   <label className='text-primary'>Communication and Daily Classes Acknowledgement*</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="communication"
                     name="communication"
                     value={input.communication}
@@ -591,8 +702,10 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col md={12}>
                   <label className='text-primary'>Course Discipline and Joining Agreement and Acknowledgement*</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="courseDiscipline"
                     name="coursediscipline"
                     value={input.coursediscipline}
@@ -605,8 +718,10 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col xl={6} md={12}>
                   <label className='text-primary'>About Vedic Nutraceuticals Acknowledgement*</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="vedic"
                     name="vedic"
                     value={input.vedic}
@@ -617,8 +732,10 @@ const ApplicationFrom = (props) => {
                 </Col>
                 <Col xl={6} md={12}>
                   <label className='text-primary'>Code of Discipline Acknowledgment*</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="disciplineCode"
                     name="codediscipline"
                     value={input.codediscipline}
@@ -631,8 +748,10 @@ const ApplicationFrom = (props) => {
               <Row className='mt-3'>
                 <Col xl={6} md={12}>
                   <label className='text-primary'>Contact Details</label>
-                  <input
+                  <TextField
                     className="form-control mt-2"
+                    variant="outlined"
+                    size="small"
                     id="contactDetail"
                     name="contactdetails"
                     value={input.contactdetails}
@@ -655,15 +774,16 @@ const ApplicationFrom = (props) => {
   )
 }
 
-ApplicationFrom.propTypes = {
-  takeCourse: PropTypes.func.isRequired,
-};
+// ApplicationFrom.propTypes = {
+//   takeCourse: PropTypes.func.isRequired,
+// };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  course: state.course,
-  errors: state.errors,
-});
+// const mapStateToProps = (state) => ({
+//   auth: state.auth,
+//   course: state.course,
+//   errors: state.errors,
+// });
 
-export default connect(mapStateToProps, { takeCourse })(ApplicationFrom);
+// export default connect(mapStateToProps, { takeCourse })(ApplicationFrom);
 
+export default ApplicationForm
