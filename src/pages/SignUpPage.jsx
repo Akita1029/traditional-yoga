@@ -71,7 +71,7 @@ const SignUpPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirmPassword] = useState("");
-  
+
   const register = () => {
     const regUserData = {
       firstname: firstName,
@@ -131,7 +131,9 @@ const SignUpPage = (props) => {
                     onChange={(e) => setFirstName(e.target.value)}
                   />
                   {props.errors.logfirstname && (
-                    <p className="pt-1 text-danger">{props.errors.logfirstname}</p>
+                    <p className="pt-1 text-danger">
+                      {props.errors.logfirstname}
+                    </p>
                   )}
                 </div>
               </div>
@@ -146,12 +148,14 @@ const SignUpPage = (props) => {
                     onChange={(e) => setLastName(e.target.value)}
                   />
                   {props.errors.loglastname && (
-                    <p className="pt-1 text-danger">{props.errors.loglastname}</p>
+                    <p className="pt-1 text-danger">
+                      {props.errors.loglastname}
+                    </p>
                   )}
                 </div>
               </div>
             </div>
-            
+
             <div className="form-group mt-5">
               <label>Email address</label>
               <input
@@ -186,12 +190,14 @@ const SignUpPage = (props) => {
                 className="form-control mt-2"
                 id="password"
                 placeholder="Enter Confirm password"
-                onChange={(password) => setConfirmPassword(password.target.value)}
+                onChange={(password) =>
+                  setConfirmPassword(password.target.value)
+                }
               />
               {props.errors.logpassword && (
                 <p className="pt-1 text-danger">{props.errors.logpassword}</p>
               )}
-            </div>           
+            </div>
 
             <div className="d-flex flex-column mt-5 mb-5">
               <Button
@@ -205,8 +211,19 @@ const SignUpPage = (props) => {
                 }}
                 onClick={() => register()}
               >
-                SIGN UP                
+                SIGN UP
               </Button>
+              <br />
+              <Link
+                style={{
+                  textDecoration: "none",
+                  margin: "auto",
+                  fontSize: "20px",
+                }}
+                to={"/signin"}
+              >
+                Sign In
+              </Link>
               <p className="text-center mt-4">or Sign Up with</p>
               <Grid container columnSpacing={5} rowSpacing={2}>
                 <Grid item xs={12} sm={6}>

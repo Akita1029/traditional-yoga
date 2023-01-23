@@ -12,12 +12,13 @@ export const setCurrentUser = (decoded) => {
 
 // Set google logged in user
 export const setCurrentGoogleUser = (res) => {
-  // localStorage.setItem("userToken", JSON.stringify(res.data));
-  console.log(res.data, "googleloginresdata");
-  // return {
-  //   type: SET_CURRENT_USER,
-  //   payload: res.data,
-  // };
+  localStorage.setItem("userToken", JSON.stringify(res));
+  // localStorage.removeItem("projectdetail", "persist:root", "tipple_site_id");
+  console.log(res, "googleloginresdata");
+  return {
+    type: SET_CURRENT_USER,
+    payload: res,
+  };
 };
 
 // Login user
@@ -66,7 +67,6 @@ export const logoutUser = () => (dispatch) => {
     type: CLEAR_ERRORS,
     payload: {},
   });
-  // localStorage.removeItem("userToken", res.data.token);
 };
 
 export const takeCourse = (userData) => (dispatch) => {

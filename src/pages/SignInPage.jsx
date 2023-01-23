@@ -19,6 +19,7 @@ import Button from "@mui/material/Button";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser, setCurrentGoogleUser } from "../actions/auth";
+import { fontSize } from "@mui/system";
 
 const theme = createTheme({
   palette: {
@@ -113,13 +114,15 @@ const SignInPage = (props) => {
   });
 
   const onSuccess = (res) => {
-    // props.setCurrentGoogleUser(res);
-    // window.location.href = "/dashboard";
-    console.log(res);
+    props.setCurrentGoogleUser(res.tokenObj);
+    localStorage.setItem("userToken", JSON.stringify(res.tokenObj));
+    window.location.href = "/dashboard";
+    // console.log(res);
   };
   const onFailure = (err) => {
     console.log("failed:", err);
   };
+
   // end
 
   return (
@@ -195,24 +198,37 @@ const SignInPage = (props) => {
                 SIGN IN
                 {/* SIGN IN */}
               </Button>
+              <br />
+              <Link
+                style={{
+                  textDecoration: "none",
+                  margin: "auto",
+                  fontSize: "20px",
+                }}
+                to={"/signup"}
+              >
+                Sign Up
+              </Link>
               <p className="text-center mt-4">or Sign In with</p>
               <Grid container columnSpacing={5} rowSpacing={2}>
                 <Grid item xs={12} sm={6}>
-                  <Button
-                    color="google"
-                    fullWidth
-                    variant="contained"
-                    startIcon={<GoogleIcon />}
-                  >
-                    <GoogleLogin
-                      clientId={clientId}
-                      buttonText="Sign in with Google"
-                      onSuccess={onSuccess}
-                      onFailure={onFailure}
-                      cookiePolicy={"single_host_origin"}
-                      isSignedIn={true}
-                    />
-                  </Button>
+                  <GoogleLogin
+                    clientId={clientId}
+                    onSuccess={onSuccess}
+                    onFailure={onFailure}
+                    cookiePolicy={"single_host_origin"}
+                    render={(renderProps) => (
+                      <Button
+                        onClick={renderProps.onClick}
+                        color="google"
+                        fullWidth
+                        variant="contained"
+                        startIcon={<GoogleIcon />}
+                      >
+                        Google
+                      </Button>
+                    )}
+                  />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Button
