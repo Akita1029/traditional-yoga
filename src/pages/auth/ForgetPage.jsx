@@ -178,7 +178,7 @@ const ForgetPage = (props) => {
                   Go Home
                 </Button>) :
                 (
-                  showError && message == "" ?
+                  showError && message === "" ?
                   (
                     <div className="row">
                       <div className="col-md-12 col-lg-6">
