@@ -113,7 +113,7 @@ const ResetPasswordPage = (props) => {
 
 
   const resetPassword = () => {
-    if( error.password == "" && error.confirmPassword == ""){
+    if( error.password === "" && error.confirmPassword === ""){
       axios.put(`${config.server}api/users/resetPassword`, {
         email: email,
         password: input.password

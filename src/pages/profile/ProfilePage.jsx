@@ -124,7 +124,7 @@ const ProfilePage = (props) => {
   }, [])
 
   const updateProfile = () => {
-    if( error.firstname == "" && error.lastname == ""){
+    if( error.firstname === "" && error.lastname === ""){
       axios.put(`${config.server}api/users/updateProfile`, {
         email: email,
         firstname: input.firstname,
@@ -152,7 +152,7 @@ const ProfilePage = (props) => {
   }
 
   const resetPassword = () => {
-    if( error.password == "" && error.confirmPassword == ""){
+    if( error.password === "" && error.confirmPassword === ""){
       axios.put(`${config.server}api/users/resetPassword`, {
         email: email,
         password: input.password

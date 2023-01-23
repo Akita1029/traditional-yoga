@@ -36,17 +36,17 @@ const ProfileLeftView = (props) => {
           </Paper>
         </Grid>
         <Grid item>
-          <Button fullWidth color="primary" variant="{{selectedItem == 0 ? 'contained' : 'outline'}}" sx={{
+          <Button fullWidth color="primary" variant="{{selectedItem === 0 ? 'contained' : 'outline'}}" sx={{
             borderRadius: 2,
           }}>DONATIONS</Button>
         </Grid>
         <Grid item>
-          <Button fullWidth color="primary" variant="{{selectedItem == 1 ? contained : outline}}" sx={{
+          <Button fullWidth color="primary" variant="{{selectedItem === 1 ? contained : outline}}" sx={{
             borderRadius: 2,
           }}>DONATIONS</Button>
         </Grid>
         <Grid item>
-          <Button fullWidth color="primary" variant="{{selectedItem == 2 ? contained : outline}}" sx={{
+          <Button fullWidth color="primary" variant="{{selectedItem === 2 ? contained : outline}}" sx={{
             borderRadius: 2,
           }}>DONATIONS</Button>
         </Grid>

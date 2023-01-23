@@ -86,10 +86,10 @@ const HeaderBar = (props) => {
             <img className="logo" style={{ cursor: 'pointer' }} src={logo} onClick={() => handleRoute('')} />
             <ul className="nav">
               <li className="nav-item">
-                <a className={`nav-link ${navIndex == 0 ? ' active' : ''}`} onClick={() => handleRoute('', 0)}>HOME</a>
+                <a className={`nav-link ${navIndex === 0 ? ' active' : ''}`} onClick={() => handleRoute('', 0)}>HOME</a>
               </li>
               <li className="nav-item">
-                <a className={`nav-link ${navIndex == 1 ? ' active' : ''}`} onClick={() => handleRoute('ty/about', 1)}>ABOUT US</a>
+                <a className={`nav-link ${navIndex === 1 ? ' active' : ''}`} onClick={() => handleRoute('ty/about', 1)}>ABOUT US</a>
               </li>
               <li className="nav-item dropdown">
                 <a className="dropbtn nav-link">COURSES <i className="bi bi-chevron-down"></i></a>
@@ -100,16 +100,16 @@ const HeaderBar = (props) => {
                   <a href="/ty/courses/main#InPersonTrainings"><div style={{ width: 120 }}>In Person Trainings</div></a>
                   <a href="/ty/courses/main#PastInTrainings"><div style={{ width: 120 }}>Past In-Person Trainings</div></a>
                 </div>
-                {/* <a className={`nav-link ${navIndex == 2? ' active' : ''}`} onClick={()=>handleRoute('ty/courses/main', 2)}>COURSES  <i className="bi bi-chevron-down"></i></a> */}
+                {/* <a className={`nav-link ${navIndex === 2? ' active' : ''}`} onClick={()=>handleRoute('ty/courses/main', 2)}>COURSES  <i className="bi bi-chevron-down"></i></a> */}
               </li>
               <li className="nav-item">
-                <a className={`nav-link ${navIndex == 3 ? ' active' : ''}`} onClick={() => handleRoute('ty/library', 3)}>LIBRARY</a>
+                <a className={`nav-link ${navIndex === 3 ? ' active' : ''}`} onClick={() => handleRoute('ty/library', 3)}>LIBRARY</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="https://vedicnutraceuticalsusa.com/" target="_blank">SHOP</a>
               </li>
               <li className="nav-item">
-                <a className={`nav-link ${navIndex == 5 ? ' active' : ''}`} onClick={() => handleRoute('ty/contactus', 5)}>CONTACT US</a>
+                <a className={`nav-link ${navIndex === 5 ? ' active' : ''}`} onClick={() => handleRoute('ty/contactus', 5)}>CONTACT US</a>
               </li>
               <button className="btn btn-primary text-light rounded-3 ms-2" onClick={() => handleRoute('donations/payment', 6)}>DONATIONS</button>
             </ul>

@@ -44,7 +44,7 @@ const ProfileWrapPage = (props) => {
               <h5 className="mt-4 mb-2"><b>{AuthUser.first_name + " " + AuthUser.last_name}</b></h5>
               <span className="text-primary" style={{ cursor: 'pointer' }}><b>Upload Photo</b></span>
             </div>
-            { role == 3 ?
+            { role === 3 ?
               (
                 <div className={`${profileState === 0 ? 'bg-primary text-light' : 'text-primary'} rounded border-primary-clr w-100 py-2 px-3 mt-4`}
                   style={{ cursor: 'pointer' }} onClick={() => setProfileState(0)}>
@@ -52,7 +52,7 @@ const ProfileWrapPage = (props) => {
                 </div>
               ) : (<div />)
             }
-            { role == 1 || role == 2 || role == 3 ?
+            { role === 1 || role === 2 || role === 3 ?
               (
                 <div>
                   <div className={`${profileState === 1 ? 'bg-primary text-light' : 'text-primary'} rounded border-primary-clr w-100 py-2 px-3 mt-2`}
@@ -67,7 +67,7 @@ const ProfileWrapPage = (props) => {
               ) : (<div />)
             }
 
-            { role == 2 ?
+            { role === 2 ?
               (
                 <div className={`${profileState === 3 ? 'bg-primary text-light' : 'text-primary'} rounded border-primary-clr w-100 py-2 px-3 mt-2`}
                   style={{ cursor: 'pointer' }} onClick={() => setProfileState(3)}>
@@ -75,7 +75,7 @@ const ProfileWrapPage = (props) => {
                 </div>
               ) : ( <div />)
             }
-            { role == 1 ?
+            { role === 1 ?
               (
                 <div>
                   <div className={`${profileState === 4 ? 'bg-primary text-light' : 'text-primary'} rounded border-primary-clr w-100 py-2 px-3 mt-2`}

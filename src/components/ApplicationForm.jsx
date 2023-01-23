@@ -42,12 +42,12 @@ const ApplicationForm = (props) => {
   }, []);
 
   const take = () => {
-    if(error.firstName == "" && error.lastName == "" && error.birthDate == "" ||
-    error.whatsapp == "" && error.language == "" && error.occupation == "" ||
-    error.education == "" && error.address1 == "" && error.zipcode == "" ||
-    error.email == "" && error.relationship == "" && error.familycontacts == "" ||
-    error.pastpractice == "" && error.courseoutline == "" && error.contactdetails == "" ||
-    error.coursediscipline == "" && error.courseethostext == "" && error.communication == "")
+    if(error.firstName === "" && error.lastName === "" && error.birthDate === "" ||
+    error.whatsapp === "" && error.language === "" && error.occupation === "" ||
+    error.education === "" && error.address1 === "" && error.zipcode === "" ||
+    error.email === "" && error.relationship === "" && error.familycontacts === "" ||
+    error.pastpractice === "" && error.courseoutline === "" && error.contactdetails === "" ||
+    error.coursediscipline === "" && error.courseethostext === "" && error.communication === "")
     {
 
       const regData = {

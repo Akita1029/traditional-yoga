@@ -148,7 +148,7 @@ const SignUpPage = (props) => {
 
   const register = () => {
     console.log(error)
-    if(error.firstName == '' && error.lastName == '' && error.password == '' && error.email == '' && error.confirmPassword == ''){
+    if(error.firstName === '' && error.lastName === '' && error.password === '' && error.email === '' && error.confirmPassword === ''){
       const regUserData = {
         firstname: input.firstName,
         lastname: input.lastName,
