@@ -91,14 +91,10 @@ function App() {
             <Route path="contactus" element={<ContactUs />} />
           </Route>
 
-          {/* <Route path="profile/" element={ <ProfilePage /> } /> */}
-          {/* <Route path="profile/course" element={ <ProfileCoursePage /> } /> */}
-          {/* <Route path="profile/notifications" element={ <ProfileCoursePage /> } /> */}
           <Route path="/donations" element={<DonationPage />}>
             <Route path="payment" element={<PaymentPage />} />
             <Route path="upcomings" element={<UpcomingPage />} />
           </Route>
-          <Route path="/profile" element={<ProfileWrapPage />} />
           <Route path="/forget" element={<ForgetPage />} />
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
@@ -106,6 +102,7 @@ function App() {
           <Route path="/reset" element={<ResetPasswordPage />} />
           {auth === true ? (
             <>
+              <Route path="/profile" element={<ProfileWrapPage />} />
               <Route
                 path="/dashboard"
                 element={<DashboardLayout setfunc={setfunc} />}

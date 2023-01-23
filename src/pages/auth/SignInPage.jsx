@@ -1,23 +1,27 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
-import logo from "../../assets/logo-white.png";
-import logo_primary from "../../assets/logo-primary.png";
-import "../../assets/css/signin.css";
+import React, { useState, useEffect } from "react"
+// import { GoogleLogin, GoogleLogout } from "react-google-login"
+// import { gapi } from "gapi-script"
+import { useNavigate, Link } from "react-router-dom"
+import { useMediaQuery } from "react-responsive"
+import logo from "../../assets/logo-white.png"
+import logo_primary from "../../assets/logo-primary.png"
+import "../../assets/css/signin.css"
 
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import AppleIcon from "@mui/icons-material/Apple";
-import GoogleIcon from "@mui/icons-material/Google";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import { toast } from 'react-toastify';
+import { createTheme, ThemeProvider } from "@mui/material/styles"
+import AppleIcon from "@mui/icons-material/Apple"
+import GoogleIcon from "@mui/icons-material/Google"
+import TwitterIcon from "@mui/icons-material/Twitter"
+import FacebookIcon from "@mui/icons-material/Facebook"
+import Grid from "@mui/material/Grid"
+import Button from "@mui/material/Button"
+import { toast } from 'react-toastify'
 
 // Connect redux, action
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { loginUser } from "../../actions/auth";
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
+import { loginUser, setCurrentGoogleUser } from "../../actions/auth"
+import { fontSize } from "@mui/system"
+
 
 const theme = createTheme({
   palette: {
@@ -64,14 +68,14 @@ const theme = createTheme({
       textTransform: "none",
     },
   },
-});
+})
 
 const SignInPage = (props) => {
 
   const [input, setInput] = useState({
     email: '',
     password: ''
-  });
+  })
 
   const [error, setError] = useState({
     email: '',
@@ -88,27 +92,27 @@ const SignInPage = (props) => {
   }
 
   const validateInput = e => {
-    let { name, value } = e.target;
+    let { name, value } = e.target
     setError(prev => {
-      const stateObj = { ...prev, [name]: "" };
+      const stateObj = { ...prev, [name]: "" }
 
       switch (name) {
         case "email":
           if (!value) {
-            stateObj[name] = "Please enter Email Address.";
+            stateObj[name] = "Please enter Email Address."
           }
-          break;
+          break
         case "password":
           if (!value) {
-            stateObj[name] = "Please enter Password.";
+            stateObj[name] = "Please enter Password."
           }
-          break;
+          break
         default:
-          break;
+          break
       }
 
-      return stateObj;
-    });
+      return stateObj
+    })
   }
 
   const login = () => {
@@ -116,21 +120,21 @@ const SignInPage = (props) => {
       const userData = {
         email: input.email,
         password: input.password,
-      };
+      }
       props.loginUser(userData);
     } else {
       toast.warning('Please Enter all required fileds.', {
         position: toast.POSITION.TOP_RIGHT
-      });
+      })
     }
-  };
+  }
 
   // const isDesktopOrLaptop = useMediaQuery({
   //   query: "(min-width: 1224px)",
   // });
 
   // const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-  const isDesktop = useMediaQuery({ query: "(min-width:992px)" });
+  const isDesktop = useMediaQuery({ query: "(min-width:992px)" })
   // const isTable = useMediaQuery({
   //   query: "(max-width: 992px)",
   // });
@@ -142,13 +146,43 @@ const SignInPage = (props) => {
   const navigate = useNavigate();
   const handleRoute = (data) => {
     navigate(`/${data}`);
-  };
+  }
 
   const handleEnterKeyDown = (event) => {
     if (event.key === "Enter") {
-      login();
+      login()
     }
-  };
+  }
+
+  // Google login
+  const clientId =
+    "96350528532-2au8sfi0q99koj4p5qa3jdqa3grfhm0h.apps.googleusercontent.com"
+
+  useEffect(() => {
+    // const initClient = () => {
+    //   gapi.client.init({
+    //     clientId: clientId,
+    //     scope: "",
+    //   })
+    // }
+    // gapi.load("client:auth2", initClient)
+  })
+
+  const onSuccess = (res) => {
+    props.setCurrentGoogleUser(res.tokenObj)
+    localStorage.setItem("userToken", JSON.stringify(res.tokenObj))
+    window.location.href = "/profile"
+    // console.log(res);
+  }
+
+  const onFailure = (err) => {
+    toast.warning('Something wrong with your google account. Please check and try again.', {
+      position: toast.POSITION.TOP_RIGHT
+    })
+  }
+
+  // end
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -225,19 +259,27 @@ const SignInPage = (props) => {
                 onClick={() => login()}
               >
                 SIGN IN
-                {/* SIGN IN */}
               </Button>
               <p className="text-center mt-4">or Sign In with</p>
               <Grid container columnSpacing={5} rowSpacing={2}>
                 <Grid item xs={12} sm={6}>
-                  <Button
-                    color="google"
-                    fullWidth
-                    variant="contained"
-                    startIcon={<GoogleIcon />}
-                  >
-                    Google
-                  </Button>
+                  {/* <GoogleLogin
+                    clientId={clientId}
+                    onSuccess={onSuccess}
+                    onFailure={onFailure}
+                    cookiePolicy={"single_host_origin"}
+                    render={(renderProps) => (
+                      <Button
+                        onClick={renderProps.onClick}
+                        color="google"
+                        fullWidth
+                        variant="contained"
+                        startIcon={<GoogleIcon />}
+                      >
+                        Google
+                      </Button>
+                    )}
+                  /> */}
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Button
@@ -275,16 +317,19 @@ const SignInPage = (props) => {
         </div>
       </div>
     </ThemeProvider>
-  );
-};
+  )
+}
 
 SignInPage.propTypes = {
   loginUser: PropTypes.func.isRequired,
-};
+  setCurrentGoogleUser: PropTypes.func.isRequired,
+}
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
   errors: state.errors,
-});
+})
 
-export default connect(mapStateToProps, { loginUser })(SignInPage);
+export default connect(mapStateToProps, { loginUser, setCurrentGoogleUser })(
+  SignInPage
+)
