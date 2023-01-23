@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
-// import { GoogleLogin, GoogleLogout } from "react-google-login"
-// import { gapi } from "gapi-script"
+import { GoogleLogin, GoogleLogout } from "react-google-login"
+import { gapi } from "gapi-script"
 import { useNavigate, Link } from "react-router-dom"
 import { useMediaQuery } from "react-responsive"
 import logo from "../../assets/logo-white.png"
@@ -263,7 +263,7 @@ const SignInPage = (props) => {
               <p className="text-center mt-4">or Sign In with</p>
               <Grid container columnSpacing={5} rowSpacing={2}>
                 <Grid item xs={12} sm={6}>
-                  {/* <GoogleLogin
+                  <GoogleLogin
                     clientId={clientId}
                     onSuccess={onSuccess}
                     onFailure={onFailure}
@@ -279,7 +279,7 @@ const SignInPage = (props) => {
                         Google
                       </Button>
                     )}
-                  /> */}
+                  />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Button
