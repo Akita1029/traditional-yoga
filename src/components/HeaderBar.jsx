@@ -41,7 +41,7 @@ const HeaderBar = (props) => {
   // Save user token to redux
   useEffect(() => {
     if (localStorage.userToken) {
-      setIsAuth(true);
+      setIsAuth(true)
       setAuthUser((JSON.parse(localStorage.userToken)).user)
     } else {
       setIsAuth(false);
@@ -61,14 +61,27 @@ const HeaderBar = (props) => {
                   <li className="nav-item dropdown">
                     <a className="dropbtn nav-link">
                       <div className="d-flex" style={{ cursor: 'pointer' }}>
-                        <Image className="me-2 mt-2" roundedCircle width={35} height={35} src={require("../assets/images/past-training-course.png")} />
-                        <div className="fs-7 mt-2">{AuthUser.nick_name !== null ? AuthUser.nick_name : AuthUser.first_name + " " + AuthUser.last_name}</div>
+                      { AuthUser.avatar === undefined ?
+                        (
+                          <Image className="me-2 mt-2"
+                            roundedCircle width={35} height={35}
+                            src={require("../assets/images/unknown_user.png")} />
+                        ) :
+                        (
+                          <Image className="me-2 mt-2"
+                            roundedCircle width={35} height={35}
+                            src={require(`../assets/images/${AuthUser.avatar}`)} />
+                        )
+                      }
+                      <div className="fs-7 mt-2">{AuthUser.nick_name !== null ? AuthUser.nick_name : AuthUser.first_name + " " + AuthUser.last_name}</div>
                       </div>
                     </a>
                     <div className="dropdown-content">
                       <div className="fs-5 text-end py-2 px-3">
                         <h5 style={{ cursor: 'pointer' }} className="mb-3" onClick={()=>handleRoute('profile')}>&nbsp;Profile &nbsp;</h5>
-                        <h5 style={{ cursor: 'pointer' }} className="mb-3" onClick={()=>handleRoute('dashboard')}>&nbsp;Dashboard &nbsp;</h5>
+                        { AuthUser.role === 3 ? (
+                          <h5 style={{ cursor: 'pointer' }} className="mb-3" onClick={()=>handleRoute('dashboard')}>&nbsp;Dashboard &nbsp;</h5>
+                        ) : (<div />)}
                         <h5 style={{ cursor: 'pointer' }} onClick={()=>logout()}>&nbsp;Log out&nbsp;</h5>
                       </div>
                     </div>

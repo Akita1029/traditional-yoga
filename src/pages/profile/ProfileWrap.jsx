@@ -28,10 +28,9 @@ const ProfileWrapPage = (props) => {
       navigate("/")
       toast.warning("You can't access this page", {
         position: toast.POSITION.TOP_RIGHT
-      });
+      })
     }
-  }, []);
-
+  }, [])
   return (
     <>
       <HeaderBar />
@@ -40,7 +39,16 @@ const ProfileWrapPage = (props) => {
         <Row className="mb-4">
           <Col lg={5}>
             <div className="rounded p-4 text-center border-primary-clr">
-              <img style={{ width: 200, height: 200, borderRadius: 200 }} src={require("../../assets/images/Guru.webp")} alt="kumar" />
+              { AuthUser.avatar === undefined ?
+              (
+                <img style={{ width: 200, height: 200, borderRadius: 200 }}
+                  src={require(`../../assets/images/unknown_user.png`)} alt="kumar" />
+              ) :
+              (
+                <img style={{ width: 200, height: 200, borderRadius: 200 }}
+                src={require(`../../assets/images/${AuthUser.avatar}`)} alt="kumar" />
+              )
+              }
               <h5 className="mt-4 mb-2"><b>{AuthUser.first_name + " " + AuthUser.last_name}</b></h5>
               <span className="text-primary" style={{ cursor: 'pointer' }}><b>Upload Photo</b></span>
             </div>

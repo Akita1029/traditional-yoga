@@ -113,7 +113,7 @@ function App() {
                   element={<UserSetting expandflag={expandflag} />}
                 />
                 <Route
-                  path="classroom"
+                  path="classroom:classId"
                   element={<Classroom expandflag={expandflag} />}
                 />
                 <Route

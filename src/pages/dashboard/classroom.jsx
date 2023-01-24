@@ -1,9 +1,13 @@
-import React from "react";
-import "../../assets/css/classroom.css";
-import { Row, Col } from "react-bootstrap";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import React from "react"
+import "../../assets/css/classroom.css"
+import { Row, Col } from "react-bootstrap"
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
+import { useParams } from 'react-router-dom'
 
 const Classroom = (props) => {
+
+  let { classId } = useParams()
+  console.log(classId, props.location.search)
   return (
     <div
       className={
