@@ -4,16 +4,9 @@ import { Row, Col } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import config from "../../config/config"
 import axios from "axios"
-import Select from '@mui/material/Select'
 import { Country, City }  from 'country-state-city'
-import MenuItem from '@mui/material/MenuItem'
+import { TextField, MenuItem } from '@mui/material'
 import { styled } from '@mui/material/styles'
-
-const CountrySelect = styled(Select)({
-  '& fieldset': {
-    borderRadius: 10
-  }
-})
 
 const ProfilePage = (props) => {
   const navigate = useNavigate()
@@ -188,8 +181,10 @@ const ProfilePage = (props) => {
           <Row>
             <Col xl={6} md={12} className="pt-2">
               <label>First Name</label>
-              <input
+              <TextField
                 className="form-control mt-2"
+                variant="outlined"
+                size="small"
                 id="firstName"
                 placeholder="Enter First Name"
                 name="firstname"
@@ -201,8 +196,10 @@ const ProfilePage = (props) => {
             </Col>
             <Col xl={6} md={12} className="pt-2">
               <label>Last Name</label>
-              <input
+              <TextField
                 className="form-control mt-2"
+                variant="outlined"
+                size="small"
                 id="lastName"
                 placeholder="Enter Last Name"
                 name="lastname"
@@ -214,8 +211,10 @@ const ProfilePage = (props) => {
             </Col>
             <Col xl={12} className="pt-2">
               <label>Nick Name</label>
-              <input
+              <TextField
                 className="form-control mt-2"
+                variant="outlined"
+                size="small"
                 id="nickname"
                 placeholder="Enter Nick Name"
                 value={nickname}
@@ -224,8 +223,10 @@ const ProfilePage = (props) => {
             </Col>
             <Col xl={12} md={12} className="pt-2">
               <label>Phone (Optional)</label>
-              <input
+              <TextField
                 className="form-control mt-2"
+                variant="outlined"
+                size="small"
                 id="phone"
                 placeholder="Enter your phone number"
                 name={whatsapp}
@@ -234,8 +235,10 @@ const ProfilePage = (props) => {
             </Col>
             <Col xl={12} md={12} className="pt-2">
               <label>Country</label>
-              <CountrySelect
+              <TextField
                 className="form-control mt-2"
+                select
+                variant="outlined"
                 id="country"
                 placeholder="Choose your country"
                 onChange={setCountryDetails}
@@ -246,7 +249,7 @@ const ProfilePage = (props) => {
                     <MenuItem key={value.isoCode} value={value.isoCode}>{value.name}</MenuItem>
                   );
                 })}
-              </CountrySelect>
+              </TextField>
             </Col>
           </Row>
           <button
@@ -261,8 +264,10 @@ const ProfilePage = (props) => {
           <Row>
             <Col xl={12} className="pt-2">
               <label>Password</label>
-              <input
+              <TextField
                 className="form-control mt-2"
+                variant="outlined"
+                size="small"
                 type="password"
                 id="password"
                 name="password"
@@ -275,8 +280,10 @@ const ProfilePage = (props) => {
             </Col>
             <Col xl={12} className="pt-2">
               <label>Confirm Password</label>
-              <input
+              <TextField
                 className="form-control mt-2"
+                variant="outlined"
+                size="small"
                 type="password"
                 id="confirm"
                 name="confirmpassword"
