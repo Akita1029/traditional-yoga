@@ -205,7 +205,7 @@ const StudentManagementPage = (props) => {
                       className="py-2 text-center text-white"
                       style={{ background: '#6db100', cursor: 'pointer' }}
                       onClick={() => showDetail(t.user_id)}>
-                      <i class="bi bi-list-task"></i>
+                      <i className="bi bi-list-task"></i>
                     </div>
                   </td>
                 </tr>

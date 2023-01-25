@@ -4,3 +4,5 @@ export const GET_ERRORS = "GET_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const LOGOUT = "LOGOUT";
 export const GET_USER_DATA = "GET_USER_DATA";
+export const GET_COURSE_DATA = "GET_COURSE_DATA"
+export const SET_COURSE_DATA = "SET_COURSE_DATA"
