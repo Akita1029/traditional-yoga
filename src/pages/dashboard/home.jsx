@@ -7,7 +7,6 @@ import "react-multi-carousel/lib/styles.css";
 import { toast } from 'react-toastify'
 import config from "../../config/config"
 import axios from "axios"
-import { classes } from "istanbul-lib-coverage";
 import { useNavigate } from "react-router-dom";
 
 const Home = (props) => {
@@ -181,7 +180,7 @@ const Home = (props) => {
                   if(index != 0)
                     return (
                       <LastClassroomItem
-                        image={classes.photo}
+                        image={classe.photo}
                         classId={classe.id}   />
                     )
                 })
