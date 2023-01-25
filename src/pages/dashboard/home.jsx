@@ -79,7 +79,7 @@ const Home = (props) => {
                     <div className="px-4 position-relative" style={{ bottom: 70 }}>
                       <button
                         className="w-100 border-primary bg-primary rounded px-4 text-light py-1"
-                        onClick={() => viewClassroom(liveclasses[0].id)}
+                        onClick={() => viewClassroom(liveclasses[0].classId)}
                       >View Classroom</button>
                     </div>
                   </div>

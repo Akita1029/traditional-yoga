@@ -22,7 +22,7 @@ const ApplicationForm = (props) => {
   const [cities, setCities] = useState()
   const [countryCode, setCountryCode] = useState()
   const [stateCode, setStateCode] = useState()
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const setCountryDetails = (e) =>{
     setCountryCode(e.target.value)
@@ -39,7 +39,7 @@ const ApplicationForm = (props) => {
 
   useEffect(() => {
 
-  }, []);
+  }, [])
 
   const take = () => {
     if(error.firstName === "" && error.lastName === "" && error.birthDate === "" &&
@@ -89,38 +89,38 @@ const ApplicationForm = (props) => {
               toast.success('You submitted successfully and updated profile.', {
                   position: toast.POSITION.TOP_RIGHT
               })
-              break;
+              break
           case 201:
               toast.success('You submitted successfully and created profile.', {
                   position: toast.POSITION.TOP_RIGHT
               })
               navigate('/ty/courses/main')
-              break;
+              break
           case 401:
           case 404:
               toast.warning('You submitted success but Family info is not correct. Please try again', {
                   position: toast.POSITION.TOP_RIGHT
               })
-              break;
+              break
           case 402:
           case 405:
               toast.warning('You submitted success and Student info is not correct. Please try again', {
                   position: toast.POSITION.TOP_RIGHT
               })
-              break;
+              break
           case 403:
           case 406:
               toast.warning('Submit fail. Please try again.', {
                   position: toast.POSITION.TOP_RIGHT
               })
-              break;
+              break
           case 407:
               toast.error('Already registered student', {
                   position: toast.POSITION.TOP_RIGHT
               })
-              break;
+              break
           default:
-              break;
+              break
           }
         }
       )
@@ -163,7 +163,7 @@ const ApplicationForm = (props) => {
     codediscipline: '',
     contactdetails: '',
     birthDate: new Date()
-  });
+  })
 
   const [error, setError] = useState({
     email: '',
@@ -193,122 +193,122 @@ const ApplicationForm = (props) => {
     setInput(prev => ({
       ...prev,
       [name]: value
-    }));
-    validateInput(e);
+    }))
+    validateInput(e)
   }
 
   const validateInput = e => {
-    let { name, value } = e.target;
+    let { name, value } = e.target
     setError(prev => {
-      const stateObj = { ...prev, [name]: "" };
+      const stateObj = { ...prev, [name]: "" }
 
       switch (name) {
         case "email":
           if (!value) {
-            stateObj[name] = "Please enter email address.";
+            stateObj[name] = "Please enter email address."
           }
-          break;
+          break
         case "firstName":
           if (!value) {
-            stateObj[name] = "Please enter first name.";
+            stateObj[name] = "Please enter first name."
           }
-          break;
+          break
         case "lastName":
           if (!value) {
-            stateObj[name] = "Please enter last name.";
+            stateObj[name] = "Please enter last name."
           }
-          break;
+          break
         case "whatsapp":
           if (!value) {
-            stateObj[name] = "Please enter whatsapp phone number.";
+            stateObj[name] = "Please enter whatsapp phone number."
           }
-          break;
+          break
         case "language":
           if (!value) {
-            stateObj[name] = "Please enter spoken languages.";
+            stateObj[name] = "Please enter spoken languages."
           }
-          break;
+          break
         case "occupation":
           if (!value) {
-            stateObj[name] = "Please enter profession / occupation details.";
+            stateObj[name] = "Please enter profession / occupation details."
           }
-          break;
+          break
         case "education":
           if (!value) {
-            stateObj[name] = "Please enter other education details";
+            stateObj[name] = "Please enter other education details"
           }
-          break;
+          break
         case "address1":
           if (!value) {
-            stateObj[name] = "Please enter street address.";
+            stateObj[name] = "Please enter street address."
           }
-          break;
+          break
         case "zipcode":
           if (!value) {
-            stateObj[name] = "Please enter zip code / postal code.";
+            stateObj[name] = "Please enter zip code / postal code."
           }
-          break;
+          break
         case "relationship":
           if (!value) {
-            stateObj[name] = "Please enter relationship to family member.";
+            stateObj[name] = "Please enter relationship to family member."
           }
-          break;
+          break
         case "familycontacts":
           if (!value) {
-            stateObj[name] = "Please enter family member's contact phone number";
+            stateObj[name] = "Please enter family member's contact phone number"
           }
-          break;
+          break
         case "pastpractice":
           if (!value) {
-            stateObj[name] = "Please enter what yoga traditions you did practice in the past.";
+            stateObj[name] = "Please enter what yoga traditions you did practice in the past."
           }
-          break;
+          break
         case "courseoutline":
           if (!value) {
-            stateObj[name] = "Please enter course outline text and acknowledgement.";
+            stateObj[name] = "Please enter course outline text and acknowledgement."
           }
-          break;
+          break
         case "courseethostext":
           if (!value) {
-            stateObj[name] = "Please enter course ethos text and acknowledgement.";
+            stateObj[name] = "Please enter course ethos text and acknowledgement."
           }
-          break;
+          break
         case "coursediscipline":
           if (!value) {
-            stateObj[name] = "Please enter course discipline and joining agreement and acknowledgement.";
+            stateObj[name] = "Please enter course discipline and joining agreement and acknowledgement."
           }
-          break;
+          break
         case "communication":
           if (!value) {
-            stateObj[name] = "Please enter communication and daily classes acknowledgement.";
+            stateObj[name] = "Please enter communication and daily classes acknowledgement."
           }
-          break;
+          break
         case "vedic":
           if (!value) {
-            stateObj[name] = "Please enter about vedic nutraceuticals acknowledgement.";
+            stateObj[name] = "Please enter about vedic nutraceuticals acknowledgement."
           }
-          break;
+          break
         case "codediscipline":
           if (!value) {
-            stateObj[name] = "Please enter code of discipline acknowledgment.";
+            stateObj[name] = "Please enter code of discipline acknowledgment."
           }
-          break;
+          break
         case "contactdetails":
           if (!value) {
-            stateObj[name] = "Please enter contact details.";
+            stateObj[name] = "Please enter contact details."
           }
-          break;
+          break
         case "birthDate":
           if (!value) {
             stateObj[name] = "Please enter birth date."
           }
-          break;
+          break
         default:
-          break;
+          break
       }
 
-      return stateObj;
-    });
+      return stateObj
+    })
   }
   return (
     <>
@@ -761,7 +761,7 @@ const ApplicationForm = (props) => {
                   {error.contactdetails && <p className='pt-1 text-danger'>{error.contactdetails}</p>}
                 </Col>
                 <Col xl={6} md={12}>
-                  <label className='text-primary'>&nbsp;</label>
+                  <label className='text-primary'>&nbsp</label>
                   <button className="w-100 border-primary bg-primary rounded px-4 text-light fs-5 py-2 mt-2"
                   onClick={() => take()}>SUBMIT</button>
                 </Col>
@@ -776,14 +776,14 @@ const ApplicationForm = (props) => {
 
 // ApplicationFrom.propTypes = {
 //   takeCourse: PropTypes.func.isRequired,
-// };
+// }
 
 // const mapStateToProps = (state) => ({
 //   auth: state.auth,
 //   course: state.course,
 //   errors: state.errors,
-// });
+// })
 
-// export default connect(mapStateToProps, { takeCourse })(ApplicationFrom);
+// export default connect(mapStateToProps, { takeCourse })(ApplicationFrom)
 
 export default ApplicationForm

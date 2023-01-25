@@ -64,5 +64,6 @@
 }
 
 .dashboard-top-avatar {
-  margin-left: calc(100% - 30%);
+  position: fixed;
+  margin-left: calc(100% - 25%);
 }

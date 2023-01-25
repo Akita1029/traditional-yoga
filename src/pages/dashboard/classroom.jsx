@@ -36,14 +36,21 @@ const Classroom = (props) => {
 
   const joinClass = (classId) => {
     axios.post(`${config.server}api/courses/join_to_classroom`, {
-      classId, email: AuthUser.email
+      classId, userId: AuthUser.id
     }).then(response => {
       if (response.status === 200) {
         toast.success("You joined successfully to this classroom! Now please wait the mentor's instruction...", {
           position: toast.POSITION.TOP_RIGHT
         })
+        let tmp = currentClass
+        tmp.members++
+        setCurrentClass(tmp)
+      } else if (response.status === 201) {
+        toast.success("You already joined this classroom!", {
+          position: toast.POSITION.TOP_RIGHT
+        })
       } else {
-        toast.warning("Join failed!", {
+        toast.warning("Join failed! Please try again", {
           position: toast.POSITION.TOP_RIGHT
         })
       }
@@ -89,7 +96,7 @@ const Classroom = (props) => {
             &nbsp;{currentClass.mentor}
           </p>
           <p><span className="mentor-title">Mentor PhoneNumber:</span>
-            &nbsp;{currentClass.mentor_phone}
+            &nbsp;{currentClass.mentor_phonenumber}
           </p>
           <p><span className="mentor-title">Class Members:</span>
             &nbsp;{currentClass.members}
