@@ -105,6 +105,7 @@ const ProfileCoursePage = (props) => {
               { courses && courses.map(course => {
                 return (
                 <CourseProgressItem
+                  courseId = {course.id}
                   image={course.instructor_photo}
                   title={course.title}
                   progress={course.progress}

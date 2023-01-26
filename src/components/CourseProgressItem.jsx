@@ -1,7 +1,15 @@
 import { Col, Row, ProgressBar } from "react-bootstrap";
 import React from "react";
+import { useNavigate } from "react-router-dom"
 
 const CourseProgressItem = (props) => {
+
+  const navigate = useNavigate()
+
+  const viewCourse = courseId => {
+    navigate(`/tv/courses_detail?courseId=${courseId}`)
+  }
+
   return (
     <>
       <Row className="border-primary-clr rounded p-2 mb-4">
@@ -21,7 +29,13 @@ const CourseProgressItem = (props) => {
             <div className="pb-2">
               <ProgressBar now={props.progress ? props.progress : 0} striped variant="success" className="mt-2 mb-3" />
               <div className="text-center mt-2">
-                <button style={{ width: 200 }} className="border-primary rounded px-4 text-black py-1">Take Course</button>
+                <button
+                  style={{ width: 200 }}
+                  className="border-primary rounded px-4 text-black py-1"
+                  onClick={() => viewCourse(props.courseId)}
+                >
+                  View Course
+                </button>
               </div>
             </div>
           </div>
