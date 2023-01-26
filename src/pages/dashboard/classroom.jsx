@@ -10,15 +10,17 @@ import { toast } from 'react-toastify';
 
 const Classroom = (props) => {
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const search = useLocation().search;
-  const classId = new URLSearchParams(search).get('classId');
+  const classId = new URLSearchParams(search).get('classId')
   const [currentClass, setCurrentClass] = useState({})
   const [AuthUser, setAuthUser] = useState({})
 
   useEffect(() => {
+    let user
     if (localStorage.userToken) {
-      setAuthUser((JSON.parse(localStorage.userToken)).user)
+      user = (JSON.parse(localStorage.userToken)).user
+      setAuthUser(user)
     } else {
       navigate("/")
       toast.warning("You can't access this page", {
@@ -26,7 +28,7 @@ const Classroom = (props) => {
       })
     }
     axios.post(`${config.server}api/courses/get_one_classroom`, {
-      classId
+      classId, userId: user.id
     }).then(response => {
       if (response.status === 200) {
         setCurrentClass(response.data)
@@ -46,7 +48,7 @@ const Classroom = (props) => {
         tmp.members++
         setCurrentClass(tmp)
       } else if (response.status === 201) {
-        toast.success("You already joined this classroom!", {
+        toast.warning("You already joined this classroom!", {
           position: toast.POSITION.TOP_RIGHT
         })
       } else {
@@ -68,7 +70,7 @@ const Classroom = (props) => {
       <Row>
         <h5 className="text-primary mb-3 x-title">Live Classroom</h5>
         <Col md={5} sm={12}>
-          { currentClass.phone === undefined ?
+          { currentClass.photo === undefined ?
             (
               <img alt="classroomInfo"
                 className="w-100 rounded"
@@ -87,7 +89,7 @@ const Classroom = (props) => {
         <Col md={7} sm={12}>
           <h5 className="text-primary mb-3 x-title">Class Information</h5>
           <p><span className="mentor-title">Class Name:</span>
-            &nbsp;{currentClass.name}
+            &nbsp;{currentClass.title}
           </p>
           <p><span className="mentor-title">Place:</span>
             &nbsp;{currentClass.place}
@@ -103,7 +105,7 @@ const Classroom = (props) => {
           </p>
           <button
             className="border-primary bg-primary rounded px-4 text-light py-1"
-            onClick={() => joinClass(currentClass.id)}
+            onClick={() => joinClass(currentClass.classId)}
           >Join Now</button>
         </Col>
       </Row>
@@ -136,7 +138,7 @@ const Classroom = (props) => {
               <div className="col-12">
                 <div className="d-flex flex-column justify-content-center align-items-start p-2 px-4">
                   <span className="content" style={{ fontSize: "12px" }}>
-                    {currentClass.description}
+                    {currentClass.content}
                   </span>
                 </div>
               </div>

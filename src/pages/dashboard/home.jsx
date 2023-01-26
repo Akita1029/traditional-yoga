@@ -33,18 +33,38 @@ const Home = (props) => {
     },
   }
   const navigate = useNavigate();
-  const [liveclasses, setLiveClasses] = useState([])
+  const [liveclass, setLiveClass] = useState()
+  const [lastclasses, setLastClasses] = useState()
+  const [AuthUser, setAuthUser] = useState()
 
   useEffect(() => {
-    axios.post(`${config.server}api/courses/get_live_classrooms`).then(response => {
+    let user = ''
+    if (localStorage.userToken) {
+      user = (JSON.parse(localStorage.userToken)).user
+      setAuthUser(user)
+    } else {
+      navigate("/")
+      toast.warning("You can't access this page", {
+        position: toast.POSITION.TOP_RIGHT
+      })
+    }
+    axios.post(`${config.server}api/courses/get_live_classrooms`, {
+      email: user.email
+    }).then(response => {
       if (response.status === 200) {
-        setLiveClasses(response.data)
+        setLiveClass(response.data)
       }
-    }).catch(e => console.log(e));
+    }).catch(e => console.log(e))
+    axios.post(`${config.server}api/courses/get_last_classrooms`, {
+      email: user.email
+    }).then(response => {
+      if (response.status === 200) {
+        setLastClasses(response.data)
+      }
+    }).catch(e => console.log(e))
   }, [])
 
   const viewClassroom = (classId) => {
-    console.log("ClassID:", classId)
     navigate(`classroom?classId=${classId}`)
   }
 
@@ -56,7 +76,7 @@ const Home = (props) => {
           : "dashboard-container"
       }
     >
-      { liveclasses.length > 0 ?
+      { liveclass !== undefined ?
         (<div>
           <Row>
             <Col lg={8} md={12}>
@@ -64,7 +84,7 @@ const Home = (props) => {
               <Row>
                 <Col lg={4} md={12}>
                   <div>
-                    {liveclasses[0].photo === undefined ?
+                    {liveclass.photo === undefined ?
                       (
                         <img width='100%' style={{ borderRadius: 20 }} alt="dashboard"
                           src={require("../../assets/images/classroom.jpg")}
@@ -72,14 +92,14 @@ const Home = (props) => {
                       ) :
                       (
                         <img width='100%' style={{ borderRadius: 20 }} alt="dashboard"
-                          src={require(`../../assets/images/${liveclasses[0].photo}`)}
+                          src={require(`../../assets/images/${liveclass.photo}`)}
                         />
                       )
                     }
                     <div className="px-4 position-relative" style={{ bottom: 70 }}>
                       <button
                         className="w-100 border-primary bg-primary rounded px-4 text-light py-1"
-                        onClick={() => viewClassroom(liveclasses[0].classId)}
+                        onClick={() => viewClassroom(liveclass.classId)}
                       >View Classroom</button>
                     </div>
                   </div>
@@ -87,35 +107,35 @@ const Home = (props) => {
                 <Col lg={8} md={12}>
                   <p className="text-primary x-title">Class Information</p>
                   <div>
-                    <span className="mentor-title">Class Name:</span>&nbsp;
+                    <span className="mentor-title">Class Title:</span>&nbsp;
                     <span className="mentor-content">
-                      {liveclasses[0].name}
+                      {liveclass.title}
                     </span>
                   </div>
                   <div style={{ marginTop: "15px" }}>
                     <span className="mentor-title">Place : </span>&nbsp;
                     <span className="mentor-content">
-                      {liveclasses[0].place}
+                      {liveclass.place}
                     </span>
                   </div>
                   <div style={{ marginTop: "15px" }}>
                     <span className="mentor-title">Mentor Name : </span>&nbsp;
-                    <span className="mentor-content">{liveclasses[0].mentor}</span>
+                    <span className="mentor-content">{liveclass.mentor}</span>
                   </div>
                   <div style={{ marginTop: "15px" }}>
                     <span className="mentor-title">Mentor PhoneNumber : </span>&nbsp;
-                    <span className="mentor-content">{liveclasses[0].mentor_phonenumber}</span>
+                    <span className="mentor-content">{liveclass.mentor_phonenumber}</span>
                   </div>
                   <div style={{ marginTop: "15px" }}>
                     <span className="mentor-title">Class Members : </span>&nbsp;
-                    <span className="mentor-content">{liveclasses[0].members}</span>
+                    <span className="mentor-content">{liveclass.members}</span>
                   </div>
                   <p className="text-primary x-title mt-4">
                     Class Description
                   </p>
                   <div style={{ marginTop: "15px" }}>
                     <p className="classdescription">
-                      {liveclasses[0].description}
+                      {liveclass.content}
                     </p>
                   </div>
                 </Col>
@@ -128,17 +148,17 @@ const Home = (props) => {
                 <div>
                   <span className="mentor-title">Name : </span>&nbsp;
                   <span className="mentor-content">
-                    {liveclasses[0].mentor}
+                    {liveclass.mentor}
                   </span>
                 </div>
                 <div style={{ marginTop: "15px" }}>
                   <span className="mentor-title">PhoneNumber : </span>&nbsp;
-                  <span className="mentor-content">{liveclasses[0].mentor_phonenumber}</span>
+                  <span className="mentor-content">{liveclass.mentor_phonenumber}</span>
                 </div>
                 <div style={{ marginTop: "15px" }}>
                   <span className="mentor-title">Address : </span>&nbsp;
                   <span className="mentor-content">
-                    {liveclasses[0].mentor_address}
+                    {liveclass.mentor_address}
                   </span>
                 </div>
                 <p className="text-primary x-title mt-4">
@@ -147,17 +167,17 @@ const Home = (props) => {
                 <div>
                   <span className="mentor-title">Name : </span>&nbsp;
                   <span className="mentor-content">
-                    {liveclasses[0].chief}
+                    {liveclass.chief}
                   </span>
                 </div>
                 <div style={{ marginTop: "15px" }}>
                   <span className="mentor-title">PhoneNumber : </span>&nbsp;
-                  <span className="mentor-content">{liveclasses[0].chief_phonenumber}</span>
+                  <span className="mentor-content">{liveclass.chief_phonenumber}</span>
                 </div>
                 <div style={{ marginTop: "15px" }}>
                   <span className="mentor-title">Address : </span>&nbsp;
                   <span className="mentor-content">
-                    {liveclasses[0].chief_address}
+                    {liveclass.chief_address}
                   </span>
                 </div>
               </div>
@@ -176,12 +196,13 @@ const Home = (props) => {
               removeArrowOnDeviceType={["tablet", "mobile"]}
             >
               {
-                liveclasses.map((classe, index) => {
+                lastclasses !== undefined && lastclasses.map((per_class, index) => {
                   if(index != 0)
                     return (
                       <LastClassroomItem
-                        image={classe.photo}
-                        classId={classe.id}   />
+                        key = {per_class.classId}
+                        image={per_class.photo}
+                        classId={per_class.classId}   />
                     )
                 })
               }

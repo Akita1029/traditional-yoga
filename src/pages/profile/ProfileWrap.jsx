@@ -31,6 +31,7 @@ const ProfileWrapPage = (props) => {
       })
     }
   }, [])
+  console.log(AuthUser.avatar)
   return (
     <>
       <HeaderBar />
@@ -39,7 +40,8 @@ const ProfileWrapPage = (props) => {
         <Row className="mb-4">
           <Col lg={5}>
             <div className="rounded p-4 text-center border-primary-clr">
-              { AuthUser.avatar === undefined ?
+
+              { AuthUser.avatar === undefined || AuthUser.avatar === null ?
               (
                 <img style={{ width: 200, height: 200, borderRadius: 200 }}
                   src={require(`../../assets/images/unknown_user.png`)} alt="kumar" />
