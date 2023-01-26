@@ -10,6 +10,7 @@ import { toast } from 'react-toastify'
 import config from "../config/config"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+var languages = require('language-list')()
 
 const ApplicationForm = (props) => {
 
@@ -22,6 +23,9 @@ const ApplicationForm = (props) => {
   const [cities, setCities] = useState()
   const [countryCode, setCountryCode] = useState()
   const [stateCode, setStateCode] = useState()
+  const [language, setLanguage] = useState()
+
+  const languagelist = languages.getData()
   const navigate = useNavigate()
 
   const setCountryDetails = (e) =>{
@@ -43,7 +47,7 @@ const ApplicationForm = (props) => {
 
   const take = () => {
     if(error.firstName === "" && error.lastName === "" && error.birthDate === "" &&
-    error.whatsapp === "" && error.language === "" && error.occupation === "" &&
+    error.whatsapp === "" && language !== "" && error.occupation === "" &&
     error.education === "" && error.address1 === "" && error.zipcode === "" &&
     error.email === "" && error.relationship === "" && error.familycontacts === "" &&
     error.pastpractice === "" && error.courseoutline === "" && error.contactdetails === "" &&
@@ -58,7 +62,7 @@ const ApplicationForm = (props) => {
         birthDate: input.birthDate,
         whatsapp: input.whatsapp,
         gender: gender,
-        language: input.language,
+        language: language,
         occupation: input.occupation,
         education: input.education,
         country: selectedCountry,
@@ -147,7 +151,6 @@ const ApplicationForm = (props) => {
     firstName: '',
     lastName: '',
     whatsapp: '',
-    language: '',
     occupation: '',
     education: '',
     address1: '',
@@ -170,7 +173,6 @@ const ApplicationForm = (props) => {
     firstName: '',
     lastName: '',
     whatsapp: '',
-    language: '',
     occupation: '',
     education: '',
     address1: '',
@@ -221,11 +223,6 @@ const ApplicationForm = (props) => {
         case "whatsapp":
           if (!value) {
             stateObj[name] = "Please enter whatsapp phone number."
-          }
-          break
-        case "language":
-          if (!value) {
-            stateObj[name] = "Please enter spoken languages."
           }
           break
         case "occupation":
@@ -448,15 +445,18 @@ const ApplicationForm = (props) => {
                   <label>Spoken Language</label>
                   <TextField
                     className="form-control mt-2"
-                    variant="outlined"
-                    size="small"
+                    select
+                    defaultValue={' '}
                     id="language"
-                    name="language"
-                    value={input.language}
-                    onChange={onInputChange}
-                    onBlur={validateInput}
-                  />
-                  {error.language && <p className='pt-1 text-danger'>{error.language}</p>}
+                    onChange={(e) => setLanguage(e)}
+                    size="small"
+                  >
+                    { languagelist.map((language, index) => {
+                      return (
+                        <MenuItem key={index} value={language.code}>{language.language}</MenuItem>
+                      )
+                    })}
+                  </TextField>
                 </Col>
                 <Col xl={3} md={12}>
                   <label>Profession / Occupation</label>
@@ -632,8 +632,14 @@ const ApplicationForm = (props) => {
                     onChange={(e) => setHearFrom(e.target.value)}
                     size="small"
                   >
-                    <MenuItem value='google'>Search Engines(like Google)</MenuItem>
-                    <MenuItem value='friend'>Friends</MenuItem>
+                    <MenuItem value='friend'>Friends & Family</MenuItem>
+                    <MenuItem value='facebook'>Facebook</MenuItem>
+                    <MenuItem value='facebookgroups'>Facebook Groups</MenuItem>
+                    <MenuItem value='instagram'>Instagram</MenuItem>
+                    <MenuItem value='youtube'>YouTube</MenuItem>
+                    <MenuItem value='linkedin'>LinkedIn</MenuItem>
+                    <MenuItem value='tiktok'>TikTok</MenuItem>
+                    <MenuItem value='other'>Other</MenuItem>
                   </TextField>
                 </Col>
                 <Col xl={6} md={12}>

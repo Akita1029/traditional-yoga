@@ -33,6 +33,11 @@ const CurrentCourse = (props) => {
       if (response.status === 200) {
         setCurrentCourse(response.data.course_id)
         setSections(response.data.sections)
+        if(response.data.sections !== undefined && response.data.sections.length > 0){
+          response.data.sections.map(section => {
+            getUnitsFromSection(section.id)
+          })
+        }
       }
     }).catch(e => console.log(e));
   }, [])
@@ -45,21 +50,24 @@ const CurrentCourse = (props) => {
   }
 
   const getUnitsFromSection = id => {
+    console.log("getUnitsFromSection:", id)
     axios.post(`${config.server}api/courses/get_units_from_section`, {
       sectionId: id
     }).then(response => {
       if(response.status === 200){
         let tmp = sectionUnits
         tmp[`'${id}'`] = response.data
-        setSectionUnits(tmp)
+        console.log("TMP:", tmp)
+        setSectionUnits({...tmp})
+        console.log("GET_SECTION_UNITS:", sectionUnits)
       }
     })
   }
 
   const viewClassroom = classId => {
-    navigate(`classroom?classId=${classId}`)
+    navigate(`/dashboard/classroom?classId=${classId}`)
   }
-  console.log(sectionUnits)
+  console.log("Out Section Units:", sectionUnits)
   return (
     <div
       className={
@@ -101,7 +109,7 @@ const CurrentCourse = (props) => {
                     <Accordion.Item eventKey={`${section.id}`}>
                       <Accordion.Header
                         className="currentcoursebutton"
-                        onClick={() => getUnitsFromSection(section.id)}
+                        // onClick={() => getUnitsFromSection(section.id)}
                         >
                         <div
                           style={{
@@ -132,10 +140,15 @@ const CurrentCourse = (props) => {
                       <Accordion.Body
                         className="accordioncontent"
                         >
-                          { sectionUnits[`'${section.id}`] !== undefined ?
+                          {
+                            console.log("SectionUnits:", sectionUnits[`'${section.id}'`])
+                          }
+                          {
+
+                          sectionUnits[`'${section.id}'`] !== undefined ?
                             (
-                              sectionUnits[`'${section.id}`].map(unit => {
-                                console.log(unit)
+                              sectionUnits[`'${section.id}'`].map(unit => {
+                                console.log("Unit:", unit)
                                 return (
                                   <div className="largesec">
                                     <div className="largesec">
