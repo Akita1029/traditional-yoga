@@ -85,6 +85,7 @@ const CourseMainPage = () => {
             return(
               <OnlineCourseItem
                 key = {course.id}
+                courseId = {course.id}
                 title = {course.title}
                 description = {course.detail_content}
                 type = {course.category === 0 ? "Private Course" : "Public Course"}
@@ -169,6 +170,7 @@ const CourseMainPage = () => {
                         <OnlineCourseItem
                           key = {course.id}
                           title = {course.title}
+                          courseId = {course.id}
                           description = {course.detail_content}
                           type = {course.category === 0 ? "Private Course" : "Public Course"}
                           image={course.instructor_photo} />            )
@@ -213,6 +215,7 @@ const CourseMainPage = () => {
                   <OnlineCourseItem
                     key = {course.id}
                     title = {course.title}
+                    courseId = {course.id}
                     description = {course.detail_content}
                     type = {course.category === 0 ? "Private Course" : "Public Course"}
                     image={course.instructor_photo} />
@@ -258,6 +261,7 @@ const CourseMainPage = () => {
                   <OnlineCourseItem
                     key = {course.id}
                     title = {course.title}
+                    courseId = {course.id}
                     description = {course.detail_content}
                     type = {course.category === 0 ? "Private Course" : "Public Course"}
                     image={course.instructor_photo} />

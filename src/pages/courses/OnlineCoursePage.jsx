@@ -52,6 +52,7 @@ const OnlineCoursePage = (props) => {
           <OnlineCourseListItem
             key = {course.id}
             title = {course.title}
+            courseId = {course.id}
             description = {course.detail_content}
             type = {course.category === 0 ? "Private Course" : "Public Course"}
             image={course.instructor_photo} />
@@ -66,6 +67,7 @@ const OnlineCoursePage = (props) => {
         <OnlineCourseItem
           key = {course.id}
           title = {course.title}
+          courseId = {course.id}
           description = {course.detail_content}
           type = {course.category === 0 ? "Private Course" : "Public Course"}
           image={course.instructor_photo} />
