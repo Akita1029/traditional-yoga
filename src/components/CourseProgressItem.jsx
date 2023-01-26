@@ -7,7 +7,7 @@ const CourseProgressItem = (props) => {
   const navigate = useNavigate()
 
   const viewCourse = courseId => {
-    navigate(`/tv/courses_detail?courseId=${courseId}`)
+    navigate(`/ty/courses_detail?courseId=${courseId}`)
   }
 
   return (
