@@ -75,13 +75,14 @@ const StudentManagementPage4Chief = (props) => {
     }).catch((err) => {
       console.log(err)
     });
-  }
+  } //
 
   const deleteStudent = (id) => {
     axios.post(`${config.server}api/students/delete`, { id }).then((res) => {
       console.log("Result:", res)
       if (res.status === 201) {
       } else if (res.status === 204) {
+        console.log('code 204')
       } else if (res.status === 205) {
       } else if (res.status === 200) {
         toast.success('Deleted successfully')
