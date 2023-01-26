@@ -10,9 +10,9 @@ import { toast } from 'react-toastify';
 
 const Classroom = (props) => {
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const search = useLocation().search;
-  const classId = new URLSearchParams(search).get('classId');
+  const classId = new URLSearchParams(search).get('classId')
   const [currentClass, setCurrentClass] = useState({})
   const [AuthUser, setAuthUser] = useState({})
 
