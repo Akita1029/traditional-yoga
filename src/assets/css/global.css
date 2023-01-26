@@ -62,3 +62,8 @@
   background-color: #f96302 !important;
   border-color: #f96302 !important;
 }
+
+.dashboard-top-avatar {
+  position: fixed;
+  margin-left: calc(100% - 25%);
+}

@@ -28,6 +28,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const OnlineCourseListItem = (props) => {
   const image = require ("../assets/images/" + props.image);
   const navigate = useNavigate();
+  const courseId = props.courseId
   const handleRoute = (data) =>{
     navigate(`/${data}`);
   }
@@ -44,7 +45,7 @@ const OnlineCourseListItem = (props) => {
     >
       <Grid container spacing={2}>
         <Grid item>
-          <StyledBadge badgeContent={"Private"} color="warning" 
+          <StyledBadge badgeContent={"Private"} color="warning"
             anchorOrigin={{
               vertical: 'top',
               horizontal: 'left',
@@ -83,7 +84,7 @@ const OnlineCourseListItem = (props) => {
                 sx={{
                   fontSize: 10
                 }}
-                onClick={()=> handleRoute('ty/courses_detail')}>
+                onClick={()=> handleRoute(`ty/courses_detail?courseId=${courseId}`)}>
                 { props.type }
               </Button>
             </Grid>

@@ -191,7 +191,7 @@ const MentorsManagement = (props) => {
                         <td>{t.gender}</td>
                         <td>
                           <div className="py-2 text-center text-white" style={{ background: '#6db100', cursor: 'pointer' }}>
-                            <i class="bi bi-list-task"></i>
+                            <i className="bi bi-list-task"></i>
                           </div>
                         </td>
                       </tr>
@@ -288,7 +288,7 @@ const MentorsManagement = (props) => {
                         <td>{t.gender}</td>
                         <td>
                           <div className="py-2 text-center text-white" style={{ background: '#6db100', cursor: 'pointer' }}>
-                            <i class="bi bi-list-task"></i>
+                            <i className="bi bi-list-task"></i>
                           </div>
                         </td>
                       </tr>
