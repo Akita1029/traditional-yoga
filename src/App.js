@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { Provider } from "react-redux"
+import { ConfirmProvider } from "material-ui-confirm"
 import store from "./store"
 // Import View Components
 
@@ -75,77 +76,79 @@ function App() {
   };
 
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<LandingPage />} />
-          <Route path="/ty" element={<MainLayout />}>
-            <Route path="about" element={<AboutUsPage />} />
-            <Route path="courses" element={<CoursesPage />}>
-              <Route path="main" element={<CourseMainPage />} />
-              <Route path="online" element={<OnlineCoursePage />} />
+    <ConfirmProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="/" element={<LandingPage />} />
+            <Route path="/ty" element={<MainLayout />}>
+              <Route path="about" element={<AboutUsPage />} />
+              <Route path="courses" element={<CoursesPage />}>
+                <Route path="main" element={<CourseMainPage />} />
+                <Route path="online" element={<OnlineCoursePage />} />
+              </Route>
+              <Route path="courses_detail" element={<OnlineCourseDetailPage />} />
+              <Route path="courses_progress" element={<CourseProgressPage />} />
+              <Route path="library" element={<></>} />
+              <Route path="contactus" element={<ContactUs />} />
             </Route>
-            <Route path="courses_detail" element={<OnlineCourseDetailPage />} />
-            <Route path="courses_progress" element={<CourseProgressPage />} />
-            <Route path="library" element={<></>} />
-            <Route path="contactus" element={<ContactUs />} />
-          </Route>
 
-          <Route path="/donations" element={<DonationPage />}>
-            <Route path="payment" element={<PaymentPage />} />
-            <Route path="upcomings" element={<UpcomingPage />} />
-          </Route>
-          <Route path="/forget" element={<ForgetPage />} />
-          <Route path="/signin" element={<SignInPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/requestreset" element={<RequestResetPage />} />
-          <Route path="/reset" element={<ResetPasswordPage />} />
-          {auth === true ? (
-            <>
-              <Route path="/profile" element={<ProfileWrapPage />} />
-              <Route
-                path="/dashboard"
-                element={<DashboardLayout setfunc={setfunc} />}
-              >
-                <Route path="" element={<Home expandflag={expandflag} />} />
+            <Route path="/donations" element={<DonationPage />}>
+              <Route path="payment" element={<PaymentPage />} />
+              <Route path="upcomings" element={<UpcomingPage />} />
+            </Route>
+            <Route path="/forget" element={<ForgetPage />} />
+            <Route path="/signin" element={<SignInPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/requestreset" element={<RequestResetPage />} />
+            <Route path="/reset" element={<ResetPasswordPage />} />
+            {auth === true ? (
+              <>
+                <Route path="/profile" element={<ProfileWrapPage />} />
                 <Route
-                  path="usersetting"
-                  element={<UserSetting expandflag={expandflag} />}
-                />
+                  path="/dashboard"
+                  element={<DashboardLayout setfunc={setfunc} />}
+                >
+                  <Route path="" element={<Home expandflag={expandflag} />} />
+                  <Route
+                    path="usersetting"
+                    element={<UserSetting expandflag={expandflag} />}
+                  />
+                  <Route
+                    path="classroom"
+                    element={<Classroom expandflag={expandflag} />}
+                  />
+                  <Route
+                    path="currentcourse"
+                    element={<CurrentCourse expandflag={expandflag} />}
+                  />
+                  <Route path="playlist" element={<></>} />
+                  <Route path="library" element={<></>} />
+                  <Route path="community" element={<></>} />
+                </Route>
                 <Route
-                  path="classroom"
-                  element={<Classroom expandflag={expandflag} />}
-                />
-                <Route
-                  path="currentcourse"
-                  element={<CurrentCourse expandflag={expandflag} />}
-                />
-                <Route path="playlist" element={<></>} />
-                <Route path="library" element={<></>} />
-                <Route path="community" element={<></>} />
-              </Route>
-              <Route
-                path="/admindashboard"
-                element={<AdminDashboardLayout setfunc={setfunc} />}
-              >
-                <Route
-                  path="user_manage"
-                  element={<AdminUserManagement expandflag={expandflag} />}
-                />
-                <Route
-                  path="course_manage"
-                  element={<AdminCourseManagement expandflag={expandflag} />}
-                />
-              </Route>
-            </>
-          ) : (
-            <></>
-          )}
-          <Route exact path="/*" element={<Pagenotfound />} />
-        </Routes>
-        <ToastContainer />
-      </BrowserRouter>
-    </Provider>
+                  path="/admindashboard"
+                  element={<AdminDashboardLayout setfunc={setfunc} />}
+                >
+                  <Route
+                    path="user_manage"
+                    element={<AdminUserManagement expandflag={expandflag} />}
+                  />
+                  <Route
+                    path="course_manage"
+                    element={<AdminCourseManagement expandflag={expandflag} />}
+                  />
+                </Route>
+              </>
+            ) : (
+              <></>
+            )}
+            <Route exact path="/*" element={<Pagenotfound />} />
+          </Routes>
+          <ToastContainer />
+        </BrowserRouter>
+      </Provider>
+    </ConfirmProvider>
   );
 }
 
