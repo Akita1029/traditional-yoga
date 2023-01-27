@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { toast } from 'react-toastify';
 import axios from "axios";
@@ -20,11 +20,12 @@ const ProfileWrapPage = (props) => {
   const [AuthUser, setAuthUser] = useState({})
   const navigate = useNavigate()
   const [role, setRole] = useState(4)
+  const inputFile = useRef(null)
+
   // Save user token to redux
   useEffect(() => {
     if (localStorage.userToken) {
       setAuthUser((JSON.parse(localStorage.userToken)).user)
-      console.log(1112, (JSON.parse(localStorage.userToken)).user)
       setRole((JSON.parse(localStorage.userToken)).user.role)
     } else {
       navigate("/")
@@ -34,34 +35,62 @@ const ProfileWrapPage = (props) => {
     }
   }, [])
 
-  const [image, setImage] = useState({ preview: '', data: '' })
+  // const [image, setImage] = useState({ preview: '', data: '' })
 
-  const handleSubmit = async (e) => {
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   let formData = new FormData()
+  //   formData.append('file', image.data)
+  //   fetch('http://localhost:8000/uploadAvatar', {
+  //     method: 'POST',
+  //     body: formData,
+  //   }).then((response) => response.json())
+  //     .then((data) => {
+  //       axios.post(`${config.server}api/users/updateAvatar`, { AuthUser, filename: data.filename }).then((res) => {
+  //         console.log(res.status === 200)
+  //         if (res.status === 200) {
+  //           toast.success('Uploaded successfully')
+  //         } else {
+  //           toast.warning('Upload failed')
+  //         }
+  //       });
+  //     })
+  // }
+
+  const setSelectedImage = (e) => {
     e.preventDefault()
+    const image = {
+      preview: URL.createObjectURL(e.target.files[0]),
+      data: e.target.files[0],
+    }
     let formData = new FormData()
     formData.append('file', image.data)
-    axios.post(`${config.server}uploadAvatar`, {
-      body: formData
+    fetch(`${config.server}uploadAvatar`, {
+      method: 'POST',
+      body: formData,
     }).then((response) => response.json())
       .then((data) => {
         axios.post(`${config.server}api/users/updateAvatar`, { AuthUser, filename: data.filename }).then((res) => {
-          console.log(res.status === 200)
           if (res.status === 200) {
-            toast.success('Uploaded successfully')
+            toast.success('Updated  successfully')
+            let user = {...AuthUser}
+            user.avatar = data.filename
+            setAuthUser(user)
+            let token = JSON.parse(localStorage.userToken)
+            token.user.avatar = data.filename
+            localStorage.setItem("userToken", JSON.stringify(token))
           } else {
-            toast.warning('Upload failed')
+            toast.warning('Update failed')
           }
         });
       })
   }
 
-  const handleFileChange = (e) => {
-    const img = {
-      preview: URL.createObjectURL(e.target.files[0]),
-      data: e.target.files[0],
-    }
-    setImage(img)
-  }
+  const onButtonClick = () => {
+    // `current` points to the mounted file input element
+    inputFile.current.click();
+  };
+
   return (
     <>
       <HeaderBar />
@@ -81,12 +110,21 @@ const ProfileWrapPage = (props) => {
                     src={require(`../../assets/images/uploads/${AuthUser.avatar}`)} alt="kumar" />
                 )
               }
-              <h5 className="mt-4 mb-2"><b>{AuthUser.first_name + " " + AuthUser.last_name}</b></h5>
+              <h5 className="text-primary mt-4 mb-2"><b>{AuthUser.first_name + " " + AuthUser.last_name}</b></h5>
               <div className="d-flex justify-content-center">
-                <form className="w-50" onSubmit={handleSubmit}>
+                <input ref={inputFile} type="file" name="myImage" id="selectPhoto"
+                  style={{display: 'none'}}
+                  onChange={(e) => {
+                    setSelectedImage(e)
+                  }}
+                />
+                <a style={{cursor: 'pointer'}} onClick={onButtonClick}>
+                  <h5 className="text-primary mt-4 mb-2"><b>Upload Photo</b></h5>
+                </a>
+                {/* <form className="w-50" onSubmit={handleSubmit}>
                   <input className="form-control" type='file' name='file' onChange={handleFileChange}></input>
                   <Button className="w-100 mt-2" type='submit'>Submit</Button>
-                </form>
+                </form> */}
               </div>
               {/* <span className="text-primary" style={{ cursor: 'pointer' }}><b>Upload Photo</b></span> */}
             </div>
