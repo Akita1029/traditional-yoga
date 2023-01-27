@@ -35,28 +35,6 @@ const ProfileWrapPage = (props) => {
     }
   }, [])
 
-  // const [image, setImage] = useState({ preview: '', data: '' })
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   let formData = new FormData()
-  //   formData.append('file', image.data)
-  //   fetch('http://localhost:8000/uploadAvatar', {
-  //     method: 'POST',
-  //     body: formData,
-  //   }).then((response) => response.json())
-  //     .then((data) => {
-  //       axios.post(`${config.server}api/users/updateAvatar`, { AuthUser, filename: data.filename }).then((res) => {
-  //         console.log(res.status === 200)
-  //         if (res.status === 200) {
-  //           toast.success('Uploaded successfully')
-  //         } else {
-  //           toast.warning('Upload failed')
-  //         }
-  //       });
-  //     })
-  // }
-
   const setSelectedImage = (e) => {
     e.preventDefault()
     const image = {
@@ -118,15 +96,8 @@ const ProfileWrapPage = (props) => {
                     setSelectedImage(e)
                   }}
                 />
-                <a style={{cursor: 'pointer'}} onClick={onButtonClick}>
-                  <h5 className="text-primary mt-4 mb-2"><b>Upload Photo</b></h5>
-                </a>
-                {/* <form className="w-50" onSubmit={handleSubmit}>
-                  <input className="form-control" type='file' name='file' onChange={handleFileChange}></input>
-                  <Button className="w-100 mt-2" type='submit'>Submit</Button>
-                </form> */}
+                <span className="text-primary" style={{ cursor: 'pointer' }} onClick={onButtonClick}><b>Upload Photo</b></span>
               </div>
-              {/* <span className="text-primary" style={{ cursor: 'pointer' }}><b>Upload Photo</b></span> */}
             </div>
             {role === 3 ?
               (
