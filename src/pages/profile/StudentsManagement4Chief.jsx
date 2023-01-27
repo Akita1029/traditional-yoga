@@ -5,6 +5,9 @@ import axios from 'axios'
 import Pagination from 'rc-pagination';
 import { toast } from 'react-toastify';
 import config from "../../config/config";
+import { formatDateTime } from '../../utilities/utils';
+
+const statusArr = ['Pending', '', 'Active']
 
 const StudentManagementPage4Chief = (props) => {
   const [pageS1, setPageS1] = useState(10)
@@ -13,12 +16,7 @@ const StudentManagementPage4Chief = (props) => {
   const [pageN2, setPageN2] = useState(1)
   const [activeStudentData, setActiveStudentData] = useState([])
   const [pendingStudentData, setPendingStudentData] = useState([])
-  const [mentorData, setMentorData] = useState([
-    { id: 1, name: "Dr.Kumar" },
-    { id: 2, name: "Dr.James" },
-    { id: 3, name: "Dr.Lai" },
-    { id: 4, name: "Dr.Jeremy" }
-  ])
+  const [mentorData, setMentorData] = useState([])
   const [showDetailModal, setShowDetailModal] = useState(false)
   const [showCreateModal, setShowCreateModal] = useState(false)
   const [studentDetail, setStudentDetail] = useState({})
@@ -36,17 +34,17 @@ const StudentManagementPage4Chief = (props) => {
     }).catch((err) => {
       console.log(err)
     });
-    // axios.post(`${config.server}api/mentors/getMentors`).then((res) => { // TODO
-    //   console.log("Result:", res)
-    //   if (res.status === 201) {
-    //   } else if (res.status === 204) {
-    //   } else if (res.status === 205) {
-    //   } else if (res.status === 200) {
-    //     setMentorData(res.data)
-    //   }
-    // }).catch((err) => {
-    //   console.log(err)
-    // });
+    axios.post(`${config.server}api/mentors/getActiveMentors`).then((res) => {
+      console.log("Result:", res)
+      if (res.status === 201) {
+      } else if (res.status === 204) {
+      } else if (res.status === 205) {
+      } else if (res.status === 200) {
+        setMentorData(res.data)
+      }
+    }).catch((err) => {
+      console.log(err)
+    });
   }, [])
 
   const onActiveTabClick = () => {
@@ -75,13 +73,14 @@ const StudentManagementPage4Chief = (props) => {
     }).catch((err) => {
       console.log(err)
     });
-  }
+  } //
 
   const deleteStudent = (id) => {
     axios.post(`${config.server}api/students/delete`, { id }).then((res) => {
       console.log("Result:", res)
       if (res.status === 201) {
       } else if (res.status === 204) {
+        console.log('code 204')
       } else if (res.status === 205) {
       } else if (res.status === 200) {
         toast.success('Deleted successfully')
@@ -212,19 +211,11 @@ const StudentManagementPage4Chief = (props) => {
                               <Form.Check type='checkbox' />
                             </td>
                             <td>{t.name}</td>
-                            <td>
-                              <Form.Select value={t.mentor}>
-                                {mentorData.map((t, i) => <option key={i} value={t.id}>{t.name}</option>)}
-                              </Form.Select>
-                            </td>
+                            {/* <td>{t.mentor}</td> */}
+                            <td>{mentorData.find(j => j.id == t.mentor)?.legalName}</td>
                             <td>{t.phone}</td>
-                            <td>{t.created_at}</td>
-                            <td>
-                              <Form.Select value={t.status}>
-                                <option value="Active">Active</option>
-                                <option value="Pendding">Pendding</option>
-                              </Form.Select>
-                            </td>
+                            <td>{formatDateTime(t.created_at)}</td>
+                            <td>{statusArr[t.status]}</td>
                             <td>
                               <DropdownButton variant='secondary' id="dropdown-basic-button" title={<i className="bi bi-list-task"></i>}>
                                 <Dropdown.Item onClick={() => {
@@ -330,19 +321,11 @@ const StudentManagementPage4Chief = (props) => {
                               <Form.Check type='checkbox' />
                             </td>
                             <td>{t.name}</td>
-                            <td>
-                              <Form.Select value={t.mentor}>
-                                {mentorData.map((t, i) => <option key={i} value={t.id}>{t.name}</option>)}
-                              </Form.Select>
-                            </td>
+                            {/* <td>{t.mentor}</td> */}
+                            <td>{mentorData.find(j => j.id == t.mentor)?.legalName}</td>
                             <td>{t.phone}</td>
-                            <td>{t.created_at}</td>
-                            <td>
-                              <Form.Select value={t.status}>
-                                <option value="Active">Active</option>
-                                <option value="Pendding">Pendding</option>
-                              </Form.Select>
-                            </td>
+                            <td>{formatDateTime(t.created_at)}</td>
+                            <td>{statusArr[t.status]}</td>
                             <td>
                               <DropdownButton variant='secondary' id="dropdown-basic-button" title={<i className="bi bi-list-task"></i>}>
                                 <Dropdown.Item onClick={() => {
@@ -410,21 +393,21 @@ const StudentManagementPage4Chief = (props) => {
             }}
             value={studentDetail.phone} />
           <label>Mentor</label>
-          <Form.Select onChange={e => {
+          <Form.Select value={studentDetail.mentor} onChange={e => {
             const dt = { ...studentDetail }
             dt.mentor = e.target.value
             setStudentDetail(dt)
           }}>
-            {mentorData.map((t, i) => <option key={i} value={t.id}>{t.name}</option>)}
+            {mentorData.map((t, i) => <option key={i} value={t.id}>{t.legalName}</option>)}
           </Form.Select>
           <label>Status</label>
-          <Form.Select onChange={e => {
+          <Form.Select value={studentDetail.status} onChange={e => {
             const dt = { ...studentDetail }
             dt.status = e.target.value
             setStudentDetail(dt)
           }}>
-            <option value="Active">Active</option>
-            <option value="Pendding">Pendding</option>
+            <option value={2}>Active</option>
+            <option value={0}>Pendding</option>
           </Form.Select>
         </Modal.Body>
         <Modal.Footer>
@@ -460,21 +443,21 @@ const StudentManagementPage4Chief = (props) => {
             }}
             value={studentCreateData.phone} />
           <label>Mentor</label>
-          <Form.Select onChange={e => {
+          <Form.Select value={studentCreateData.mentor} onChange={e => {
             const dt = { ...studentCreateData }
             dt.mentor = e.target.value
             setStudentCreateData(dt)
           }}>
-            {mentorData.map((t, i) => <option key={i} value={t.id}>{t.name}</option>)}
+            {mentorData.map((t, i) => <option key={i} value={t.id}>{t.legalName}</option>)}
           </Form.Select>
           <label>Status</label>
-          <Form.Select onChange={e => {
+          <Form.Select value={studentCreateData.status} onChange={e => {
             const dt = { ...studentCreateData }
             dt.status = e.target.value
             setStudentCreateData(dt)
           }}>
-            <option value="Active">Active</option>
-            <option value="Pendding">Pendding</option>
+            <option value={2}>Active</option>
+            <option value={0}>Pendding</option>
           </Form.Select>
         </Modal.Body>
         <Modal.Footer>
