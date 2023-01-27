@@ -1,97 +1,139 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { Row, Col, Button, Form, Table } from 'react-bootstrap'
+import { Row, Col, Button, Form, Table, DropdownButton, Dropdown, Modal } from 'react-bootstrap'
+import axios from 'axios'
 import Pagination from 'rc-pagination';
+import { toast } from 'react-toastify';
+import config from "../../config/config";
+import { formatDateTime } from '../../utilities/utils';
+
+const statusArr = ['Pending', '', 'Active']
 
 const StudentManagementPage4Chief = (props) => {
-  const [pageS, setPageS] = useState(10)
-  const studentData = [
-    {
-      name: 'Lavanya Attaluri',
-      mentor: 'DR. Kumar',
-      phone: '+18045710993',
-      createdAt: 'October 5, 2022',
-      status: 'Active'
-    },
-    {
-      name: 'Lavanya Attaluri',
-      mentor: 'DR. Kumar',
-      phone: '+18045710993',
-      createdAt: 'October 5, 2022',
-      status: 'Active'
-    },
-    {
-      name: 'Lavanya Attaluri',
-      mentor: 'DR. Kumar',
-      phone: '+18045710993',
-      createdAt: 'October 5, 2022',
-      status: 'Active'
-    },
-    {
-      name: 'Lavanya Attaluri',
-      mentor: 'DR. Kumar',
-      phone: '+18045710993',
-      createdAt: 'October 5, 2022',
-      status: 'Active'
-    },
-    {
-      name: 'Lavanya Attaluri',
-      mentor: 'DR. Kumar',
-      phone: '+18045710993',
-      createdAt: 'October 5, 2022',
-      status: 'Active'
-    },
-    {
-      name: 'Lavanya Attaluri',
-      mentor: 'DR. Kumar',
-      phone: '+18045710993',
-      createdAt: 'October 5, 2022',
-      status: 'Active'
-    },
-    {
-      name: 'Lavanya Attaluri',
-      mentor: 'DR. Kumar',
-      phone: '+18045710993',
-      createdAt: 'October 5, 2022',
-      status: 'Active'
-    },
-    {
-      name: 'Lavanya Attaluri',
-      mentor: 'DR. Kumar',
-      phone: '+18045710993',
-      createdAt: 'October 5, 2022',
-      status: 'Active'
-    },
-    {
-      name: 'Lavanya Attaluri',
-      mentor: 'DR. Kumar',
-      phone: '+18045710993',
-      createdAt: 'October 5, 2022',
-      status: 'Active'
-    },
-    {
-      name: 'Lavanya Attaluri',
-      mentor: 'DR. Kumar',
-      phone: '+18045710993',
-      createdAt: 'October 5, 2022',
-      status: 'Active'
-    },
-  ]
+  const [pageS1, setPageS1] = useState(10)
+  const [pageN1, setPageN1] = useState(1)
+  const [pageS2, setPageS2] = useState(10)
+  const [pageN2, setPageN2] = useState(1)
+  const [activeStudentData, setActiveStudentData] = useState([])
+  const [pendingStudentData, setPendingStudentData] = useState([])
+  const [mentorData, setMentorData] = useState([])
+  const [showDetailModal, setShowDetailModal] = useState(false)
+  const [showCreateModal, setShowCreateModal] = useState(false)
+  const [studentDetail, setStudentDetail] = useState({})
+  const [studentCreateData, setStudentCreateData] = useState({})
+
+  useEffect(() => {
+    axios.post(`${config.server}api/students/getActiveStudents`).then((res) => {
+      console.log("Result:", res)
+      if (res.status === 201) {
+      } else if (res.status === 204) {
+      } else if (res.status === 205) {
+      } else if (res.status === 200) {
+        setActiveStudentData(res.data)
+      }
+    }).catch((err) => {
+      console.log(err)
+    });
+    axios.post(`${config.server}api/mentors/getActiveMentors`).then((res) => {
+      console.log("Result:", res)
+      if (res.status === 201) {
+      } else if (res.status === 204) {
+      } else if (res.status === 205) {
+      } else if (res.status === 200) {
+        setMentorData(res.data)
+      }
+    }).catch((err) => {
+      console.log(err)
+    });
+  }, [])
+
+  const onActiveTabClick = () => {
+    axios.post(`${config.server}api/students/getActiveStudents`).then((res) => {
+      console.log("Result:", res)
+      if (res.status === 201) {
+      } else if (res.status === 204) {
+      } else if (res.status === 205) {
+      } else if (res.status === 200) {
+        setActiveStudentData(res.data)
+      }
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  const onPendingTabClick = () => {
+    axios.post(`${config.server}api/students/getPendingStudents`).then((res) => {
+      console.log("Result:", res)
+      if (res.status === 201) {
+      } else if (res.status === 204) {
+      } else if (res.status === 205) {
+      } else if (res.status === 200) {
+        setPendingStudentData(res.data)
+      }
+    }).catch((err) => {
+      console.log(err)
+    });
+  } //
+
+  const deleteStudent = (id) => {
+    axios.post(`${config.server}api/students/delete`, { id }).then((res) => {
+      console.log("Result:", res)
+      if (res.status === 201) {
+      } else if (res.status === 204) {
+        console.log('code 204')
+      } else if (res.status === 205) {
+      } else if (res.status === 200) {
+        toast.success('Deleted successfully')
+      }
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  const handleUpdate = () => {
+    axios.post(`${config.server}api/students/update`, studentDetail).then((res) => {
+      console.log("Result:", res)
+      if (res.status === 201) {
+      } else if (res.status === 204) {
+      } else if (res.status === 205) {
+      } else if (res.status === 200) {
+        toast.success('Updated successfully')
+        setShowDetailModal(false)
+      }
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  const handleCreate = () => {
+    axios.post(`${config.server}api/students/create`, studentCreateData).then((res) => {
+      console.log("Result:", res)
+      if (res.status === 201) {
+      } else if (res.status === 204) {
+      } else if (res.status === 205) {
+      } else if (res.status === 200) {
+        toast.success('Created successfully')
+      }
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
   return (
     <>
       <Tabs>
         <TabList className="resourceheader">
           <Tab>
-            <div className="py-1 px-3">
+            <div className="py-1 px-3" onClick={() => onActiveTabClick()}>
               Active
             </div>
           </Tab>
           <Tab>
-            <div className="py-1 px-3">
+            <div className="py-1 px-3" onClick={() => onPendingTabClick()}>
               Pending
             </div>
           </Tab>
-          <Button className='bg-light mt-1 mx-1 text-primary' style={{ float: 'right' }}>
+          <Button onClick={() => setShowCreateModal(true)} className='bg-light mt-1 mx-1 text-primary' style={{ float: 'right' }}>
             Create Student
           </Button>
         </TabList>
@@ -161,32 +203,34 @@ const StudentManagementPage4Chief = (props) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {studentData.map((t, i) =>
-                      <tr key={i}>
-                        <td>
-                          <Form.Check type='checkbox' />
-                        </td>
-                        <td>{t.name}</td>
-                        <td>
-                          <Form.Select value={t.mentor}>
-                            <option value="DR. Kumar">DR. Kumar</option>
-                          </Form.Select>
-                        </td>
-                        <td>{t.phone}</td>
-                        <td>{t.createdAt}</td>
-                        <td>
-                          <Form.Select value={t.status}>
-                            <option value="Active">Active</option>
-                            <option value="Pendding">Pendding</option>
-                          </Form.Select>
-                        </td>
-                        <td>
-                          <div className="py-2 text-center text-white" style={{ background: '#6db100', cursor: 'pointer' }}>
-                            <i className="bi bi-list-task"></i>
-                          </div>
-                        </td>
-                      </tr>
-                    )}
+                    {activeStudentData.map((t, i) => {
+                      if (((pageN1 - 1) * pageS1) <= i && i < (pageN1 * pageS1)) {
+                        return (
+                          <tr key={i}>
+                            <td>
+                              <Form.Check type='checkbox' />
+                            </td>
+                            <td>{t.name}</td>
+                            {/* <td>{t.mentor}</td> */}
+                            <td>{mentorData.find(j => j.id == t.mentor)?.legalName}</td>
+                            <td>{t.phone}</td>
+                            <td>{formatDateTime(t.created_at)}</td>
+                            <td>{statusArr[t.status]}</td>
+                            <td>
+                              <DropdownButton variant='secondary' id="dropdown-basic-button" title={<i className="bi bi-list-task"></i>}>
+                                <Dropdown.Item onClick={() => {
+                                  setShowDetailModal(true)
+                                  setStudentDetail(t)
+                                }}>
+                                  Edit
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={() => deleteStudent(t.id)}>Delete</Dropdown.Item>
+                              </DropdownButton>
+                            </td>
+                          </tr>
+                        )
+                      }
+                    })}
                   </tbody>
                 </Table>
                 <div className='d-flex justify-content-between'>
@@ -195,7 +239,7 @@ const StudentManagementPage4Chief = (props) => {
                       Show
                     </div>
                     <div className='px-1'>
-                      <Form.Select value={pageS} size='sm' onChange={e => setPageS(e.target.value)}>
+                      <Form.Select value={pageS1} size='sm' onChange={e => setPageS1(e.target.value)}>
                         <option value={10}>10</option>
                         <option value={20}>20</option>
                         <option value={30}>30</option>
@@ -207,7 +251,7 @@ const StudentManagementPage4Chief = (props) => {
                     </div>
                   </div>
                   <div>
-                    <Pagination total={250} pageSize={pageS} />
+                    <Pagination onChange={e => setPageN1(e)} total={activeStudentData.length} current={pageN1} pageSize={pageS1} />
                   </div>
                 </div>
               </div>
@@ -269,32 +313,34 @@ const StudentManagementPage4Chief = (props) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {studentData.map((t, i) =>
-                      <tr key={i}>
-                        <td>
-                          <Form.Check type='checkbox' />
-                        </td>
-                        <td>{t.name}</td>
-                        <td>
-                          <Form.Select value={t.mentor}>
-                            <option value="DR. Kumar">DR. Kumar</option>
-                          </Form.Select>
-                        </td>
-                        <td>{t.phone}</td>
-                        <td>{t.createdAt}</td>
-                        <td>
-                          <Form.Select value={t.status}>
-                            <option value="Active">Active</option>
-                            <option value="Pendding">Pendding</option>
-                          </Form.Select>
-                        </td>
-                        <td>
-                          <div className="py-2 text-center text-white" style={{ background: '#6db100', cursor: 'pointer' }}>
-                            <i className="bi bi-list-task"></i>
-                          </div>
-                        </td>
-                      </tr>
-                    )}
+                    {pendingStudentData.map((t, i) => {
+                      if (((pageN2 - 1) * pageS2) <= i && i < (pageN2 * pageS2)) {
+                        return (
+                          <tr key={i}>
+                            <td>
+                              <Form.Check type='checkbox' />
+                            </td>
+                            <td>{t.name}</td>
+                            {/* <td>{t.mentor}</td> */}
+                            <td>{mentorData.find(j => j.id == t.mentor)?.legalName}</td>
+                            <td>{t.phone}</td>
+                            <td>{formatDateTime(t.created_at)}</td>
+                            <td>{statusArr[t.status]}</td>
+                            <td>
+                              <DropdownButton variant='secondary' id="dropdown-basic-button" title={<i className="bi bi-list-task"></i>}>
+                                <Dropdown.Item onClick={() => {
+                                  setShowDetailModal(true)
+                                  setStudentDetail(t)
+                                }}>
+                                  Edit
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={() => deleteStudent(t.id)}>Delete</Dropdown.Item>
+                              </DropdownButton>
+                            </td>
+                          </tr>
+                        )
+                      }
+                    })}
                   </tbody>
                 </Table>
                 <div className='d-flex justify-content-between'>
@@ -303,7 +349,7 @@ const StudentManagementPage4Chief = (props) => {
                       Show
                     </div>
                     <div className='px-1'>
-                      <Form.Select value={pageS} size='sm' onChange={e => setPageS(e.target.value)}>
+                      <Form.Select value={pageS2} size='sm' onChange={e => setPageS2(e.target.value)}>
                         <option value={10}>10</option>
                         <option value={20}>20</option>
                         <option value={30}>30</option>
@@ -315,7 +361,7 @@ const StudentManagementPage4Chief = (props) => {
                     </div>
                   </div>
                   <div>
-                    <Pagination total={250} pageSize={pageS} />
+                    <Pagination onChange={e => setPageN2(e)} total={pendingStudentData.length} current={pageN2} pageSize={pageS2} />
                   </div>
                 </div>
               </div>
@@ -323,6 +369,106 @@ const StudentManagementPage4Chief = (props) => {
           </TabPanel>
         </div>
       </Tabs>
+      <Modal show={showDetailModal} onHide={() => setShowDetailModal(false)} animation={false}>
+        {/* <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header> */}
+        <Modal.Body>
+          <label>Name</label>
+          <input
+            className="form-control mt-2"
+            onChange={e => {
+              const dt = { ...studentDetail }
+              dt.name = e.target.value
+              setStudentDetail(dt)
+            }}
+            value={studentDetail.name} />
+          <label>Phone</label>
+          <input
+            className="form-control mt-2"
+            onChange={e => {
+              const dt = { ...studentDetail }
+              dt.phone = e.target.value
+              setStudentDetail(dt)
+            }}
+            value={studentDetail.phone} />
+          <label>Mentor</label>
+          <Form.Select value={studentDetail.mentor} onChange={e => {
+            const dt = { ...studentDetail }
+            dt.mentor = e.target.value
+            setStudentDetail(dt)
+          }}>
+            {mentorData.map((t, i) => <option key={i} value={t.id}>{t.legalName}</option>)}
+          </Form.Select>
+          <label>Status</label>
+          <Form.Select value={studentDetail.status} onChange={e => {
+            const dt = { ...studentDetail }
+            dt.status = e.target.value
+            setStudentDetail(dt)
+          }}>
+            <option value={2}>Active</option>
+            <option value={0}>Pendding</option>
+          </Form.Select>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowDetailModal(false)}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleUpdate}>
+            Update
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={showCreateModal} onHide={() => setShowCreateModal(false)} animation={false}>
+        {/* <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header> */}
+        <Modal.Body>
+          <label>Name</label>
+          <input
+            className="form-control mt-2"
+            onChange={e => {
+              const dt = { ...studentCreateData }
+              dt.name = e.target.value
+              setStudentCreateData(dt)
+            }}
+            value={studentCreateData.name} />
+          <label>Phone</label>
+          <input
+            className="form-control mt-2"
+            onChange={e => {
+              const dt = { ...studentCreateData }
+              dt.phone = e.target.value
+              setStudentCreateData(dt)
+            }}
+            value={studentCreateData.phone} />
+          <label>Mentor</label>
+          <Form.Select value={studentCreateData.mentor} onChange={e => {
+            const dt = { ...studentCreateData }
+            dt.mentor = e.target.value
+            setStudentCreateData(dt)
+          }}>
+            {mentorData.map((t, i) => <option key={i} value={t.id}>{t.legalName}</option>)}
+          </Form.Select>
+          <label>Status</label>
+          <Form.Select value={studentCreateData.status} onChange={e => {
+            const dt = { ...studentCreateData }
+            dt.status = e.target.value
+            setStudentCreateData(dt)
+          }}>
+            <option value={2}>Active</option>
+            <option value={0}>Pendding</option>
+          </Form.Select>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowCreateModal(false)}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleCreate}>
+            Create
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }
