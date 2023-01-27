@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Button } from "react-bootstrap";
+import { toast } from 'react-toastify';
+import axios from "axios";
 import FooterBar from "../../components/FooterBar";
 import HeaderBar from "../../components/HeaderBar";
 import SubTitleBar from "../../components/SubTitleBar";
@@ -12,8 +14,7 @@ import StudentManagementPage from "./StudentsManagement";
 import StudentManagementPage4Chief from "./StudentsManagement4Chief";
 import { useNavigate } from "react-router-dom"
 import "../../assets/css/profile.css";
-import { toast } from 'react-toastify';
-
+import config from "../../config/config";
 const ProfileWrapPage = (props) => {
   const [profileState, setProfileState] = useState(1)
   const [AuthUser, setAuthUser] = useState({})
@@ -23,6 +24,7 @@ const ProfileWrapPage = (props) => {
   useEffect(() => {
     if (localStorage.userToken) {
       setAuthUser((JSON.parse(localStorage.userToken)).user)
+      console.log(1112, (JSON.parse(localStorage.userToken)).user)
       setRole((JSON.parse(localStorage.userToken)).user.role)
     } else {
       navigate("/")
@@ -31,7 +33,36 @@ const ProfileWrapPage = (props) => {
       })
     }
   }, [])
-  console.log(AuthUser.avatar)
+
+  const [image, setImage] = useState({ preview: '', data: '' })
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    let formData = new FormData()
+    formData.append('file', image.data)
+    fetch('http://localhost:8000/uploadAvatar', {
+      method: 'POST',
+      body: formData,
+    }).then((response) => response.json())
+      .then((data) => {
+        axios.post(`${config.server}api/users/updateAvatar`, { AuthUser, filename: data.filename }).then((res) => {
+          console.log(res.status === 200)
+          if (res.status === 200) {
+            toast.success('Uploaded successfully')
+          } else {
+            toast.warning('Upload failed')
+          }
+        });
+      })
+  }
+
+  const handleFileChange = (e) => {
+    const img = {
+      preview: URL.createObjectURL(e.target.files[0]),
+      data: e.target.files[0],
+    }
+    setImage(img)
+  }
   return (
     <>
       <HeaderBar />
@@ -41,20 +72,26 @@ const ProfileWrapPage = (props) => {
           <Col lg={5}>
             <div className="rounded p-4 text-center border-primary-clr">
 
-              { AuthUser.avatar === undefined || AuthUser.avatar === null ?
-              (
-                <img style={{ width: 200, height: 200, borderRadius: 200 }}
-                  src={require(`../../assets/images/unknown_user.png`)} alt="kumar" />
-              ) :
-              (
-                <img style={{ width: 200, height: 200, borderRadius: 200 }}
-                src={require(`../../assets/images/${AuthUser.avatar}`)} alt="kumar" />
-              )
+              {AuthUser.avatar === undefined || AuthUser.avatar === null ?
+                (
+                  <img style={{ width: 200, height: 200, borderRadius: 200 }}
+                    src={require(`../../assets/images/unknown_user.png`)} alt="kumar" />
+                ) :
+                (
+                  <img style={{ width: 200, height: 200, borderRadius: 200 }}
+                    src={require(`../../assets/images/${AuthUser.avatar}`)} alt="kumar" />
+                )
               }
               <h5 className="mt-4 mb-2"><b>{AuthUser.first_name + " " + AuthUser.last_name}</b></h5>
-              <span className="text-primary" style={{ cursor: 'pointer' }}><b>Upload Photo</b></span>
+              <div className="d-flex justify-content-center">
+                <form className="w-50" onSubmit={handleSubmit}>
+                  <input className="form-control" type='file' name='file' onChange={handleFileChange}></input>
+                  <Button className="w-100 mt-2" type='submit'>Submit</Button>
+                </form>
+              </div>
+              {/* <span className="text-primary" style={{ cursor: 'pointer' }}><b>Upload Photo</b></span> */}
             </div>
-            { role === 3 ?
+            {role === 3 ?
               (
                 <div className={`${profileState === 0 ? 'bg-primary text-light' : 'text-primary'} rounded border-primary-clr w-100 py-2 px-3 mt-4`}
                   style={{ cursor: 'pointer' }} onClick={() => setProfileState(0)}>
@@ -62,7 +99,7 @@ const ProfileWrapPage = (props) => {
                 </div>
               ) : (<div />)
             }
-            { role === 1 || role === 2 || role === 3 ?
+            {role === 1 || role === 2 || role === 3 ?
               (
                 <div>
                   <div className={`${profileState === 1 ? 'bg-primary text-light' : 'text-primary'} rounded border-primary-clr w-100 py-2 px-3 mt-2`}
@@ -77,15 +114,15 @@ const ProfileWrapPage = (props) => {
               ) : (<div />)
             }
 
-            { role === 2 ?
+            {role === 2 ?
               (
                 <div className={`${profileState === 3 ? 'bg-primary text-light' : 'text-primary'} rounded border-primary-clr w-100 py-2 px-3 mt-2`}
                   style={{ cursor: 'pointer' }} onClick={() => setProfileState(3)}>
                   <b>Student Management</b>
                 </div>
-              ) : ( <div />)
+              ) : (<div />)
             }
-            { role === 1 ?
+            {role === 1 ?
               (
                 <div>
                   <div className={`${profileState === 4 ? 'bg-primary text-light' : 'text-primary'} rounded border-primary-clr w-100 py-2 px-3 mt-2`}
@@ -101,7 +138,7 @@ const ProfileWrapPage = (props) => {
                     <b>Courses Management</b>
                   </div>
                 </div>
-              ): (<div />)
+              ) : (<div />)
             }
           </Col>
           <Col lg={7}>

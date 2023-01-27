@@ -8,6 +8,7 @@ import store from "../../store"
 import {
   getCoursesForCourseManagement, updateCoursesForCourseManagement, createCoursesForCourseManagement, deleteCoursesForCourseManagement
 } from "../../actions/course";
+import { formatDateTime } from '../../utilities/utils';
 
 const CoursesManagementPage = (props) => {
   const [pageS, setPageS] = useState(10)
@@ -78,9 +79,9 @@ const CoursesManagementPage = (props) => {
                     if (((pageN - 1) * pageS) <= i && i < (pageN * pageS))
                       return (
                         <tr key={i}>
-                          <td>{t.createdAt}</td>
+                          <td>{formatDateTime(t.createdAt)}</td>
                           <td>{t.title}</td>
-                          <td>{t.startedAt}</td>
+                          <td>{formatDateTime(t.startedAt)}</td>
                           <td>{t.place}</td>
                           <td>
                             <DropdownButton variant='secondary' id="dropdown-basic-button" title={<i className="bi bi-list-task"></i>}>
@@ -142,9 +143,9 @@ const CoursesManagementPage = (props) => {
                     if (((pageN - 1) * pageS) <= i && i < (pageN * pageS))
                       return (
                         <tr key={i}>
-                          <td>{t.createdAt}</td>
+                          <td>{formatDateTime(t.createdAt)}</td>
                           <td>{t.title}</td>
-                          <td>{t.startedAt}</td>
+                          <td>{formatDateTime(t.startedAt)}</td>
                           <td>{t.place}</td>
                           <td>
                             <DropdownButton variant='secondary' id="dropdown-basic-button" title={<i className="bi bi-list-task"></i>}>
@@ -192,15 +193,15 @@ const CoursesManagementPage = (props) => {
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header> */}
         <Modal.Body>
-          <label>Date Created</label>
+          {/* <label>Date Created</label>
           <input
             className="form-control mt-2"
             onChange={e => {
               const dt = { ...editCourse }
               dt.createdAt = e.target.value
-              // setEditCourse(dt)
+              setEditCourse(dt)
             }}
-            value={editCourse.createdAt} />
+            value={editCourse.createdAt} /> */}
           <label>Course Name</label>
           <input
             className="form-control mt-2"
@@ -216,7 +217,7 @@ const CoursesManagementPage = (props) => {
             onChange={e => {
               const dt = { ...editCourse }
               dt.startedAt = e.target.value
-              // setEditCourse(dt)
+              setEditCourse(dt)
             }}
             value={editCourse.startedAt} />
           <label>Place</label>
@@ -225,7 +226,7 @@ const CoursesManagementPage = (props) => {
             onChange={e => {
               const dt = { ...editCourse }
               dt.place = e.target.value
-              // setEditCourse(dt)
+              setEditCourse(dt)
             }}
             value={editCourse.place} />
         </Modal.Body>
@@ -243,15 +244,15 @@ const CoursesManagementPage = (props) => {
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header> */}
         <Modal.Body>
-          <label>Date Created</label>
+          {/* <label>Date Created</label>
           <input
             className="form-control mt-2"
             onChange={e => {
               const dt = { ...createCourse }
               dt.createdAt = e.target.value
-              // setCreateCourse(dt)
+              setCreateCourse(dt)
             }}
-            value={createCourse.createdAt} />
+            value={createCourse.createdAt} /> */}
           <label>Course Name</label>
           <input
             className="form-control mt-2"
@@ -267,7 +268,7 @@ const CoursesManagementPage = (props) => {
             onChange={e => {
               const dt = { ...createCourse }
               dt.startedAt = e.target.value
-              // setCreateCourse(dt)
+              setCreateCourse(dt)
             }}
             value={createCourse.startedAt} />
           <label>Place</label>
@@ -276,7 +277,7 @@ const CoursesManagementPage = (props) => {
             onChange={e => {
               const dt = { ...createCourse }
               dt.place = e.target.value
-              // setCreateCourse(dt)
+              setCreateCourse(dt)
             }}
             value={createCourse.place} />
         </Modal.Body>
