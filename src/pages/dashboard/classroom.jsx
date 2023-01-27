@@ -81,7 +81,7 @@ const Classroom = (props) => {
             (
               <img alt="classroomInfo"
                 className="w-100 rounded"
-                src={require(`../../assets/images/${currentClass.photo}`)}
+                src={require(`../../assets/images/uploads/${currentClass.photo}`)}
               />
             )
           }

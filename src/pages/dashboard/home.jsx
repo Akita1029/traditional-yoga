@@ -92,7 +92,7 @@ const Home = (props) => {
                       ) :
                       (
                         <img width='100%' style={{ borderRadius: 20 }} alt="dashboard"
-                          src={require(`../../assets/images/${liveclass.photo}`)}
+                          src={require(`../../assets/images/uploads/${liveclass.photo}`)}
                         />
                       )
                     }
