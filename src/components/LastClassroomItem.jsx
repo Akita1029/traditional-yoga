@@ -7,7 +7,7 @@ const OnlineCourseItem = (props) => {
   if(props.image == undefined )
     image = require("../assets/images/classroom.jpg");
   else
-    image = require("../assets/images/" + props.image);
+    image = require("../assets/images/uploads/" + props.image);
 
   const viewClassroom = (classId) => {
     console.log("ClassID:", classId)

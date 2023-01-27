@@ -70,7 +70,7 @@ const HeaderBar = (props) => {
                         (
                           <Image className="me-2 mt-2"
                             roundedCircle width={35} height={35}
-                            src={require(`../assets/images/${AuthUser.avatar}`)} />
+                            src={require(`../assets/images/uploads/${AuthUser.avatar}`)} />
                         )
                       }
                       <div className="fs-7 mt-2">{AuthUser.nick_name !== null ? AuthUser.nick_name : AuthUser.first_name + " " + AuthUser.last_name}</div>

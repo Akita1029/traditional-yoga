@@ -40,9 +40,8 @@ const ProfileWrapPage = (props) => {
     e.preventDefault()
     let formData = new FormData()
     formData.append('file', image.data)
-    fetch('http://localhost:8000/uploadAvatar', {
-      method: 'POST',
-      body: formData,
+    axios.post(`${config.server}uploadAvatar`, {
+      body: formData
     }).then((response) => response.json())
       .then((data) => {
         axios.post(`${config.server}api/users/updateAvatar`, { AuthUser, filename: data.filename }).then((res) => {
@@ -79,7 +78,7 @@ const ProfileWrapPage = (props) => {
                 ) :
                 (
                   <img style={{ width: 200, height: 200, borderRadius: 200 }}
-                    src={require(`../../assets/images/${AuthUser.avatar}`)} alt="kumar" />
+                    src={require(`../../assets/images/uploads/${AuthUser.avatar}`)} alt="kumar" />
                 )
               }
               <h5 className="mt-4 mb-2"><b>{AuthUser.first_name + " " + AuthUser.last_name}</b></h5>
